@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talls Random Bone Jokes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ff6666;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: #990000;
+            padding: 20px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 70px;
+            margin-right: 20px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 14px;
+        }
+
+        h1 {
+            margin-top: 120px;
+            font-size: 48px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        p.description {
+            font-size: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .joke {
+            font-size: 36px;
+            font-style: italic;
+            background-color: #b30000;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #ff1a1a;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background-color: #ff4d4d;
+        }
+
+        .message {
+            font-size: 24px;
+            margin-top: 20px;
+            color: yellow;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="logo">
+            <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/United%20Gamer%20Federation%20(A).png" alt="UGF Logo">
+            <div>
+                <span class="title">United Gamer Federation</span><br>
+                <span class="subtitle">United Federal Property</span>
+            </div>
+        </div>
+    </div>
+
+    <h1>Talls Random Bone Jokes</h1>
+    <p class="description">Get your random bone joke every Tuesday and Thursday!</p>
+
+    <div class="joke" id="boneJoke">
+        <!-- Joke will appear here -->
+    </div>
+
+    <div class="button-container">
+        <button onclick="generateJoke()">Get a Bone Joke</button>
+    </div>
+
+    <div class="message" id="message">
+        <!-- Error message will appear here if not Tuesday or Thursday -->
+    </div>
+
+    <script>
+        // Array of bone jokes
+        const jokes = [
+            "I would make a skeleton joke, but you wouldn't find it humerus.",
+            "Why don’t skeletons fight each other? They don’t have the guts.",
+            "I can feel it in my bones, this joke is going to crack you up!",
+            "Did you hear about the skeleton who stayed out in the cold? He was chilled to the bone!",
+            "The skeleton didn’t mind that the joke fell flat—he had thick skin.",
+            "Why was the skeleton so calm? Nothing got under his skin!",
+            "What did the skeleton order at the restaurant? Spare ribs!",
+            "The skeleton played the trombone, but he couldn't really blow people away.",
+            "The skeleton went to the party alone because he had no body to go with him.",
+            "Did you hear about the skeleton who was a stand-up comedian? His jokes were bone-dry!"
+        ];
+
+        // Function to get a random bone joke
+        function getRandomBoneJoke() {
+            const randomIndex = Math.floor(Math.random() * jokes.length);
+            return jokes[randomIndex];
+        }
+
+        // Function to check the day and generate a joke
+        function generateJoke() {
+            const today = new Date();
+            const dayOfWeek = today.getDay(); // 0 is Sunday, 1 is Monday, etc.
+            const jokeContainer = document.getElementById('boneJoke');
+            const messageContainer = document.getElementById('message');
+
+            // Only allow jokes on Tuesdays (2) and Thursdays (4)
+            if (dayOfWeek === 2 || dayOfWeek === 4) {
+                jokeContainer.textContent = getRandomBoneJoke();
+                messageContainer.textContent = ""; // Clear the error message
+            } else {
+                messageContainer.textContent = "Request rejected. Please check your calendar.";
+                jokeContainer.textContent = ""; // Clear the joke if it's not the correct day
+            }
+        }
+    </script>
+
+</body>
+
+</html>
