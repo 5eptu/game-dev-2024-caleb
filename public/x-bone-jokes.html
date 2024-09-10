@@ -35,7 +35,7 @@
         .logo {
             display: flex;
             align-items: center;
-            margin-left: 30px; /* Shifting logo to the right */
+            margin-left: 30px;
         }
 
         .logo img {
@@ -55,13 +55,13 @@
         .disclaimer {
             position: absolute;
             top: 20px;
-            right: 50px; /* Shifting the disclaimer box slightly to the left */
+            right: 50px;
             font-size: 12px;
-            background-color: white; /* White background for disclaimer */
+            background-color: white;
             color: black;
             padding: 10px;
             border-radius: 8px;
-            border: 2px solid black; /* Black outline for disclaimer */
+            border: 2px solid black;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
 
@@ -127,7 +127,6 @@
             </div>
         </div>
 
-        <!-- Disclaimer section -->
         <div class="disclaimer">
             <strong>DISCLAIMER:</strong><br>
             This website is restricted to user <strong>"TallBoi567"</strong>.<br>
@@ -164,6 +163,16 @@
             "The skeleton played the trombone, but he couldn't really blow people away.",
             "The skeleton went to the party alone because he had no body to go with him.",
             "Did you hear about the skeleton who was a stand-up comedian? His jokes were bone-dry!"
+            "Why didn’t the skeleton go to the dance? He had no body to go with.",
+            "The skeleton refused to play poker because he didn’t have the guts to bluff.",
+            "Why do skeletons always act so calm? Nothing ever gets under their skin.",
+            "How did the skeleton know it was going to rain? He felt it in his bones!",
+            "The skeleton couldn’t help being funny—it came naturally, right down to his bone structure.",
+            "Skeletons love to party—after all, they’re all about shaking a leg!",
+            "Why did the skeleton become a motivational speaker? He wanted to help others get a leg up.",
+            "The skeleton broke up with his girlfriend because she wasn’t ribbing him the right way.",
+            "I’m friends with a skeleton, but we don’t hang out much—he’s always down to the bone.",
+            "Why did the skeleton bring a ladder to the bar? To raise his spirits!"
         ];
 
         // Function to get a random bone joke
@@ -179,13 +188,30 @@
             const jokeContainer = document.getElementById('boneJoke');
             const messageContainer = document.getElementById('message');
 
+            // Get last joke generation date from localStorage
+            const lastJokeDate = localStorage.getItem('lastJokeDate');
+            const lastJokeDay = lastJokeDate ? new Date(lastJokeDate).getDate() : null;
+
             // Only allow jokes on Tuesdays (2) and Thursdays (4)
-            if (dayOfWeek === 2 || dayOfWeek === 4) {
-                jokeContainer.textContent = getRandomBoneJoke();
-                messageContainer.textContent = ""; // Clear the error message
+            if ((dayOfWeek === 2 || dayOfWeek === 4)) {
+                // Check if joke was already generated today
+                if (lastJokeDay !== today.getDate()) {
+                    jokeContainer.textContent = getRandomBoneJoke();
+                    localStorage.setItem('lastJokeDate', today); // Store the current date
+                    messageContainer.textContent = ""; // Clear the error message
+                } else {
+                    messageContainer.textContent = "You can only get one joke per day.";
+                    jokeContainer.textContent = ""; // Clear the joke
+                    setTimeout(() => {
+                        messageContainer.textContent = ""; // Clear message after 3 seconds
+                    }, 3000);
+                }
             } else {
                 messageContainer.textContent = "Request rejected. Please check your calendar.";
                 jokeContainer.textContent = ""; // Clear the joke if it's not the correct day
+                setTimeout(() => {
+                    messageContainer.textContent = ""; // Clear message after 3 seconds
+                }, 3000);
             }
         }
     </script>
