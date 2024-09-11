@@ -18,6 +18,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            overflow: hidden;
         }
 
         .header {
@@ -78,12 +79,15 @@
 
         .joke {
             font-size: 30px;
-            background-color: #4a4a4a;
+            background-color: black;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
             max-width: 70%;
             text-align: center;
+            opacity: 0;
+            overflow: hidden;
+            transition: opacity 2s ease-in, height 1s ease-out;
+            height: 0;
         }
 
         .button-container {
@@ -112,7 +116,6 @@
             color: #f39c12;
             text-align: center;
         }
-
     </style>
 </head>
 
@@ -149,12 +152,15 @@
         <!-- Error message will appear here -->
     </div>
 
+    <audio id="boneSound" src="bone_sound.mp3"></audio>
+
     <script>
         // Array of bone jokes
         const jokes = [
             "I would make a skeleton joke, but you wouldn't find it humerus.",
             "Why don’t skeletons fight each other? They don’t have the guts.",
-            // Add more jokes here
+            "What does a skeleton order at a restaurant? Spare ribs!",
+            "Why are skeletons so calm? Because nothing gets under their skin!"
         ];
 
         // Function to get a random bone joke
@@ -169,23 +175,28 @@
             const dayOfWeek = today.getDay(); // 0 is Sunday, 1 is Monday, etc.
             const jokeContainer = document.getElementById('boneJoke');
             const messageContainer = document.getElementById('message');
-
+            const boneSound = document.getElementById('boneSound');
             const lastJokeDate = localStorage.getItem('lastJokeDate');
             const lastJokeDay = lastJokeDate ? new Date(lastJokeDate).getDate() : null;
 
+            // Check if today is Tuesday or Thursday
             if ((dayOfWeek === 2 || dayOfWeek === 4)) {
                 if (lastJokeDay !== today.getDate()) {
-                    jokeContainer.textContent = getRandomBoneJoke();
+                    const joke = getRandomBoneJoke();
+                    jokeContainer.textContent = joke;
+                    jokeContainer.style.height = 'auto'; // Expand box
+                    jokeContainer.style.opacity = 1; // Fade in joke
+                    boneSound.play(); // Play bone sound
                     localStorage.setItem('lastJokeDate', today);
                     messageContainer.textContent = ""; 
                 } else {
                     messageContainer.textContent = "You can only get one joke per day.";
-                    jokeContainer.textContent = ""; 
+                    jokeContainer.style.opacity = 0; // Hide joke
                     setTimeout(() => { messageContainer.textContent = ""; }, 3000);
                 }
             } else {
                 messageContainer.textContent = "Request rejected. Please check your calendar.";
-                jokeContainer.textContent = ""; 
+                jokeContainer.style.opacity = 0; // Hide joke
                 setTimeout(() => { messageContainer.textContent = ""; }, 3000);
             }
         }
