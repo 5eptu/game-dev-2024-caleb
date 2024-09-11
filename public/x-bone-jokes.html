@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #1f1f1f, #2b2b2b);
+            background: linear-gradient(135deg, #1c1c1c, #333);
             color: #f5f5f5;
             margin: 0;
             padding: 0;
@@ -31,7 +31,6 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
             position: fixed;
             top: 0;
-            z-index: 1000;
         }
 
         .logo {
@@ -55,24 +54,10 @@
             color: #a6a6a6;
         }
 
-        .disclaimer {
-            background-color: #444;
-            color: #e0e0e0;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 12px;
-            border: 1px solid #666;
-            position: absolute;
-            left: 10px;
-            top: 80px;
-            width: 200px;
-            text-align: left;
-        }
-
         h1 {
             margin-top: 140px;
-            font-size: 42px;
-            color: #f5f5f5;
+            font-size: 36px;
+            color: #e5e5e5;
             text-align: center;
         }
 
@@ -85,7 +70,7 @@
 
         .joke {
             font-size: 30px;
-            background-color: #0e0e0e;
+            background-color: black;
             padding: 20px;
             border-radius: 12px;
             max-width: 70%;
@@ -109,12 +94,11 @@
             border-radius: 8px;
             cursor: pointer;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s, transform 0.2s;
+            transition: background-color 0.3s;
         }
 
         button:hover {
             background-color: #cc0000;
-            transform: scale(1.05);
         }
 
         .message {
@@ -122,12 +106,28 @@
             margin-top: 20px;
             color: #f39c12;
             text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .disclaimer strong {
-            color: #f39c12;
+        .disclaimer {
+            background-color: #444;
+            color: #e0e0e0;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            border: 1px solid #666;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
         }
 
+        .mad-message {
+            font-size: 24px;
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -135,19 +135,12 @@
 
     <div class="header">
         <div class="logo">
-            <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/United%20Gamer%20Federation%20(A).png"
-                alt="Federal Logo">
+            <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/United%20Gamer%20Federation%20(A).png" alt="Federal Logo">
             <div>
                 <span class="title">Federal Property</span><br>
                 <span class="subtitle">Restricted Access Only</span>
             </div>
         </div>
-    </div>
-
-    <div class="disclaimer">
-        <strong>DISCLAIMER:</strong><br>
-        This website is restricted to user <strong>"TallBoi567"</strong>.<br>
-        Jokes must only be accessed on Tuesdays and Thursdays.
     </div>
 
     <h1>Random Bone Jokes</h1>
@@ -157,12 +150,20 @@
         <!-- Joke will appear here -->
     </div>
 
-    <div class="button-container">
+    <div class="button-container" id="buttonContainer">
         <button onclick="generateJoke()">Get a Bone Joke</button>
     </div>
 
     <div class="message" id="message">
         <!-- Error message will appear here -->
+    </div>
+
+    <div class="mad-message" id="madMessage"></div>
+
+    <div class="disclaimer">
+        <strong>DISCLAIMER:</strong><br>
+        This website is restricted to user <strong>"TallBoi567"</strong>.<br>
+        Jokes must only be accessed on Tuesdays and Thursdays.
     </div>
 
     <audio id="boneSound" src="bone_sound.mp3"></audio>
@@ -176,6 +177,9 @@
             "Why are skeletons so calm? Because nothing gets under their skin!"
         ];
 
+        // Counter for button presses
+        let buttonPressCount = 0;
+
         // Function to get a random bone joke
         function getRandomBoneJoke() {
             const randomIndex = Math.floor(Math.random() * jokes.length);
@@ -188,9 +192,21 @@
             const dayOfWeek = today.getDay(); // 0 is Sunday, 1 is Monday, etc.
             const jokeContainer = document.getElementById('boneJoke');
             const messageContainer = document.getElementById('message');
+            const madMessageContainer = document.getElementById('madMessage');
             const boneSound = document.getElementById('boneSound');
             const lastJokeDate = localStorage.getItem('lastJokeDate');
             const lastJokeDay = lastJokeDate ? new Date(lastJokeDate).getDate() : null;
+
+            buttonPressCount++;
+
+            // Check if the user pressed the button 100 times
+            if (buttonPressCount >= 100) {
+                jokeContainer.style.display = "none";
+                document.getElementById('buttonContainer').style.display = "none";
+                madMessageContainer.textContent = "You pressed the button 100 times! Come back on TUESDAY or THURSDAY!";
+                document.body.style.background = "#660000"; // Change background color to "angry"
+                return;
+            }
 
             // Check if today is Tuesday or Thursday
             if ((dayOfWeek === 2 || dayOfWeek === 4)) {
@@ -201,17 +217,25 @@
                     jokeContainer.style.opacity = 1; // Fade in joke
                     boneSound.play(); // Play bone sound
                     localStorage.setItem('lastJokeDate', today);
-                    messageContainer.textContent = "";
+                    messageContainer.textContent = ""; 
                 } else {
-                    messageContainer.textContent = "You can only get one joke per day.";
+                    flashMessage("You can only get one joke per day.", messageContainer);
                     jokeContainer.style.opacity = 0; // Hide joke
-                    setTimeout(() => { messageContainer.textContent = ""; }, 3000);
                 }
             } else {
-                messageContainer.textContent = "Request rejected. Please check your calendar.";
+                flashMessage("Request rejected. Please check your calendar.", messageContainer);
                 jokeContainer.style.opacity = 0; // Hide joke
-                setTimeout(() => { messageContainer.textContent = ""; }, 3000);
             }
+        }
+
+        // Function to flash the message
+        function flashMessage(text, container) {
+            container.textContent = text;
+            container.style.opacity = 1;
+            container.style.color = "yellow";
+            setTimeout(() => {
+                container.style.opacity = 0;
+            }, 3000);
         }
     </script>
 
