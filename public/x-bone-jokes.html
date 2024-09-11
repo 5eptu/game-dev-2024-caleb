@@ -228,17 +228,25 @@
             }
         }
 
-        // Function to flash the message
+        // Function to flash the message 6 times fast and then stay for 3 seconds
         function flashMessage(text, container) {
             container.textContent = text;
-            container.style.opacity = 1;
-            container.style.color = "yellow";
-            setTimeout(() => {
-                container.style.opacity = 0;
-            }, 3000);
+            let flashes = 0;
+            const flashInterval = setInterval(() => {
+                container.style.opacity = container.style.opacity == 1 ? 0 : 1;
+                flashes++;
+                if (flashes >= 12) { // 6 flashes, each on and off counts as 2
+                    clearInterval(flashInterval);
+                    container.style.opacity = 1; // Keep message on for 3 seconds
+                    setTimeout(() => {
+                        container.style.opacity = 0; // Fade out after 3 seconds
+                    }, 3000);
+                }
+            }, 100); // Flash quickly (100ms per flash)
         }
     </script>
 
 </body>
 
 </html>
+
