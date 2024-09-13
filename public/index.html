@@ -1,9 +1,76 @@
-Hello World
-
-<br><a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a01-basic.html">t1a01-basic-caleb.html</a><br>
-<br><a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a02-proper-caleb.html">t1a02-proper-caleb.html</a><br>
-<br><a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a03-table-hst-caleb.html">t1a03-table-list-caleb.html</a><br>
-<br><a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a04-forms-caleb.html">t1a04-forms-caleb.html</a><br>
-<br><a href="https://5eptu.github.io/game-dev-2024-caleb/public/x-webcam.html">X-webcam.html</a><br>
-<br><a href="https://5eptu.github.io/game-dev-2024-caleb/public/x-bone-jokes.html">X-bone-jokes</a><br>
-<br><a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a05-css-caleb.html">t1a05-css-caleb<a/><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            color: #ff0000;
+            margin-bottom: 50px;
+            text-shadow: 0 0 10px #ff0000;
+            animation: glitch 1s infinite alternate;
+        }
+        /* Glitch animation */
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px 2px #ff0000, -2px -2px 2px #fff; }
+            100% { text-shadow: -2px -2px 2px #ff0000, 2px 2px 2px #fff; }
+        }
+        /* Link styling */
+        a {
+            display: block;
+            font-size: 1.2em;
+            color: #ff0000;
+            text-decoration: none;
+            margin: 20px 0;
+            text-align: center;
+            padding: 10px;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+        a:hover {
+            background-color: #ff0000;
+            color: #000;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+        }
+        /* Container to center content */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Index Page</h1>
+        <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a01-basic.html">t1a01-basic-caleb.html</a>
+        <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a02-proper-caleb.html">t1a02-proper-caleb.html</a>
+        <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a03-table-hst-caleb.html">t1a03-table-list-caleb.html</a>
+        <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a04-forms-caleb.html">t1a04-forms-caleb.html</a>
+        <a href="https://5eptu.github.io/game-dev-2024-caleb/public/x-webcam.html">X-webcam.html</a>
+        <a href="https://5eptu.github.io/game-dev-2024-caleb/public/x-bone-jokes.html">X-bone-jokes</a>
+        <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a05-css-caleb.html">t1a05-css-caleb.html</a>
+    </div>
+</body>
+</html>
