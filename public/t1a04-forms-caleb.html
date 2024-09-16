@@ -1,38 +1,156 @@
-<h1 align=center>t1a04-forms-caleb.html</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-Use an LLM like <a href="https://copilot.microsoft.com">copilot</a> and ask it to "Show me how to do all the simple form elements on none html page as if I was a 10 year old"<br><br>
+        form {
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        button, input[type="button"], input[type="submit"], input[type="reset"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+            background-color: #0056b3;
+        }
+
+        fieldset {
+            border: 1px solid #dddddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h2 {
+            font-size: 18px;
+            color: #007bff;
+            border-bottom: 1px solid #dddddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
 
 <form>
+    <h1>Funny Form</h1>
 
-Name:<input type="text" id="name" value="Fred"><br>
-Password:<input type="password" id="password" value="never"><br><br>
-Number: <input type=number value=6><br>
-Button as an input: <input type=button value=click onclick="alert('hi')"><br>
-Button as a button tag: <button></button><br>
-<br><br>
+    <div class="form-section">
+        <h2>Personal Information</h2>
 
-Radio Buttons:<br>
-  <input type="radio" name="myRad" value="red">Red<br>
-  <input type="radio" name="myRad" value="blue">Blue<br>
-<br><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name">
 
-Checkboxes:<br>
-  <input type="checkbox" value="reading">reading<br>
-  <input type="checkbox" value="sports">sports<br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
 
-<br><br>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number">
 
-<textarea rows=4 cols=90>
-  Writing here
-</textarea><br><br>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob">
 
-Select Box:<br>
-<select>
-  <option value="usa">USA</option>
-  <option value="canada">Canada</option>
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter your password">
+    </div>
 
-</select><br><br>
+    <div class="form-section">
+        <h2>Preferences</h2>
 
-<input type="submit" value="Submit">
-<input type="reset" value="Reset">
+        <label>Choose your favorite color:</label>
+        <input type="radio" name="color" value="red"> Red
+        <input type="radio" name="color" value="blue"> Blue
+        <input type="radio" name="color" value="green"> Green
+
+        <label>What are your hobbies?</label>
+        <input type="checkbox" name="hobby" value="reading"> Reading
+        <input type="checkbox" name="hobby" value="sports"> Sports
+        <input type="checkbox" name="hobby" value="traveling"> Traveling
+
+        <label for="country">Country:</label>
+        <select id="country">
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <option value="scotland">Scotland</option>
+        </select>
+    </div>
+
+    <div class="form-section">
+        <h2>Additional Comments</h2>
+
+        <label for="comments">Leave a comment:</label>
+        <textarea id="comments" rows="4" cols="90" placeholder="Your comments here..."></textarea>
+    </div>
+
+    <fieldset>
+        <legend>Action Buttons</legend>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+        <input type="button" value="Click Me" onclick="alert('You clicked the button!')">
+        <button type="button">Corporate Button</button>
+    </fieldset>
 </form>
+
+</body>
+</html>
