@@ -10,8 +10,9 @@
         /* General styling */
         body {
             font-family: 'Audiowide', cursive;
-            background: url('https://i.pinimg.com/originals/62/f2/cc/62f2ccde1b2fffb43f05ce2e8219cc35.gif') no-repeat center center fixed;
-            background-size: cover;
+            background: url('https://i.pinimg.com/originals/62/f2/cc/62f2ccde1b2fffb43f05ce2e8219cc35.gif') no-repeat center top fixed;
+            background-size: 120%; /* Increase the size to fit the screen better */
+            background-position-y: 20px; /* Move background down a little */
             color: #fff;
             margin: 0;
             padding: 0;
@@ -21,24 +22,29 @@
             height: 100vh;
             overflow: hidden;
         }
+
         h1 {
             text-align: center;
             font-size: 3em;
-            color: #ff80ff; /* Magenta to match the gif */
+            background: linear-gradient(to right, yellow, orange, purple, blue);
+            -webkit-background-clip: text;
+            color: transparent;
             margin-bottom: 50px;
-            text-shadow: 0 0 15px #ff80ff, 0 0 30px #ff80ff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
             animation: neon-glow 1.5s ease-in-out infinite alternate;
         }
+
         /* Neon glow animation */
         @keyframes neon-glow {
-            0% { text-shadow: 0 0 15px #ff80ff, 0 0 30px #ff80ff; }
-            100% { text-shadow: 0 0 30px #ff80ff, 0 0 60px #ff80ff; }
+            0% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
+            100% { text-shadow: 0 0 30px rgba(255, 255, 255, 1); }
         }
+
         /* Link styling */
         a {
             display: block;
             font-size: 1.2em;
-            color: #ffccff; /* Light magenta to fit the neon style */
+            color: #ffccff;
             text-decoration: none;
             margin: 20px 0;
             text-align: center;
@@ -50,12 +56,14 @@
             box-shadow: 0 0 10px #ffccff;
             position: relative;
         }
+
         a:hover {
             animation: shake 0.5s ease, sparkle 1s infinite;
             background-color: #660066;
             color: #ffffff;
             box-shadow: 0 0 20px #ffccff, 0 0 30px #ffccff;
         }
+
         /* Button hover shaking effect */
         @keyframes shake {
             0% { transform: translate(0, 0); }
@@ -64,11 +72,13 @@
             75% { transform: translate(-2px, 2px); }
             100% { transform: translate(0, 0); }
         }
+
         /* Sparkle effect */
         @keyframes sparkle {
             0%, 100% { box-shadow: 0 0 10px #ffccff, 0 0 20px #ffccff; }
             50% { box-shadow: 0 0 30px #ffccff, 0 0 50px #ffccff; }
         }
+
         /* Container to center content */
         .container {
             display: flex;
