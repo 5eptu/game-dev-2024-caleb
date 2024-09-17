@@ -10,8 +10,8 @@
         /* General styling */
         body {
             font-family: 'Audiowide', cursive;
-            background: url('https://static.vecteezy.com/system/resources/thumbnails/035/158/284/original/loop-background-neon-retro-wave-80s-style-video.jpg') no-repeat center top fixed;
-            background-size: cover; /* Make the background cover the whole page */
+            background: url('https://static.vecteezy.com/system/resources/thumbnails/035/158/284/original/loop-background-neon-retro-wave-80s-style-video.jpg') no-repeat center center fixed;
+            background-size: 1920px 1080px; /* Set background size to 1920x1080 */
             background-position: center top;
             color: #fff;
             margin: 0;
@@ -21,39 +21,39 @@
         h2 {
             text-align: center;
             font-size: 2.5em;
-            background: linear-gradient(to right, yellow, orange, purple, blue);
+            background: linear-gradient(to right, #ff00ff, #00ffff, #ff00ff, #00ffff);
             -webkit-background-clip: text;
             color: transparent;
             margin-bottom: 30px;
+            text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #00ffff, 0 0 20px #00ffff;
         }
 
         /* Table Styling */
         table {
             margin: 20px auto; /* Center the table */
             font-size: 1.2em;
-            background-color: rgba(50, 0, 75, 0.6);
-            box-shadow: 0 0 15px rgba(255, 204, 255, 0.8);
+            background-color: rgba(0, 0, 0, 0.7);
             border-collapse: collapse;
             border-radius: 10px;
-            width: auto; /* Ensure table doesn't stretch */
+            width: 80%; /* Prevent stretching */
         }
 
         th, td {
             padding: 15px 20px;
             text-align: center;
-            color: #ffccff;
-            border: 1px solid rgba(255, 204, 255, 0.5);
+            color: #00ffff; /* Neon cyan */
+            border: 1px solid rgba(0, 255, 255, 0.8); /* Neon cyan border */
         }
 
         th {
-            background-color: #660066;
+            background-color: rgba(255, 0, 255, 0.7); /* Neon magenta */
             color: #fff;
             text-transform: uppercase;
         }
 
         /* Removed hover effect */
         tr:hover {
-            background-color: transparent;
+            background-color: rgba(0, 255, 255, 0.2); /* Slight neon cyan highlight */
         }
 
         /* List Styling */
@@ -62,10 +62,9 @@
             font-size: 1.2em;
             margin: 20px 0;
             padding: 20px;
-            background-color: rgba(50, 0, 75, 0.6);
-            box-shadow: 0 0 15px rgba(255, 204, 255, 0.8);
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
-            max-width: 600px;
+            max-width: 80%; /* Ensure lists are not too wide */
             margin-left: auto;
             margin-right: auto;
         }
@@ -73,8 +72,8 @@
         li {
             padding: 10px;
             margin: 10px 0;
-            border-bottom: 1px solid rgba(255, 204, 255, 0.5);
-            color: #ffccff;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.5); /* Neon cyan border */
+            color: #00ffff; /* Neon cyan */
         }
 
         li:last-child {
@@ -83,7 +82,7 @@
 
         /* Removed hover effect */
         li:hover {
-            background-color: transparent;
+            background-color: rgba(0, 255, 255, 0.2); /* Slight neon cyan highlight */
         }
     </style>
 </head>
