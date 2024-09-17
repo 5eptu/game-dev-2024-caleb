@@ -30,8 +30,9 @@
             margin-bottom: 50px;
         }
 
-        /* Section for CSS Examples */
+        /* Section container */
         .section {
+            position: relative;
             width: 300px;
             background: rgba(255, 0, 102, 0.1);
             border: 2px solid #00ffff;
@@ -39,10 +40,8 @@
             padding: 20px;
             margin: 20px 0;
             box-shadow: 0 0 20px #00ffff;
-            position: relative;
-            transition: all 0.5s ease;
             overflow: hidden;
-            min-height: 100px; /* Ensures content fits */
+            transition: all 0.5s ease;
         }
 
         .section h2 {
@@ -50,6 +49,37 @@
             color: #ff0099;
             margin-bottom: 15px;
             text-align: center;
+        }
+
+        /* Hidden box for explanation */
+        .explanation-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 0, 102, 0.1);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            display: none;
+            transition: all 0.5s ease;
+        }
+
+        .section:hover .explanation-box {
+            display: block;
+            animation: line-draw 1s forwards;
+        }
+
+        @keyframes line-draw {
+            0% {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #ff00ff;
+            }
+            100% {
+                border-color: #00ffcc;
+            }
         }
 
         /* Cool Text Styles */
@@ -76,18 +106,23 @@
             background-color: rgba(0, 255, 255, 0.2);
         }
 
-        /* Fade-in and expand text effect */
+        /* Fade-in text with animation */
         .explanation {
             opacity: 0;
-            transform: scale(0.5);
+            transform: translateX(-50%);
             transition: opacity 0.5s ease, transform 0.5s ease;
-            max-width: 250px;
-            margin-top: 10px;
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            margin-top: -10px;
+            white-space: nowrap;
+            font-size: 0.9em;
+            color: #00ffcc;
         }
 
         .section:hover .explanation {
             opacity: 1;
-            transform: scale(1);
+            transform: translateX(0%);
         }
 
         /* Link Styling */
@@ -115,19 +150,22 @@
     <div class="section">
         <h2>Bold Text Example</h2>
         <p class="bold-text">This is <b>bold</b> True?</p>
-        <div class="explanation">The <b> tag is used to make text bold. It's often used to emphasize important content. The explanation appears to the right on hover.</div>
+        <div class="explanation-box"></div>
+        <div class="explanation">The <b> tag is used to make text bold. It's often used to emphasize important content.</div>
     </div>
 
     <div class="section">
         <h2>Cool Styled Text</h2>
         <p class="cool-text">This is <b style="color:red; background-color:yellow;">cool</b> Yes!</p>
-        <div class="explanation">This is styled using <code>color</code> and <code>background-color</code> properties, creating a contrast. The background and border highlight the text on hover.</div>
+        <div class="explanation-box"></div>
+        <div class="explanation">This is styled using <code>color</code> and <code>background-color</code> properties.</div>
     </div>
 
     <div class="section">
         <h2>Italic with a Border</h2>
         <p class="italic-border">This is <i>italic with a border</i></p>
-        <div class="explanation">The <i> tag is for italic text, and a groove border is applied to add a unique visual effect. It also stretches on hover.</div>
+        <div class="explanation-box"></div>
+        <div class="explanation">The <i> tag is for italic text, and a groove border is applied to add a visual effect.</div>
     </div>
 
 </body>
