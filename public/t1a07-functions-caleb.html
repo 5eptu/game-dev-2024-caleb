@@ -15,22 +15,8 @@
         body {
             color: #fff;
             font-family: 'Jersey', sans-serif;
-        }
-
-        /* Video Background Styling */
-        #videoBackground {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        #videoBackground iframe {
-            width: 100%;
-            height: 100%;
+            background: url('https://images.alphacoders.com/957/957405.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         .container {
@@ -44,7 +30,7 @@
         }
 
         .title {
-            color: #00ff99;
+            color: #ff99cc;
             font-size: 32px;
             margin-bottom: 20px;
             text-align: center;
@@ -52,52 +38,65 @@
         }
 
         .box {
-            background: rgba(20, 20, 20, 0.8);
-            border: 2px solid #00ff99;
+            background: linear-gradient(135deg, rgba(255, 153, 204, 0.8), rgba(0, 204, 255, 0.8));
+            border: 2px solid transparent;
             border-radius: 10px;
             padding: 20px;
             width: 300px;
             height: 200px;
-            box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
             position: relative;
+            box-shadow: 0 0 15px rgba(255, 153, 204, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.5s ease;
+            overflow: hidden;
         }
 
         .box:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 255, 153, 0.7);
+            box-shadow: 0 0 30px rgba(255, 153, 204, 0.7);
         }
 
-        .input-box {
-            position: relative;
+        .box:hover:before,
+        .box:hover:after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            background: #ff99cc;
+            width: 100%;
+            top: 0;
+            left: 0;
+            animation: drawLine 0.5s forwards;
+        }
+
+        .box:hover:after {
+            transform: rotate(90deg);
         }
 
         .input-box input {
             width: 100%;
-            background: #0a0a0a;
-            border: 2px solid #00ff99;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            border: none;
             border-radius: 8px;
-            color: #00ff99;
+            color: #ffccff;
             font-size: 18px;
-            padding: 10px;
-            box-shadow: inset 0 0 10px rgba(0, 255, 153, 0.8);
+            text-align: center;
+            padding: 20px;
+            box-shadow: inset 0 0 10px rgba(255, 153, 204, 0.8);
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .input-box input:focus {
-            border-color: #00cc66;
             outline: none;
-            box-shadow: inset 0 0 10px rgba(0, 255, 153, 1);
+            box-shadow: inset 0 0 10px rgba(255, 153, 204, 1);
         }
 
         .output-box {
-            background: #1c1c1c;
-            color: #00ff99;
+            background: rgba(20, 20, 20, 0.8);
+            color: #ffccff;
             font-size: 18px;
             border-radius: 8px;
             padding: 10px;
-            box-shadow: inset 0 0 10px rgba(0, 255, 153, 0.5);
+            box-shadow: inset 0 0 10px rgba(255, 153, 204, 0.5);
             max-height: 200px;
             overflow-y: auto;
             white-space: pre-wrap;
@@ -108,14 +107,15 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+        @keyframes drawLine {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
     </style>
 </head>
 <body>
-    <!-- Video Background -->
-    <div id="videoBackground">
-        <iframe src="https://www.youtube.com/embed/POHkiJTOBtw?autoplay=1&mute=1&controls=0&loop=1&playlist=POHkiJTOBtw" frameborder="0" allow="autoplay; loop; fullscreen"></iframe>
-    </div>
-
     <div class="container">
         <div class="title">t1a07-functions-caleb.html</div>
         <div class="box input-box">
