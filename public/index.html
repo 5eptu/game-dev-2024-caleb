@@ -11,8 +11,8 @@
         body {
             font-family: 'Audiowide', cursive;
             background: url('https://i.pinimg.com/originals/62/f2/cc/62f2ccde1b2fffb43f05ce2e8219cc35.gif') no-repeat center top fixed;
-            background-size: 120%; /* Increase the size to fit the screen better */
-            background-position-y: 20px; /* Move background down a little */
+            background-size: 120%; /* Larger size to fit better */
+            background-position-y: -20px; /* Move background up */
             color: #fff;
             margin: 0;
             padding: 0;
@@ -30,14 +30,15 @@
             -webkit-background-clip: text;
             color: transparent;
             margin-bottom: 50px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-            animation: neon-glow 1.5s ease-in-out infinite alternate;
+            /* Matching title glow with gradient */
+            text-shadow: 0 0 15px yellow, 0 0 30px orange, 0 0 45px purple, 0 0 60px blue;
+            animation: gradient-glow 1.5s ease-in-out infinite alternate;
         }
 
-        /* Neon glow animation */
-        @keyframes neon-glow {
-            0% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
-            100% { text-shadow: 0 0 30px rgba(255, 255, 255, 1); }
+        /* Gradient glow animation */
+        @keyframes gradient-glow {
+            0% { text-shadow: 0 0 15px yellow, 0 0 30px orange, 0 0 45px purple, 0 0 60px blue; }
+            100% { text-shadow: 0 0 30px yellow, 0 0 45px orange, 0 0 60px purple, 0 0 75px blue; }
         }
 
         /* Link styling */
@@ -97,9 +98,9 @@
         <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a02-proper-caleb.html">t1a02-proper-caleb.html</a>
         <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a03-table-hst-caleb.html">t1a03-table-list-caleb.html</a>
         <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a04-forms-caleb.html">t1a04-forms-caleb.html</a>
-        <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a05-css-caleb.html">t1a05-css-caleb.html</a>
         <a href="https://5eptu.github.io/game-dev-2024-caleb/public/x-webcam.html">X-webcam.html</a>
         <a href="https://5eptu.github.io/game-dev-2024-caleb/public/x-bone-jokes.html">X-bone-jokes</a>
+        <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a05-css-caleb.html">t1a05-css-caleb.html</a>
     </div>
 </body>
 </html>
