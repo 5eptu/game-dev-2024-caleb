@@ -3,160 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>t1a05-css-caleb.html</title>
-    <!-- Jersey 20 Font for Title -->
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+20&display=swap" rel="stylesheet">
+    <title>t1a07-functions-caleb.html</title>
     <style>
         body {
-            font-family: 'Audiowide', sans-serif;
-            background-color: #0d0d0d;
+            background: #0f0f0f;
             color: #fff;
+            font-family: 'Jersey', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            height: 100vh;
+            gap: 20px;
+            padding: 20px;
         }
 
-        h1 {
-            font-family: 'Jersey 20', sans-serif;
+        .title {
+            color: #00ff99;
+            font-size: 32px;
+            margin-bottom: 20px;
             text-align: center;
-            font-size: 3em;
-            color: #ff0066;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            text-shadow: 0px 0px 10px #00ffff, 0px 0px 15px #ff0066;
-            margin-bottom: 50px;
+            animation: fadeIn 2s ease-in;
         }
 
-        /* Main Section Container */
-        .section {
-            position: relative;
+        .box {
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid #00ff99;
+            border-radius: 10px;
+            padding: 20px;
             width: 300px;
-            background: rgba(255, 0, 102, 0.1);
-            border: 2px solid #00ffff;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 0 20px #00ffff;
-            transition: all 0.5s ease;
+            height: 200px;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
+            position: relative;
         }
 
-        .section h2 {
-            font-size: 2em;
-            color: #ff0099;
-            margin-bottom: 15px;
-            text-align: center;
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 153, 0.7);
         }
 
-        /* Secondary Explanation Box */
-        .explanation-box {
-            position: absolute;
-            top: 0;
-            left: 100%; /* Positioned right next to the main box */
-            width: 0;
+        .input-box {
+            position: relative;
+        }
+
+        .input-box input {
+            width: 100%;
             height: 100%;
-            background: rgba(0, 255, 255, 0.1);
-            border: 2px solid #ff00ff;
-            border-radius: 10px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            transition: width 0.5s ease;
+            background: #1c1c1c;
+            border: 2px solid #00ff99;
+            border-radius: 8px;
+            color: #00ff99;
+            font-size: 18px;
+            padding: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 255, 153, 0.5);
+            transition: border-color 0.3s ease;
         }
 
-        .section:hover .explanation-box {
-            width: 250px; /* Slightly smaller than the main box */
+        .input-box input:focus {
+            border-color: #00cc66;
+            outline: none;
         }
 
-        /* Fade-in Text Animation */
-        .explanation {
-            opacity: 0;
-            transform: translateX(-10%);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            white-space: nowrap;
-            font-size: 0.9em;
-            color: #00ffcc;
+        .output-box {
+            background: #1c1c1c;
+            color: #00ff99;
+            font-size: 18px;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 255, 153, 0.5);
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            animation: fadeIn 2s ease-in;
         }
 
-        .section:hover .explanation {
-            opacity: 1;
-            transform: translateX(0%);
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-
-        /* Cool Text Styles */
-        .bold-text {
-            font-weight: bold;
-            font-size: 1.5em;
-            color: #ffcc00;
-        }
-
-        .cool-text {
-            font-weight: bold;
-            color: #ff0000;
-            background-color: #ffff00;
-            padding: 5px 10px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px #ff0000;
-        }
-
-        .italic-border {
-            font-style: italic;
-            padding: 5px 15px;
-            border: 3px groove #ff00ff;
-            border-radius: 10px;
-            background-color: rgba(0, 255, 255, 0.2);
-        }
-
-        /* Link Styling */
-        a {
-            color: #00ffcc;
-            font-size: 1.2em;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #ff0099;
-            text-shadow: 0 0 8px #ff0099;
-        }
-
     </style>
 </head>
 <body>
-
-    <h1>t1a05-css-caleb.html</h1>
-
-    <a href="https://www.w3schools.com/Css/css_border.asp">w3schools css</a><br><br>
-
-    <!-- Cool Effects Section -->
-    <div class="section">
-        <h2>Bold Text Example</h2>
-        <p class="bold-text">This is <b>bold</b> True?</p>
-        <div class="explanation-box">
-            <div class="explanation">The <b> tag is used to make text bold. It's often used to emphasize important content.</div>
+    <div class="container">
+        <div class="title">t1a07-functions-caleb.html</div>
+        <div class="box input-box">
+            <input type="text" id="inputField" placeholder="Enter text here..." onkeydown="handleKeyDown(event)">
         </div>
+        <div class="box output-box" id="outputBox"></div>
     </div>
 
-    <div class="section">
-        <h2>Cool Styled Text</h2>
-        <p class="cool-text">This is <b style="color:red; background-color:yellow;">cool</b> Yes!</p>
-        <div class="explanation-box">
-            <div class="explanation">This is styled using <code>color</code> and <code>background-color</code> properties.</div>
-        </div>
-    </div>
+    <script>
+        function handleKeyDown(event) {
+            if (event.key === 'Enter') {
+                const inputField = document.getElementById('inputField');
+                const outputBox = document.getElementById('outputBox');
+                const inputText = inputField.value.trim();
 
-    <div class="section">
-        <h2>Italic with a Border</h2>
-        <p class="italic-border">This is <i>italic with a border</i></p>
-        <div class="explanation-box">
-            <div class="explanation">The <i> tag is for italic text, and a groove border is applied to add a visual effect.</div>
-        </div>
-    </div>
+                // Display the output
+                if (inputText !== '') {
+                    const newLine = document.createElement('div');
+                    newLine.textContent = `Your name is: ${inputText}`;
+                    outputBox.appendChild(newLine);
+                    inputField.value = ''; // Clear input field after pressing Enter
+                    outputBox.scrollTop = outputBox.scrollHeight; // Scroll to the bottom of the output box
+                }
 
+                // Prevent form submission if inside a form
+                event.preventDefault();
+            }
+        }
+    </script>
 </body>
 </html>
