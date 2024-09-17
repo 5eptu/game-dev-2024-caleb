@@ -11,7 +11,8 @@
         body {
             font-family: 'Audiowide', cursive;
             background: url('https://i.pinimg.com/originals/62/f2/cc/62f2ccde1b2fffb43f05ce2e8219cc35.gif') no-repeat center top fixed;
-            background-size: cover;
+            background-size: 140%; /* Increased background size */
+            background-position-y: -20px; /* Adjusted position */
             color: #fff;
             margin: 0;
             padding: 20px;
@@ -28,15 +29,13 @@
 
         /* Table Styling */
         table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
+            width: auto; /* Avoid stretching */
+            margin: 20px auto; /* Center the table */
             font-size: 1.2em;
-            min-width: 400px;
             background-color: rgba(50, 0, 75, 0.6);
             box-shadow: 0 0 15px rgba(255, 204, 255, 0.8);
+            border-collapse: collapse;
             border-radius: 10px;
-            overflow: hidden;
         }
 
         th, td {
@@ -52,12 +51,7 @@
             text-transform: uppercase;
         }
 
-        tr:hover {
-            background-color: #800080;
-            transition: 0.3s ease-in-out;
-        }
-
-        /* Unordered and Ordered List Styling */
+        /* List Styling */
         ul, ol {
             list-style-position: inside;
             font-size: 1.2em;
@@ -80,23 +74,6 @@
 
         li:last-child {
             border-bottom: none;
-        }
-
-        ul li:hover, ol li:hover {
-            background-color: #660066;
-            color: #ffffff;
-            box-shadow: 0 0 10px #ffccff, 0 0 20px #ffccff;
-            transition: 0.3s ease-in-out;
-        }
-
-        /* Adding Sparkle Effect to List Items */
-        @keyframes sparkle {
-            0%, 100% { box-shadow: 0 0 10px #ffccff, 0 0 20px #ffccff; }
-            50% { box-shadow: 0 0 30px #ffccff, 0 0 50px #ffccff; }
-        }
-
-        li:hover {
-            animation: sparkle 1s infinite;
         }
     </style>
 </head>
