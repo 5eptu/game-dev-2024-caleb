@@ -42,10 +42,11 @@
             position: relative;
             transition: all 0.5s ease;
             overflow: hidden;
+            min-height: 100px; /* Ensures content fits */
         }
 
         .section:hover {
-            width: 100%;
+            width: 80%; /* Expands based on the content */
             box-shadow: 0 0 30px #ff0099;
         }
 
@@ -112,13 +113,14 @@
         .section:hover .explanation {
             transform: translateX(0);
             opacity: 1;
+            max-width: 100%;
         }
 
         .explanation {
             position: absolute;
             top: 0;
-            right: -200px;
-            width: 200px;
+            right: -250px; /* Makes it appear off-screen initially */
+            width: 250px;
             height: 100%;
             background: rgba(0, 255, 255, 0.1);
             color: #ff0066;
@@ -127,6 +129,7 @@
             transition: transform 0.4s ease, opacity 0.4s;
             opacity: 0;
             text-align: left;
+            word-wrap: break-word; /* Makes sure long words break into new lines */
         }
 
         /* Link Styling */
@@ -154,20 +157,21 @@
     <div class="section">
         <h2>Bold Text Example</h2>
         <p class="bold-text">This is <b>bold</b> True?</p>
-        <div class="explanation">The <b> tag is used to make text bold. It's often used to emphasize important content.</div>
+        <div class="explanation">The <b> tag is used to make text bold. It's often used to emphasize important content. The explanation appears to the right on hover.</div>
     </div>
 
     <div class="section">
         <h2>Cool Styled Text</h2>
         <p class="cool-text">This is <b style="color:red; background-color:yellow;">cool</b> Yes!</p>
-        <div class="explanation">This is styled using <code>color</code> and <code>background-color</code> properties, creating a contrast.</div>
+        <div class="explanation">This is styled using <code>color</code> and <code>background-color</code> properties, creating a contrast. The background and border highlight the text on hover.</div>
     </div>
 
     <div class="section">
         <h2>Italic with a Border</h2>
         <p class="italic-border">This is <i>italic with a border</i></p>
-        <div class="explanation">The <i> tag is for italic text, and a groove border is applied to add a unique visual.</div>
+        <div class="explanation">The <i> tag is for italic text, and a groove border is applied to add a unique visual effect. It also stretches on hover.</div>
     </div>
 
 </body>
 </html>
+
