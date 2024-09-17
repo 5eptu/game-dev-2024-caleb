@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t1a07-functions-caleb</title>
+    <style>
+        body {
+            background: #0f0f0f;
+            color: #fff;
+            font-family: 'Jersey', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            gap: 20px;
+        }
+
+        .title {
+            color: #00ff99;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .box {
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid #00ff99;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            height: 200px;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 153, 0.7);
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            background: #1c1c1c;
+            border: none;
+            color: #00ff99;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: inset 0 0 10px rgba(0, 255, 153, 0.5);
+        }
+
+        .output-box {
+            background: #1c1c1c;
+            color: #00ff99;
+            font-size: 18px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 255, 153, 0.5);
+        }
+
+        .output-text {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .output-box:hover .output-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Enter Your Name</div>
+        <div class="box input-box">
+            <input type="text" id="inputField" placeholder="Enter text here..." oninput="updateOutput()">
+        </div>
+        <div class="box output-box">
+            <div id="outputContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateOutput() {
+            const inputField = document.getElementById('inputField');
+            const outputContainer = document.getElementById('outputContainer');
+            const inputText = inputField.value;
+
+            // Clear previous output
+            outputContainer.innerHTML = '';
+
+            // Display the new output
+            if (inputText.trim() !== '') {
+                const outputText = document.createElement('div');
+                outputText.className = 'output-text';
+                outputText.textContent = `Your name is: ${inputText}`;
+                outputContainer.appendChild(outputText);
+            }
+        }
+    </script>
+</body>
+</html>
