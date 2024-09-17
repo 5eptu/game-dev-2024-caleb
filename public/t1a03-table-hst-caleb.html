@@ -12,7 +12,7 @@
             font-family: 'Audiowide', cursive;
             background: url('https://i.pinimg.com/originals/62/f2/cc/62f2ccde1b2fffb43f05ce2e8219cc35.gif') no-repeat center top fixed;
             background-size: 140%; /* Increased background size */
-            background-position-y: -20px; /* Adjusted position */
+            background-position-y: -150px; /* Moved background up more */
             color: #fff;
             margin: 0;
             padding: 20px;
@@ -29,13 +29,13 @@
 
         /* Table Styling */
         table {
-            width: auto; /* Avoid stretching */
             margin: 20px auto; /* Center the table */
             font-size: 1.2em;
             background-color: rgba(50, 0, 75, 0.6);
             box-shadow: 0 0 15px rgba(255, 204, 255, 0.8);
             border-collapse: collapse;
             border-radius: 10px;
+            width: auto; /* Ensure table doesn't stretch */
         }
 
         th, td {
@@ -49,6 +49,11 @@
             background-color: #660066;
             color: #fff;
             text-transform: uppercase;
+        }
+
+        /* Removed hover effect */
+        tr:hover {
+            background-color: transparent;
         }
 
         /* List Styling */
@@ -74,6 +79,11 @@
 
         li:last-child {
             border-bottom: none;
+        }
+
+        /* Removed hover effect */
+        li:hover {
+            background-color: transparent;
         }
     </style>
 </head>
