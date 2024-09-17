@@ -30,7 +30,7 @@
             margin-bottom: 50px;
         }
 
-        /* Section container */
+        /* Main Section Container */
         .section {
             position: relative;
             width: 300px;
@@ -41,6 +41,7 @@
             margin: 20px 0;
             box-shadow: 0 0 20px #00ffff;
             transition: all 0.5s ease;
+            overflow: hidden;
         }
 
         .section h2 {
@@ -54,21 +55,38 @@
         .explanation-box {
             position: absolute;
             top: 0;
-            left: 100%; /* Start from behind the main box */
+            left: 100%; /* Positioned right next to the main box */
             width: 0;
             height: 100%;
             background: rgba(0, 255, 255, 0.1);
             border: 2px solid #ff00ff;
             border-radius: 10px;
             padding: 20px;
-            display: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
             transition: width 0.5s ease, left 0.5s ease;
         }
 
         .section:hover .explanation-box {
-            display: block;
-            left: 105%; /* Shift it outward */
-            width: 300px; /* Expand to the width */
+            width: 250px; /* Slightly smaller than the main box */
+            left: 105%; /* Move to the right of the main box */
+        }
+
+        /* Fade-in Text Animation */
+        .explanation {
+            opacity: 0;
+            transform: translateX(-10%);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            white-space: nowrap;
+            font-size: 0.9em;
+            color: #00ffcc;
+        }
+
+        .section:hover .explanation {
+            opacity: 1;
+            transform: translateX(0%);
         }
 
         /* Cool Text Styles */
@@ -93,21 +111,6 @@
             border: 3px groove #ff00ff;
             border-radius: 10px;
             background-color: rgba(0, 255, 255, 0.2);
-        }
-
-        /* Fade-in text with animation */
-        .explanation {
-            opacity: 0;
-            transform: translateX(-50%);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            white-space: nowrap;
-            font-size: 0.9em;
-            color: #00ffcc;
-        }
-
-        .section:hover .explanation {
-            opacity: 1;
-            transform: translateX(0%);
         }
 
         /* Link Styling */
