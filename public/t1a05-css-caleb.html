@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jersey+20&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Audiowide', sans-serif; /* Futuristic font for general content */
+            font-family: 'Audiowide', sans-serif;
             background-color: #0d0d0d;
             color: #fff;
             margin: 0;
@@ -20,7 +20,7 @@
         }
 
         h1 {
-            font-family: 'Jersey 20', sans-serif; /* Cyberpunk font for title */
+            font-family: 'Jersey 20', sans-serif;
             text-align: center;
             font-size: 3em;
             color: #ff0066;
@@ -28,18 +28,6 @@
             letter-spacing: 5px;
             text-shadow: 0px 0px 10px #00ffff, 0px 0px 15px #ff0066;
             margin-bottom: 50px;
-        }
-
-        a {
-            color: #00ffcc;
-            font-size: 1.2em;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #ff0099;
-            text-shadow: 0 0 8px #ff0099;
         }
 
         /* Section for CSS Examples */
@@ -52,29 +40,20 @@
             padding: 20px;
             margin: 20px 0;
             box-shadow: 0 0 20px #00ffff;
+            position: relative;
             overflow: hidden;
+            transition: transform 0.3s ease-in-out;
         }
 
         .section h2 {
             font-size: 2em;
             color: #ff0099;
             margin-bottom: 15px;
-            position: relative;
-            animation: fadeInRight 1s forwards;
+            text-align: center;
         }
 
-        /* Fade-in from the right */
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
+        /* No fade-in for titles */
+        
         /* Cool Text Styles */
         .bold-text {
             font-weight: bold;
@@ -89,17 +68,6 @@
             padding: 5px 10px;
             border-radius: 5px;
             box-shadow: 0px 0px 10px #ff0000;
-            animation: glow 1.5s infinite alternate;
-        }
-
-        /* Cool glowing animation */
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 10px #ff0000;
-            }
-            to {
-                box-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000;
-            }
         }
 
         .italic-border {
@@ -108,6 +76,44 @@
             border: 3px groove #ff00ff;
             border-radius: 10px;
             background-color: rgba(0, 255, 255, 0.2);
+        }
+
+        /* Hover effect with sliding explanation */
+        .section:hover .explanation {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .explanation {
+            position: absolute;
+            top: 0;
+            right: -200px;
+            width: 200px;
+            height: 100%;
+            background: rgba(0, 255, 255, 0.1);
+            color: #ff0066;
+            padding: 10px;
+            border-left: 2px solid #00ffff;
+            transition: transform 0.4s ease, opacity 0.4s;
+            opacity: 0;
+            text-align: left;
+        }
+
+        /* Hover effect for sections */
+        .section:hover {
+            transform: scale(1.02);
+        }
+
+        a {
+            color: #00ffcc;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff0099;
+            text-shadow: 0 0 8px #ff0099;
         }
     </style>
 </head>
@@ -121,16 +127,19 @@
     <div class="section">
         <h2>Bold Text Example</h2>
         <p class="bold-text">This is <b>bold</b> True?</p>
+        <div class="explanation">The <b> tag is used to make text bold. It's often used to emphasize important content.</div>
     </div>
 
     <div class="section">
         <h2>Cool Styled Text</h2>
         <p class="cool-text">This is <b style="color:red; background-color:yellow;">cool</b> Yes!</p>
+        <div class="explanation">This is styled using <code>color</code> and <code>background-color</code> properties, creating a contrast.</div>
     </div>
 
     <div class="section">
         <h2>Italic with a Border</h2>
         <p class="italic-border">This is <i>italic with a border</i></p>
+        <div class="explanation">The <i> tag is for italic text, and a groove border is applied to add a unique visual.</div>
     </div>
 
 </body>
