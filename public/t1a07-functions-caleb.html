@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>t1a07-functions-caleb.html</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             overflow: hidden;
+            font-family: 'Jura', sans-serif;
         }
 
         body {
             color: #fff;
-            font-family: 'Jersey', sans-serif;
             background: url('https://images.alphacoders.com/957/957405.jpg') no-repeat center center fixed;
             background-size: cover;
         }
@@ -26,14 +27,17 @@
             justify-content: center;
             height: 100vh;
             gap: 20px;
-            z-index: 1;
         }
 
         .title {
-            color: #ff99cc;
+            color: #ffffff;
             font-size: 32px;
             margin-bottom: 20px;
             text-align: center;
+            background: rgba(0, 0, 0, 0.5); /* Sleek dark background for readability */
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             animation: fadeIn 2s ease-in;
         }
 
@@ -46,8 +50,8 @@
             height: 200px;
             position: relative;
             box-shadow: 0 0 15px rgba(255, 153, 204, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.5s ease;
             overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .box:hover {
@@ -59,16 +63,28 @@
         .box:hover:after {
             content: '';
             position: absolute;
-            height: 2px;
             background: #ff99cc;
-            width: 100%;
+            height: 2px;
+            width: 0%;
             top: 0;
             left: 0;
-            animation: drawLine 0.5s forwards;
+            transition: width 0.5s ease;
+        }
+
+        .box:hover:before {
+            height: 100%;
+            width: 2px;
+            top: 0;
+            left: 0;
+            transition: height 0.5s ease;
         }
 
         .box:hover:after {
-            transform: rotate(90deg);
+            top: 100%;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            transition: height 0.5s ease;
         }
 
         .input-box input {
@@ -79,15 +95,15 @@
             border-radius: 8px;
             color: #ffccff;
             font-size: 18px;
-            text-align: center;
             padding: 20px;
+            text-align: center;
             box-shadow: inset 0 0 10px rgba(255, 153, 204, 0.8);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease;
         }
 
         .input-box input:focus {
             outline: none;
-            box-shadow: inset 0 0 10px rgba(255, 153, 204, 1);
+            box-shadow: inset 0 0 15px rgba(255, 153, 204, 1);
         }
 
         .output-box {
@@ -108,11 +124,6 @@
             to { opacity: 1; }
         }
 
-        @keyframes drawLine {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-
     </style>
 </head>
 <body>
@@ -131,7 +142,6 @@
                 const outputBox = document.getElementById('outputBox');
                 const inputText = inputField.value.trim();
 
-                // Display the output
                 if (inputText !== '') {
                     const newLine = document.createElement('div');
                     newLine.textContent = `Your name is: ${inputText}`;
