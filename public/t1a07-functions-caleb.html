@@ -5,14 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>t1a07-functions-caleb.html</title>
     <style>
-        body {
-            background: url('https://i.imgur.com/JbZP4Pg.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            font-family: 'Jersey', sans-serif;
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
             overflow: hidden;
+        }
+
+        body {
+            color: #fff;
+            font-family: 'Jersey', sans-serif;
+        }
+
+        /* Video Background Styling */
+        #videoBackground {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        #videoBackground iframe {
+            width: 100%;
+            height: 100%;
         }
 
         .container {
@@ -22,8 +40,7 @@
             justify-content: center;
             height: 100vh;
             gap: 20px;
-            backdrop-filter: blur(5px);
-            padding: 20px;
+            z-index: 1;
         }
 
         .title {
@@ -58,21 +75,20 @@
 
         .input-box input {
             width: 100%;
-            height: 100%;
             background: #0a0a0a;
             border: 2px solid #00ff99;
             border-radius: 8px;
             color: #00ff99;
             font-size: 18px;
             padding: 10px;
-            box-shadow: 0 0 10px rgba(0, 255, 153, 0.8);
+            box-shadow: inset 0 0 10px rgba(0, 255, 153, 0.8);
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .input-box input:focus {
             border-color: #00cc66;
             outline: none;
-            box-shadow: 0 0 20px rgba(0, 255, 153, 1);
+            box-shadow: inset 0 0 10px rgba(0, 255, 153, 1);
         }
 
         .output-box {
@@ -95,6 +111,11 @@
     </style>
 </head>
 <body>
+    <!-- Video Background -->
+    <div id="videoBackground">
+        <iframe src="https://www.youtube.com/embed/POHkiJTOBtw?autoplay=1&mute=1&controls=0&loop=1&playlist=POHkiJTOBtw" frameborder="0" allow="autoplay; loop; fullscreen"></iframe>
+    </div>
+
     <div class="container">
         <div class="title">t1a07-functions-caleb.html</div>
         <div class="box input-box">
