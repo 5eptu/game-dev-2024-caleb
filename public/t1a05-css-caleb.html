@@ -45,11 +45,6 @@
             min-height: 100px; /* Ensures content fits */
         }
 
-        .section:hover {
-            width: 80%; /* Expands based on the content */
-            box-shadow: 0 0 30px #ff0099;
-        }
-
         .section h2 {
             font-size: 2em;
             color: #ff0099;
@@ -81,55 +76,18 @@
             background-color: rgba(0, 255, 255, 0.2);
         }
 
-        /* Line Drawing Effect */
-        .section::before, .section::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: #ff0099;
-            transition: all 0.4s ease;
-        }
-
-        .section::before {
-            top: 0;
-            left: 0;
-        }
-
-        .section::after {
-            bottom: 0;
-            right: 0;
-        }
-
-        .section:hover::before {
-            width: 100%;
-        }
-
-        .section:hover::after {
-            width: 100%;
-        }
-
-        /* Hover effect with sliding explanation */
-        .section:hover .explanation {
-            transform: translateX(0);
-            opacity: 1;
-            max-width: 100%;
-        }
-
+        /* Fade-in and expand text effect */
         .explanation {
-            position: absolute;
-            top: 0;
-            right: -250px; /* Makes it appear off-screen initially */
-            width: 250px;
-            height: 100%;
-            background: rgba(0, 255, 255, 0.1);
-            color: #ff0066;
-            padding: 10px;
-            border-left: 2px solid #00ffff;
-            transition: transform 0.4s ease, opacity 0.4s;
             opacity: 0;
-            text-align: left;
-            word-wrap: break-word; /* Makes sure long words break into new lines */
+            transform: scale(0.5);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            max-width: 250px;
+            margin-top: 10px;
+        }
+
+        .section:hover .explanation {
+            opacity: 1;
+            transform: scale(1);
         }
 
         /* Link Styling */
@@ -174,4 +132,3 @@
 
 </body>
 </html>
-
