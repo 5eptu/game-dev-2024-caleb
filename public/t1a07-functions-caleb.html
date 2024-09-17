@@ -38,7 +38,13 @@
             padding: 10px 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 2s ease-in;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        /* Smooth slide-in for the title */
+        @keyframes slideIn {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .box {
@@ -51,40 +57,50 @@
             position: relative;
             box-shadow: 0 0 15px rgba(255, 153, 204, 0.5);
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
 
+        /* Fancy hover effect with growing border and subtle pulse */
         .box:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
             box-shadow: 0 0 30px rgba(255, 153, 204, 0.7);
+            animation: pulse 0.7s infinite alternate;
         }
 
-        .box:hover:before,
-        .box:hover:after {
+        @keyframes pulse {
+            from { box-shadow: 0 0 30px rgba(255, 153, 204, 0.5); }
+            to { box-shadow: 0 0 60px rgba(255, 153, 204, 0.8); }
+        }
+
+        /* Line drawing animation around the box */
+        .box::before,
+        .box::after {
             content: '';
             position: absolute;
             background: #ff99cc;
-            height: 2px;
-            width: 0%;
-            top: 0;
-            left: 0;
-            transition: width 0.5s ease;
+            transition: all 0.5s ease;
         }
 
-        .box:hover:before {
-            height: 100%;
+        .box::before {
+            height: 2px;
+            width: 0;
+            top: 0;
+            left: 0;
+        }
+
+        .box::after {
+            height: 0;
             width: 2px;
             top: 0;
             left: 0;
-            transition: height 0.5s ease;
         }
 
-        .box:hover:after {
-            top: 100%;
-            right: 0;
+        .box:hover::before {
             width: 100%;
-            height: 2px;
-            transition: height 0.5s ease;
+        }
+
+        .box:hover::after {
+            height: 100%;
         }
 
         .input-box input {
@@ -98,12 +114,19 @@
             padding: 20px;
             text-align: center;
             box-shadow: inset 0 0 10px rgba(255, 153, 204, 0.8);
-            transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+            animation: inputGlow 1s ease-in-out infinite alternate;
+        }
+
+        /* Glowing effect on input box */
+        @keyframes inputGlow {
+            from { box-shadow: inset 0 0 15px rgba(255, 153, 204, 0.8); }
+            to { box-shadow: inset 0 0 30px rgba(255, 153, 204, 1); }
         }
 
         .input-box input:focus {
             outline: none;
-            box-shadow: inset 0 0 15px rgba(255, 153, 204, 1);
+            background-color: rgba(50, 50, 50, 0.9);
         }
 
         .output-box {
@@ -119,6 +142,7 @@
             animation: fadeIn 2s ease-in;
         }
 
+        /* Fade-in for output box content */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
