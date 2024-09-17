@@ -1,28 +1,135 @@
-<table border="1">
-  <tr>
-    <th>Header 1</th>
-    <th>Header 2</th>
-  </tr>
-  <tr>
-    <td>A</td>
-    <td>B</td>
-  </tr>
-  <tr>
-    <td>C</td>
-    <td>D</td>
-  </tr>
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Table and Lists</title>
+    <!-- Audiowide Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Audiowide', cursive;
+            background: url('https://i.pinimg.com/originals/62/f2/cc/62f2ccde1b2fffb43f05ce2e8219cc35.gif') no-repeat center top fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
 
-Unordered list<br>
-<ul>
-  <li>Apple</li>
-  <li>Milk</li>
-  <li>Bread</li>
-</ul><br><br>
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            background: linear-gradient(to right, yellow, orange, purple, blue);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+        }
 
-Ordered List <br>
-<ol>
-  <li>Apple</li>
-  <li>Milk</li>
-  <li>Bread</li>
-</ol><br><br>
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.2em;
+            min-width: 400px;
+            background-color: rgba(50, 0, 75, 0.6);
+            box-shadow: 0 0 15px rgba(255, 204, 255, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px 20px;
+            text-align: center;
+            color: #ffccff;
+            border: 1px solid rgba(255, 204, 255, 0.5);
+        }
+
+        th {
+            background-color: #660066;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        tr:hover {
+            background-color: #800080;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Unordered and Ordered List Styling */
+        ul, ol {
+            list-style-position: inside;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(50, 0, 75, 0.6);
+            box-shadow: 0 0 15px rgba(255, 204, 255, 0.8);
+            border-radius: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        li {
+            padding: 10px;
+            margin: 10px 0;
+            border-bottom: 1px solid rgba(255, 204, 255, 0.5);
+            color: #ffccff;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        ul li:hover, ol li:hover {
+            background-color: #660066;
+            color: #ffffff;
+            box-shadow: 0 0 10px #ffccff, 0 0 20px #ffccff;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Adding Sparkle Effect to List Items */
+        @keyframes sparkle {
+            0%, 100% { box-shadow: 0 0 10px #ffccff, 0 0 20px #ffccff; }
+            50% { box-shadow: 0 0 30px #ffccff, 0 0 50px #ffccff; }
+        }
+
+        li:hover {
+            animation: sparkle 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <h2>Advanced Table and Lists</h2>
+
+    <table>
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>D</td>
+        </tr>
+    </table>
+
+    <h2>Unordered List</h2>
+    <ul>
+        <li>Apple</li>
+        <li>Milk</li>
+        <li>Bread</li>
+    </ul>
+
+    <h2>Ordered List</h2>
+    <ol>
+        <li>Apple</li>
+        <li>Milk</li>
+        <li>Bread</li>
+    </ol>
+</body>
+</html>
