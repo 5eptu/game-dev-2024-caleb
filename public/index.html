@@ -12,7 +12,7 @@
             font-family: 'Audiowide', cursive;
             background: url('https://i.pinimg.com/originals/62/f2/cc/62f2ccde1b2fffb43f05ce2e8219cc35.gif') no-repeat center top fixed;
             background-size: 120%; /* Larger size to fit better */
-            background-position-y: -30px; /* Move background up */
+            background-position-y: -20px; /* Move background up */
             color: #fff;
             margin: 0;
             padding: 0;
@@ -25,10 +25,11 @@
 
         h1 {
             text-align: center;
-            font-size: 3em;
+            font-size: 4em; /* Increased font size for title */
             background: linear-gradient(to right, yellow, orange, purple, blue);
             -webkit-background-clip: text;
             color: transparent;
+            white-space: nowrap; /* Prevents title from breaking into two lines */
             margin-bottom: 50px;
         }
 
@@ -71,6 +72,11 @@
             50% { box-shadow: 0 0 30px #ffccff, 0 0 50px #ffccff; }
         }
 
+        /* Smooth hover and transitions */
+        a {
+            transition: all 0.4s ease-in-out;
+        }
+
         /* Container to center content */
         .container {
             display: flex;
@@ -79,6 +85,11 @@
             align-items: center;
             width: 100%;
             max-width: 600px;
+        }
+
+        /* Adding more breathing room for the content */
+        .container a {
+            width: 80%;
         }
     </style>
 </head>
