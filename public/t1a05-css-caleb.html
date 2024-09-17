@@ -32,17 +32,21 @@
 
         /* Section for CSS Examples */
         .section {
-            width: 80%;
-            max-width: 900px;
+            width: 300px;
             background: rgba(255, 0, 102, 0.1);
-            border: 1px solid #00ffff;
+            border: 2px solid #00ffff;
             border-radius: 10px;
             padding: 20px;
             margin: 20px 0;
             box-shadow: 0 0 20px #00ffff;
             position: relative;
+            transition: all 0.5s ease;
             overflow: hidden;
-            transition: transform 0.3s ease-in-out;
+        }
+
+        .section:hover {
+            width: 100%;
+            box-shadow: 0 0 30px #ff0099;
         }
 
         .section h2 {
@@ -52,8 +56,6 @@
             text-align: center;
         }
 
-        /* No fade-in for titles */
-        
         /* Cool Text Styles */
         .bold-text {
             font-weight: bold;
@@ -78,6 +80,34 @@
             background-color: rgba(0, 255, 255, 0.2);
         }
 
+        /* Line Drawing Effect */
+        .section::before, .section::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #ff0099;
+            transition: all 0.4s ease;
+        }
+
+        .section::before {
+            top: 0;
+            left: 0;
+        }
+
+        .section::after {
+            bottom: 0;
+            right: 0;
+        }
+
+        .section:hover::before {
+            width: 100%;
+        }
+
+        .section:hover::after {
+            width: 100%;
+        }
+
         /* Hover effect with sliding explanation */
         .section:hover .explanation {
             transform: translateX(0);
@@ -99,11 +129,7 @@
             text-align: left;
         }
 
-        /* Hover effect for sections */
-        .section:hover {
-            transform: scale(1.02);
-        }
-
+        /* Link Styling */
         a {
             color: #00ffcc;
             font-size: 1.2em;
@@ -115,6 +141,7 @@
             color: #ff0099;
             text-shadow: 0 0 8px #ff0099;
         }
+
     </style>
 </head>
 <body>
