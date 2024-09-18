@@ -57,24 +57,17 @@
             position: relative;
             box-shadow: 0 0 15px rgba(255, 153, 204, 0.5);
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Fancy hover effect with growing border and subtle pulse */
+        /* Hover effect for boxes */
         .box:hover {
             transform: scale(1.1);
             box-shadow: 0 0 30px rgba(255, 153, 204, 0.7);
-            animation: pulse 0.7s infinite alternate;
-        }
-
-        @keyframes pulse {
-            from { box-shadow: 0 0 30px rgba(255, 153, 204, 0.5); }
-            to { box-shadow: 0 0 60px rgba(255, 153, 204, 0.8); }
         }
 
         /* Line drawing animation around the box */
-        .box::before,
-        .box::after {
+        .box::before, .box::after {
             content: '';
             position: absolute;
             background: #ff99cc;
@@ -91,7 +84,7 @@
         .box::after {
             height: 0;
             width: 2px;
-            top: 0;
+            bottom: 0;
             right: 0;
         }
 
@@ -103,13 +96,9 @@
             height: 100%;
         }
 
-        .box.input-box:hover::before, .box.input-box:hover::after,
-        .box.output-box:hover::before, .box.output-box:hover::after {
-            width: 100%;
-            height: 100%;
-        }
-
-        .input-box input {
+        /* Copying input box style to output box */
+        .input-box input,
+        .output-box {
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
@@ -121,14 +110,9 @@
             text-align: center;
             box-shadow: inset 0 0 10px rgba(255, 153, 204, 0.8);
             transition: box-shadow 0.3s ease, background-color 0.3s ease;
-            animation: inputGlow 1s ease-in-out infinite alternate;
             box-sizing: border-box; /* Fix for fitting inside box */
-        }
-
-        /* Glowing effect on input box */
-        @keyframes inputGlow {
-            from { box-shadow: inset 0 0 15px rgba(255, 153, 204, 0.8); }
-            to { box-shadow: inset 0 0 30px rgba(255, 153, 204, 1); }
+            overflow-y: auto; /* Scroll for the output box */
+            white-space: pre-wrap; /* Wrap text */
         }
 
         .input-box input:focus {
@@ -136,24 +120,16 @@
             background-color: rgba(50, 50, 50, 0.9);
         }
 
+        /* Glowing effect on input/output boxes */
+        .input-box input,
         .output-box {
-            background: rgba(20, 20, 20, 0.8);
-            color: #ffccff;
-            font-size: 18px;
-            border-radius: 8px;
-            padding: 10px;
-            box-shadow: inset 0 0 10px rgba(255, 153, 204, 0.5);
-            max-height: 200px;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            box-sizing: border-box; /* Fix for fitting inside box */
+            animation: inputGlow 1s ease-in-out infinite alternate;
         }
 
-        /* Remove the fade-in effect on output box */
-        .output-box::before, .output-box::after {
-            transition: none;
+        @keyframes inputGlow {
+            from { box-shadow: inset 0 0 15px rgba(255, 153, 204, 0.8); }
+            to { box-shadow: inset 0 0 30px rgba(255, 153, 204, 1); }
         }
-
     </style>
 </head>
 <body>
