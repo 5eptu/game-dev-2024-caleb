@@ -4,38 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tla08-variables-fred</title>
+    <style>
+        /* Add the space-themed background */
+        body {
+            background-image: url('https://removal.ai/wp-content/uploads/2021/05/image11.png');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            height: 100vh;
+            font-family: 'Jura', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            width: 80%;
+            margin-bottom: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #00ffff;
+            text-align: center;
+            box-shadow: 0 0 10px #ff00ff;
+            outline: none;
+        }
+
+        input[type="button"] {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #ff00ff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 0 10px #ff00ff;
+            margin-top: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        input[type="button"]:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #00ffff, 0 0 30px #ff00ff;
+        }
+
+        a {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 10px #ff00ff;
+            padding: 5px;
+            transition: color 0.2s, box-shadow 0.2s;
+        }
+
+        a:hover {
+            color: #ff00ff;
+            box-shadow: 0 0 20px #00ffff, 0 0 20px #ff00ff;
+        }
+
+        #myDiv01 {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #00ffff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+    </style>
 </head>
 <body>
-    <h1 align="center">tla08-variables-fred</h1>
-    
-    <p>W3Schools link to variables <a href="https://www.w3schools.com/js/js_variables.asp">here</a></p>
-    
-    Input 1: <input type="text" id="myIn01" value="5"><br>
-    Input 2: <input type="text" id="myIn02" value="7"><br><br>
 
-    <input type="button" value="Add and fix" onclick="{
-        const myTotal = parseFloat(document.getElementById('myIn01').value) + parseFloat(document.getElementById('myIn02').value);
-        document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myTotal;
-    }"><br><br>
+    <div class="container">
+        <h1>tla08-variables-fred</h1>
 
-    <div id="myDiv01">...</div><br><br>
+        <p>W3Schools link to variables: <a href="https://www.w3schools.com/js/js_variables.asp" target="_blank">here</a></p>
+        
+        Input 1: <input type="text" id="myIn01" value="5"><br>
+        Input 2: <input type="text" id="myIn02" value="7"><br><br>
 
-    <input type="button" value="Add2 and fix" onclick="{
-        let myX = parseFloat(document.getElementById('myIn01').value);
-        let myY = parseFloat(document.getElementById('myIn02').value);
-        let myTotal = myX + myY;
-        document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myTotal;
-    }"><br><br>
+        <input type="button" value="Add and fix" onclick="{
+            const myTotal = parseFloat(document.getElementById('myIn01').value) + parseFloat(document.getElementById('myIn02').value);
+            document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myTotal;
+        }"><br><br>
 
-    <p>Other programming languages use defined variables:</p>
-    <pre>
-boolean
-int8 or byte
-int
-double
-float
-char
-string
-    </pre>
+        <input type="button" value="Add2 and fix" onclick="{
+            let myX = parseFloat(document.getElementById('myIn01').value);
+            let myY = parseFloat(document.getElementById('myIn02').value);
+            let myTotal = myX + myY;
+            document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myTotal;
+        }">
+
+        <div id="myDiv01">...</div>
+    </div>
+
 </body>
 </html>
