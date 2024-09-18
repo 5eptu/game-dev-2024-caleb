@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tla08-variables-fred</title>
+
+    <!-- Chakra Petch font for the title -->
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+
     <style>
         /* Add the space-themed background */
         body {
@@ -29,11 +33,13 @@
             width: 100%;
         }
 
+        /* Chakra Petch font for the title */
         h1 {
             color: #ff00ff;
             text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
             font-size: 2.5rem;
             margin-bottom: 20px;
+            font-family: 'Chakra Petch', sans-serif;
         }
 
         input[type="text"] {
@@ -61,6 +67,7 @@
             box-shadow: 0 0 10px #ff00ff;
             margin-top: 10px;
             transition: transform 0.2s, box-shadow 0.2s;
+            width: 45%;
         }
 
         input[type="button"]:hover {
@@ -72,9 +79,10 @@
             color: #00ffff;
             text-decoration: none;
             font-weight: bold;
-            box-shadow: 0 0 10px #ff00ff;
             padding: 5px;
             transition: color 0.2s, box-shadow 0.2s;
+            border-radius: 15px; /* Rounded glow */
+            box-shadow: 0 0 10px #ff00ff;
         }
 
         a:hover {
@@ -88,6 +96,11 @@
             color: #00ffff;
             text-shadow: 0 0 10px #ff00ff;
         }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
     </style>
 </head>
 <body>
@@ -100,17 +113,20 @@
         Input 1: <input type="text" id="myIn01" value="5"><br>
         Input 2: <input type="text" id="myIn02" value="7"><br><br>
 
-        <input type="button" value="Add and fix" onclick="{
-            const myTotal = parseFloat(document.getElementById('myIn01').value) + parseFloat(document.getElementById('myIn02').value);
-            document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myTotal;
-        }"><br><br>
+        <!-- Symmetrical button container -->
+        <div class="button-container">
+            <input type="button" value="Add and fix" onclick="{
+                const myTotal = parseFloat(document.getElementById('myIn01').value) + parseFloat(document.getElementById('myIn02').value);
+                document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myTotal;
+            }">
 
-        <input type="button" value="Add2 and fix" onclick="{
-            let myX = parseFloat(document.getElementById('myIn01').value);
-            let myY = parseFloat(document.getElementById('myIn02').value);
-            let myTotal = myX + myY;
-            document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myTotal;
-        }">
+            <input type="button" value="Add2 and fix" onclick="{
+                let myX = parseFloat(document.getElementById('myIn01').value);
+                let myY = parseFloat(document.getElementById('myIn02').value);
+                let myTotal = myX + myY;
+                document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myTotal;
+            }">
+        </div>
 
         <div id="myDiv01">...</div>
     </div>
