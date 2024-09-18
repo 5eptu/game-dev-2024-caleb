@@ -17,7 +17,7 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 100vh;
             overflow: hidden;
@@ -30,7 +30,7 @@
             -webkit-background-clip: text;
             color: transparent;
             white-space: nowrap; /* Prevents title from breaking into two lines */
-            margin-bottom: 50px;
+            margin: 50px 0; /* Space around title */
         }
 
         /* Link styling */
@@ -78,46 +78,38 @@
         }
 
         /* Container to center content */
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        .scrollable-container {
             width: 100%;
             max-width: 600px;
+            height: 60vh; /* Container height for scrolling effect */
             overflow-y: auto;
-            height: 80vh; /* Container height for scrolling effect */
+            margin-top: 20px; /* Space to separate from title */
             padding-right: 20px; /* Space for scrollbar */
         }
 
-        /* Adding more breathing room for the content */
-        .container a {
-            width: 80%;
-        }
-
         /* Custom scrollbar styling */
-        .container::-webkit-scrollbar {
+        .scrollable-container::-webkit-scrollbar {
             width: 12px;
         }
 
-        .container::-webkit-scrollbar-track {
+        .scrollable-container::-webkit-scrollbar-track {
             background: rgba(50, 0, 75, 0.8);
         }
 
-        .container::-webkit-scrollbar-thumb {
+        .scrollable-container::-webkit-scrollbar-thumb {
             background: #ffccff;
             border-radius: 10px;
             transition: background 0.3s ease;
         }
 
-        .container::-webkit-scrollbar-thumb:hover {
+        .scrollable-container::-webkit-scrollbar-thumb:hover {
             background: #ff0099;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Retrowave Index Page</h1>
+    <h1>Retrowave Index Page</h1>
+    <div class="scrollable-container">
         <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a01-basic.html">t1a01-basic-caleb.html</a>
         <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a02-proper-caleb.html">t1a02-proper-caleb.html</a>
         <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a03-table-hst-caleb.html">t1a03-table-list-caleb.html</a>
