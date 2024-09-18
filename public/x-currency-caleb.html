@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #282c36;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            width: 300px;
+        }
+        h1 {
+            font-family: 'Audiowide', sans-serif;
+            color: #00ff99;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background: #00ff99;
+            color: #333;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #00cc77;
+        }
+        .result {
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Currency Converter</h1>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Enter amount" />
+        
+        <label for="from-currency">From Currency:</label>
+        <select id="from-currency">
+            <!-- Country options will be populated here -->
+        </select>
+        
+        <label for="to-currency">To Currency:</label>
+        <select id="to-currency">
+            <!-- Country options will be populated here -->
+        </select>
+        
+        <button onclick="convertCurrency()">Convert</button>
+        
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const currencyData = {
+            "USD": { symbol: "$", rates: { "USD": 1, "EUR": 0.93, "JPY": 146.51, "GBP": 0.77, "AUD": 1.56 } },
+            "EUR": { symbol: "€", rates: { "USD": 1.08, "EUR": 1, "JPY": 157.25, "GBP": 0.83, "AUD": 1.68 } },
+            "JPY": { symbol: "¥", rates: { "USD": 0.0068, "EUR": 0.0064, "JPY": 1, "GBP": 0.0053, "AUD": 0.0107 } },
+            "GBP": { symbol: "£", rates: { "USD": 1.30, "EUR": 1.21, "JPY": 188.36, "GBP": 1, "AUD": 2.01 } },
+            "AUD": { symbol: "$", rates: { "USD": 0.64, "EUR": 0.60, "JPY": 93.67, "GBP": 0.50, "AUD": 1 } }
+        };
+
+        function populateCurrencyOptions() {
+            const fromSelect = document.getElementById('from-currency');
+            const toSelect = document.getElementById('to-currency');
+            
+            for (const currency in currencyData) {
+                const optionFrom = document.createElement('option');
+                optionFrom.value = currency;
+                optionFrom.textContent = `${currency} (${currencyData[currency].symbol})`;
+                fromSelect.appendChild(optionFrom);
+                
+                const optionTo = document.createElement('option');
+                optionTo.value = currency;
+                optionTo.textContent = `${currency} (${currencyData[currency].symbol})`;
+                toSelect.appendChild(optionTo);
+            }
+        }
+
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const fromCurrency = document.getElementById('from-currency').value;
+            const toCurrency = document.getElementById('to-currency').value;
+            const resultElement = document.getElementById('result');
+            
+            if (isNaN(amount) || amount <= 0) {
+                resultElement.textContent = 'Please enter a valid amount.';
+                return;
+            }
+            
+            if (fromCurrency === toCurrency) {
+                resultElement.textContent = `You’re converting between the same currencies. No conversion needed.`;
+                return;
+            }
+            
+            const rate = currencyData[fromCurrency].rates[toCurrency];
+            const convertedAmount = (amount * rate).toFixed(2);
+            resultElement.textContent = `Converted Amount: ${currencyData[toCurrency].symbol}${convertedAmount}`;
+        }
+
+        // Initialize the currency options
+        populateCurrencyOptions();
+    </script>
+</body>
+</html>
