@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Jura:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Jura', sans-serif;
+            color: #fff;
+            background: url('https://static.vecteezy.com/system/resources/previews/005/585/844/original/city-of-retro-sci-fi-background-futuristic-grid-landscape-90-s-vector.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            font-family: 'Audiowide', cursive;
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .answers {
+            margin: 10px 0;
+        }
+        .answer {
+            display: block;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #ff0081;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: #ff4c6f;
+        }
+        .feedback {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .feedback h2 {
+            font-family: 'Audiowide', cursive;
+        }
+        .feedback p {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cyberpunk Quiz</h1>
+        <div id="quiz">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+        <button class="submit-btn" onclick="submitQuiz()">Submit</button>
+        <div class="feedback" id="feedback">
+            <!-- Feedback will be shown here -->
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is the capital of France?",
+                answers: ["Berlin", "Madrid", "Paris", "Lisbon"],
+                correct: 2
+            },
+            {
+                question: "Which planet is known as the Red Planet?",
+                answers: ["Earth", "Mars", "Jupiter", "Saturn"],
+                correct: 1
+            },
+            {
+                question: "Who wrote 'To Kill a Mockingbird'?",
+                answers: ["Harper Lee", "Mark Twain", "J.K. Rowling", "Ernest Hemingway"],
+                correct: 0
+            },
+            {
+                question: "What is the chemical symbol for gold?",
+                answers: ["Au", "Ag", "Pb", "Fe"],
+                correct: 0
+            },
+            {
+                question: "What is the powerhouse of the cell?",
+                answers: ["Nucleus", "Ribosome", "Mitochondria", "Endoplasmic Reticulum"],
+                correct: 2
+            },
+            {
+                question: "Which country is known as the Land of the Rising Sun?",
+                answers: ["China", "Japan", "South Korea", "Thailand"],
+                correct: 1
+            },
+            {
+                question: "What is the smallest prime number?",
+                answers: ["0", "1", "2", "3"],
+                correct: 2
+            },
+            {
+                question: "What is the freezing point of water in Celsius?",
+                answers: ["0°C", "32°C", "100°C", "273°C"],
+                correct: 0
+            },
+            {
+                question: "What year did the Titanic sink?",
+                answers: ["1912", "1905", "1918", "1920"],
+                correct: 0
+            },
+            {
+                question: "Who painted the Mona Lisa?",
+                answers: ["Vincent van Gogh", "Claude Monet", "Leonardo da Vinci", "Pablo Picasso"],
+                correct: 2
+            }
+        ];
+
+        const feedbackMessages = {
+            fail: [
+                "Oops! Try again! Please..",
+                "Better luck next time :)",
+                "Yikes! Study up!",
+                "Rough score. More practice needed.",
+                ":skull:",
+                "Not quite... Keep trying.",
+                "Please for the love of god. Review your notes.",
+                "Failed! But hey, it's just a quiz!",
+                "Missed it! Time for a retake!",
+                "Bummer! You can do better!"
+            ],
+            pass: [
+                "Good job",
+                "You got through",
+                "Passable ig",
+                "Well done :/",
+                "You passed",
+                "Great, you’re on the right track.",
+                "Not bad",
+                "You made it through.",
+                "Decent, you’re almost there.",
+                "Not bad at all."
+            ],
+            merit: [
+                "Awesome! Almost perfect! TRY HARDER.",
+                "Great job! You’re on fire! (Literally)",
+                "Excellent work! Well done! (Cooked)",
+                "Fantastic! You nailed it! Nailed.",
+                "Mhm",
+                "Impressive Work.. Do it again.",
+                "Well... you passed",
+                "Top-notch? I guess?",
+                "Great work! You’re almost a genius!"
+            ],
+            genius: [
+                "You aced it (R6)",
+                "Genius level EVERYONE CLAP",
+                "Incredible",
+                "You’re a legend congratulations",
+                "Exceptional! You crushed it.",
+                "Flawless",
+            ]
+        };
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const quizContainer = document.getElementById('quiz');
+            quizContainer.innerHTML = `
+                <div class="question">
+                    <h2>${questions[currentQuestion].question}</h2>
+                    ${questions[currentQuestion].answers.map((answer, index) => `
+                        <label class="answer">
+                            <input type="radio" name="answer" value="${index}">
+                            ${answer}
+                        </label>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function submitQuiz() {
+            const answers = document.querySelectorAll('input[name="answer"]:checked');
+            if (answers.length !== questions.length) {
+                alert('Please answer all questions!');
+                return;
+            }
+
+            score = 0;
+            answers.forEach((answer, index) => {
+                if (parseInt(answer.value) === questions[index].correct) {
+                    score++;
+                }
+            });
+
+            showFeedback();
+        }
+
+        function showFeedback() {
+            const feedbackDiv = document.getElementById('feedback');
+            let message;
+
+            if (score / questions.length < 0.5) {
+                message = feedbackMessages.fail[Math.floor(Math.random() * feedbackMessages.fail.length)];
+            } else if (score / questions.length < 0.6) {
+                message = feedbackMessages.pass[Math.floor(Math.random() * feedbackMessages.pass.length)];
+            } else if (score / questions.length < 0.8) {
+                message = feedbackMessages.merit[Math.floor(Math.random() * feedbackMessages.merit.length)];
+            } else {
+                message = feedbackMessages.genius[Math.floor(Math.random() * feedbackMessages.genius.length)];
+            }
+
+            feedbackDiv.innerHTML = `
+                <h2>Quiz Complete!</h2>
+                <p>Your Score: ${score}/${questions.length}</p>
+                <p>${message}</p>
+                <p><strong>Bonus Question:</strong> What is the color of the sky (Hint: You will always get this wrong!)</p>
+                <input type="text" id="bonus-answer" placeholder="Your answer here">
+                <button class="submit-btn" onclick="checkBonus()">Submit Bonus Answer</button>
+                <p id="bonus-feedback"></p>
+            `;
+        }
+
+        function checkBonus() {
+            const bonusAnswer = document.getElementById('bonus-answer').value;
+            const bonusFeedback = document.getElementById('bonus-feedback');
+            bonusFeedback.innerHTML = `Your answer: "${bonusAnswer}" - That’s not quite right..`;
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
