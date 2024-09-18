@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spacey Calculator</title>
+    <style>
+        body {
+            background-image: url('https://removal.ai/wp-content/uploads/2021/05/image11.png');
+            background-size: cover;
+            font-family: 'Jura', sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .calculator {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            width: 300px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #f0f0f0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-align: right;
+            margin-bottom: 15px;
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .button {
+            padding: 15px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 10px;
+            margin: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .button:hover {
+            background-color: #ffcc00;
+            color: black;
+            box-shadow: 0 0 20px #ffcc00;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h1>Spacey Calculator</h1>
+        <input type="text" id="result" readonly>
+
+        <div class="row">
+            <button class="button" onclick="clearResult()">C</button>
+            <button class="button" onclick="appendCharacter('/')">/</button>
+            <button class="button" onclick="appendCharacter('*')">*</button>
+            <button class="button" onclick="deleteLast()">DEL</button>
+        </div>
+
+        <div class="row">
+            <button class="button" onclick="appendCharacter('7')">7</button>
+            <button class="button" onclick="appendCharacter('8')">8</button>
+            <button class="button" onclick="appendCharacter('9')">9</button>
+            <button class="button" onclick="appendCharacter('-')">-</button>
+        </div>
+
+        <div class="row">
+            <button class="button" onclick="appendCharacter('4')">4</button>
+            <button class="button" onclick="appendCharacter('5')">5</button>
+            <button class="button" onclick="appendCharacter('6')">6</button>
+            <button class="button" onclick="appendCharacter('+')">+</button>
+        </div>
+
+        <div class="row">
+            <button class="button" onclick="appendCharacter('1')">1</button>
+            <button class="button" onclick="appendCharacter('2')">2</button>
+            <button class="button" onclick="appendCharacter('3')">3</button>
+            <button class="button" onclick="calculateResult()">=</button>
+        </div>
+
+        <div class="row">
+            <button class="button" onclick="appendCharacter('0')">0</button>
+            <button class="button" onclick="appendCharacter('.')">.</button>
+        </div>
+    </div>
+
+    <script>
+        function appendCharacter(character) {
+            document.getElementById('result').value += character;
+        }
+
+        function clearResult() {
+            document.getElementById('result').value = '';
+        }
+
+        function deleteLast() {
+            let current = document.getElementById('result').value;
+            document.getElementById('result').value = current.slice(0, -1);
+        }
+
+        function calculateResult() {
+            try {
+                let result = eval(document.getElementById('result').value);
+                document.getElementById('result').value = result;
+            } catch (error) {
+                document.getElementById('result').value = 'Error';
+            }
+        }
+    </script>
+
+</body>
+</html>
