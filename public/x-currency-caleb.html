@@ -12,10 +12,11 @@
             background-size: cover;
             color: #333;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 20px;
         }
         .container {
             background: rgba(255, 255, 255, 0.9);
@@ -23,6 +24,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             width: 350px;
+            margin-left: 20px; /* Move the container to the left */
         }
         h1 {
             font-family: 'Jura', sans-serif;
@@ -31,7 +33,9 @@
             margin-bottom: 20px;
         }
         label {
+            display: block;
             font-weight: bold;
+            margin: 10px 0 5px;
         }
         select, input {
             width: calc(100% - 22px);
@@ -39,6 +43,7 @@
             margin: 5px 0;
             border: 1px solid #007bff;
             border-radius: 5px;
+            box-sizing: border-box;
         }
         button {
             background: #007bff;
@@ -49,6 +54,7 @@
             cursor: pointer;
             font-size: 16px;
             width: 100%;
+            box-sizing: border-box;
         }
         button:hover {
             background: #0056b3;
