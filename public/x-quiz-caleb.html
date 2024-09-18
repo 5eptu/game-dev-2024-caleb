@@ -215,7 +215,63 @@
 
         function loadQuestion() {
             const quizContainer = document.getElementById('quiz');
+            const question = questions[currentQuestion];
             quizContainer.innerHTML = `
                 <div class="question">
-                    <h2>${questions[currentQuestion].question}</h2>
-                    ${questions
+                    <h2>${question.question}</h2>
+                    ${question.answers.map((answer, index) => `
+                        <label class="answer">
+                            <input type="radio" name="answer" value="${index}">
+                            ${answer}
+                        </label>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function submitQuiz() {
+            const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+            if (selectedAnswer) {
+                if (parseInt(selectedAnswer.value) === questions[currentQuestion].correct) {
+                    score++;
+                }
+                currentQuestion++;
+                if (currentQuestion < totalQuestions) {
+                    loadQuestion();
+                    updateProgressBar();
+                } else {
+                    showFeedback();
+                }
+            } else {
+                alert('Please select an answer.');
+            }
+        }
+
+        function showFeedback() {
+            const feedbackContainer = document.getElementById('feedback');
+            let feedbackMessage;
+
+            if (score === totalQuestions) {
+                feedbackMessage = feedbackMessages.genius[Math.floor(Math.random() * feedbackMessages.genius.length)];
+            } else if (score >= totalQuestions * 0.75) {
+                feedbackMessage = feedbackMessages.merit[Math.floor(Math.random() * feedbackMessages.merit.length)];
+            } else if (score >= totalQuestions * 0.5) {
+                feedbackMessage = feedbackMessages.pass[Math.floor(Math.random() * feedbackMessages.pass.length)];
+            } else {
+                feedbackMessage = feedbackMessages.fail[Math.floor(Math.random() * feedbackMessages.fail.length)];
+            }
+
+            feedbackContainer.innerHTML = `
+                <h2>Your Score: ${score} / ${totalQuestions}</h2>
+                <p>${feedbackMessage}</p>
+            `;
+        }
+
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progress-bar');
+            const percentage = ((currentQuestion + 1) / totalQuestions) * 100;
+            progressBar.style.width = `${percentage}%`;
+        }
+    </script>
+</body>
+</html>
