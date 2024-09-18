@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Most Useless Website Ever</title>
+
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 5rem;
+            color: #ff00ff;
+            text-shadow: 5px 5px 10px #00ff00;
+        }
+
+        .spinny-box {
+            width: 100px;
+            height: 100px;
+            background-color: #ff0000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: spin 2s infinite linear;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hidden-text {
+            visibility: hidden;
+        }
+
+        .magic-button {
+            margin-top: 30px;
+            padding: 20px;
+            font-size: 1.5rem;
+            background-color: #00ff00;
+            color: #000;
+            border: none;
+            cursor: pointer;
+        }
+
+        .magic-button:hover {
+            background-color: #ff00ff;
+        }
+
+        .hidden-text.show {
+            visibility: visible;
+            font-size: 2rem;
+            color: #ff0000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Ultimate Experience</h1>
+
+    <div class="spinny-box"></div>
+
+    <button class="magic-button" onclick="revealMagic()">Click Me if You Dare</button>
+
+    <p class="hidden-text" id="hiddenMessage">Wow, that was something, huh?</p>
+
+    <script>
+        function revealMagic() {
+            document.getElementById('hiddenMessage').classList.add('show');
+        }
+    </script>
+
+</body>
+</html>
