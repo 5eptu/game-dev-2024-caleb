@@ -23,7 +23,7 @@
             padding: 20px;
             border-radius: 20px;
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-            width: 300px;
+            width: 320px;
         }
 
         h1 {
@@ -50,7 +50,7 @@
 
         .button {
             padding: 15px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             border: none;
             border-radius: 10px;
             margin: 5px;
@@ -59,6 +59,7 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            flex: 1;
         }
 
         .button:hover {
@@ -70,6 +71,7 @@
         .row {
             display: flex;
             justify-content: space-between;
+            margin-bottom: 10px;
         }
 
         @keyframes fadeIn {
@@ -113,7 +115,7 @@
         </div>
 
         <div class="row">
-            <button class="button" onclick="appendCharacter('0')">0</button>
+            <button class="button" onclick="appendCharacter('0')" style="flex: 2">0</button>
             <button class="button" onclick="appendCharacter('.')">.</button>
         </div>
     </div>
