@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #282c36;
-            color: #e0e0e0;
+            font-family: 'Jura', sans-serif;
+            background: url('https://static.vecteezy.com/system/resources/previews/009/840/518/original/abstract-money-transfer-online-currency-on-background-modern-blue-concept-arrow-global-money-movement-currency-exchange-dollar-euro-yen-vector.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,41 +18,46 @@
             margin: 0;
         }
         .container {
-            background: #333;
+            background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
         }
         h1 {
-            font-family: 'Audiowide', sans-serif;
-            color: #00ff99;
+            font-family: 'Jura', sans-serif;
+            color: #007bff;
             text-align: center;
             margin-bottom: 20px;
         }
+        label {
+            font-weight: bold;
+        }
         select, input {
-            width: 100%;
+            width: calc(100% - 22px);
             padding: 10px;
             margin: 5px 0;
-            border: none;
+            border: 1px solid #007bff;
             border-radius: 5px;
         }
         button {
-            background: #00ff99;
-            color: #333;
+            background: #007bff;
+            color: #fff;
             border: none;
             padding: 10px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            width: 100%;
         }
         button:hover {
-            background: #00cc77;
+            background: #0056b3;
         }
         .result {
             font-size: 18px;
             margin-top: 20px;
             text-align: center;
+            color: #333;
         }
     </style>
 </head>
@@ -77,11 +84,12 @@
 
     <script>
         const currencyData = {
-            "USD": { symbol: "$", rates: { "USD": 1, "EUR": 0.93, "JPY": 146.51, "GBP": 0.77, "AUD": 1.56 } },
-            "EUR": { symbol: "€", rates: { "USD": 1.08, "EUR": 1, "JPY": 157.25, "GBP": 0.83, "AUD": 1.68 } },
-            "JPY": { symbol: "¥", rates: { "USD": 0.0068, "EUR": 0.0064, "JPY": 1, "GBP": 0.0053, "AUD": 0.0107 } },
-            "GBP": { symbol: "£", rates: { "USD": 1.30, "EUR": 1.21, "JPY": 188.36, "GBP": 1, "AUD": 2.01 } },
-            "AUD": { symbol: "$", rates: { "USD": 0.64, "EUR": 0.60, "JPY": 93.67, "GBP": 0.50, "AUD": 1 } }
+            "USD": { symbol: "$", rates: { "USD": 1, "EUR": 0.93, "JPY": 146.51, "GBP": 0.77, "AUD": 1.56, "CAD": 1.35 } },
+            "EUR": { symbol: "€", rates: { "USD": 1.08, "EUR": 1, "JPY": 157.25, "GBP": 0.83, "AUD": 1.68, "CAD": 1.45 } },
+            "JPY": { symbol: "¥", rates: { "USD": 0.0068, "EUR": 0.0064, "JPY": 1, "GBP": 0.0053, "AUD": 0.0107, "CAD": 0.0091 } },
+            "GBP": { symbol: "£", rates: { "USD": 1.30, "EUR": 1.21, "JPY": 188.36, "GBP": 1, "AUD": 2.01, "CAD": 1.81 } },
+            "AUD": { symbol: "$", rates: { "USD": 0.64, "EUR": 0.60, "JPY": 93.67, "GBP": 0.50, "AUD": 1, "CAD": 0.90 } },
+            "CAD": { symbol: "$", rates: { "USD": 0.74, "EUR": 0.69, "JPY": 109.89, "GBP": 0.55, "AUD": 1.11, "CAD": 1 } }
         };
 
         function populateCurrencyOptions() {
