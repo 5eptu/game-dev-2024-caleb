@@ -28,6 +28,7 @@
             margin-top: 70px; /* Adjusted margin */
             color: #00ff99; /* Neon green for text */
             text-shadow: 0 0 5px #00ff99; /* Glow effect */
+            position: relative;
         }
         h1 {
             font-family: 'Audiowide', cursive;
@@ -53,11 +54,10 @@
         .answer:hover {
             background: rgba(255, 255, 255, 0.4);
         }
-        .submit-btn {
+        .submit-btn, .start-btn {
             display: block;
             width: 100%;
             padding: 10px;
-            background: #ff007f; /* Neon pink button */
             border: none;
             border-radius: 5px;
             color: #fff;
@@ -65,8 +65,18 @@
             cursor: pointer;
             transition: background 0.3s;
         }
+        .submit-btn {
+            background: #ff007f; /* Neon pink button */
+        }
         .submit-btn:hover {
             background: #ff4c6f;
+        }
+        .start-btn {
+            background: #00ff99; /* Neon green button */
+            margin-bottom: 20px;
+        }
+        .start-btn:hover {
+            background: #00cc7a;
         }
         .feedback {
             margin-top: 20px;
@@ -79,6 +89,21 @@
         .feedback p {
             font-size: 1.2em;
             color: #00ff99; /* Neon green for feedback text */
+        }
+        .progress-container {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%;
+            background: #ff007f; /* Neon pink for progress bar */
+            width: 0;
+            border-radius: 10px;
+            transition: width 0.5s;
         }
         input[type="text"] {
             width: calc(100% - 20px);
@@ -102,10 +127,12 @@
 <body>
     <div class="container">
         <h1>Cyberpunk Quiz</h1>
-        <div id="quiz">
-            <!-- Questions will be inserted here by JavaScript -->
+        <div id="quiz"></div>
+        <button class="start-btn" onclick="startQuiz()">Start Quiz</button>
+        <button class="submit-btn" onclick="submitQuiz()" style="display: none;">Submit</button>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
         </div>
-        <button class="submit-btn" onclick="submitQuiz()">Submit</button>
         <div class="feedback" id="feedback">
             <!-- Feedback will be shown here -->
         </div>
@@ -177,48 +204,18 @@
 
         let currentQuestion = 0;
         let score = 0;
+        let totalQuestions = questions.length;
+
+        function startQuiz() {
+            document.querySelector('.start-btn').style.display = 'none';
+            document.querySelector('.submit-btn').style.display = 'block';
+            loadQuestion();
+            updateProgressBar();
+        }
 
         function loadQuestion() {
             const quizContainer = document.getElementById('quiz');
             quizContainer.innerHTML = `
                 <div class="question">
                     <h2>${questions[currentQuestion].question}</h2>
-                    ${questions[currentQuestion].answers.map((answer, index) => `
-                        <label class="answer">
-                            <input type="radio" name="answer" value="${index}">
-                            ${answer}
-                        </label>
-                    `).join('')}
-                </div>
-            `;
-        }
-
-        function submitQuiz() {
-            const answers = document.querySelectorAll('input[name="answer"]:checked');
-            if (answers.length !== questions.length) {
-                alert('Please answer all questions!');
-                return;
-            }
-
-            score = 0;
-            answers.forEach((answer, index) => {
-                if (parseInt(answer.value) === questions[index].correct) {
-                    score++;
-                }
-            });
-
-            showFeedback();
-        }
-
-        function showFeedback() {
-            const feedbackDiv = document.getElementById('feedback');
-            let message;
-
-            const scorePercentage = (score / questions.length) * 100;
-
-            if (scorePercentage < 50) {
-                message = feedbackMessages.fail[Math.floor(Math.random() * feedbackMessages.fail.length)];
-            } else if (scorePercentage < 60) {
-                message = feedbackMessages.pass[Math.floor(Math.random() * feedbackMessages.pass.length)];
-            } else if (scorePercentage < 70) {
-                message = feedbackMessages.merit[Math.floor(Math
+                    ${questions
