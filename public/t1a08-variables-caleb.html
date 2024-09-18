@@ -1,19 +1,41 @@
-<h1 align=center>tla08-variables-fred<h1>
-W3Schools link to variables ‹a href="https://www.w3schools.com/js/js_variables.asp"> here</a><br>
-Input 1:<input type=text id="myIn01" value="5" ><br> Input 2:<input type=text id="myIn02" value="7"><br> ‹input type=button value="Add and fix" onclick="{
-myTotal = document getElementById( 'myIn01'). value + document-getElementById ('myIn02'). value
-document. getElementById ('myDiv01'). innerHTML = 'Your answer is' + myTotal
-} ">
-‹div id="myDiv01">... </div>
-Copy and fix. parseInt() or parseFloat) try not to use var use let instead or const<br>
-‹ input type=button value="Add2 and fix" onclick="{
-let myx = document.getElementById( 'myIn01').value
-let myY = document.getElementById( 'myIn02'). value
-let myTotal = myx + myY
-document.getElementById( 'myDiv01'). innerHTML = 'Your answer is ' + myTotal
-} "><br‹br>
-Other programming languages use defined variables
-‹pre> boolean
-int8 or byte int double float char string
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tla08-variables-fred</title>
+</head>
+<body>
+    <h1 align="center">tla08-variables-fred</h1>
+    
+    <p>W3Schools link to variables <a href="https://www.w3schools.com/js/js_variables.asp">here</a></p>
+    
+    Input 1: <input type="text" id="myIn01" value="5"><br>
+    Input 2: <input type="text" id="myIn02" value="7"><br><br>
 
-</pre>
+    <input type="button" value="Add and fix" onclick="{
+        const myTotal = parseFloat(document.getElementById('myIn01').value) + parseFloat(document.getElementById('myIn02').value);
+        document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myTotal;
+    }"><br><br>
+
+    <div id="myDiv01">...</div><br><br>
+
+    <input type="button" value="Add2 and fix" onclick="{
+        let myX = parseFloat(document.getElementById('myIn01').value);
+        let myY = parseFloat(document.getElementById('myIn02').value);
+        let myTotal = myX + myY;
+        document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myTotal;
+    }"><br><br>
+
+    <p>Other programming languages use defined variables:</p>
+    <pre>
+boolean
+int8 or byte
+int
+double
+float
+char
+string
+    </pre>
+</body>
+</html>
