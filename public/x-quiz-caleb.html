@@ -13,18 +13,27 @@
             background-size: cover;
             margin: 0;
             padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
         .container {
             width: 80%;
-            margin: 0 auto;
+            max-width: 800px;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin-top: 70px; /* Adjusted margin */
+            color: #00ff99; /* Neon green for text */
+            text-shadow: 0 0 5px #00ff99; /* Glow effect */
         }
         h1 {
             font-family: 'Audiowide', cursive;
             text-align: center;
+            color: #ff007f; /* Neon pink for title */
+            text-shadow: 0 0 10px #ff007f;
         }
         .question {
             margin-bottom: 20px;
@@ -36,17 +45,25 @@
             display: block;
             margin: 5px 0;
             cursor: pointer;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .answer:hover {
+            background: rgba(255, 255, 255, 0.4);
         }
         .submit-btn {
             display: block;
             width: 100%;
             padding: 10px;
-            background: #ff0081;
+            background: #ff007f; /* Neon pink button */
             border: none;
             border-radius: 5px;
             color: #fff;
             font-size: 1.2em;
             cursor: pointer;
+            transition: background 0.3s;
         }
         .submit-btn:hover {
             background: #ff4c6f;
@@ -57,9 +74,28 @@
         }
         .feedback h2 {
             font-family: 'Audiowide', cursive;
+            color: #ff007f; /* Neon pink for feedback title */
         }
         .feedback p {
             font-size: 1.2em;
+            color: #00ff99; /* Neon green for feedback text */
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 2px solid #00ff99;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            margin-top: 10px;
+        }
+        input[type="text"]::placeholder {
+            color: #ccc;
+        }
+        .bonus-feedback {
+            font-size: 1em;
+            color: #ff007f;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -77,56 +113,16 @@
 
     <script>
         const questions = [
-            {
-                question: "What is the capital of France?",
-                answers: ["Berlin", "Madrid", "Paris", "Lisbon"],
-                correct: 2
-            },
-            {
-                question: "Which planet is known as the Red Planet?",
-                answers: ["Earth", "Mars", "Jupiter", "Saturn"],
-                correct: 1
-            },
-            {
-                question: "Who wrote 'To Kill a Mockingbird'?",
-                answers: ["Harper Lee", "Mark Twain", "J.K. Rowling", "Ernest Hemingway"],
-                correct: 0
-            },
-            {
-                question: "What is the chemical symbol for gold?",
-                answers: ["Au", "Ag", "Pb", "Fe"],
-                correct: 0
-            },
-            {
-                question: "What is the powerhouse of the cell?",
-                answers: ["Nucleus", "Ribosome", "Mitochondria", "Endoplasmic Reticulum"],
-                correct: 2
-            },
-            {
-                question: "Which country is known as the Land of the Rising Sun?",
-                answers: ["China", "Japan", "South Korea", "Thailand"],
-                correct: 1
-            },
-            {
-                question: "What is the smallest prime number?",
-                answers: ["0", "1", "2", "3"],
-                correct: 2
-            },
-            {
-                question: "What is the freezing point of water in Celsius?",
-                answers: ["0°C", "32°C", "100°C", "273°C"],
-                correct: 0
-            },
-            {
-                question: "What year did the Titanic sink?",
-                answers: ["1912", "1905", "1918", "1920"],
-                correct: 0
-            },
-            {
-                question: "Who painted the Mona Lisa?",
-                answers: ["Vincent van Gogh", "Claude Monet", "Leonardo da Vinci", "Pablo Picasso"],
-                correct: 2
-            }
+            { question: "What is the capital of France?", answers: ["Berlin", "Madrid", "Paris", "Lisbon"], correct: 2 },
+            { question: "Which planet is known as the Red Planet?", answers: ["Earth", "Mars", "Jupiter", "Saturn"], correct: 1 },
+            { question: "Who wrote 'To Kill a Mockingbird'?", answers: ["Harper Lee", "Mark Twain", "J.K. Rowling", "Ernest Hemingway"], correct: 0 },
+            { question: "What is the chemical symbol for gold?", answers: ["Au", "Ag", "Pb", "Fe"], correct: 0 },
+            { question: "What is the powerhouse of the cell?", answers: ["Nucleus", "Ribosome", "Mitochondria", "Endoplasmic Reticulum"], correct: 2 },
+            { question: "Which country is known as the Land of the Rising Sun?", answers: ["China", "Japan", "South Korea", "Thailand"], correct: 1 },
+            { question: "What is the smallest prime number?", answers: ["0", "1", "2", "3"], correct: 2 },
+            { question: "What is the freezing point of water in Celsius?", answers: ["0°C", "32°C", "100°C", "273°C"], correct: 0 },
+            { question: "What year did the Titanic sink?", answers: ["1912", "1905", "1918", "1920"], correct: 0 },
+            { question: "Who painted the Mona Lisa?", answers: ["Vincent van Gogh", "Claude Monet", "Leonardo da Vinci", "Pablo Picasso"], correct: 2 }
         ];
 
         const feedbackMessages = {
@@ -172,6 +168,10 @@
                 "You’re a legend congratulations",
                 "Exceptional! You crushed it.",
                 "Flawless",
+                "Perfect! Quiz master!",
+                "Top-tier! You’re a genius!",
+                "Spectacular! You nailed it!",
+                "Brilliant! You're a genius!"
             ]
         };
 
@@ -214,34 +214,11 @@
             const feedbackDiv = document.getElementById('feedback');
             let message;
 
-            if (score / questions.length < 0.5) {
+            const scorePercentage = (score / questions.length) * 100;
+
+            if (scorePercentage < 50) {
                 message = feedbackMessages.fail[Math.floor(Math.random() * feedbackMessages.fail.length)];
-            } else if (score / questions.length < 0.6) {
+            } else if (scorePercentage < 60) {
                 message = feedbackMessages.pass[Math.floor(Math.random() * feedbackMessages.pass.length)];
-            } else if (score / questions.length < 0.8) {
-                message = feedbackMessages.merit[Math.floor(Math.random() * feedbackMessages.merit.length)];
-            } else {
-                message = feedbackMessages.genius[Math.floor(Math.random() * feedbackMessages.genius.length)];
-            }
-
-            feedbackDiv.innerHTML = `
-                <h2>Quiz Complete!</h2>
-                <p>Your Score: ${score}/${questions.length}</p>
-                <p>${message}</p>
-                <p><strong>Bonus Question:</strong> What is the color of the sky (Hint: You will always get this wrong!)</p>
-                <input type="text" id="bonus-answer" placeholder="Your answer here">
-                <button class="submit-btn" onclick="checkBonus()">Submit Bonus Answer</button>
-                <p id="bonus-feedback"></p>
-            `;
-        }
-
-        function checkBonus() {
-            const bonusAnswer = document.getElementById('bonus-answer').value;
-            const bonusFeedback = document.getElementById('bonus-feedback');
-            bonusFeedback.innerHTML = `Your answer: "${bonusAnswer}" - That’s not quite right..`;
-        }
-
-        loadQuestion();
-    </script>
-</body>
-</html>
+            } else if (scorePercentage < 70) {
+                message = feedbackMessages.merit[Math.floor(Math
