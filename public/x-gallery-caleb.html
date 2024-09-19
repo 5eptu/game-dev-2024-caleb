@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGF Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-image: url('https://wallpapers.com/images/hd/red-space-1920-x-1080-background-ptjivpuphkno1bw8.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* Prevents horizontal overflow */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-family: 'Chakra Petch', sans-serif;
+        }
+
+        .gallery-section {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5); /* Separate the art from the background */
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .logo-grid img {
+            width: 100%;
+            max-width: 250px;
+            border: 2px solid red;
+            background: rgba(255, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .logo-grid img:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-grid p {
+            margin: 5px 0;
+            padding: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.7); /* Adds small background to text */
+            border-radius: 5px;
+            text-align: center;
+            background-clip: text; /* Clip the background to the text */
+            -webkit-background-clip: text;
+            color: transparent; /* Make text transparent to show the gradient */
+        }
+
+        /* Text gradients for each logo */
+        .gmail-text {
+            background: linear-gradient(45deg, #D14836, #F4C20D);
+        }
+
+        .microsoft-text {
+            background: linear-gradient(45deg, #F25022, #7FBA00, #00A4EF, #FFB900);
+        }
+
+        .disney-text {
+            background: linear-gradient(45deg, #113CCF, #00A4EF);
+        }
+
+        .walmart-text {
+            background: linear-gradient(45deg, #0071CE, #F9A825);
+        }
+
+        .home-depot-text {
+            background: linear-gradient(45deg, #F96302, #FCCE03);
+        }
+
+        .mcdonalds-text {
+            background: linear-gradient(45deg, #DA291C, #FFCC00);
+        }
+
+        .lego-text {
+            background: linear-gradient(45deg, #E2231A, #FDDC00);
+        }
+
+        .custom-scrollbar {
+            height: 100vh;
+            overflow-y: scroll;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 0, 0, 0.3);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: red;
+            border-radius: 6px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+        }
+
+        audio {
+            width: 300px;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: rgba(255, 0, 0, 0.8);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>United Gamer Federation Gallery</h1>
+    </header>
+
+    <div class="custom-scrollbar">
+        <main>
+            <!-- United Federation Section -->
+            <section class="gallery-section">
+                <h2 class="section-title">United Federation</h2>
+                <div class="logo-grid">
+<div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/United%20Gamer%20Federation%20(A).png" alt="United Federation Parent">
+                    <p>United Federation (Parent)</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Eradicator2.png" alt="United Federation Eradication Unit">
+                    <p>United Federation Eradication Unit</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/unitedgamerfederationfortificationunit.png" alt="United Federation Fortification Unit">
+                    <p>United Federation Fortification Unit</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/United%20Federation%20Incendiary%20Division.png" alt="United Federation Incendiary Division">
+                    <p>United Federation Incendiary Division</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/ugfmarinecorps.png" alt="United Federation Marine Corps">
+                    <p>United Federation Marine Corps</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/unitedgamerfederationnavy.png" alt="United Federation Navy">
+                    <p>United Federation Navy</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/synthintelligenceagency.png" alt="Synth Intelligence Agency">
+                    <p>Synth Intelligence Agency</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Void%20Evasion%20Special%20Forces.png" alt="Void Special Forces">
+                    <p>Void Evasion Special Forces</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/ugfresearchanddevelopment.png" alt="Advanced Research & Development">
+                    <p>Advanced Research & Development</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/cos-22.png" alt="Task Force Cos-22">
+                    <p>Task Force Cos-22</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/rift-404.png" alt="Task Force Rift-404">
+                    <p>Task Force Rift-404</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corporate Section -->
+        <section class="gallery-section">
+            <h2 class="section-title">Corporate</h2>
+            <div class="logo-grid">
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Rythen%20Arms.png" alt="Rythen Arms">
+                    <p>Rythen Arms</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Cesco%20Music%20Group.png" alt="Cesco Music Group">
+                    <p>Cesco Music Group</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Xtract%20Services%20(Q).png" alt="Xtract Services">
+                    <p>Xtract Services</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/InkTech%20Quote.png" alt="InkTech">
+                    <p>InkTech</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Elgius.png" alt="Elgius Inc.">
+                    <p>Elgius Inc.</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Particle%20Corporation.png" alt="CyberWorks">
+                    <p>CyberWorks</p>
+                </div>
+                <div>
+                    <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Swarm%20Car%20Company.png" alt="Swarm Car Company">
+                    <p>Swarm Car Company</p>
+                </div>
+                </div>
+            </section>
+
+            <!-- Artificial Intelligence Section -->
+            <section class="gallery-section">
+                <h2 class="section-title">Artificial Intelligence</h2>
+                <div class="logo-grid">
+                    <div>
+                        <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/CoPilotV1.png" alt="COPILOT">
+                        <p>COPILOT</p>
+                    </div>
+                    <div>
+                        <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/GlyphAI%20(L).png" alt="Glyph AI">
+                        <p>Glyph AI</p>
+                    </div>
+                    <div>
+                        <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/GenoAI.png" alt="GenoAI">
+                        <p>GenoAI</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Evil Corporation Designs Section -->
+            <section class="gallery-section">
+                <h2 class="section-title">Evil Corporation Designs</h2>
+                <div class="logo-grid">
+                    <div>
+                        <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Gmail.png" alt="Gmail">
+                        <p class="gmail-text">Gmail</p>
+                    </div>
+                    <div>
+                        <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Microsoft.png" alt="Microsoft">
+                        <p class="microsoft-text">Microsoft</p>
+                    </div>
+                    <div>
+                        <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Disney.png" alt="Disney">
+                        <p class="disney-text">Disney</p>
+                    </div>
+                    <div>
+                        <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Walmart.png" alt="Walmart">
+                        <p class="walmart-text">Walmart</p>
+                    </div>
+                    <div>
+                        <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/Home%20Depot.jpg" alt="Home Depot">
+                        <p class="home-depot-text">Home Depot</p>
+                    </div>
+                    <div>
+                        <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/McDonalds.jpg" alt="McDonalds">
+                        <p class="mcdonalds-text">McDonalds</p>
+                    </div>
+                    <div>
+                        <img src="https://sd75-my.sharepoint.com/personal/1345298_learn75_ca/Documents/Desktop/UGF%20Graphic%20Design/LEGO%20EVIL.jpg" alt="Lego">
+                        <p class="lego-text">Lego</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <audio controls>
+                <source src="your-audio-file.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </footer>
+    </div>
+</body>
+</html>
