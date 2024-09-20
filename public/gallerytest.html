@@ -230,9 +230,9 @@
     </div>
 </div>
 
-<div class="modal" id="modal">
+<div class="modal" id="modal" onclick="closeModal(event)">
     <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="close" onclick="closeModal(event)">&times;</span>
         <h2 id="modal-title"></h2>
         <img id="modal-image" src="" alt="">
     </div>
@@ -245,8 +245,10 @@
         document.getElementById('modal').style.display = 'flex';
     }
 
-    function closeModal() {
-        document.getElementById('modal').style.display = 'none';
+    function closeModal(event) {
+        if (event.target === document.getElementById('modal') || event.target.classList.contains('close')) {
+            document.getElementById('modal').style.display = 'none';
+        }
     }
 </script>
 
