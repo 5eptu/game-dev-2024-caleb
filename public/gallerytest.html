@@ -41,7 +41,7 @@
         }
 
         .logo img {
-            width: 80%;
+            width: 100px; /* Adjusted size for better visibility */
             height: auto;
         }
 
@@ -53,8 +53,10 @@
             text-align: center;
             color: white;
             font-weight: bold;
+            background: rgba(0, 0, 0, 0.7); /* Fitting background */
             max-height: 80vh;
             overflow-y: auto;
+            font-size: 16px; /* Increased font size for readability */
         }
 
         /* Gradient for titles */
@@ -62,6 +64,7 @@
             background: linear-gradient(to right, #FF5733, #C70039, #900C3F);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-size: 24px; /* Title font size */
         }
 
         .modal {
@@ -78,7 +81,7 @@
         }
 
         .modal-content {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             padding: 20px;
             text-align: center;
@@ -88,7 +91,7 @@
         }
 
         .modal-content img {
-            width: 200px;
+            width: 250px; /* Adjusted for better visibility */
             height: auto;
         }
 
@@ -199,13 +202,40 @@
         <span class="close" onclick="closeModal(event)">&times;</span>
         <h2 class="gradient-title" id="modal-title"></h2>
         <img id="modal-image" src="" alt="">
+        <div id="modal-description" class="description"></div>
     </div>
 </div>
 
 <script>
     function showModal(title, imageSrc, logoTitle) {
+        const descriptions = {
+            'United Federation': 'The central governing body of the United Federation.',
+            'Fortification Unit': 'Specialized in defense and fortifications.',
+            'Eradication Unit': 'Tasked with neutralizing threats to the federation.',
+            'Incendiary Division': 'Experts in fire-based tactics.',
+            'Marine Corps': 'Naval infantry that specializes in amphibious operations.',
+            'Navy': 'The maritime force of the federation.',
+            'Research & Development': 'Innovative unit focusing on advanced technologies.',
+            'Intelligence Agency': 'Gathering and analyzing intelligence data.',
+            'Void Special Forces': 'Elite unit operating in high-risk environments.',
+            'Task Force COS-22': 'Specialized task force for critical operations.',
+            'Task Force RIFT-404': 'Task force dealing with inter-dimensional threats.',
+            'InkTech': 'Leading company in ink and print technologies.',
+            'Elgius Inc.': 'Innovator in various tech sectors.',
+            'CyberWorks': 'Focus on cybersecurity solutions.',
+            'Xtract Services': 'Provider of extraction and logistics services.',
+            'Rythen Arms': 'Manufacturer of high-grade weaponry.',
+            'Swarm Car Company': 'Automaker specializing in autonomous vehicles.',
+            'Cesco Music Group': 'Leading music production company.',
+            'Copilot': 'AI assistant enhancing user capabilities.',
+            'Glyph': 'AI specializing in language processing.',
+            'GenoAI': 'AI focused on genetic research.',
+            'FlakeAI': 'AI for predictive analytics and insights.'
+        };
+
         document.getElementById('modal-title').innerText = logoTitle;
         document.getElementById('modal-image').src = imageSrc;
+        document.getElementById('modal-description').innerText = descriptions[logoTitle] || '';
         document.getElementById('modal').style.display = 'flex';
     }
 
