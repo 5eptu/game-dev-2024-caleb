@@ -15,27 +15,29 @@
             padding: 0;
             overflow: hidden;
         }
+        .header {
+            text-align: center;
+            padding: 20px;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .logo-section {
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            background-color: rgba(30, 30, 30, 0.8);
+        }
         .logo-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            padding: 20px;
-            margin-top: 20px;
-        }
-        .logo-section {
-            width: 100%;
-            margin: 20px 0;
-            text-align: center;
-            padding: 10px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.7);
         }
         .logo {
             margin: 15px;
             cursor: pointer;
             transition: transform 0.3s, filter 0.3s;
-            width: 120px; /* Medium size */
+            width: 100px; /* Adjust size */
             filter: brightness(0.8);
         }
         .logo:hover {
@@ -93,7 +95,6 @@
             overflow-y: auto; /* Enable scrolling */
             line-height: 1.5;
             font-size: 16px;
-            padding: 10px;
         }
         /* Unique gradients for each title */
         .united-federation { background: linear-gradient(90deg, #ff0055, #ffbb00); }
@@ -122,29 +123,36 @@
 </head>
 <body>
 
-<div class="logo-section">
-    <h2>Logo Gallery</h2>
-</div>
+<div class="header">Logo Gallery</div>
 
-<div class="logo-container">
-    <div class="logo-section">
+<div class="logo-section">
+    <h2>United Federation</h2>
+    <div class="logo-container">
         <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation" class="logo" onclick="showModal('United Federation', 'united-federation', 'The central governing body of the United Federation. Committed to peace and prosperity, this organization oversees various military and civil operations throughout the galaxy.')">
         <img src="https://i.imgur.com/wg3hJto.png" alt="Fortification Unit" class="logo" onclick="showModal('Fortification Unit', 'fortification-unit', 'Specialized in defense and fortifications, this unit is essential for maintaining the safety of federation outposts and installations.')">
         <img src="https://i.imgur.com/X1sUC95.png" alt="Eradication Unit" class="logo" onclick="showModal('Eradication Unit', 'eradication-unit', 'Tasked with neutralizing threats to the federation, this unit operates in hostile environments, ensuring that dangers are swiftly dealt with.')">
+    </div>
+</div>
+
+<div class="logo-section">
+    <h2>Corporate</h2>
+    <div class="logo-container">
         <img src="https://i.imgur.com/ryZDDNz.png" alt="Incendiary Division" class="logo" onclick="showModal('Incendiary Division', 'incendiary-division', 'Experts in fire-based tactics, this division employs advanced weaponry to engage enemies effectively in combat situations.')">
         <img src="https://i.imgur.com/wSahQGY.png" alt="Marine Corps" class="logo" onclick="showModal('Marine Corps', 'marine-corps', 'A highly trained unit specializing in marine operations, they excel in amphibious assaults and coastal defense.')">
         <img src="https://i.imgur.com/C5hPaSL.png" alt="Navy" class="logo" onclick="showModal('Navy', 'navy', 'Naval forces that protect federation waters, equipped with cutting-edge vessels and technology for maritime security.')">
-    </div>
-    <div class="logo-section">
         <img src="https://i.imgur.com/OVuVMEa.png" alt="Research & Development" class="logo" onclick="showModal('Research & Development', 'research-development', 'Innovating new technologies for the federation, this department is crucial for advancements in military and civilian applications.')">
         <img src="https://i.imgur.com/s0VAxS4.png" alt="Intelligence Agency" class="logo" onclick="showModal('Intelligence Agency', 'intelligence-agency', 'Conducts intelligence operations and surveillance to maintain national security and respond to emerging threats.')">
-        <img src="https://i.imgur.com/T71K9PY.png" alt="Void Special Forces" class="logo" onclick="showModal('Void Special Forces', 'void-special-forces', 'Elite unit specializing in covert operations, capable of executing missions under extreme conditions.')">
-        <img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force COS-22" class="logo" onclick="showModal('Task Force COS-22', 'task-force-cos22', 'Special task force with advanced capabilities, known for tackling high-risk missions that require precision and skill.')">
-        <img src="https://i.imgur.com/2fVv3bA.png" alt="Task Force Rift-404" class="logo" onclick="showModal('Task Force Rift-404', 'task-force-rift404', 'Rapid response team designed to handle crises and emergencies across the federation.')">
     </div>
-    <div class="logo-section">
-        <img src="https://i.imgur.com/TApuMUk.png" alt="InkTech" class="logo" onclick="showModal('InkTech', 'inktech', 'Pioneers in bioprinting and organic technology, transforming how we approach healthcare and human augmentation.')">
-        <img src="https://i.imgur.com/XA0gDS0.png" alt="Elgius Inc." class="logo" onclick="showModal('Elgius Inc.', 'elgius-inc', 'A conglomerate focused on innovation in consumer electronics and cutting-edge technology solutions.')">
+</div>
+
+<div class="logo-section">
+    <h2>AI</h2>
+    <div class="logo-container">
+        <img src="https://i.imgur.com/T71K9PY.png" alt="Void Special Forces" class="logo" onclick="showModal('Void Special Forces', 'void-special-forces', 'Elite unit specializing in covert operations, capable of executing missions under extreme conditions.')">
+        <img src="https://i.imgur.com/BSh6A2v.png" alt="Task Force COS22" class="logo" onclick="showModal('Task Force COS22', 'task-force-cos22', 'Task force dedicated to countering threats in outer space, utilizing advanced spacecraft for surveillance and combat.')">
+        <img src="https://i.imgur.com/l8OE0zK.png" alt="Task Force Rift404" class="logo" onclick="showModal('Task Force Rift404', 'task-force-rift404', 'Special operations unit that handles interdimensional threats and anomalies, ensuring the safety of the federation.')">
+        <img src="https://i.imgur.com/O3i3UoD.png" alt="InkTech" class="logo" onclick="showModal('InkTech', 'inktech', 'Leading tech firm specializing in ink technology for advanced printing and manufacturing solutions.')">
+        <img src="https://i.imgur.com/Owdgm4y.png" alt="Elgius Inc." class="logo" onclick="showModal('Elgius Inc.', 'elgius-inc', 'A conglomerate focused on innovation in consumer electronics and cutting-edge technology solutions.')">
         <img src="https://i.imgur.com/fX3p0vc.png" alt="CyberWorks" class="logo" onclick="showModal('CyberWorks', 'cyberworks', 'Experts in cybernetics, CyberWorks develops advanced technologies for enhanced human capabilities.')">
         <img src="https://i.imgur.com/VByCBHC.png" alt="Xtract Services" class="logo" onclick="showModal('Xtract Services', 'xtract-services', 'Providing extraction and recovery services for the federation, ensuring vital resources are secured and utilized efficiently.')">
         <img src="https://i.imgur.com/NBVG2go.png" alt="Rythen Arms" class="logo" onclick="showModal('Rythen Arms', 'rythen-arms', 'Manufacturer of advanced weaponry and military equipment for the federation forces.')">
