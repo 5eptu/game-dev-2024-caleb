@@ -4,252 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futuristic Art Gallery</title>
-    <link rel="stylesheet" href="gallery-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Jura', sans-serif;
+            color: white;
+            background-image: url('https://wallpapers.com/images/hd/red-space-1920-x-1080-background-ptjivpuphkno1bw8.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #ff4c4c;
+            text-shadow: 0 0 10px #ff4c4c, 0 0 20px #ff4c4c;
+            margin: 50px 0 20px 0;
+        }
+
+        .gallery-container {
+            padding: 50px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gallery-section {
+            width: 80%;
+            margin-bottom: 60px;
+        }
+
+        .gallery-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .gallery-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .gallery-item img {
+            max-width: 100%;
+            max-height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #ff4c4c, 0 0 60px #ff4c4c;
+        }
+
+        .gallery-item:hover img {
+            transform: translateZ(50px);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                width: 100px;
+                height: 100px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="gallery-container">
-        <!-- United Federation -->
+        <!-- United Federation Section -->
         <section class="gallery-section united-federation">
             <h2>United Federation Logos</h2>
             <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="united-federation-logo.png" alt="United Federation Logo">
-                    <div class="logo-title">United Federation</div>
-                </div>
+                <div class="gallery-item"><img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/wg3hJto.png" alt="United Federation Fortification Unit"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/X1sUC95.png" alt="United Federation Eradication Unit"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/ryZDDNz.png" alt="United Federation Incendiary Division"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/wSahQGY.png" alt="United Federation Marine Corps"></div>
             </div>
-        </section>
-
-        <!-- Fortification Unit -->
-        <section class="gallery-section fortification-unit">
-            <h2>Fortification Unit Logos</h2>
             <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="fortification-unit-logo.png" alt="Fortification Unit Logo">
-                    <div class="logo-title">Fortification Unit</div>
-                </div>
+                <div class="gallery-item"><img src="https://i.imgur.com/P6CTkFh.png" alt="United Federation Navy"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/C5hPaSL.png" alt="Advanced Research & Development"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/OVuVMEa.png" alt="Synth Intelligence Agency"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/s0VAxS4.png" alt="Void Special Forces"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/T71K9PY.png" alt="Task Force COS-22"></div>
             </div>
-        </section>
-
-        <!-- Eradication Unit -->
-        <section class="gallery-section eradication-unit">
-            <h2>Eradication Unit Logos</h2>
             <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="eradication-unit-logo.png" alt="Eradication Unit Logo">
-                    <div class="logo-title">Eradication Unit</div>
-                </div>
+                <div class="gallery-item"><img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force RIFT-404"></div>
             </div>
         </section>
 
-        <!-- Incendiary Division -->
-        <section class="gallery-section incendiary-division">
-            <h2>Incendiary Division Logos</h2>
+        <!-- Corporate Section -->
+        <section class="gallery-section corporate">
+            <h2>Corporate Logos</h2>
             <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="incendiary-division-logo.png" alt="Incendiary Division Logo">
-                    <div class="logo-title">Incendiary Division</div>
-                </div>
+                <div class="gallery-item"><img src="https://i.imgur.com/fy8EJgm.png" alt="InkTech"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/o8j0hY0.png" alt="Elgius Inc."></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/fX3p0vc.png" alt="CyberWorks"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/VByCBHC.png" alt="Xtract Services"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/NBVG2go.png" alt="Rythen Arms"></div>
             </div>
-        </section>
-
-        <!-- Marine Corps -->
-        <section class="gallery-section marine-corps">
-            <h2>Marine Corps Logos</h2>
             <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="marine-corps-logo.png" alt="Marine Corps Logo">
-                    <div class="logo-title">Marine Corps</div>
-                </div>
+                <div class="gallery-item"><img src="https://i.imgur.com/2YJzFrs.png" alt="Swarm Car Company"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/JgNRia0.png" alt="Cesco Music Group"></div>
             </div>
         </section>
 
-        <!-- Navy -->
-        <section class="gallery-section navy">
-            <h2>Navy Logos</h2>
+        <!-- Artificial Intelligence Section -->
+        <section class="gallery-section artificial-intelligence">
+            <h2>Artificial Intelligence Logos</h2>
             <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="navy-logo.png" alt="Navy Logo">
-                    <div class="logo-title">Navy</div>
-                </div>
+                <div class="gallery-item"><img src="https://i.imgur.com/EzZAgYR.png" alt="Copilot"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/lEY7MpC.png" alt="Glyph"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/F5vsxlB.png" alt="GenoAI"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/TrGNgCO.png" alt="FlakeAI"></div>
             </div>
         </section>
-
-        <!-- Advanced R&D -->
-        <section class="gallery-section advanced-rd">
-            <h2>Advanced R&D Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="advanced-rd-logo.png" alt="Advanced R&D Logo">
-                    <div class="logo-title">Advanced R&D</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Synth Intelligence -->
-        <section class="gallery-section synth-intelligence">
-            <h2>Synth Intelligence Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="synth-intelligence-logo.png" alt="Synth Intelligence Logo">
-                    <div class="logo-title">Synth Intelligence</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Void Special Forces -->
-        <section class="gallery-section void-special-forces">
-            <h2>Void Special Forces Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="void-special-forces-logo.png" alt="Void Special Forces Logo">
-                    <div class="logo-title">Void Special Forces</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Task Force COS-22 -->
-        <section class="gallery-section cos22">
-            <h2>Task Force COS-22 Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="cos22-logo.png" alt="Task Force COS-22 Logo">
-                    <div class="logo-title">Task Force COS-22</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Task Force RIFT-404 -->
-        <section class="gallery-section rift404">
-            <h2>Task Force RIFT-404 Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="rift404-logo.png" alt="Task Force RIFT-404 Logo">
-                    <div class="logo-title">Task Force RIFT-404</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- InkTech -->
-        <section class="gallery-section inktech">
-            <h2>InkTech Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="inktech-logo.png" alt="InkTech Logo">
-                    <div class="logo-title">InkTech</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Elgius Inc -->
-        <section class="gallery-section elgius-inc">
-            <h2>Elgius Inc Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="elgius-inc-logo.png" alt="Elgius Inc Logo">
-                    <div class="logo-title">Elgius Inc</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CyberWorks -->
-        <section class="gallery-section cyberworks">
-            <h2>CyberWorks Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="cyberworks-logo.png" alt="CyberWorks Logo">
-                    <div class="logo-title">CyberWorks</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Xtract Services -->
-        <section class="gallery-section xtract-services">
-            <h2>Xtract Services Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="xtract-services-logo.png" alt="Xtract Services Logo">
-                    <div class="logo-title">Xtract Services</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Rythen Arms -->
-        <section class="gallery-section rythen-arms">
-            <h2>Rythen Arms Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="rythen-arms-logo.png" alt="Rythen Arms Logo">
-                    <div class="logo-title">Rythen Arms</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Swarm Car -->
-        <section class="gallery-section swarm-car">
-            <h2>Swarm Car Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="swarm-car-logo.png" alt="Swarm Car Logo">
-                    <div class="logo-title">Swarm Car</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Cesco Music -->
-        <section class="gallery-section cesco-music">
-            <h2>Cesco Music Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="cesco-music-logo.png" alt="Cesco Music Logo">
-                    <div class="logo-title">Cesco Music</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CoPilot -->
-        <section class="gallery-section copilot">
-            <h2>CoPilot Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="copilot-logo.png" alt="CoPilot Logo">
-                    <div class="logo-title">CoPilot</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Glyph -->
-        <section class="gallery-section glyph">
-            <h2>Glyph Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="glyph-logo.png" alt="Glyph Logo">
-                    <div class="logo-title">Glyph</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- GenoAI -->
-        <section class="gallery-section genoai">
-            <h2>GenoAI Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="genoai-logo.png" alt="GenoAI Logo">
-                    <div class="logo-title">GenoAI</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FlakeAI -->
-        <section class="gallery-section flakeai">
-            <h2>FlakeAI Logos</h2>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="flakeai-logo.png" alt="FlakeAI Logo">
-                    <div class="logo-title">FlakeAI</div>
-                </div>
-            </div>
-        </section>
-
     </div>
 </body>
 </html>
