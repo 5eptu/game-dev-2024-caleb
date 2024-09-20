@@ -1,1 +1,173 @@
+/* General body and font settings */
+body {
+  font-family: 'Chakra Petch', sans-serif;
+  background-image: url('https://wallpapers.com/images/hd/red-space-1920-x-1080-background-ptjivpuphkno1bw8.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main container for the gallery */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Individual logo container */
+.logo-container {
+  width: 200px;
+  margin: 20px;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.1);
+}
+
+/* Logo images */
+.logo-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Explanation box */
+.explanation {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+/* Typing effect within explanation */
+.explanation::after {
+  content: '|';
+  font-weight: bold;
+  margin-left: 5px;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Titles under logos */
+.logo-title {
+  margin-top: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff0000, #ff7f00); /* Placeholder gradient, adjust per logo */
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+/* Adjust gradients for each title */
+.logo-title.uf { 
+  background: linear-gradient(to right, #ff0000, #8b0000); /* Red gradient */
+}
+
+.logo-title.uf-fortification {
+  background: linear-gradient(to right, #cccccc, #666666); /* Fortification gray gradient */
+}
+
+.logo-title.uf-eradication {
+  background: linear-gradient(to right, #ff4500, #b22222); /* Orange-red gradient */
+}
+
+.logo-title.uf-incendiary {
+  background: linear-gradient(to right, #ff7f00, #ff0000); /* Fire gradient */
+}
+
+.logo-title.uf-marines {
+  background: linear-gradient(to right, #000080, #1e90ff); /* Navy blue gradient */
+}
+
+.logo-title.uf-navy {
+  background: linear-gradient(to right, #4682b4, #1e90ff); /* Lighter blue gradient */
+}
+
+.logo-title.advanced-research {
+  background: linear-gradient(to right, #00ff7f, #006400); /* Green gradient */
+}
+
+.logo-title.synth-intelligence {
+  background: linear-gradient(to right, #9400d3, #4b0082); /* Purple gradient */
+}
+
+.logo-title.void-special {
+  background: linear-gradient(to right, #8b0000, #000000); /* Dark red to black gradient */
+}
+
+.logo-title.taskforce-cos {
+  background: linear-gradient(to right, #ff1493, #ff69b4); /* Pink gradient */
+}
+
+.logo-title.taskforce-rift {
+  background: linear-gradient(to right, #00ff7f, #2e8b57); /* Green gradient */
+}
+
+/* Corporate titles */
+.logo-title.inktech {
+  background: linear-gradient(to right, #0000ff, #4169e1); /* Blue gradient */
+}
+
+.logo-title.elgius {
+  background: linear-gradient(to right, #8b0000, #ff0000); /* Red gradient */
+}
+
+.logo-title.cyberworks {
+  background: linear-gradient(to right, #00ffff, #008b8b); /* Cyan gradient */
+}
+
+.logo-title.xtract {
+  background: linear-gradient(to right, #ff8c00, #ff4500); /* Orange gradient */
+}
+
+.logo-title.rythen {
+  background: linear-gradient(to right, #a52a2a, #ff6347); /* Brown gradient */
+}
+
+.logo-title.swarm-car {
+  background: linear-gradient(to right, #ffff00, #ffd700); /* Yellow gradient */
+}
+
+.logo-title.cesco-music {
+  background: linear-gradient(to right, #ff69b4, #ff1493); /* Pink gradient */
+}
+
+/* AI Section Titles */
+.logo-title.copilot {
+  background: linear-gradient(to right, #00ff7f, #32cd32); /* Light green gradient */
+}
+
+.logo-title.glyph {
+  background: linear-gradient(to right, #4682b4, #1e90ff); /* Blue gradient */
+}
+
+.logo-title.genoai {
+  background: linear-gradient(to right, #9400d3, #8a2be2); /* Purple gradient */
+}
+
+.logo-title.flakeai {
+  background: linear-gradient(to right, #00ffff, #4682b4); /* Cyan gradient */
+}
 
