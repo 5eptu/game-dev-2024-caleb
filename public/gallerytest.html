@@ -4,267 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logo Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: url('https://wallpapers.com/images/hd/red-space-1920-x-1080-background-ptjivpuphkno1bw8.jpg') no-repeat center center fixed;
+            background-image: url('https://wallpapers.com/images/hd/red-space-1920-x-1080-background-ptjivpuphkno1bw8.jpg');
             background-size: cover;
             color: white;
+            font-family: 'Orbitron', sans-serif;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
-
-        .container {
-            width: 80%;
-            margin: auto;
+        .logo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             padding: 20px;
+            margin-top: 20px;
         }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .logos {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-            justify-items: center;
-        }
-
         .logo {
+            margin: 15px;
             cursor: pointer;
-            transition: transform 0.2s;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 10px;
-            text-align: center;
+            transition: transform 0.3s, filter 0.3s;
+            width: 100px; /* Adjust size */
+            filter: brightness(0.8);
         }
-
-        .logo img {
-            width: 120px; /* Adjusted size for better visibility */
-            height: auto;
+        .logo:hover {
+            transform: scale(1.1);
+            filter: brightness(1);
         }
-
-        .description {
-            display: none;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 10px;
-            text-align: center;
-            color: white; /* White text for descriptions */
-            background: rgba(30, 30, 30, 0.9); /* Dark mode background */
-            max-height: 60vh; /* Increased height for better fit */
-            overflow-y: auto; /* Allows scrolling */
-            font-size: 18px; /* Increased font size for readability */
-            line-height: 1.5; /* Improved line spacing */
-        }
-
-        /* Gradient for titles */
-        .gradient-title {
-            background: linear-gradient(to right, #FF5733, #C70039, #900C3F);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 24px; /* Title font size */
-        }
-
         .modal {
             display: none;
             position: fixed;
-            top: 0;
+            z-index: 1000;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: rgba(30, 30, 30, 0.9); /* Dark background for modal content */
-            border-radius: 10px;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
             padding: 20px;
-            text-align: center;
-            max-width: 80vw;
-            max-height: 80vh;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
-
-        .modal-content img {
-            width: 300px; /* Adjusted for better visibility */
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        .close {
-            cursor: pointer;
-            font-size: 20px;
-            color: red;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        /* Custom scrollbar */
-        .description::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .description::-webkit-scrollbar-thumb {
-            background: #888; 
+        .modal-content {
+            background-color: #222;
+            margin: auto;
+            padding: 20px;
             border-radius: 10px;
+            width: 80%;
+            max-height: 80%;
+            overflow-y: auto; /* Add scroll */
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
         }
-
-        .description::-webkit-scrollbar-thumb:hover {
-            background: #555; 
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
         }
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .title {
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 24px;
+        }
+        .description {
+            color: #f0f0f0;
+            text-align: left;
+            max-height: 60vh; /* Limit height */
+            overflow-y: auto; /* Enable scrolling */
+            line-height: 1.5;
+            font-size: 16px;
+        }
+        /* Unique gradients for each title */
+        .united-federation { background: linear-gradient(90deg, #ff0055, #ffbb00); }
+        .fortification-unit { background: linear-gradient(90deg, #00ff00, #00aaff); }
+        .eradication-unit { background: linear-gradient(90deg, #0000ff, #ff0055); }
+        .incendiary-division { background: linear-gradient(90deg, #ff5500, #ffbb00); }
+        .marine-corps { background: linear-gradient(90deg, #00aaff, #ffbb00); }
+        .navy { background: linear-gradient(90deg, #0055ff, #00ffcc); }
+        .research-development { background: linear-gradient(90deg, #ff0055, #5500ff); }
+        .intelligence-agency { background: linear-gradient(90deg, #ffbb00, #00ff00); }
+        .void-special-forces { background: linear-gradient(90deg, #000000, #5500ff); }
+        .task-force-cos22 { background: linear-gradient(90deg, #00ccff, #ffbb00); }
+        .task-force-rift404 { background: linear-gradient(90deg, #ff0055, #5500ff); }
+        .inktech { background: linear-gradient(90deg, #5500ff, #00ffcc); }
+        .elgius-inc { background: linear-gradient(90deg, #ffcc00, #ff0055); }
+        .cyberworks { background: linear-gradient(90deg, #00aaff, #ffbb00); }
+        .xtract-services { background: linear-gradient(90deg, #5500ff, #00ff00); }
+        .rythen-arms { background: linear-gradient(90deg, #ff0055, #ffcc00); }
+        .swarm-car-company { background: linear-gradient(90deg, #00ffcc, #ffbb00); }
+        .cesco-music-group { background: linear-gradient(90deg, #ff5500, #00aaff); }
+        .copilot { background: linear-gradient(90deg, #ffbb00, #00aaff); }
+        .glyph { background: linear-gradient(90deg, #5500ff, #ffbb00); }
+        .genoai { background: linear-gradient(90deg, #00aaff, #ffbb00); }
+        .flakeai { background: linear-gradient(90deg, #ffcc00, #00ff55); }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="section">
-        <h2>UNITED FEDERATION SECTION</h2>
-        <div class="logos">
-            <div class="logo" onclick="showModal('United Federation', 'https://i.imgur.com/Gn60P1H.png', 'United Federation')">
-                <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation">
-            </div>
-            <div class="logo" onclick="showModal('Fortification Unit', 'https://i.imgur.com/wg3hJto.png', 'United Federation Fortification Unit')">
-                <img src="https://i.imgur.com/wg3hJto.png" alt="United Federation Fortification Unit">
-            </div>
-            <div class="logo" onclick="showModal('Eradication Unit', 'https://i.imgur.com/X1sUC95.png', 'United Federation Eradication Unit')">
-                <img src="https://i.imgur.com/X1sUC95.png" alt="United Federation Eradication Unit">
-            </div>
-            <div class="logo" onclick="showModal('Incendiary Division', 'https://i.imgur.com/ryZDDNz.png', 'United Federation Incendiary Division')">
-                <img src="https://i.imgur.com/ryZDDNz.png" alt="United Federation Incendiary Division">
-            </div>
-            <div class="logo" onclick="showModal('Marine Corps', 'https://i.imgur.com/wSahQGY.png', 'United Federation Marine Corps')">
-                <img src="https://i.imgur.com/wSahQGY.png" alt="United Federation Marine Corps">
-            </div>
-            <div class="logo" onclick="showModal('Navy', 'https://i.imgur.com/Gn60P1H.png', 'United Federation Navy')">
-                <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation Navy">
-            </div>
-            <div class="logo" onclick="showModal('Research & Development', 'https://i.imgur.com/C5hPaSL.png', 'Advanced Research & Development')">
-                <img src="https://i.imgur.com/C5hPaSL.png" alt="Advanced Research & Development">
-            </div>
-            <div class="logo" onclick="showModal('Intelligence Agency', 'https://i.imgur.com/OVuVMEa.png', 'Synth Intelligence Agency')">
-                <img src="https://i.imgur.com/OVuVMEa.png" alt="Synth Intelligence Agency">
-            </div>
-            <div class="logo" onclick="showModal('Void Special Forces', 'https://i.imgur.com/s0VAxS4.png', 'Void Special Forces')">
-                <img src="https://i.imgur.com/s0VAxS4.png" alt="Void Special Forces">
-            </div>
-            <div class="logo" onclick="showModal('Task Force COS-22', 'https://i.imgur.com/T71K9PY.png', 'Task Force COS-22')">
-                <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force COS-22">
-            </div>
-            <div class="logo" onclick="showModal('Task Force RIFT-404', 'https://i.imgur.com/1kKd9Fv.png', 'Task Force RIFT-404')">
-                <img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force RIFT-404">
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>CORPORATE SECTION</h2>
-        <div class="logos">
-            <div class="logo" onclick="showModal('InkTech', 'https://i.imgur.com/fy8EJgm.png', 'InkTech')">
-                <img src="https://i.imgur.com/fy8EJgm.png" alt="InkTech">
-            </div>
-            <div class="logo" onclick="showModal('Elgius Inc.', 'https://i.imgur.com/o8j0hY0.png', 'Elgius Inc.')">
-                <img src="https://i.imgur.com/o8j0hY0.png" alt="Elgius Inc.">
-            </div>
-            <div class="logo" onclick="showModal('CyberWorks', 'https://i.imgur.com/fX3p0vc.png', 'CyberWorks')">
-                <img src="https://i.imgur.com/fX3p0vc.png" alt="CyberWorks">
-            </div>
-            <div class="logo" onclick="showModal('Xtract Services', 'https://i.imgur.com/VByCBHC.png', 'Xtract Services')">
-                <img src="https://i.imgur.com/VByCBHC.png" alt="Xtract Services">
-            </div>
-            <div class="logo" onclick="showModal('Rythen Arms', 'https://i.imgur.com/NBVG2go.png', 'Rythen Arms')">
-                <img src="https://i.imgur.com/NBVG2go.png" alt="Rythen Arms">
-            </div>
-            <div class="logo" onclick="showModal('Swarm Car Company', 'https://i.imgur.com/2YJzFrs.png', 'Swarm Car Company')">
-                <img src="https://i.imgur.com/2YJzFrs.png" alt="Swarm Car Company">
-            </div>
-            <div class="logo" onclick="showModal('Cesco Music Group', 'https://i.imgur.com/xh5lbFL.png', 'Cesco Music Group')">
-                <img src="https://i.imgur.com/xh5lbFL.png" alt="Cesco Music Group">
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>OFFICIAL INTELLIGENCE SECTION</h2>
-        <div class="logos">
-            <div class="logo" onclick="showModal('Copilot', 'https://i.imgur.com/EzZAgYR.png', 'Copilot')">
-                <img src="https://i.imgur.com/EzZAgYR.png" alt="Copilot">
-            </div>
-            <div class="logo" onclick="showModal('Glyph', 'https://i.imgur.com/lEY7MpC.png', 'Glyph')">
-                <img src="https://i.imgur.com/lEY7MpC.png" alt="Glyph">
-            </div>
-            <div class="logo" onclick="showModal('GenoAI', 'https://i.imgur.com/F5vsxlB.png', 'GenoAI')">
-                <img src="https://i.imgur.com/F5vsxlB.png" alt="GenoAI">
-            </div>
-            <div class="logo" onclick="showModal('FlakeAI', 'https://i.imgur.com/TrGNgCO.png', 'FlakeAI')">
-                <img src="https://i.imgur.com/TrGNgCO.png" alt="FlakeAI">
-            </div>
-        </div>
-    </div>
+<div class="logo-container">
+    <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation" class="logo" onclick="showModal('United Federation', 'united-federation', 'The central governing body of the United Federation. Committed to peace and prosperity, this organization oversees various military and civil operations throughout the galaxy.')">
+    <img src="https://i.imgur.com/wg3hJto.png" alt="Fortification Unit" class="logo" onclick="showModal('Fortification Unit', 'fortification-unit', 'Specialized in defense and fortifications, this unit is essential for maintaining the safety of federation outposts and installations.')">
+    <img src="https://i.imgur.com/X1sUC95.png" alt="Eradication Unit" class="logo" onclick="showModal('Eradication Unit', 'eradication-unit', 'Tasked with neutralizing threats to the federation, this unit operates in hostile environments, ensuring that dangers are swiftly dealt with.')">
+    <img src="https://i.imgur.com/ryZDDNz.png" alt="Incendiary Division" class="logo" onclick="showModal('Incendiary Division', 'incendiary-division', 'Experts in fire-based tactics, this division employs advanced weaponry to engage enemies effectively in combat situations.')">
+    <img src="https://i.imgur.com/wSahQGY.png" alt="Marine Corps" class="logo" onclick="showModal('Marine Corps', 'marine-corps', 'A highly trained unit specializing in marine operations, they excel in amphibious assaults and coastal defense.')">
+    <img src="https://i.imgur.com/C5hPaSL.png" alt="Navy" class="logo" onclick="showModal('Navy', 'navy', 'Naval forces that protect federation waters, equipped with cutting-edge vessels and technology for maritime security.')">
+    <img src="https://i.imgur.com/OVuVMEa.png" alt="Research & Development" class="logo" onclick="showModal('Research & Development', 'research-development', 'Innovating new technologies for the federation, this department is crucial for advancements in military and civilian applications.')">
+    <img src="https://i.imgur.com/s0VAxS4.png" alt="Intelligence Agency" class="logo" onclick="showModal('Intelligence Agency', 'intelligence-agency', 'Conducts intelligence operations and surveillance to maintain national security and respond to emerging threats.')">
+    <img src="https://i.imgur.com/T71K9PY.png" alt="Void Special Forces" class="logo" onclick="showModal('Void Special Forces', 'void-special-forces', 'Elite unit specializing in covert operations, capable of executing missions under extreme conditions.')">
+    <img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force COS-22" class="logo" onclick="showModal('Task Force COS-22', 'task-force-cos22', 'Special task force with advanced capabilities, known for tackling high-risk missions that require precision and skill.')">
+    <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force RIFT-404" class="logo" onclick="showModal('Task Force RIFT-404', 'task-force-rift404', 'Tasked with high-priority missions, this team operates in high-stakes environments, often behind enemy lines.')">
+    <img src="https://i.imgur.com/fy8EJgm.png" alt="InkTech" class="logo" onclick="showModal('InkTech', 'inktech', 'Leading company in technology solutions, InkTech specializes in software and hardware development for various industries.')">
+    <img src="https://i.imgur.com/o8j0hY0.png" alt="Elgius Inc." class="logo" onclick="showModal('Elgius Inc.', 'elgius-inc', 'A conglomerate focused on innovation in consumer electronics and cutting-edge technology solutions.')">
+    <img src="https://i.imgur.com/fX3p0vc.png" alt="CyberWorks" class="logo" onclick="showModal('CyberWorks', 'cyberworks', 'Experts in cybernetics, CyberWorks develops advanced technologies for enhanced human capabilities.')">
+    <img src="https://i.imgur.com/VByCBHC.png" alt="Xtract Services" class="logo" onclick="showModal('Xtract Services', 'xtract-services', 'Providing extraction and recovery services for the federation, ensuring vital resources are secured and utilized efficiently.')">
+    <img src="https://i.imgur.com/NBVG2go.png" alt="Rythen Arms" class="logo" onclick="showModal('Rythen Arms', 'rythen-arms', 'Manufacturer of advanced weaponry and military equipment for the federation forces.')">
+    <img src="https://i.imgur.com/2YJzFrs.png" alt="Swarm Car Company" class="logo" onclick="showModal('Swarm Car Company', 'swarm-car-company', 'Leading innovator in automotive technology, focusing on smart vehicles and sustainable transportation.')">
+    <img src="https://i.imgur.com/JgNRia0.png" alt="Cesco Music Group" class="logo" onclick="showModal('Cesco Music Group', 'cesco-music-group', 'Influential music label representing a diverse array of artists across multiple genres.')">
+    <img src="https://i.imgur.com/EzZAgYR.png" alt="Copilot" class="logo" onclick="showModal('Copilot', 'copilot', 'AI assistant for navigation and operations, enhancing efficiency in all tasks.')">
+    <img src="https://i.imgur.com/lEY7MpC.png" alt="Glyph" class="logo" onclick="showModal('Glyph', 'glyph', 'AI for language processing and translation, enabling seamless communication across cultures.')">
+    <img src="https://i.imgur.com/F5vsxlB.png" alt="GenoAI" class="logo" onclick="showModal('GenoAI', 'genoai', 'AI focused on genetic research and modification, pushing the boundaries of science.')">
+    <img src="https://i.imgur.com/TrGNgCO.png" alt="FlakeAI" class="logo" onclick="showModal('FlakeAI', 'flakeai', 'AI dedicated to data analysis and insights, helping organizations make informed decisions.')">
 </div>
 
-<div class="modal" id="modal" onclick="closeModal(event)">
+<div id="modal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeModal(event)">&times;</span>
-        <h2 class="gradient-title" id="modal-title"></h2>
-        <img id="modal-image" src="" alt="">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modal-title" class="title"></h2>
         <div id="modal-description" class="description"></div>
     </div>
 </div>
 
 <script>
-    function showModal(title, imageSrc, logoTitle) {
-        const descriptions = {
-    'United Federation': 'The central governing body of the United Federation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Fortification Unit': 'Specialized in defense and fortifications. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Eradication Unit': 'Tasked with neutralizing threats to the federation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Incendiary Division': 'Experts in fire-based tactics. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Marine Corps': 'Naval infantry that specializes in amphibious operations. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Navy': 'The maritime force of the federation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Research & Development': 'Innovative unit focusing on advanced technologies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Intelligence Agency': 'Gathering and analyzing intelligence data. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Void Special Forces': 'Elite unit operating in high-risk environments. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Task Force COS-22': 'Specialized task force for critical operations. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Task Force RIFT-404': 'Task force dealing with inter-dimensional threats. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'InkTech': 'Leading company in ink and print technologies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Elgius Inc.': 'Innovator in various tech sectors. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'CyberWorks': 'Focus on cybersecurity solutions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Xtract Services': 'Provider of extraction and logistics services. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Rythen Arms': 'Manufacturer of high-grade weaponry. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Swarm Car Company': 'Automaker specializing in autonomous vehicles. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Cesco Music Group': 'Leading music production company. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Copilot': 'AI assistant enhancing user capabilities. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'Glyph': 'AI specializing in language processing. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'GenoAI': 'AI focused on genetic research. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
-    'FlakeAI': 'AI for predictive analytics and insights. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.'
-};
-
-        document.getElementById('modal-title').innerText = logoTitle;
-        document.getElementById('modal-image').src = imageSrc;
-        document.getElementById('modal-description').innerText = descriptions[logoTitle] || '';
-        document.getElementById('modal-description').style.display = 'block'; // Ensure description is displayed
-        document.getElementById('modal').style.display = 'flex';
+    function showModal(title, className, description) {
+        document.getElementById("modal-title").className = 'title ' + className;
+        document.getElementById("modal-title").innerText = title;
+        document.getElementById("modal-description").innerText = description;
+        document.getElementById("modal").style.display = "block";
     }
 
-    function closeModal(event) {
-        if (event.target === document.getElementById('modal') || event.target.classList.contains('close')) {
-            document.getElementById('modal').style.display = 'none';
-        }
+    function closeModal() {
+        document.getElementById("modal").style.display = "none";
     }
 </script>
 
 </body>
 </html>
-
