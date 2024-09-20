@@ -22,8 +22,8 @@ body {
 
 /* Individual logo container */
 .logo-container {
-  width: 150px;
-  margin: 15px;
+  width: 80px; /* Significantly reduced width */
+  margin: 10px;
   position: relative;
   text-align: center;
   cursor: pointer;
@@ -31,7 +31,7 @@ body {
 }
 
 .logo-container:hover {
-  transform: scale(1.1);
+  transform: scale(1.2); /* Slight increase on hover for visual effect */
 }
 
 /* Logo images */
@@ -47,7 +47,7 @@ body {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
+  width: 100px;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   padding: 10px;
@@ -75,7 +75,7 @@ body {
 /* Titles under logos */
 .logo-title {
   margin-top: 10px;
-  font-size: 1em;
+  font-size: 0.75em; /* Smaller font size for titles */
   font-weight: bold;
   background: linear-gradient(to right, #ff0000, #ff7f00); /* Placeholder gradient, adjust per logo */
   -webkit-background-clip: text;
@@ -177,22 +177,22 @@ body {
 /* Make the gallery responsive */
 @media (max-width: 768px) {
   .logo-container {
-    width: 120px;
-    margin: 10px;
+    width: 60px; /* Smaller width for tablet */
+    margin: 8px;
   }
 
   .logo-title {
-    font-size: 0.9em;
+    font-size: 0.7em; /* Smaller font size for tablet */
   }
 }
 
 @media (max-width: 480px) {
   .logo-container {
-    width: 100px;
-    margin: 8px;
+    width: 50px; /* Smaller width for mobile */
+    margin: 6px;
   }
 
   .logo-title {
-    font-size: 0.8em;
+    font-size: 0.6em; /* Smaller font size for mobile */
   }
 }
