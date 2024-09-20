@@ -118,9 +118,11 @@
         }
 
         .modal-logo {
-            max-width: 80%; /* Adjusted size */
-            height: auto;
-            margin: 20px 0;
+            width: 150px; /* Fixed width */
+            height: 150px; /* Fixed height */
+            object-fit: contain; /* Maintains aspect ratio */
+            display: block;
+            margin: 20px auto; /* Centers the logo */
         }
 
         @media (max-width: 768px) {
@@ -191,7 +193,7 @@
                 <div class="gallery-item" data-title="Elgius Inc." data-description="Innovative solutions from Elgius Inc." data-logo="https://i.imgur.com/o8j0hY0.png">
                     <img src="https://i.imgur.com/o8j0hY0.png" alt="Elgius Inc.">
                 </div>
-                <div class="gallery-item" data-title="CyberWorks" data-description="Cybernetic solutions for the future." data-logo="https://i.imgur.com/fX3p0vc.png">
+                <div class="gallery-item" data-title="CyberWorks" data-description="Cyber technology for the modern world." data-logo="https://i.imgur.com/fX3p0vc.png">
                     <img src="https://i.imgur.com/fX3p0vc.png" alt="CyberWorks">
                 </div>
                 <div class="gallery-item" data-title="Xtract Services" data-description="Extraction and recovery services." data-logo="https://i.imgur.com/VByCBHC.png">
