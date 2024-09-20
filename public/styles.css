@@ -22,7 +22,7 @@ body {
 
 /* Individual logo container */
 .logo-container {
-  width: 80px; /* Significantly reduced width */
+  width: 80px !important;  /* Force width to be smaller */
   margin: 10px;
   position: relative;
   text-align: center;
@@ -36,8 +36,8 @@ body {
 
 /* Logo images */
 .logo-container img {
-  width: 100%;
-  height: auto;
+  width: 100% !important; /* Ensure logos scale to fit container */
+  height: auto !important;
   border-radius: 10px;
 }
 
@@ -75,7 +75,7 @@ body {
 /* Titles under logos */
 .logo-title {
   margin-top: 10px;
-  font-size: 0.75em; /* Smaller font size for titles */
+  font-size: 0.75em !important;  /* Force smaller font size */
   font-weight: bold;
   background: linear-gradient(to right, #ff0000, #ff7f00); /* Placeholder gradient, adjust per logo */
   -webkit-background-clip: text;
@@ -177,22 +177,22 @@ body {
 /* Make the gallery responsive */
 @media (max-width: 768px) {
   .logo-container {
-    width: 60px; /* Smaller width for tablet */
+    width: 60px !important; /* Smaller width for tablet */
     margin: 8px;
   }
 
   .logo-title {
-    font-size: 0.7em; /* Smaller font size for tablet */
+    font-size: 0.7em !important; /* Smaller font size for tablet */
   }
 }
 
 @media (max-width: 480px) {
   .logo-container {
-    width: 50px; /* Smaller width for mobile */
+    width: 50px !important; /* Smaller width for mobile */
     margin: 6px;
   }
 
   .logo-title {
-    font-size: 0.6em; /* Smaller font size for mobile */
+    font-size: 0.6em !important; /* Smaller font size for mobile */
   }
 }
