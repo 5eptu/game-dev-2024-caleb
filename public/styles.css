@@ -1,41 +1,41 @@
 /* Individual logo container */
 .logo-container {
   position: relative;
-  width: 200px; /* Smaller fixed width */
-  height: 200px; /* Smaller fixed height */
+  width: 150px; /* Adjusted smaller fixed width */
+  height: 150px; /* Adjusted smaller fixed height */
   text-align: center;
   transition: transform 0.3s ease-in-out;
   overflow: hidden;
+  display: inline-block; /* Make sure multiple logos fit in one line */
+  margin: 10px; /* Spacing between logos */
 }
 
 /* Logo image */
 .logo-container img {
-  max-width: 100%; /* Keep image from exceeding container */
-  max-height: 100%; /* Keep image from exceeding container */
-  width: 100%; /* Force it to fill the container */
+  width: 100%; /* Force the image to always fit within the container */
   height: auto; /* Maintain aspect ratio */
-  object-fit: contain; /* Ensure it fits within the box */
-  transition: transform 0.3s ease-in-out;
+  object-fit: contain; /* Ensures the image fits inside without stretching */
 }
 
 /* Hover effect for logo */
 .logo-container:hover {
-  transform: scale(1.1);
+  transform: scale(1.1); /* Make the logo pop slightly on hover */
 }
 
 /* Title below the logo */
 .logo-title {
   margin-top: 10px;
   font-family: 'Chakra Petch', sans-serif;
-  font-size: 16px;
+  font-size: 14px; /* Slightly smaller font size */
   text-align: center;
   color: white;
+  word-wrap: break-word; /* Ensure long titles wrap */
 }
 
 /* Explanation text box */
 .explanation {
   position: absolute;
-  bottom: -120px;
+  bottom: -150px;
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.8);
@@ -60,12 +60,12 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .logo-container {
-    width: 150px;
-    height: 150px;
+    width: 120px; /* Smaller logos for tablets */
+    height: 120px;
   }
 
   .logo-title {
-    font-size: 14px;
+    font-size: 12px; /* Adjust font size */
   }
 
   .explanation {
@@ -75,12 +75,12 @@
 
 @media (max-width: 480px) {
   .logo-container {
-    width: 120px;
-    height: 120px;
+    width: 100px; /* Even smaller logos for mobile */
+    height: 100px;
   }
 
   .logo-title {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .explanation {
