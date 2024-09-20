@@ -55,8 +55,8 @@
             overflow: hidden;
             margin: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 150px;
-            height: 150px;
+            width: 200px; /* Increased width */
+            height: 200px; /* Increased height */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -94,7 +94,7 @@
         }
 
         .modal-content {
-            background-color: #fefefe;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
             margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
@@ -118,44 +118,131 @@
         }
 
         .modal-logo {
-            width: 150px; /* Fixed width */
-            height: 150px; /* Fixed height */
+            width: 200px; /* Increased width */
+            height: 200px; /* Increased height */
             object-fit: contain; /* Maintains aspect ratio */
             display: block;
             margin: 20px auto; /* Centers the logo */
         }
 
-        @media (max-width: 768px) {
-            .gallery-item {
-                width: 100px;
-                height: 100px;
-            }
+        .description {
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-size: 1.1rem; /* Increased font size */
+            line-height: 1.5; /* Improved line height */
+        }
 
-            h2 {
-                font-size: 1.8rem;
-            }
+        /* Gradient backgrounds for each logo section */
+        .united-federation .gallery-item[data-title="United Federation"] .description {
+            background: linear-gradient(to right, #ff4c4c, #ff9999);
+        }
+
+        .united-federation .gallery-item[data-title="United Federation Fortification Unit"] .description {
+            background: linear-gradient(to right, #9999ff, #cce6ff);
+        }
+
+        .united-federation .gallery-item[data-title="United Federation Eradication Unit"] .description {
+            background: linear-gradient(to right, #ffcc00, #ffff99);
+        }
+
+        .united-federation .gallery-item[data-title="United Federation Incendiary Division"] .description {
+            background: linear-gradient(to right, #ff6600, #ffcc99);
+        }
+
+        .united-federation .gallery-item[data-title="United Federation Marine Corps"] .description {
+            background: linear-gradient(to right, #0073e6, #99ccff);
+        }
+
+        .united-federation .gallery-item[data-title="United Federation Navy"] .description {
+            background: linear-gradient(to right, #0000cc, #ccccff);
+        }
+
+        .united-federation .gallery-item[data-title="Advanced Research & Development"] .description {
+            background: linear-gradient(to right, #33cc33, #99ff99);
+        }
+
+        .united-federation .gallery-item[data-title="Synth Intelligence Agency"] .description {
+            background: linear-gradient(to right, #ff3399, #ff99cc);
+        }
+
+        .united-federation .gallery-item[data-title="Void Special Forces"] .description {
+            background: linear-gradient(to right, #6600cc, #cc99ff);
+        }
+
+        .united-federation .gallery-item[data-title="Task Force COS-22"] .description {
+            background: linear-gradient(to right, #ff9900, #ffcc99);
+        }
+
+        .united-federation .gallery-item[data-title="Task Force RIFT-404"] .description {
+            background: linear-gradient(to right, #ff3300, #ff9999);
+        }
+
+        .corporate .gallery-item[data-title="InkTech"] .description {
+            background: linear-gradient(to right, #6600cc, #9933ff);
+        }
+
+        .corporate .gallery-item[data-title="Elgius Inc."] .description {
+            background: linear-gradient(to right, #00ccff, #66ccff);
+        }
+
+        .corporate .gallery-item[data-title="CyberWorks"] .description {
+            background: linear-gradient(to right, #ff6699, #ffccff);
+        }
+
+        .corporate .gallery-item[data-title="Xtract Services"] .description {
+            background: linear-gradient(to right, #ffcc00, #ffff66);
+        }
+
+        .corporate .gallery-item[data-title="Rythen Arms"] .description {
+            background: linear-gradient(to right, #ff3300, #ff9966);
+        }
+
+        .corporate .gallery-item[data-title="Swarm Car Company"] .description {
+            background: linear-gradient(to right, #33cc33, #99ff99);
+        }
+
+        .corporate .gallery-item[data-title="Cesco Music Group"] .description {
+            background: linear-gradient(to right, #ff3399, #ff99cc);
+        }
+
+        .artificial-intelligence .gallery-item[data-title="Copilot"] .description {
+            background: linear-gradient(to right, #0066ff, #99ccff);
+        }
+
+        .artificial-intelligence .gallery-item[data-title="Glyph"] .description {
+            background: linear-gradient(to right, #cc33ff, #ff99ff);
+        }
+
+        .artificial-intelligence .gallery-item[data-title="GenoAI"] .description {
+            background: linear-gradient(to right, #33cc33, #99ff99);
+        }
+
+        .artificial-intelligence .gallery-item[data-title="FlakeAI"] .description {
+            background: linear-gradient(to right, #ffcc00, #ffff66);
         }
     </style>
 </head>
 <body>
+    <h2>Logos Gallery</h2>
     <div class="gallery-container">
         <!-- United Federation Section -->
         <section class="gallery-section united-federation">
             <h2>United Federation Logos</h2>
             <div class="gallery-row">
-                <div class="gallery-item" data-title="United Federation" data-description="The central governing body of the United Federation." data-logo="https://i.imgur.com/Gn60P1H.png">
+                <div class="gallery-item" data-title="United Federation" data-description="The governing body of the United Federation." data-logo="https://i.imgur.com/Gn60P1H.png">
                     <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation">
                 </div>
-                <div class="gallery-item" data-title="United Federation Fortification Unit" data-description="Specialized unit for defense and fortifications." data-logo="https://i.imgur.com/wg3hJto.png">
+                <div class="gallery-item" data-title="United Federation Fortification Unit" data-description="Defense and fortification specialists." data-logo="https://i.imgur.com/wg3hJto.png">
                     <img src="https://i.imgur.com/wg3hJto.png" alt="United Federation Fortification Unit">
                 </div>
-                <div class="gallery-item" data-title="United Federation Eradication Unit" data-description="Tasked with the eradication of threats." data-logo="https://i.imgur.com/X1sUC95.png">
+                <div class="gallery-item" data-title="United Federation Eradication Unit" data-description="Tasked with eradicating threats." data-logo="https://i.imgur.com/X1sUC95.png">
                     <img src="https://i.imgur.com/X1sUC95.png" alt="United Federation Eradication Unit">
                 </div>
-                <div class="gallery-item" data-title="United Federation Incendiary Division" data-description="Division specializing in incendiary tactics." data-logo="https://i.imgur.com/ryZDDNz.png">
+                <div class="gallery-item" data-title="United Federation Incendiary Division" data-description="Fire-based tactical unit." data-logo="https://i.imgur.com/ryZDDNz.png">
                     <img src="https://i.imgur.com/ryZDDNz.png" alt="United Federation Incendiary Division">
                 </div>
-                <div class="gallery-item" data-title="United Federation Marine Corps" data-description="Elite marine unit of the federation." data-logo="https://i.imgur.com/wSahQGY.png">
+                <div class="gallery-item" data-title="United Federation Marine Corps" data-description="Naval infantry specializing in amphibious operations." data-logo="https://i.imgur.com/wSahQGY.png">
                     <img src="https://i.imgur.com/wSahQGY.png" alt="United Federation Marine Corps">
                 </div>
             </div>
@@ -163,22 +250,20 @@
                 <div class="gallery-item" data-title="United Federation Navy" data-description="Naval force of the United Federation." data-logo="https://i.imgur.com/P6CTkFh.png">
                     <img src="https://i.imgur.com/P6CTkFh.png" alt="United Federation Navy">
                 </div>
-                <div class="gallery-item" data-title="Advanced Research & Development" data-description="Unit focused on cutting-edge technology." data-logo="https://i.imgur.com/C5hPaSL.png">
-                    <img src="https://i.imgur.com/C5hPaSL.png" alt="Advanced Research & Development">
+                <div class="gallery-item" data-title="Advanced Research & Development" data-description="Innovative technology and solutions." data-logo="https://i.imgur.com/OVuVMEa.png">
+                    <img src="https://i.imgur.com/OVuVMEa.png" alt="Advanced Research & Development">
                 </div>
-                <div class="gallery-item" data-title="Synth Intelligence Agency" data-description="Agency for synth intelligence operations." data-logo="https://i.imgur.com/OVuVMEa.png">
-                    <img src="https://i.imgur.com/OVuVMEa.png" alt="Synth Intelligence Agency">
+                <div class="gallery-item" data-title="Synth Intelligence Agency" data-description="Agency focused on synthetic intelligence." data-logo="https://i.imgur.com/s0VAxS4.png">
+                    <img src="https://i.imgur.com/s0VAxS4.png" alt="Synth Intelligence Agency">
                 </div>
-                <div class="gallery-item" data-title="Void Special Forces" data-description="Special operations unit for void missions." data-logo="https://i.imgur.com/s0VAxS4.png">
-                    <img src="https://i.imgur.com/s0VAxS4.png" alt="Void Special Forces">
+                <div class="gallery-item" data-title="Void Special Forces" data-description="Elite special operations unit." data-logo="https://i.imgur.com/T71K9PY.png">
+                    <img src="https://i.imgur.com/T71K9PY.png" alt="Void Special Forces">
                 </div>
-                <div class="gallery-item" data-title="Task Force COS-22" data-description="Elite task force for covert operations." data-logo="https://i.imgur.com/T71K9PY.png">
-                    <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force COS-22">
+                <div class="gallery-item" data-title="Task Force COS-22" data-description="Covert operations task force." data-logo="https://i.imgur.com/1kKd9Fv.png">
+                    <img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force COS-22">
                 </div>
-            </div>
-            <div class="gallery-row">
-                <div class="gallery-item" data-title="Task Force RIFT-404" data-description="Task force specializing in rift technology." data-logo="https://i.imgur.com/1kKd9Fv.png">
-                    <img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force RIFT-404">
+                <div class="gallery-item" data-title="Task Force RIFT-404" data-description="Response team for critical threats." data-logo="https://i.imgur.com/T71K9PY.png">
+                    <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force RIFT-404">
                 </div>
             </div>
         </section>
@@ -187,10 +272,10 @@
         <section class="gallery-section corporate">
             <h2>Corporate Logos</h2>
             <div class="gallery-row">
-                <div class="gallery-item" data-title="InkTech" data-description="Leading company in ink technology." data-logo="https://i.imgur.com/fy8EJgm.png">
+                <div class="gallery-item" data-title="InkTech" data-description="Leading innovations in technology." data-logo="https://i.imgur.com/fy8EJgm.png">
                     <img src="https://i.imgur.com/fy8EJgm.png" alt="InkTech">
                 </div>
-                <div class="gallery-item" data-title="Elgius Inc." data-description="Innovative solutions from Elgius Inc." data-logo="https://i.imgur.com/o8j0hY0.png">
+                <div class="gallery-item" data-title="Elgius Inc." data-description="Advanced engineering and design." data-logo="https://i.imgur.com/o8j0hY0.png">
                     <img src="https://i.imgur.com/o8j0hY0.png" alt="Elgius Inc.">
                 </div>
                 <div class="gallery-item" data-title="CyberWorks" data-description="Cyber technology for the modern world." data-logo="https://i.imgur.com/fX3p0vc.png">
@@ -204,11 +289,11 @@
                 </div>
             </div>
             <div class="gallery-row">
-                <div class="gallery-item" data-title="Swarm Car Company" data-description="Innovative automotive solutions." data-logo="https://i.imgur.com/2YJzFrs.png">
-                    <img src="https://i.imgur.com/2YJzFrs.png" alt="Swarm Car Company">
+                <div class="gallery-item" data-title="Swarm Car Company" data-description="Innovative automotive solutions." data-logo="https://i.imgur.com/XU3WSeM.png">
+                    <img src="https://i.imgur.com/XU3WSeM.png" alt="Swarm Car Company">
                 </div>
-                <div class="gallery-item" data-title="Cesco Music Group" data-description="Leading in musical production." data-logo="https://i.imgur.com/JgNRia0.png">
-                    <img src="https://i.imgur.com/JgNRia0.png" alt="Cesco Music Group">
+                <div class="gallery-item" data-title="Cesco Music Group" data-description="Leading name in music production." data-logo="https://i.imgur.com/m2Y5Dyz.png">
+                    <img src="https://i.imgur.com/m2Y5Dyz.png" alt="Cesco Music Group">
                 </div>
             </div>
         </section>
@@ -217,64 +302,20 @@
         <section class="gallery-section artificial-intelligence">
             <h2>Artificial Intelligence Logos</h2>
             <div class="gallery-row">
-                <div class="gallery-item" data-title="Copilot" data-description="AI co-pilot for advanced navigation." data-logo="https://i.imgur.com/EzZAgYR.png">
-                    <img src="https://i.imgur.com/EzZAgYR.png" alt="Copilot">
+                <div class="gallery-item" data-title="Copilot" data-description="AI-powered assistant for enhanced productivity." data-logo="https://i.imgur.com/lb8f33e.png">
+                    <img src="https://i.imgur.com/lb8f33e.png" alt="Copilot">
                 </div>
-                <div class="gallery-item" data-title="Glyph" data-description="AI designed for complex tasks." data-logo="https://i.imgur.com/lEY7MpC.png">
-                    <img src="https://i.imgur.com/lEY7MpC.png" alt="Glyph">
+                <div class="gallery-item" data-title="Glyph" data-description="Innovative text recognition technology." data-logo="https://i.imgur.com/tYZgy2G.png">
+                    <img src="https://i.imgur.com/tYZgy2G.png" alt="Glyph">
                 </div>
-                <div class="gallery-item" data-title="GenoAI" data-description="Genetic algorithms for intelligent design." data-logo="https://i.imgur.com/F5vsxlB.png">
-                    <img src="https://i.imgur.com/F5vsxlB.png" alt="GenoAI">
+                <div class="gallery-item" data-title="GenoAI" data-description="Revolutionizing genetic algorithms." data-logo="https://i.imgur.com/NJh3mEp.png">
+                    <img src="https://i.imgur.com/NJh3mEp.png" alt="GenoAI">
                 </div>
-                <div class="gallery-item" data-title="FlakeAI" data-description="AI specialized in machine learning." data-logo="https://i.imgur.com/TrGNgCO.png">
-                    <img src="https://i.imgur.com/TrGNgCO.png" alt="FlakeAI">
+                <div class="gallery-item" data-title="FlakeAI" data-description="AI for advanced data analysis." data-logo="https://i.imgur.com/g5pzM5m.png">
+                    <img src="https://i.imgur.com/g5pzM5m.png" alt="FlakeAI">
                 </div>
             </div>
         </section>
     </div>
-
-    <!-- Modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modal-title"></h2>
-            <img id="modal-logo" class="modal-logo" src="" alt="Logo">
-            <p id="modal-description"></p>
-        </div>
-    </div>
-
-    <script>
-        // Get modal elements
-        var modal = document.getElementById("myModal");
-        var title = document.getElementById("modal-title");
-        var description = document.getElementById("modal-description");
-        var modalLogo = document.getElementById("modal-logo");
-        var closeBtn = document.getElementsByClassName("close")[0];
-
-        // Get all gallery items
-        var galleryItems = document.querySelectorAll('.gallery-item');
-
-        // Loop through items and add click event
-        galleryItems.forEach(function(item) {
-            item.addEventListener('click', function() {
-                title.innerText = item.getAttribute('data-title');
-                description.innerText = item.getAttribute('data-description');
-                modalLogo.src = item.getAttribute('data-logo');
-                modal.style.display = "block";
-            });
-        });
-
-        // Close the modal
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // Close the modal when clicking outside of it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 </body>
 </html>
