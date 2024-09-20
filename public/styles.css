@@ -4,9 +4,11 @@ body {
   background-image: url('https://wallpapers.com/images/hd/red-space-1920-x-1080-background-ptjivpuphkno1bw8.jpg');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   color: white;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 /* Main container for the gallery */
@@ -15,12 +17,13 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   padding: 20px;
+  max-width: 100%;
 }
 
 /* Individual logo container */
 .logo-container {
-  width: 200px;
-  margin: 20px;
+  width: 150px;
+  margin: 15px;
   position: relative;
   text-align: center;
   cursor: pointer;
@@ -72,7 +75,7 @@ body {
 /* Titles under logos */
 .logo-title {
   margin-top: 10px;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: bold;
   background: linear-gradient(to right, #ff0000, #ff7f00); /* Placeholder gradient, adjust per logo */
   -webkit-background-clip: text;
@@ -171,3 +174,25 @@ body {
   background: linear-gradient(to right, #00ffff, #4682b4); /* Cyan gradient */
 }
 
+/* Make the gallery responsive */
+@media (max-width: 768px) {
+  .logo-container {
+    width: 120px;
+    margin: 10px;
+  }
+
+  .logo-title {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container {
+    width: 100px;
+    margin: 8px;
+  }
+
+  .logo-title {
+    font-size: 0.8em;
+  }
+}
