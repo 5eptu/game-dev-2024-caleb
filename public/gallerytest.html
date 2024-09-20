@@ -53,8 +53,8 @@
             text-align: center;
             color: white; /* White text for descriptions */
             background: rgba(30, 30, 30, 0.9); /* Dark mode background */
-            max-height: 80vh;
-            overflow-y: auto;
+            max-height: 60vh; /* Increased height for better fit */
+            overflow-y: auto; /* Allows scrolling */
             font-size: 18px; /* Increased font size for readability */
             line-height: 1.5; /* Improved line spacing */
         }
@@ -110,6 +110,20 @@
 
         h2 {
             text-align: center;
+        }
+
+        /* Custom scrollbar */
+        .description::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .description::-webkit-scrollbar-thumb {
+            background: #888; 
+            border-radius: 10px;
+        }
+
+        .description::-webkit-scrollbar-thumb:hover {
+            background: #555; 
         }
     </style>
 </head>
@@ -176,14 +190,14 @@
             <div class="logo" onclick="showModal('Swarm Car Company', 'https://i.imgur.com/2YJzFrs.png', 'Swarm Car Company')">
                 <img src="https://i.imgur.com/2YJzFrs.png" alt="Swarm Car Company">
             </div>
-            <div class="logo" onclick="showModal('Cesco Music Group', 'https://i.imgur.com/jGNRia0.png', 'Cesco Music Group')">
-                <img src="https://i.imgur.com/jGNRia0.png" alt="Cesco Music Group">
+            <div class="logo" onclick="showModal('Cesco Music Group', 'https://i.imgur.com/xh5lbFL.png', 'Cesco Music Group')">
+                <img src="https://i.imgur.com/xh5lbFL.png" alt="Cesco Music Group">
             </div>
         </div>
     </div>
 
     <div class="section">
-        <h2>ARTIFICIAL INTELLIGENCE SECTION</h2>
+        <h2>OFFICIAL INTELLIGENCE SECTION</h2>
         <div class="logos">
             <div class="logo" onclick="showModal('Copilot', 'https://i.imgur.com/EzZAgYR.png', 'Copilot')">
                 <img src="https://i.imgur.com/EzZAgYR.png" alt="Copilot">
@@ -213,33 +227,34 @@
 <script>
     function showModal(title, imageSrc, logoTitle) {
         const descriptions = {
-            'United Federation': 'The central governing body of the United Federation.',
-            'Fortification Unit': 'Specialized in defense and fortifications.',
-            'Eradication Unit': 'Tasked with neutralizing threats to the federation.',
-            'Incendiary Division': 'Experts in fire-based tactics.',
-            'Marine Corps': 'Naval infantry that specializes in amphibious operations.',
-            'Navy': 'The maritime force of the federation.',
-            'Research & Development': 'Innovative unit focusing on advanced technologies.',
-            'Intelligence Agency': 'Gathering and analyzing intelligence data.',
-            'Void Special Forces': 'Elite unit operating in high-risk environments.',
-            'Task Force COS-22': 'Specialized task force for critical operations.',
-            'Task Force RIFT-404': 'Task force dealing with inter-dimensional threats.',
-            'InkTech': 'Leading company in ink and print technologies.',
-            'Elgius Inc.': 'Innovator in various tech sectors.',
-            'CyberWorks': 'Focus on cybersecurity solutions.',
-            'Xtract Services': 'Provider of extraction and logistics services.',
-            'Rythen Arms': 'Manufacturer of high-grade weaponry.',
-            'Swarm Car Company': 'Automaker specializing in autonomous vehicles.',
-            'Cesco Music Group': 'Leading music production company.',
-            'Copilot': 'AI assistant enhancing user capabilities.',
-            'Glyph': 'AI specializing in language processing.',
-            'GenoAI': 'AI focused on genetic research.',
-            'FlakeAI': 'AI for predictive analytics and insights.'
+            'United Federation': 'The central governing body of the United Federation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Fortification Unit': 'Specialized in defense and fortifications. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Eradication Unit': 'Tasked with neutralizing threats to the federation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Incendiary Division': 'Experts in fire-based tactics. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Marine Corps': 'Naval infantry that specializes in amphibious operations. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Navy': 'The maritime force of the federation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Research & Development': 'Innovative unit focusing on advanced technologies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Intelligence Agency': 'Gathering and analyzing intelligence data. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Void Special Forces': 'Elite unit operating in high-risk environments. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Task Force COS-22': 'Specialized task force for critical operations. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Task Force RIFT-404': 'Task force dealing with inter-dimensional threats. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'InkTech': 'Leading company in ink and print technologies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Elgius Inc.': 'Innovator in various tech sectors. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'CyberWorks': 'Focus on cybersecurity solutions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Xtract Services': 'Provider of extraction and logistics services. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Rythen Arms': 'Manufacturer of high-grade weaponry. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Swarm Car Company': 'Automaker specializing in autonomous vehicles. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Cesco Music Group': 'Leading music production company. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Copilot': 'AI assistant enhancing user capabilities. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'Glyph': 'AI specializing in language processing. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'GenoAI': 'AI focused on genetic research. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.',
+            'FlakeAI': 'AI for predictive analytics and insights. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at cursus libero. Sed pharetra, arcu ac vulputate tincidunt, justo justo cursus justo, et tincidunt erat magna nec nisi.'
         };
 
         document.getElementById('modal-title').innerText = logoTitle;
         document.getElementById('modal-image').src = imageSrc;
         document.getElementById('modal-description').innerText = descriptions[logoTitle] || '';
+        document.getElementById('modal-description').style.display = 'block'; // Ensure description is displayed
         document.getElementById('modal').style.display = 'flex';
     }
 
@@ -252,3 +267,4 @@
 
 </body>
 </html>
+
