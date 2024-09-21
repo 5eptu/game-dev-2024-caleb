@@ -6,102 +6,47 @@
     <title>Logo Gallery</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-image: url('https://wallpapers.com/images/hd/red-space-1920-x-1080-background-ptjivpuphkno1bw8.jpg');
-            background-size: cover;
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        .header {
-            text-align: center;
-            padding: 20px;
-            font-size: 36px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-        .logo-section {
-            padding: 20px;
-            margin: 20px 0;
-            border: 2px solid #ff0000;
-            border-radius: 10px;
-            background-color: rgba(30, 30, 30, 0.8);
-        }
-        .logo-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .logo {
-            margin: 15px;
-            cursor: pointer;
-            transition: transform 0.3s, filter 0.3s;
-            width: 100px; /* Medium size */
-            filter: brightness(0.8);
-        }
-        .logo:hover {
-            transform: scale(1.1);
-            filter: brightness(1);
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 20px;
-        }
-        .modal-content {
-            background-color: #222;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
-            max-height: 80%;
-            overflow-y: auto; /* Add scroll */
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: white;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .title {
-            padding: 10px;
-            text-align: center;
-            margin-bottom: 15px;
-            font-weight: bold;
-            font-size: 24px;
-            background: linear-gradient(90deg, #ff0055, #ffbb00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .description {
-            color: #f0f0f0;
-            text-align: left;
-            max-height: 60vh; /* Limit height */
-            overflow-y: auto; /* Enable scrolling */
-            line-height: 1.5;
-            font-size: 16px;
-        }
-        .logo-img {
-            width: 50px; /* Size of logos in descriptions */
-            height: auto; /* Maintain aspect ratio */
-            vertical-align: middle; /* Align with text */
-            margin-right: 10px; /* Space between logo and text */
-        }
+        body { background-image: url('https://wallpapers.com/images/hd/red-space-1920-x-1080-background-ptjivpuphkno1bw8.jpg'); background-size: cover; color: white; font-family: 'Orbitron', sans-serif; margin: 0; padding: 0; overflow: hidden; }
+        .header { text-align: center; padding: 20px; font-size: 36px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); }
+        .logo-section { padding: 20px; margin: 20px 0; border: 2px solid #ff0000; border-radius: 10px; background-color: rgba(30, 30, 30, 0.8); }
+        .logo-container { display: flex; flex-wrap: wrap; justify-content: center; }
+        .logo { margin: 15px; cursor: pointer; transition: transform 0.3s, filter 0.3s; width: 100px; filter: brightness(0.8); }
+        .logo:hover { transform: scale(1.1); filter: brightness(1); }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.9); padding: 20px; }
+        .modal-content { background-color: #222; margin: auto; padding: 20px; border-radius: 10px; width: 80%; max-height: 80%; overflow-y: auto; box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
+        .close:hover, .close:focus { color: white; text-decoration: none; cursor: pointer; }
+        .title { padding: 10px; text-align: center; margin-bottom: 15px; font-weight: bold; font-size: 24px; }
+        .description { color: #f0f0f0; text-align: left; max-height: 60vh; overflow-y: auto; line-height: 1.5; font-size: 16px; }
+        .logo-img { width: 50px; height: auto; vertical-align: middle; margin-right: 10px; }
+
+        /* Unique gradients for each logo title */
+        .title-united-federation { background: linear-gradient(90deg, #ff0055, #ffbb00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-fortification { background: linear-gradient(90deg, #00ff55, #00bbff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-eradication { background: linear-gradient(90deg, #ff5500, #ffbb00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-incendiary { background: linear-gradient(90deg, #0055ff, #bb00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-marine-corps { background: linear-gradient(90deg, #ff00bb, #00bbff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-navy { background: linear-gradient(90deg, #bbff00, #00ffbb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-advanced-research { background: linear-gradient(90deg, #ffff00, #ff00bb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-synth-intelligence { background: linear-gradient(90deg, #00ffff, #ff00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-void-special-forces { background: linear-gradient(90deg, #ffbb00, #5500ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-task-force-cos { background: linear-gradient(90deg, #ff5500, #00ff55); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-task-force-rift { background: linear-gradient(90deg, #00bbff, #ff0055); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* Corporate Section */
+        .title-inktech { background: linear-gradient(90deg, #ff00bb, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-elgius { background: linear-gradient(90deg, #00bb00, #ffbb00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-cyberworks { background: linear-gradient(90deg, #5500ff, #ffbb00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-xtract { background: linear-gradient(90deg, #ff0000, #00bbff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-rythen { background: linear-gradient(90deg, #ff5500, #ff00bb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-swarm { background: linear-gradient(90deg, #00ffff, #00bb00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-cesco { background: linear-gradient(90deg, #bb00ff, #ffff00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* AI Section */
+        .title-copilot { background: linear-gradient(90deg, #00bbff, #ffbb00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-glyph { background: linear-gradient(90deg, #ff5500, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-genoai { background: linear-gradient(90deg, #ff00bb, #ffff00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-flakeai { background: linear-gradient(90deg, #00bb00, #ff00bb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
 <body>
@@ -112,17 +57,17 @@
 <div class="logo-section">
     <h2 class="title">United Federation</h2>
     <div class="logo-container">
-        <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation" class="logo" onclick="showModal('United Federation', 'The central governing body of the United Federation. Committed to peace and prosperity, this organization oversees various military and civil operations throughout the galaxy.')">
-        <img src="https://i.imgur.com/wg3hJto.png" alt="Fortification Unit" class="logo" onclick="showModal('Fortification Unit', 'Specialized in defense and fortifications, this unit is essential for maintaining the safety of federation outposts and installations.')">
-        <img src="https://i.imgur.com/X1sUC95.png" alt="Eradication Unit" class="logo" onclick="showModal('Eradication Unit', 'Tasked with neutralizing threats to the federation, this unit operates in hostile environments, ensuring that dangers are swiftly dealt with.')">
-        <img src="https://i.imgur.com/ryZDDNz.png" alt="Incendiary Division" class="logo" onclick="showModal('Incendiary Division', 'Experts in fire-based tactics, this division employs advanced weaponry to engage enemies effectively in combat situations.')">
-        <img src="https://i.imgur.com/wSahQGY.png" alt="Marine Corps" class="logo" onclick="showModal('Marine Corps', 'A highly trained unit specializing in marine operations, they excel in amphibious assaults and coastal defense.')">
-        <img src="https://i.imgur.com/P6CTkFh.png" alt="Navy" class="logo" onclick="showModal('Navy', 'Naval forces that protect federation waters, equipped with cutting-edge vessels and technology for maritime security.')">
-        <img src="https://i.imgur.com/C5hPaSL.png" alt="Advanced Research & Development" class="logo" onclick="showModal('Advanced Research & Development', 'Innovating new technologies for the federation, this department is crucial for advancements in military and civilian applications.')">
-        <img src="https://i.imgur.com/OVuVMEa.png" alt="Synth Intelligence Agency" class="logo" onclick="showModal('Synth Intelligence Agency', 'Conducts intelligence operations and surveillance to maintain national security and respond to emerging threats.')">
-        <img src="https://i.imgur.com/s0VAxS4.png" alt="Void Special Forces" class="logo" onclick="showModal('Void Special Forces', 'Elite unit specializing in covert operations, capable of executing missions under extreme conditions.')">
-        <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force COS-22" class="logo" onclick="showModal('Task Force COS-22', 'Special operations task force designed for high-risk missions that require quick response and strategic thinking.')">
-        <img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force RIFT-404" class="logo" onclick="showModal('Task Force RIFT-404', 'Special operations unit that handles interdimensional threats and anomalies, ensuring the safety of the federation.')">
+        <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation" class="logo" onclick="showModal('United Federation', 'The central governing body of the United Federation. Committed to peace and prosperity, this organization oversees various military and civil operations throughout the galaxy.', 'title-united-federation')">
+        <img src="https://i.imgur.com/wg3hJto.png" alt="Fortification Unit" class="logo" onclick="showModal('Fortification Unit', 'Specialized in defense and fortifications, this unit is essential for maintaining the safety of federation outposts and installations.', 'title-fortification')">
+        <img src="https://i.imgur.com/X1sUC95.png" alt="Eradication Unit" class="logo" onclick="showModal('Eradication Unit', 'Tasked with neutralizing threats to the federation, this unit operates in hostile environments, ensuring that dangers are swiftly dealt with.', 'title-eradication')">
+        <img src="https://i.imgur.com/ryZDDNz.png" alt="Incendiary Division" class="logo" onclick="showModal('Incendiary Division', 'Experts in fire-based tactics, this division employs advanced weaponry to engage enemies effectively in combat situations.', 'title-incendiary')">
+        <img src="https://i.imgur.com/wSahQGY.png" alt="Marine Corps" class="logo" onclick="showModal('Marine Corps', 'A highly trained unit specializing in marine operations, they excel in amphibious assaults and coastal defense.', 'title-marine-corps')">
+        <img src="https://i.imgur.com/P6CTkFh.png" alt="Navy" class="logo" onclick="showModal('Navy', 'The naval force of the federation, responsible for securing waters and conducting maritime operations.', 'title-navy')">
+        <img src="https://i.imgur.com/C5hPaSL.png" alt="Advanced Research & Development" class="logo" onclick="showModal('Advanced Research & Development', 'Leading the charge in technological advancements, this department develops cutting-edge military equipment and strategies.', 'title-advanced-research')">
+        <img src="https://i.imgur.com/OVuVMEa.png" alt="Synth Intelligence Agency" class="logo" onclick="showModal('Synth Intelligence Agency', 'Specializing in information warfare and intelligence, this agency plays a crucial role in national security.', 'title-synth-intelligence')">
+        <img src="https://i.imgur.com/s0VAxS4.png" alt="Void Special Forces" class="logo" onclick="showModal('Void Special Forces', 'Elite operatives trained for covert operations in extreme environments, they undertake the most sensitive missions.', 'title-void-special-forces')">
+        <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force COS-22" class="logo" onclick="showModal('Task Force COS-22', 'A special task force created to handle complex and high-stakes operations, COS-22 is equipped with the latest technology.', 'title-task-force-cos')">
+        <img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force RIFT-404" class="logo" onclick="showModal('Task Force RIFT-404', 'Tasked with reconnaissance and intelligence gathering, this unit is essential for preparing ground troops for engagements.', 'title-task-force-rift')">
     </div>
 </div>
 
@@ -130,44 +75,51 @@
 <div class="logo-section">
     <h2 class="title">Corporate</h2>
     <div class="logo-container">
-        <img src="https://i.imgur.com/fy8EJgm.png" alt="InkTech" class="logo" onclick="showModal('InkTech', 'Leading tech firm specializing in ink technology for advanced printing and manufacturing solutions.')">
-        <img src="https://i.imgur.com/o8j0hY0.png" alt="Elgius Inc." class="logo" onclick="showModal('Elgius Inc.', 'A conglomerate focused on innovation in consumer electronics and cutting-edge technology solutions.')">
-        <img src="https://i.imgur.com/fX3p0vc.png" alt="CyberWorks" class="logo" onclick="showModal('CyberWorks', 'Experts in cybernetics, CyberWorks develops advanced technologies for enhanced human capabilities.')">
-        <img src="https://i.imgur.com/VByCBHC.png" alt="Xtract Services" class="logo" onclick="showModal('Xtract Services', 'Providing extraction and recovery services for the federation, ensuring vital resources are secured and utilized efficiently.')">
-        <img src="https://i.imgur.com/NBVG2go.png" alt="Rythen Arms" class="logo" onclick="showModal('Rythen Arms', 'Manufacturer of advanced weaponry and military equipment for the federation forces.')">
-        <img src="https://i.imgur.com/2YJzFrs.png" alt="Swarm Car Company" class="logo" onclick="showModal('Swarm Car Company', 'Leading innovator in automotive technology, focusing on smart vehicles and sustainable transportation.')">
-        <img src="https://i.imgur.com/JgNRia0.png" alt="Cesco Music Group" class="logo" onclick="showModal('Cesco Music Group', 'Influential music label representing a diverse array of artists across multiple genres.')">
+        <img src="https://i.imgur.com/fy8EJgm.png" alt="InkTech" class="logo" onclick="showModal('InkTech', 'A leading technology firm specializing in advanced ink-based solutions and military-grade printing technologies.', 'title-inktech')">
+        <img src="https://i.imgur.com/o8j0hY0.png" alt="Elgius Inc." class="logo" onclick="showModal('Elgius Inc.', 'A major player in the corporate world, known for their innovations in weaponry and combat systems.', 'title-elgius')">
+        <img src="https://i.imgur.com/fX3p0vc.png" alt="CyberWorks" class="logo" onclick="showModal('CyberWorks', 'Specializes in cybernetic enhancements and integration for military and civilian applications.', 'title-cyberworks')">
+        <img src="https://i.imgur.com/VByCBHC.png" alt="Xtract Services" class="logo" onclick="showModal('Xtract Services', 'Provides extraction and salvage operations in war-torn zones, ensuring valuable resources are retrieved.', 'title-xtract')">
+        <img src="https://i.imgur.com/NBVG2go.png" alt="Rythen Arms" class="logo" onclick="showModal('Rythen Arms', 'Manufacturers of high-quality firearms and military hardware, trusted by forces worldwide.', 'title-rythen')">
+        <img src="https://i.imgur.com/2YJzFrs.png" alt="Swarm Car Company" class="logo" onclick="showModal('Swarm Car Company', 'Innovators in automated vehicles and transportation systems for military logistics.', 'title-swarm')">
+        <img src="https://i.imgur.com/JgNRia0.png" alt="Cesco Music Group" class="logo" onclick="showModal('Cesco Music Group', 'A major player in entertainment, also known for developing auditory technologies for combat environments.', 'title-cesco')">
     </div>
 </div>
 
-<!-- Artificial Intelligence Section -->
+<!-- AI Section -->
 <div class="logo-section">
     <h2 class="title">Artificial Intelligence</h2>
     <div class="logo-container">
-        <img src="https://i.imgur.com/EzZAgYR.png" alt="Copilot" class="logo" onclick="showModal('Copilot', 'AI assistant for navigation and operations, enhancing efficiency in all tasks.')">
-        <img src="https://i.imgur.com/lEY7MpC.png" alt="Glyph" class="logo" onclick="showModal('Glyph', 'AI for language processing and translation, enabling seamless communication across cultures.')">
-        <img src="https://i.imgur.com/F5vsxlB.png" alt="GenoAI" class="logo" onclick="showModal('GenoAI', 'AI focused on genetic research and modification, pushing the boundaries of science.')">
-        <img src="https://i.imgur.com/TrGNgCO.png" alt="FlakeAI" class="logo" onclick="showModal('FlakeAI', 'AI dedicated to data analysis and insights, helping organizations make informed decisions.')">
+        <img src="https://i.imgur.com/EzZAgYR.png" alt="Copilot" class="logo" onclick="showModal('Copilot', 'An advanced AI designed to assist military commanders in decision-making and tactical planning.', 'title-copilot')">
+        <img src="https://i.imgur.com/lEY7MpC.png" alt="Glyph" class="logo" onclick="showModal('Glyph', 'Utilizes machine learning to optimize operational efficiency in military and civilian applications.', 'title-glyph')">
+        <img src="https://i.imgur.com/F5vsxlB.png" alt="GenoAI" class="logo" onclick="showModal('GenoAI', 'A cutting-edge AI focused on genetics and biological research for military applications.', 'title-genoai')">
+        <img src="https://i.imgur.com/TrGNgCO.png" alt="FlakeAI" class="logo" onclick="showModal('FlakeAI', 'An innovative AI system designed to streamline logistics and supply chains for military operations.', 'title-flakeai')">
     </div>
 </div>
 
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h2 id="modal-title" class="title"></h2>
-        <div id="modal-description" class="description"></div>
+        <h2 class="modal-title"></h2>
+        <p class="description"></p>
     </div>
 </div>
 
 <script>
-    function showModal(title, description) {
-        document.getElementById("modal-title").innerText = title;
-        document.getElementById("modal-description").innerHTML = description.replace(/(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i, '<img src="$1" class="logo-img"> $1');
-        document.getElementById("modal").style.display = "block";
+    function showModal(title, description, titleClass) {
+        document.querySelector('.modal-title').textContent = title;
+        document.querySelector('.description').textContent = description;
+        document.querySelector('.modal-title').className = 'modal-title ' + titleClass; // Add gradient class
+        document.getElementById('modal').style.display = 'block';
     }
 
     function closeModal() {
-        document.getElementById("modal").style.display = "none";
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('modal')) {
+            closeModal();
+        }
     }
 </script>
 
