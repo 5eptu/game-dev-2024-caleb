@@ -37,7 +37,7 @@
             margin: 15px;
             cursor: pointer;
             transition: transform 0.3s, filter 0.3s;
-            width: 100px; /* Adjust size */
+            width: 100px; /* Medium size */
             filter: brightness(0.8);
         }
         .logo:hover {
@@ -96,7 +96,13 @@
             line-height: 1.5;
             font-size: 16px;
         }
-        /* Unique gradients for each title */
+        .logo-img {
+            width: 50px; /* Size of logos in descriptions */
+            height: auto; /* Maintain aspect ratio */
+            vertical-align: middle; /* Align with text */
+            margin-right: 10px; /* Space between logo and text */
+        }
+        /* Gradient only for titles */
         .united-federation { background: linear-gradient(90deg, #ff0055, #ffbb00); }
         .fortification-unit { background: linear-gradient(90deg, #00ff00, #00aaff); }
         .eradication-unit { background: linear-gradient(90deg, #0000ff, #ff0055); }
@@ -137,7 +143,7 @@
         <img src="https://i.imgur.com/C5hPaSL.png" alt="Advanced Research & Development" class="logo" onclick="showModal('Advanced Research & Development', 'research-development', 'Innovating new technologies for the federation, this department is crucial for advancements in military and civilian applications.')">
         <img src="https://i.imgur.com/OVuVMEa.png" alt="Synth Intelligence Agency" class="logo" onclick="showModal('Synth Intelligence Agency', 'intelligence-agency', 'Conducts intelligence operations and surveillance to maintain national security and respond to emerging threats.')">
         <img src="https://i.imgur.com/s0VAxS4.png" alt="Void Special Forces" class="logo" onclick="showModal('Void Special Forces', 'void-special-forces', 'Elite unit specializing in covert operations, capable of executing missions under extreme conditions.')">
-        <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force COS-22" class="logo" onclick="showModal('Task Force COS-22', 'task-force-cos22', 'Task force dedicated to countering threats in outer space, utilizing advanced spacecraft for surveillance and combat.')">
+        <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force COS-22" class="logo" onclick="showModal('Task Force COS-22', 'task-force-cos22', 'Special operations task force designed for high-risk missions that require quick response and strategic thinking.')">
         <img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force RIFT-404" class="logo" onclick="showModal('Task Force RIFT-404', 'task-force-rift404', 'Special operations unit that handles interdimensional threats and anomalies, ensuring the safety of the federation.')">
     </div>
 </div>
@@ -177,7 +183,7 @@
     function showModal(title, className, description) {
         document.getElementById("modal-title").className = 'title ' + className;
         document.getElementById("modal-title").innerText = title;
-        document.getElementById("modal-description").innerText = description;
+        document.getElementById("modal-description").innerHTML = description.replace(/(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i, '<img src="$1" class="logo-img"> $1');
         document.getElementById("modal").style.display = "block";
     }
 
