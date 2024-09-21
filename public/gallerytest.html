@@ -3,111 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UGF Gallery</title>
+    <title>Logo Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-image: url('https://wallpapers.com/images/hd/red-space-1920-x-1080-background-ptjivpuphkno1bw8.jpg');
+            background: url('https://wallpapers.com/images/hd/red-space-1920-x-1080-background-ptjivpuphkno1bw8.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-attachment: fixed;
-            color: #fff;
+            color: white;
+            font-family: 'Titillium Web', sans-serif;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            overflow-y: scroll; /* Enable vertical scrolling */
         }
-
-        h1.title {
-            font-family: 'Audiowide', sans-serif;
-            font-size: 32px;
-            text-align: center;
-            margin-top: 20px;
-            color: #fff;
-        }
-
-        .logo-section {
-            margin: 40px auto;
+        .header {
             text-align: center;
             padding: 20px;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
-
+        .logo-section {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
         .logo-container {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
+            justify-content: center;
         }
-
         .logo {
-            width: 150px;
-            height: 150px;
+            margin: 15px;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.3s, filter 0.3s;
+            width: 120px; /* Adjusted logo size */
+            filter: brightness(0.8);
         }
-
         .logo:hover {
             transform: scale(1.1);
+            filter: brightness(1);
         }
-
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.9);
-            text-align: center;
+            padding: 20px;
         }
-
         .modal-content {
-            background-color: #333;
-            margin: 10% auto;
-            padding: 30px;
-            border: 1px solid #888;
-            width: 60%;
-            max-width: 700px;
-            position: relative;
+            background-color: #222;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
         }
-
-        .modal-title {
-            font-family: 'Audiowide', sans-serif;
-            font-size: 30px;
-            color: #ff4d4d;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .description {
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            color: #e0e0e0;
-            text-align: left;
-            margin-top: 20px;
-        }
-
-        .logo-img {
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 20px;
-            display: block;
-        }
-
         .close {
             color: #aaa;
-            position: absolute;
-            top: 10px;
-            right: 20px;
+            float: right;
             font-size: 28px;
             font-weight: bold;
         }
-
-        .close:hover,
-        .close:focus {
-            color: #fff;
+        .close:hover, .close:focus {
+            color: white;
             text-decoration: none;
             cursor: pointer;
+        }
+        .title {
+            padding: 10px;
+            text-align: center; /* Centered title */
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .description {
+            color: #f0f0f0;
+            text-align: left; /* Left-aligned description */
+            line-height: 1.5;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .logo-img {
+            width: 250px; /* Increased size of logos in modal */
+            height: auto;
+            margin: 10px auto; /* Center the logo under the title */
+            display: block;
         }
 
         /* Unique gradients for each logo title */
@@ -147,13 +133,13 @@
 <div class="logo-section">
     <h2 class="title">United Federation</h2>
     <div class="logo-container">
-        <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation" class="logo" onclick="showModal('United Federation', 'The United Federation is a powerful union of states and provinces, combining the resources and strength of North America under a single banner. It maintains an advanced military and technology sectors, emphasizing security, innovation, and global influence. It’s considered the safest empire to live in, with its highly developed security infrastructure ensuring protection for its citizens. Though its ethics are often questioned due to aggressive policies and controversial decisions, the Federation’s commitment to stability and order makes it a secure place to reside. The Federations governing structure is unique, diverging from the typical president and vice president system found in many nations. Instead, it is led by a council known as High Command, consisting of 13 High Commanders and 13 Interim High Commanders. This dual leadership model is designed to ensure continuity and balance of power, with High Commanders making key strategic decisions while their Interim counterparts act as immediate successors or advisors. This system, though unconventional, allows for greater specialization and strategic oversight, but it also raises questions about transparency and the concentration of power within the federation.', 'https://i.imgur.com/Gn60P1H.png', 'title-united-federation')">
+        <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation" class="logo" onclick="showModal('United Federation', 'The central governing body of the United Federation. Committed to peace and prosperity, this organization oversees various military and civil operations throughout the galaxy.', 'https://i.imgur.com/Gn60P1H.png', 'title-united-federation')">
         <img src="https://i.imgur.com/wg3hJto.png" alt="Fortification Unit" class="logo" onclick="showModal('Fortification Unit', 'Specialized in defense and fortifications, this unit is essential for maintaining the safety of federation outposts and installations.', 'https://i.imgur.com/wg3hJto.png', 'title-fortification')">
         <img src="https://i.imgur.com/X1sUC95.png" alt="Eradication Unit" class="logo" onclick="showModal('Eradication Unit', 'Tasked with neutralizing threats to the federation, this unit operates in hostile environments, ensuring that dangers are swiftly dealt with.', 'https://i.imgur.com/X1sUC95.png', 'title-eradication')">
         <img src="https://i.imgur.com/ryZDDNz.png" alt="Incendiary Division" class="logo" onclick="showModal('Incendiary Division', 'Experts in fire-based weaponry and tactics, this division plays a crucial role in assaults and offensives.', 'https://i.imgur.com/ryZDDNz.png', 'title-incendiary')">
-        <img src="https://i.imgur.com/wSahQGY.png" alt="Marine Corps" class="logo" onclick="showModal('Marine Corps', 'The marine force of the federation, known for their versatility and combat skills, deployed in various missions across different terrains.', 'https://i.imgur.com/wSahQGY.png', 'title-marine-corps')">
-        <img src="https://i.imgur.com/P6CTkFh.png" alt="Navy" class="logo" onclick="showModal('Navy', 'The naval force of the federation, responsible for securing waters and conducting maritime operations.', 'https://i.imgur.com/P6CTkFh.png', 'title-navy')">
-        <img src="https://i.imgur.com/C5hPaSL.png" alt="Advanced Research & Development" class="logo" onclick="showModal('Advanced Research & Development', 'Leading the charge in technological advancements, this department develops cutting-edge military equipment and strategies.', 'https://i.imgur.com/C5hPaSL.png', 'title-advanced-research')">
+        <img src="https://i.imgur.com/j2aR1h4.png" alt="Marine Corps" class="logo" onclick="showModal('Marine Corps', 'The marine force of the federation, known for their versatility and combat skills, deployed in various missions across different terrains.', 'https://i.imgur.com/j2aR1h4.png', 'title-marine-corps')">
+        <img src="https://i.imgur.com/C5hPaSL.png" alt="Navy" class="logo" onclick="showModal('Navy', 'The naval force of the federation, responsible for securing waters and conducting maritime operations.', 'https://i.imgur.com/C5hPaSL.png', 'title-navy')">
+        <img src="https://i.imgur.com/OVuVMEa.png" alt="Advanced Research & Development" class="logo" onclick="showModal('Advanced Research & Development', 'Leading the charge in technological advancements, this department develops cutting-edge military equipment and strategies.', 'https://i.imgur.com/OVuVMEa.png', 'title-advanced-research')">
         <img src="https://i.imgur.com/OVuVMEa.png" alt="Synth Intelligence Agency" class="logo" onclick="showModal('Synth Intelligence Agency', 'Specializing in information warfare and intelligence, this agency plays a crucial role in national security.', 'https://i.imgur.com/OVuVMEa.png', 'title-synth-intelligence')">
         <img src="https://i.imgur.com/s0VAxS4.png" alt="Void Special Forces" class="logo" onclick="showModal('Void Special Forces', 'Elite operatives trained for covert operations in extreme environments, they undertake the most sensitive missions.', 'https://i.imgur.com/s0VAxS4.png', 'title-void-special-forces')">
         <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force COS-22" class="logo" onclick="showModal('Task Force COS-22', 'A special task force created to handle complex and high-stakes operations, COS-22 is equipped with the latest technology.', 'https://i.imgur.com/T71K9PY.png', 'title-task-force-cos')">
