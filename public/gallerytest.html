@@ -77,19 +77,20 @@
         }
         .title {
             padding: 10px;
-            text-align: center;
+            text-align: center; /* Centered title */
             margin-bottom: 15px;
             font-weight: bold;
             font-size: 24px;
         }
         .description {
             color: #f0f0f0;
-            text-align: center; /* Center text in description */
+            text-align: left; /* Left-aligned description */
             line-height: 1.5;
             font-size: 16px;
+            margin-top: 15px;
         }
         .logo-img {
-            width: 150px; /* Increased size of logos in modal */
+            width: 200px; /* Increased size of logos in modal */
             height: auto;
             margin: 10px auto; /* Center the logo under the title */
             display: block;
@@ -135,7 +136,7 @@
         <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation" class="logo" onclick="showModal('United Federation', 'The central governing body of the United Federation. Committed to peace and prosperity, this organization oversees various military and civil operations throughout the galaxy.', 'https://i.imgur.com/Gn60P1H.png', 'title-united-federation')">
         <img src="https://i.imgur.com/wg3hJto.png" alt="Fortification Unit" class="logo" onclick="showModal('Fortification Unit', 'Specialized in defense and fortifications, this unit is essential for maintaining the safety of federation outposts and installations.', 'https://i.imgur.com/wg3hJto.png', 'title-fortification')">
         <img src="https://i.imgur.com/X1sUC95.png" alt="Eradication Unit" class="logo" onclick="showModal('Eradication Unit', 'Tasked with neutralizing threats to the federation, this unit operates in hostile environments, ensuring that dangers are swiftly dealt with.', 'https://i.imgur.com/X1sUC95.png', 'title-eradication')">
-        <img src="https://i.imgur.com/ryZDDNz.png" alt="Incendiary Division" class="logo" onclick="showModal('Incendiary Division', 'Experts in fire-based tactics, this division employs advanced weaponry to engage enemies effectively.', 'https://i.imgur.com/ryZDDNz.png', 'title-incendiary')">
+        <img src="https://i.imgur.com/ryZDDNz.png" alt="Incendiary Division" class="logo" onclick="showModal('Incendiary Division', 'Experts in fire-based weaponry and tactics, this division plays a crucial role in assaults and offensives.', 'https://i.imgur.com/ryZDDNz.png', 'title-incendiary')">
         <img src="https://i.imgur.com/j2aR1h4.png" alt="Marine Corps" class="logo" onclick="showModal('Marine Corps', 'The marine force of the federation, known for their versatility and combat skills, deployed in various missions across different terrains.', 'https://i.imgur.com/j2aR1h4.png', 'title-marine-corps')">
         <img src="https://i.imgur.com/C5hPaSL.png" alt="Navy" class="logo" onclick="showModal('Navy', 'The naval force of the federation, responsible for securing waters and conducting maritime operations.', 'https://i.imgur.com/C5hPaSL.png', 'title-navy')">
         <img src="https://i.imgur.com/OVuVMEa.png" alt="Advanced Research & Development" class="logo" onclick="showModal('Advanced Research & Development', 'Leading the charge in technological advancements, this department develops cutting-edge military equipment and strategies.', 'https://i.imgur.com/OVuVMEa.png', 'title-advanced-research')">
@@ -174,9 +175,9 @@
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h2 class="modal-title"></h2>
+        <h2 class="modal-title" style="text-align: center;"></h2>
         <img src="" alt="" class="logo-img" id="modal-logo" />
-        <p class="description"></p>
+        <p class="description" style="text-align: left;"></p>
     </div>
 </div>
 
