@@ -3,322 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art Gallery</title>
+    <title>Logo Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap');
-
-        /* Body & Background */
         body {
-            font-family: 'Chakra Petch', sans-serif;
             background: url('https://wallpapers.com/images/hd/red-space-1920-x-1080-background-ptjivpuphkno1bw8.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #ffffff;
+            color: white;
+            font-family: 'Titillium Web', sans-serif;
             margin: 0;
             padding: 0;
+            overflow-y: scroll; /* Enable vertical scrolling */
         }
-
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .header {
+            text-align: center;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7); /* Dark transparent background behind content */
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .logo-section {
+            padding: 20px;
+            margin: 20px 0;
             border-radius: 10px;
         }
-
-        /* Section Headers */
-        .gallery-section h2 {
-            font-size: 28px;
-            color: #ff4545;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #ff4545;
-            padding-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        /* Logo Row */
-        .gallery-row {
+        .logo-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: center;
         }
-
-        /* Images Style */
-        .gallery-row img {
-            width: 192px;
-            height: 192px;
-            object-fit: contain;
-            margin: 10px;
-            border: 2px solid #ffffff;
-            transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        .logo {
+            margin: 15px;
+            cursor: pointer;
+            transition: transform 0.3s, filter 0.3s;
+            width: 120px; /* Adjusted logo size */
+            filter: brightness(0.8);
         }
-
-        .gallery-row img:hover {
+        .logo:hover {
             transform: scale(1.1);
-            border-color: #ff4545;
+            filter: brightness(1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+        }
+        .modal-content {
+            background-color: #222;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover, .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .title {
+            padding: 10px;
+            text-align: center; /* Centered title */
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .description {
+            color: #f0f0f0;
+            text-align: left; /* Left-aligned description */
+            line-height: 1.5;
+            font-size: 22px;
+            margin-top: 15px;
+        }
+        .logo-img {
+            width: 250px; /* Increased size of logos in modal */
+            height: auto;
+            margin: 10px auto; /* Center the logo under the title */
+            display: block;
         }
 
-        /* Text Color Gradients for Titles */
-        .logo-title {
-            text-align: center;
-            font-size: 18px;
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
+        /* Unique gradients for each logo title */
+        .title-united-federation { background: linear-gradient(90deg, #ff0000, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-fortification { background: linear-gradient(90deg, #ff0000, #000000); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-eradication { background: linear-gradient(90deg, #a50000, #c0b186); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-incendiary { background: linear-gradient(90deg, #ff4500, #36454f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-marine-corps { background: linear-gradient(90deg, #ffff00, #000000); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-navy { background: linear-gradient(90deg, #0000ff, #f8f8f8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-advanced-research { background: linear-gradient(90deg, #8b0000, #d3d3d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-synth-intelligence { background: linear-gradient(90deg, #8000ff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-void-special-forces { background: linear-gradient(90deg, #4b0082, #8000ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-task-force-cos { background: linear-gradient(90deg, #4b0082, #8000ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-task-force-rift { background: linear-gradient(90deg, #4b0082, #8000ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* Individual Logo Title Gradients */
-        .united-federation .logo-title {
-            background: linear-gradient(45deg, #ff4c4c, #ffffff); /* Federation red theme */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        /* Corporate Section */
+        .title-inktech { background: linear-gradient(90deg, #1c1c1c, #fefefe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-elgius { background: linear-gradient(90deg, #ffcc99, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-cyberworks { background: linear-gradient(90deg, #00ffff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-xtract { background: linear-gradient(90deg, #c0c0c0, #02754f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-rythen { background: linear-gradient(90deg, #ffffff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-swarm { background: linear-gradient(90deg, #ffffff, #36454f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-cesco { background: linear-gradient(90deg, #36454f, #c0c0c0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        .fortification-unit .logo-title {
-            background: linear-gradient(45deg, #ff4c4c, #ffffff); /* Fortification - gray steel */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .eradication-unit .logo-title {
-            background: linear-gradient(45deg, #8b0000, #b8860b); /* Eradication - red-orange */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .incendiary-division .logo-title {
-            background: linear-gradient(45deg, #ff4500, #2f4f4f); /* Incendiary - fiery orange-yellow */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .marine-corps .logo-title {
-            background: linear-gradient(45deg, #b8860b, #333333); /* Marine Corps - navy blue to sky blue */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .navy .logo-title {
-            background: linear-gradient(45deg, #001f3f, #0080ff); /* Navy - deep navy blue */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .advanced-rd .logo-title {
-            background: linear-gradient(45deg, #8b0000, #ffffff); /* R&D - science green */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .synth-intelligence .logo-title {
-            background: linear-gradient(45deg, #6a0dad, #d3d3d3); /* Synth Intelligence - purple magenta */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .void-special-forces .logo-title {
-            background: linear-gradient(45deg, #800080, #4b0082); /* Void Special Forces - black dark gray */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .cos22 .logo-title {
-            background: linear-gradient(45deg, #800080, #4b0082); /* Task Force COS-22 - green military */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .rift404 .logo-title {
-            background: linear-gradient(45deg, #800080, #4b0082); /* Task Force RIFT-404 - deep purple */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .inktech .logo-title {
-            background: linear-gradient(45deg, #000000, #ffffff); /* InkTech - pink and hot pink */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .elgius-inc .logo-title {
-            background: linear-gradient(45deg, #ffa347, #ffffff); /* Elgius - green lime */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .cyberworks .logo-title {
-            background: linear-gradient(45deg, #00ffff, #0056b3); /* CyberWorks - cyan blue */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .xtract-services .logo-title {
-            background: linear-gradient(45deg, #458b74, #c0c0c0); /* Xtract - golden brown */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .rythen-arms .logo-title {
-            background: linear-gradient(45deg, #ffffff, #ffffff); /* Rythen Arms - deep red to brown */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .swarm-car .logo-title {
-            background: linear-gradient(45deg, #ffffff, #000000); /* Swarm Car - bright orange */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .cesco-music .logo-title {
-            background: linear-gradient(45deg, #ffffff, #000000); /* Cesco Music - red to coral */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .copilot .logo-title {
-            background: linear-gradient(45deg, #00ffff, #a020f0); /* Copilot - sky blue */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .glyph .logo-title {
-            background: linear-gradient(45deg, #00ff00, #ffffff); /* Glyph - magenta to orange */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .genoai .logo-title {
-            background: linear-gradient(45deg, #4d5d53, #4f7942); /* GenoAI - orange to bright orange */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .flakeai .logo-title {
-            background: linear-gradient(45deg, #808080, #ffffff); /* FlakeAI - teal to cyan */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Adjust image size for smaller screens */
-        @media (max-width: 768px) {
-            .gallery-row img {
-                width: 150px;
-                height: 150px;
-            }
-        }
+        /* AI Section */
+        .title-copilot { background: linear-gradient(90deg, #8000ff, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-glyph { background: linear-gradient(90deg, #ffffff, #00ff00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-genoai { background: linear-gradient(90deg, #8fbc8f, #006400); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-flakeai { background: linear-gradient(90deg, #ffffff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
 <body>
 
-    <div class="gallery-container">
-        <!-- United Federation Section -->
-        <section class="gallery-section united-federation">
-            <h2>United Federation Section</h2>
-            <div class="gallery-row">
-                <div class="united-federation">
-                    <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation">
-                    <div class="logo-title">United Federation</div>
-                </div>
-                <div class="fortification-unit">
-                    <img src="https://i.imgur.com/wg3hJto.png" alt="United Federation Fortification Unit">
-                    <div class="logo-title">Fortification Unit</div>
-                </div>
-                <div class="eradication-unit">
-                    <img src="https://i.imgur.com/X1sUC95.png" alt="United Federation Eradication Unit">
-                    <div class="logo-title">Eradication Unit</div>
-                </div>
-                <div class="incendiary-division">
-                    <img src="https://i.imgur.com/ryZDDNz.png" alt="United Federation Incendiary Division">
-                    <div class="logo-title">Incendiary Division</div>
-                </div>
-                <div class="marine-corps">
-                    <img src="https://i.imgur.com/wSahQGY.png" alt="United Federation Marine Corps">
-                    <div class="logo-title">Marine Corps</div>
-                </div>
-                <div class="navy">
-                    <img src="https://i.imgur.com/P6CTkFh.png" alt="United Federation Navy">
-                    <div class="logo-title">Navy</div>
-                </div>
-                <div class="advanced-research-and-development">    
-                    <img src="https://i.imgur.com/C5hPaSL.png" alt="Advanced Research & Development">
-                    <div class="logo-title">Advanced R&D</div>
-                </div>
-                <div class="synth-intelligence-agency">
-                    <img src="https://i.imgur.com/OVuVMEa.png" alt="Synth Intelligence Agency">
-                    <div class="logo-title">Synth Intelligence</div>
-                </div>
-                <div class="void-special-forces">
-                    <img src="https://i.imgur.com/s0VAxS4.png" alt="Void Special Forces">
-                    <div class="logo-title">Void Special Forces</div>
-                </div>
-                <div class="task-force-cos-22">
-                    <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force COS-22">
-                    <div class="logo-title">Task Force COS-22</div>
-                </div>
-                <div class="task-force-rift-404">
-                    <img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force RIFT-404">
-                    <div class="logo-title">Task Force RIFT-404</div>
-                </div>
-            </div>
-        </section>
+<div class="header">Logo Gallery</div>
 
-        <!-- Corporate Section -->
-        <section class="gallery-section corporate">
-            <h2>Corporate Section</h2>
-            <div class="gallery-row">
-                <div class="inktech">
-                    <img src="https://i.imgur.com/fy8EJgm.png" alt="InkTech">
-                    <div class="logo-title">InkTech</div>
-                </div>
-                <div class="elgius-inc.">
-                    <img src="https://i.imgur.com/o8j0hY0.png" alt="Elgius Inc.">
-                    <div class="logo-title">Elgius Inc.</div>
-                </div>
-                <div class="CyberWorks">
-                    <img src="https://i.imgur.com/fX3p0vc.png" alt="CyberWorks">
-                    <div class="logo-title">CyberWorks</div>
-                </div>
-                <div class="xtract-services">
-                    <img src="https://i.imgur.com/VByCBHC.png" alt="Xtract Services">
-                    <div class="logo-title">Xtract Services</div>
-                </div>
-                <div class="rythen-arms">
-                    <img src="https://i.imgur.com/NBVG2go.png" alt="Rythen Arms">
-                    <div class="logo-title">Rythen Arms</div>
-                </div>
-                <div class="swarm-car-company">
-                    <img src="https://i.imgur.com/2YJzFrs.png" alt="Swarm Car Company">
-                    <div class="logo-title">Swarm Car Company</div>
-                </div>
-                <div class="cesco-music-group">
-                    <img src="https://i.imgur.com/JgNRia0.png" alt="Cesco Music Group">
-                    <div class="logo-title">Cesco Music Group</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Artificial Intelligence Section -->
-        <section class="gallery-section ai">
-            <h2>Artificial Intelligence Section</h2>
-            <div class="gallery-row">
-                <div class="copilot">
-                    <img src="https://i.imgur.com/EzZAgYR.png" alt="Copilot">
-                    <div class="logo-title">Copilot</div>
-                </div>
-                <div class="glyph">
-                    <img src="https://i.imgur.com/lEY7MpC.png" alt="Glyph">
-                    <div class="logo-title">Glyph</div>
-                </div>
-                <div class="genoai">
-                    <img src="https://i.imgur.com/F5vsxlB.png" alt="GenoAI">
-                    <div class="logo-title">GenoAI</div>
-                </div>
-                <div class="flakeai">
-                    <img src="https://i.imgur.com/TrGNgCO.png" alt="FlakeAI">
-                    <div class="logo-title">FlakeAI</div>
-                </div>
-            </div>
-        </section>
+<!-- United Federation Section -->
+<div class="logo-section">
+    <h2 class="title">United Federation</h2>
+    <div class="logo-container">
+        <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation" class="logo" onclick="showModal('United Federation', 'The United Federation is a powerful union of states and provinces, combining the resources and strength of North America under a single banner. The Federation is one of the most powerful nations on Earth, known for its military power, and global influence. It’s considered the safest empire to live in, with its highly developed security infrastructure ensuring protection for its citizens. Though its ethics are often questioned due to aggressive policies and controversial decisions, the Federations commitment to stability and order makes it a secure place to reside. The United Federation plays a key role in maintaining Earths overall stability and composure, using its vast resources and influence to manage global affairs. However, its methods of governance are considered unconventional, often relying on strict control and advanced surveillance systems to keep order. While effective, these measures sometimes blur ethical lines, raising concerns among critics. The United Federations governing structure is unique, diverging from the typical president and vice president system found in many nations. Instead, it is led by a group known as High Command, consisting of 13 High Commanders and 13 Interim High Commanders. This dual leadership model is designed to ensure continuity and balance of power, with High Commanders making key strategic decisions while their Interim counterparts act as immediate successors or advisors. This system, though unconventional, allows for greater specialization and strategic oversight, but it also raises questions about transparency and the concentration of power within the federation.', 'https://i.imgur.com/Gn60P1H.png', 'title-united-federation')">
+        <img src="https://i.imgur.com/wg3hJto.png" alt="Fortification Unit" class="logo" onclick="showModal('Fortification Unit', 'The United Federation Fortification Unit is a specialized military division responsible for constructing and maintaining defensive structures and strategic fortifications. Tasked with securing key locations and reinforcing vulnerable areas, this unit plays a critical role in the Federations defense strategy. They employ advanced materials and technology to build impenetrable strongholds, bunkers, and barriers, ensuring the safety of military installations and civilian infrastructure alike. The Fortification Unit is known for its rapid deployment capabilities, able to establish secure defensive positions in hostile environments quickly and efficiently. The United Federation Fortification Unit also handles heavy arms and is known for its heavily armored troops, referred to as `Fortifiers` or `Towers`. These units are equipped with powerful weapons and turtleback armor, featuring deployable energy shields in their right arms designed to block incoming fire and prevent enemy access. Often deployed in high-risk zones, Fortifiers serve as both a defensive force and a heavy assault team, creating impenetrable barriers while providing cover for advancing troops. Their presence on the battlefield ensures superior protection and control, making them a vital asset in both offensive and defensive operations.', 'https://i.imgur.com/wg3hJto.png', 'title-fortification')">
+        <img src="https://i.imgur.com/X1sUC95.png" alt="Eradication Unit" class="logo" onclick="showModal('Eradication Unit', 'The Eradication Unit is a close-quarters, priority-advancing force within the United Federation, specializing in breaching and aggressive frontline combat. These soldiers, slightly more armored than standard federal troops, are equipped with powerful shotguns, making them lethal in confined or urban environments. As breachers, they lead high-risk entries, often at the forefront of assaults, clearing obstacles and neutralizing threats with rapid, overwhelming force. Their enhanced armor and tactical aggression make the Eradication Unit an essential component in operations that require swift and decisive action in close quarters.', 'https://i.imgur.com/X1sUC95.png', 'title-eradication')">
+        <img src="https://i.imgur.com/ryZDDNz.png" alt="Incendiary Division" class="logo" onclick="showModal('Incendiary Division', 'The Incendiary Division is a specialized division within the United Federation, tasked with deploying fire-based weaponry in combat. Equipped with flamethrowers, incendiary grenades, and fire-resistant armor, these soldiers excel in crowd control, clearing entrenched enemies, and flushing out opponents from fortified positions. The division is often used in high-stakes operations where creating chaos and destruction is critical to achieving objectives. Known for their destructive power and psychological impact, the Incendiary Division is feared for its ability to devastate enemy forces with overwhelming heat and flame. The Incendiary Division is not only specialized in deploying fire-based weaponry but also plays a key role in burning evidence during covert operations. These soldiers are tasked with erasing sensitive materials and ensuring nothing is left behind after a mission. Whether clearing out enemy strongholds or destroying incriminating data, they excel at using fire to both dominate the battlefield and cover the Federations tracks.', 'https://i.imgur.com/ryZDDNz.png', 'title-incendiary')">
+        <img src="https://i.imgur.com/wSahQGY.png" alt="Marine Corps" class="logo" onclick="showModal('Marine Corps', 'The United Federation Marines is a branch of the United Federation Armed Forces, tasked with rapid-response operations and frontline engagements. Known for their harsh training and adaptability, these marines serve as both peacekeepers and combat specialists, equipped with the latest gear that enhances their combat effectiveness. The United Federation Marines is the embodiment of commitment to security and stability, ready to deploy anywhere their skills are needed.', 'https://i.imgur.com/wSahQGY.png', 'title-marine-corps')">
+        <img src="https://i.imgur.com/P6CTkFh.png" alt="Navy" class="logo" onclick="showModal('Navy', 'The United Federation Navy is the maritime defense force of the United Federation, responsible for safeguarding coastal regions and ensuring maritime security. Equipped with advanced warships and submarines, the navy conducts a range of operations, including naval warfare, humanitarian missions, and reconnaissance. With a focus on strategic dominance and rapid response, the United Federation Navy plays a crucial role in maintaining the federations security and power on the high seas. To show power the federation has also recommissioned the use of battleships.', 'https://i.imgur.com/P6CTkFh.png', 'title-navy')">
+        <img src="https://i.imgur.com/C5hPaSL.png" alt="Advanced Research & Development" class="logo" onclick="showModal('Advanced Research & Development', 'The United Federations Advanced Research and Development Branch pioneers innovation across multiple fields, including military technology, space exploration, and cybernetics. Operating independently of federal oversight, this branch is responsible for creating solutions that enhance defense capabilities, such as advanced weaponry, AI-driven systems, and bio-engineered materials. A leader in both terrestrial and space-based technologies, Advanced R&D pushes the boundaries of science, often engaging in unconventional methods to stay ahead of global competitors. Despite its achievements, the branches secrecy and autonomy have raised concerns about ethical practices.', 'https://i.imgur.com/C5hPaSL.png', 'title-advanced-research')">
+        <img src="https://i.imgur.com/OVuVMEa.png" alt="Synth Intelligence Agency" class="logo" onclick="showModal('Synth Intelligence Agency', 'The Synth Intelligence Agency is a covert branch within the United Federation, specializing in advanced surveillance, intelligence gathering, and information control. Tasked with ensuring that no sensitive data leaves the federation, the SIA employs a range of methods, including the abduction of adversaries and the use of memory-wiping tech to eliminate any potential leaks. Operating in secrecy, the agency utilizes synthetic technologies to enhance its capabilities, making it a perfect force in both defense and intelligence. While essential for national security, the SIAs tactics have sparked ethical concerns and raised questions about the lengths to which it will go to protect the federations interests.', 'https://i.imgur.com/OVuVMEa.png', 'title-synth-intelligence')">
+        <img src="https://i.imgur.com/s0VAxS4.png" alt="Void Special Forces" class="logo" onclick="showModal('Void Special Forces', 'The Void Special Forces is an elite branch within the United Federation, specializing in covert operations and high-stakes missions that often involve interacting with the Void and the interdimensional realms associated with it. These operatives are trained to navigate both extreme environments and supernatural threats, leveraging their unique connection to the Void to enhance their capabilities. The unit maintains close ties with the heavens, receiving blessings and support that empower their effectiveness in the field. With advanced void technology and rigorous training, the Void Special Forces are equipped to tackle complex challenges, ensuring the safety and security of the federation in both terrestrial and astral areas.', 'https://i.imgur.com/s0VAxS4.png', 'title-void-special-forces')">
+        <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force COS-22" class="logo" onclick="showModal('Task Force COS-22', 'Task Force COS-22, also known as the Voids Promise, is a specialized unit within the Void Special Forces focused on handling hellspawn reports and supernatural threats. Comprised primarily of Starborne operatives, members of COS-22 possess unique abilities derived from their experiences in the Void, allowing them to confront and neutralize otherworldly entities effectively. Since hellspawns do not like to take astral erroded souls, they hate fighting starbornes. The team utilizes void tech and tactics formed for supernatural encounters, ensuring rapid response and resolution of high-risk situations. Their deep understanding of the Void, along with strategic coordination with astral forces, enables Task Force COS-22 to operate at the forefront of defending the federation against existential threats.', 'https://i.imgur.com/T71K9PY.png', 'title-task-force-cos')">
+        <img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force RIFT-404" class="logo" onclick="showModal('Task Force RIFT-404', 'Task Force RIFT-404 is a division within the Void Special Forces, dedicated to the pursuit of individuals, rare artifacts, and objects that appear nearly impossible to neutralize or capture. This specialized team combines advanced tracking techniques, strategic infiltration, and a deep understanding of the Void to navigate complex environments and secure high-value targets. Task Force RIFT-404 operates in shadowed discretion utilizing their unique abilities to overcome challenges that other units cannot. Their relentless pursuit of the extraordinary makes them a vital asset in the United Federation’s efforts to reclaim lost or dangerous entities, ensuring that nothing remains out of reach.', 'https://i.imgur.com/1kKd9Fv.png', 'title-task-force-rift')">
     </div>
+</div>
+
+<!-- Corporate Section -->
+<div class="logo-section">
+    <h2 class="title">Corporate</h2>
+    <div class="logo-container">
+        <img src="https://i.imgur.com/fy8EJgm.png" alt="InkTech" class="logo" onclick="showModal('InkTech', 'InkTech is a leading corporation at the forefront of bioweapons development, specializing in a wide array of products, including engineered diseases, organic weaponry, bio-enhanced soldiers, and advanced vehicles. With 90% of their armory composed of organic, flesh-based technology, the company pushes the boundaries of bioengineering, creating ink based soldiers—78% of their military personnel—who are enhanced through genetic manipulation and advanced biomaterials. The remaining 22% are purely human soldiers, often serving in basic roles such as reception or janitorial service etc. InkTech not only focuses on weaponry but also offers defense and escort contracts to governments and private entities, ensuring security in high-risk environments. Their advanced research facilities continually innovate, leading to the development of more bioweapons and organic technology that challenges conventional warfare. Despite ethical concerns surrounding their methods and the implications of their creations, InkTech remains a powerful player in the defense sector, shaping the future of military operations with their unique blend of biology and technology.', 'https://i.imgur.com/fy8EJgm.png', 'title-inktech')">
+        <img src="https://i.imgur.com/o8j0hY0.png" alt="Elgius Inc." class="logo" onclick="showModal('Elgius Inc.', 'Elgius Inc. once stood as the largest corporation on Earth, dominating the global market with its innovative technologies and vast resources. However, their reign came to a swift end following the corporate wars they lost and a notorious event known as Operation Black Diamond, where they employed advanced AI to unleash botnets and malware worldwide, resulting in a catastrophic six-month internet blackout. This maneuver not only destabilized rival corporations but ultimately led to Elgius Inc. own downfall, as the backlash resulted in the surrender of their assets to competing firms. In the aftermath of their collapse, the Synth Intelligence Agency uncovered shocking activities linked to Elgius. The corporation had been abducting interstellar rockstars, genetically altering them to appear human and manipulating their memories to ensure they believed they were ordinary individuals. Under the guise of corporate agents posing as managers, Elgius promoted these masked artists through the Cesco Music Group, generating substantial profits from their music while operating in secrecy. This dark chapter in Elgius Inc. history highlighted the lengths to which they would go to maintain influence and wealth, even after their fall from grace.', 'https://i.imgur.com/o8j0hY0.png', 'title-elgius')">
+        <img src="https://i.imgur.com/fX3p0vc.png" alt="CyberWorks" class="logo" onclick="showModal('CyberWorks', 'CyberWorks is a technology firm known for its pioneering advancements in cybernetics, artificial intelligence, and advanced robotics. Established as a leader in the field, the company focuses on merging human biology with advanced technology, striving to enhance human capabilities and improve quality of life. At the heart of CyberWorks mission is the development of sophisticated cybernetic implants that range from medical applications such as prosthetics and neural interfaces to military enhancements that boost strength, reflexes, and cognitive functions. Their products are designed to empower individuals, allowing for improved mobility and greater interaction with the digital world. In addition to cybernetics, CyberWorks excels in creating advanced AI systems capable of operating autonomously in complex environments. These AI solutions are employed in diverse areas, including defense, healthcare, and manufacturing, streamlining processes and enhancing efficiency.', 'https://i.imgur.com/fX3p0vc.png', 'title-cyberworks')">
+        <img src="https://i.imgur.com/VByCBHC.png" alt="Xtract Services" class="logo" onclick="showModal('Xtract Services', 'Xtract Services is a specialized organization dedicated to executing military and civilian extractions in low and high-risk situations. With a focus on rapid response and medical support, Xtract Services deploys highly trained armed medical teams equipped to retrieve critically injured clients. Their operations span various scenarios, including combat zones, natural disasters, and urban emergencies, ensuring that no one is left behind. The organization prides itself on its efficiency and effectiveness, utilizing extraction vehicles and medical equipment to stabilize and transport casualties swiftly. Their personnel undergo rigorous training in both extraction techniques and emergency medical care, allowing them to provide immediate assistance while navigating challenging and often hostile conditions. In addition to their extraction capabilities, Xtract Services offers consultation and training for military and civilian clients, sharing best practices in emergency response and recovery operations. This commitment to preparedness not only enhances their own operations but also strengthens the overall response capabilities of the organizations they work with.  Recognized for their professionalism and dedication to saving lives, Xtract Services has established a reputation as a vital resource in critical situations, making a significant impact in both military and civilian rescue efforts.', 'https://i.imgur.com/VByCBHC.png', 'title-xtract')">
+        <img src="https://i.imgur.com/NBVG2go.png" alt="Rythen Arms" class="logo" onclick="showModal('Rythen Arms', 'Rythen Arms is a leading defense contractor known for its innovative designs and manufacturing of military equipment, including advanced weaponry and high-performance vehicles. Specializing in a wide range of military applications, the company focuses on creating products that enhance the effectiveness and survivability of armed forces. In addition to its firearms and munitions, Rythen Arms has made significant strides in the development of armored vehicles, tactical transports, and specialized combat platforms. Their vehicles are engineered for durability and mobility, equipped with latest tech to provide superior protection and combat capability in diverse environments. From infantry carriers to reconnaissance units, each vehicle is designed with the latest advancements in armor technology and operational efficiency. Rythen Arms also emphasizes research and development, continually seeking to push the boundaries of military technology. Their teams of engineers and designers work closely with military experts to ensure that every product meets the demanding needs of modern warfare. This collaboration allows Rythen Arms to stay ahead of evolving threats and integrate feedback from the field into their designs. Recognized for its commitment to quality and performance, Rythen Arms has established itself as a trusted partner for military forces around the world. Their reputation for reliability and innovation ensures that they remain a key player in the defense industry, shaping the future of military operations through advanced weaponry and vehicle solutions.', 'https://i.imgur.com/NBVG2go.png', 'title-rythen')">
+        <img src="https://i.imgur.com/2YJzFrs.png" alt="Swarm Car Company" class="logo" onclick="showModal('Swarm Car Company', 'Swarm Car Company is an automotive manufacturer specializing in advanced, modular vehicles for civilian applications. Known for sustainable practices, their vehicles feature autonomous driving capabilities and smart connectivity for real-time data sharing. In addition to civilian transport, Swarm produces vehicles designed for durability and performance in harsh conditions. The company explores electric powertrains and alternative fuels, aiming to reduce environmental impact. They produce more casual vehicles and super cars.', 'https://i.imgur.com/2YJzFrs.png', 'title-swarm')">
+        <img src="https://i.imgur.com/JgNRia0.png" alt="Cesco Music Group" class="logo" onclick="showModal('Cesco Music Group', 'Cesco Music Group is an entertainment organization specializing in music production and artist management. Known for its diverse roster of talent, the company plays a pivotal role in promoting both emerging and established artists across various genres. With a focus on quality and innovation, Cesco Music Group works closely with its artists to develop their unique sound and brand identity. The organization also excels in music distribution, leveraging marketing strategies to maximize exposure and reach. Through partnerships with streaming platforms, radio stations, and live event promoters, Cesco ensures that its artists gain widespread recognition and commercial success. In addition to traditional music production, Cesco Music Group is known for its involvement in projects, including collaborations with technology firms to integrate music and digital experiences. This forward-thinking approach not only enhances their artists offerings but also positions the company at the forefront of the evolving music industry.', 'https://i.imgur.com/JgNRia0.png', 'title-cesco')">
+    </div>
+</div>
+
+<!-- AI Section -->
+<div class="logo-section">
+    <h2 class="title">Artificial Intelligence</h2>
+    <div class="logo-container">
+        <img src="https://i.imgur.com/EzZAgYR.png" alt="Copilot" class="logo" onclick="showModal('Copilot', 'Copilot is a versatile multi-task AI used by the United Federation, designed for military applications, including cyber warfare and operational support. This advanced AI system enhances decision-making and situational awareness by processing vast amounts of data in real time, allowing military personnel to respond quickly to evolving threats. In cyber warfare, Copilot assists in detecting and mitigating cyber threats, managing network defenses, and coordinating defensive strategies. Its ability to analyze patterns and predict potential vulnerabilities makes it an invaluable asset in protecting military systems. Additionally, Copilot is integrated into various military platforms, including drones and command systems, streamlining communication and optimizing resource allocation. By automating routine tasks and providing actionable insights, Copilot empowers military personnel to focus on critical missions. Copilot also protected the United Federation to a degree from the internet blackout event.', 'https://i.imgur.com/EzZAgYR.png', 'title-copilot')">
+        <img src="https://i.imgur.com/lEY7MpC.png" alt="Glyph" class="logo" onclick="showModal('Glyph', 'Glyph is an AI system developed by CyberWorks, designed to enhance cybersecurity and operational efficiency across military and commercial applications. This advanced platform utilizes machine learning algorithms to analyze vast amounts of data, identify threats, and respond to cyber incidents in real time. In military contexts, Glyph provides critical support by monitoring network activity, detecting anomalies, and deploying countermeasures against cyberattacks. Its predictive capabilities enable proactive defense strategies, safeguarding sensitive information and infrastructure. Glyph also integrates seamlessly with CyberWorks cybernetic and robotic systems, optimizing their performance and ensuring secure communications. By streamlining processes and enhancing situational awareness, Glyph plays a vital role in maintaining operational integrity and resilience in an increasingly complex digital landscape.', 'https://i.imgur.com/lEY7MpC.png', 'title-glyph')">
+        <img src="https://i.imgur.com/F5vsxlB.png" alt="GenoAI" class="logo" onclick="showModal('GenoAI', 'GenoAI is an advanced genetic engineering platform developed by Biotechnica, focused on writing and editing genetic codes primarily for plants used in specialized medicinal applications. Leveraging algorithms and biotechnology, GenoAI enables researchers to precisely manipulate plant genomes to enhance desired traits, such as increased potency of medicinal compounds, improved growth rates, and resistance to diseases. The platform facilitates the rapid development of bioengineered plants that can produce unique pharmaceuticals and therapeutic substances, making it a cornerstone of Biotechnicas commitment to best healthcare solutions. By streamlining the genetic modification process, GenoAI accelerates research and development, allowing for faster breakthroughs in plant-derived medicines. With its emphasis on sustainability and efficiency, GenoAI not only contributes to advancements in medicine but also promotes eco-friendly practices in agricultural biotechnology, ensuring a greener future while meeting the growing demands of the healthcare industry.', 'https://i.imgur.com/F5vsxlB.png', 'title-genoai')">
+        <img src="https://i.imgur.com/TrGNgCO.png" alt="FlakeAI" class="logo" onclick="showModal('FlakeAI', 'FlakeAI is a personal AI assistant designed for The Frost Shield, providing support in various operational tasks. While it shares some similarities with more advanced systems like Copilot, FlakeAI operates with a focus on specific functionalities rather than comprehensive intelligence.  Primarily, FlakeAI aids users in managing day-to-day tasks, monitoring equipment status, and facilitating communication within teams. It offers real-time updates on environmental conditions and operational protocols, ensuring that personnel are well-informed and prepared for their missions. Though not as sophisticated as Copilot, FlakeAI is user-friendly and efficient, enhancing the overall operational experience for The Frost Shield. Its simplicity and reliability make it an essential tool for those navigating challenging environments, helping to streamline workflows and improve situational awareness.', 'https://i.imgur.com/TrGNgCO.png', 'title-flakeai')">
+    </div>
+</div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 class="modal-title" style="text-align: center;"></h2>
+        <img src="" alt="" class="logo-img" id="modal-logo" />
+        <p class="description" style="text-align: left;"></p>
+    </div>
+</div>
+
+<script>
+    function showModal(title, description, logoSrc, titleClass) {
+        document.querySelector('.modal-title').textContent = title;
+        document.querySelector('.description').innerHTML = description; // Use innerHTML to allow image rendering
+        document.getElementById('modal-logo').src = logoSrc; // Set the logo image source
+        document.querySelector('.modal-title').className = 'modal-title ' + titleClass; // Add gradient class
+        document.getElementById('modal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('modal')) {
+            closeModal();
+        }
+    }
+</script>
 
 </body>
 </html>
