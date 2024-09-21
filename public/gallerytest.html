@@ -6,11 +6,11 @@
     <title>Logo Gallery</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { background-image: url('https://wallpapers.com/images/hd/red-space-1920-x-1080-background-ptjivpuphkno1bw8.jpg'); background-size: cover; color: white; font-family: 'Orbitron', sans-serif; margin: 0; padding: 0; overflow: hidden; }
+        body { background-color: #000; color: white; font-family: 'Orbitron', sans-serif; margin: 0; padding: 0; overflow: hidden; }
         .header { text-align: center; padding: 20px; font-size: 36px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); }
         .logo-section { padding: 20px; margin: 20px 0; border: 2px solid #ff0000; border-radius: 10px; background-color: rgba(30, 30, 30, 0.8); }
         .logo-container { display: flex; flex-wrap: wrap; justify-content: center; }
-        .logo { margin: 15px; cursor: pointer; transition: transform 0.3s, filter 0.3s; width: 100px; filter: brightness(0.8); }
+        .logo { margin: 15px; cursor: pointer; transition: transform 0.3s, filter 0.3s; width: 120px; filter: brightness(0.8); } /* Increased logo size */
         .logo:hover { transform: scale(1.1); filter: brightness(1); }
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.9); padding: 20px; }
         .modal-content { background-color: #222; margin: auto; padding: 20px; border-radius: 10px; width: 80%; max-height: 80%; overflow-y: auto; box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); }
@@ -57,17 +57,17 @@
 <div class="logo-section">
     <h2 class="title">United Federation</h2>
     <div class="logo-container">
-        <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation" class="logo" onclick="showModal('United Federation', 'The central governing body of the United Federation. Committed to peace and prosperity, this organization oversees various military and civil operations throughout the galaxy.', 'title-united-federation')">
-        <img src="https://i.imgur.com/wg3hJto.png" alt="Fortification Unit" class="logo" onclick="showModal('Fortification Unit', 'Specialized in defense and fortifications, this unit is essential for maintaining the safety of federation outposts and installations.', 'title-fortification')">
-        <img src="https://i.imgur.com/X1sUC95.png" alt="Eradication Unit" class="logo" onclick="showModal('Eradication Unit', 'Tasked with neutralizing threats to the federation, this unit operates in hostile environments, ensuring that dangers are swiftly dealt with.', 'title-eradication')">
-        <img src="https://i.imgur.com/ryZDDNz.png" alt="Incendiary Division" class="logo" onclick="showModal('Incendiary Division', 'Experts in fire-based tactics, this division employs advanced weaponry to engage enemies effectively in combat situations.', 'title-incendiary')">
-        <img src="https://i.imgur.com/wSahQGY.png" alt="Marine Corps" class="logo" onclick="showModal('Marine Corps', 'A highly trained unit specializing in marine operations, they excel in amphibious assaults and coastal defense.', 'title-marine-corps')">
-        <img src="https://i.imgur.com/P6CTkFh.png" alt="Navy" class="logo" onclick="showModal('Navy', 'The naval force of the federation, responsible for securing waters and conducting maritime operations.', 'title-navy')">
-        <img src="https://i.imgur.com/C5hPaSL.png" alt="Advanced Research & Development" class="logo" onclick="showModal('Advanced Research & Development', 'Leading the charge in technological advancements, this department develops cutting-edge military equipment and strategies.', 'title-advanced-research')">
-        <img src="https://i.imgur.com/OVuVMEa.png" alt="Synth Intelligence Agency" class="logo" onclick="showModal('Synth Intelligence Agency', 'Specializing in information warfare and intelligence, this agency plays a crucial role in national security.', 'title-synth-intelligence')">
-        <img src="https://i.imgur.com/s0VAxS4.png" alt="Void Special Forces" class="logo" onclick="showModal('Void Special Forces', 'Elite operatives trained for covert operations in extreme environments, they undertake the most sensitive missions.', 'title-void-special-forces')">
-        <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force COS-22" class="logo" onclick="showModal('Task Force COS-22', 'A special task force created to handle complex and high-stakes operations, COS-22 is equipped with the latest technology.', 'title-task-force-cos')">
-        <img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force RIFT-404" class="logo" onclick="showModal('Task Force RIFT-404', 'Tasked with reconnaissance and intelligence gathering, this unit is essential for preparing ground troops for engagements.', 'title-task-force-rift')">
+        <img src="https://i.imgur.com/Gn60P1H.png" alt="United Federation" class="logo" onclick="showModal('United Federation', 'The central governing body of the United Federation. Committed to peace and prosperity, this organization oversees various military and civil operations throughout the galaxy.<br><img src=\'https://i.imgur.com/Gn60P1H.png\' class=\'logo-img\'>', 'title-united-federation')">
+        <img src="https://i.imgur.com/wg3hJto.png" alt="Fortification Unit" class="logo" onclick="showModal('Fortification Unit', 'Specialized in defense and fortifications, this unit is essential for maintaining the safety of federation outposts and installations.<br><img src=\'https://i.imgur.com/wg3hJto.png\' class=\'logo-img\'>', 'title-fortification')">
+        <img src="https://i.imgur.com/X1sUC95.png" alt="Eradication Unit" class="logo" onclick="showModal('Eradication Unit', 'Tasked with neutralizing threats to the federation, this unit operates in hostile environments, ensuring that dangers are swiftly dealt with.<br><img src=\'https://i.imgur.com/X1sUC95.png\' class=\'logo-img\'>', 'title-eradication')">
+        <img src="https://i.imgur.com/ryZDDNz.png" alt="Incendiary Division" class="logo" onclick="showModal('Incendiary Division', 'Experts in fire-based tactics, this division employs advanced weaponry to engage enemies effectively in combat situations.<br><img src=\'https://i.imgur.com/ryZDDNz.png\' class=\'logo-img\'>', 'title-incendiary')">
+        <img src="https://i.imgur.com/wSahQGY.png" alt="Marine Corps" class="logo" onclick="showModal('Marine Corps', 'The backbone of the federation’s military, the Marine Corps is responsible for ground operations and amphibious assaults.<br><img src=\'https://i.imgur.com/wSahQGY.png\' class=\'logo-img\'>', 'title-marine-corps')">
+        <img src="https://i.imgur.com/C5hPaSL.png" alt="Navy" class="logo" onclick="showModal('Navy', 'The naval force of the federation, responsible for securing waters and conducting maritime operations.<br><img src=\'https://i.imgur.com/C5hPaSL.png\' class=\'logo-img\'>', 'title-navy')">
+        <img src="https://i.imgur.com/OVuVMEa.png" alt="Advanced Research & Development" class="logo" onclick="showModal('Advanced Research & Development', 'Leading the charge in technological advancements, this department develops cutting-edge military equipment and strategies.<br><img src=\'https://i.imgur.com/OVuVMEa.png\' class=\'logo-img\'>', 'title-advanced-research')">
+        <img src="https://i.imgur.com/OVuVMEa.png" alt="Synth Intelligence Agency" class="logo" onclick="showModal('Synth Intelligence Agency', 'Specializing in information warfare and intelligence, this agency plays a crucial role in national security.<br><img src=\'https://i.imgur.com/OVuVMEa.png\' class=\'logo-img\'>', 'title-synth-intelligence')">
+        <img src="https://i.imgur.com/s0VAxS4.png" alt="Void Special Forces" class="logo" onclick="showModal('Void Special Forces', 'Elite operatives trained for covert operations in extreme environments, they undertake the most sensitive missions.<br><img src=\'https://i.imgur.com/s0VAxS4.png\' class=\'logo-img\'>', 'title-void-special-forces')">
+        <img src="https://i.imgur.com/T71K9PY.png" alt="Task Force COS-22" class="logo" onclick="showModal('Task Force COS-22', 'A special task force created to handle complex and high-stakes operations, COS-22 is equipped with the latest technology.<br><img src=\'https://i.imgur.com/T71K9PY.png\' class=\'logo-img\'>', 'title-task-force-cos')">
+        <img src="https://i.imgur.com/1kKd9Fv.png" alt="Task Force RIFT-404" class="logo" onclick="showModal('Task Force RIFT-404', 'Tasked with reconnaissance and intelligence gathering, this unit is essential for preparing ground troops for engagements.<br><img src=\'https://i.imgur.com/1kKd9Fv.png\' class=\'logo-img\'>', 'title-task-force-rift')">
     </div>
 </div>
 
@@ -75,13 +75,13 @@
 <div class="logo-section">
     <h2 class="title">Corporate</h2>
     <div class="logo-container">
-        <img src="https://i.imgur.com/fy8EJgm.png" alt="InkTech" class="logo" onclick="showModal('InkTech', 'A leading technology firm specializing in advanced ink-based solutions and military-grade printing technologies.', 'title-inktech')">
-        <img src="https://i.imgur.com/o8j0hY0.png" alt="Elgius Inc." class="logo" onclick="showModal('Elgius Inc.', 'A major player in the corporate world, known for their innovations in weaponry and combat systems.', 'title-elgius')">
-        <img src="https://i.imgur.com/fX3p0vc.png" alt="CyberWorks" class="logo" onclick="showModal('CyberWorks', 'Specializes in cybernetic enhancements and integration for military and civilian applications.', 'title-cyberworks')">
-        <img src="https://i.imgur.com/VByCBHC.png" alt="Xtract Services" class="logo" onclick="showModal('Xtract Services', 'Provides extraction and salvage operations in war-torn zones, ensuring valuable resources are retrieved.', 'title-xtract')">
-        <img src="https://i.imgur.com/NBVG2go.png" alt="Rythen Arms" class="logo" onclick="showModal('Rythen Arms', 'Manufacturers of high-quality firearms and military hardware, trusted by forces worldwide.', 'title-rythen')">
-        <img src="https://i.imgur.com/2YJzFrs.png" alt="Swarm Car Company" class="logo" onclick="showModal('Swarm Car Company', 'Innovators in automated vehicles and transportation systems for military logistics.', 'title-swarm')">
-        <img src="https://i.imgur.com/JgNRia0.png" alt="Cesco Music Group" class="logo" onclick="showModal('Cesco Music Group', 'A major player in entertainment, also known for developing auditory technologies for combat environments.', 'title-cesco')">
+        <img src="https://i.imgur.com/fy8EJgm.png" alt="InkTech" class="logo" onclick="showModal('InkTech', 'A leading technology firm specializing in advanced ink-based solutions and military-grade printing technologies.<br><img src=\'https://i.imgur.com/fy8EJgm.png\' class=\'logo-img\'>', 'title-inktech')">
+        <img src="https://i.imgur.com/o8j0hY0.png" alt="Elgius Inc." class="logo" onclick="showModal('Elgius Inc.', 'A major player in the corporate world, known for their innovations in weaponry and combat systems.<br><img src=\'https://i.imgur.com/o8j0hY0.png\' class=\'logo-img\'>', 'title-elgius')">
+        <img src="https://i.imgur.com/fX3p0vc.png" alt="CyberWorks" class="logo" onclick="showModal('CyberWorks', 'Specializes in cybernetic enhancements and integration for military and civilian applications.<br><img src=\'https://i.imgur.com/fX3p0vc.png\' class=\'logo-img\'>', 'title-cyberworks')">
+        <img src="https://i.imgur.com/VByCBHC.png" alt="Xtract Services" class="logo" onclick="showModal('Xtract Services', 'Provides extraction and salvage operations in war-torn zones, ensuring valuable resources are retrieved.<br><img src=\'https://i.imgur.com/VByCBHC.png\' class=\'logo-img\'>', 'title-xtract')">
+        <img src="https://i.imgur.com/NBVG2go.png" alt="Rythen Arms" class="logo" onclick="showModal('Rythen Arms', 'Manufacturers of high-quality firearms and military hardware, trusted by forces worldwide.<br><img src=\'https://i.imgur.com/NBVG2go.png\' class=\'logo-img\'>', 'title-rythen')">
+        <img src="https://i.imgur.com/2YJzFrs.png" alt="Swarm Car Company" class="logo" onclick="showModal('Swarm Car Company', 'Innovators in automated vehicles and transportation systems for military logistics.<br><img src=\'https://i.imgur.com/2YJzFrs.png\' class=\'logo-img\'>', 'title-swarm')">
+        <img src="https://i.imgur.com/JgNRia0.png" alt="Cesco Music Group" class="logo" onclick="showModal('Cesco Music Group', 'A major player in entertainment, also known for developing auditory technologies for combat environments.<br><img src=\'https://i.imgur.com/JgNRia0.png\' class=\'logo-img\'>', 'title-cesco')">
     </div>
 </div>
 
@@ -89,10 +89,10 @@
 <div class="logo-section">
     <h2 class="title">Artificial Intelligence</h2>
     <div class="logo-container">
-        <img src="https://i.imgur.com/EzZAgYR.png" alt="Copilot" class="logo" onclick="showModal('Copilot', 'An advanced AI designed to assist military commanders in decision-making and tactical planning.', 'title-copilot')">
-        <img src="https://i.imgur.com/lEY7MpC.png" alt="Glyph" class="logo" onclick="showModal('Glyph', 'Utilizes machine learning to optimize operational efficiency in military and civilian applications.', 'title-glyph')">
-        <img src="https://i.imgur.com/F5vsxlB.png" alt="GenoAI" class="logo" onclick="showModal('GenoAI', 'A cutting-edge AI focused on genetics and biological research for military applications.', 'title-genoai')">
-        <img src="https://i.imgur.com/TrGNgCO.png" alt="FlakeAI" class="logo" onclick="showModal('FlakeAI', 'An innovative AI system designed to streamline logistics and supply chains for military operations.', 'title-flakeai')">
+        <img src="https://i.imgur.com/EzZAgYR.png" alt="Copilot" class="logo" onclick="showModal('Copilot', 'An advanced AI designed to assist military commanders in decision-making and tactical planning.<br><img src=\'https://i.imgur.com/EzZAgYR.png\' class=\'logo-img\'>', 'title-copilot')">
+        <img src="https://i.imgur.com/lEY7MpC.png" alt="Glyph" class="logo" onclick="showModal('Glyph', 'Utilizes machine learning to optimize operational efficiency in military and civilian applications.<br><img src=\'https://i.imgur.com/lEY7MpC.png\' class=\'logo-img\'>', 'title-glyph')">
+        <img src="https://i.imgur.com/F5vsxlB.png" alt="GenoAI" class="logo" onclick="showModal('GenoAI', 'A cutting-edge AI focused on genetics and biological research for military applications.<br><img src=\'https://i.imgur.com/F5vsxlB.png\' class=\'logo-img\'>', 'title-genoai')">
+        <img src="https://i.imgur.com/TrGNgCO.png" alt="FlakeAI" class="logo" onclick="showModal('FlakeAI', 'An innovative AI system designed to streamline logistics and supply chains for military operations.<br><img src=\'https://i.imgur.com/TrGNgCO.png\' class=\'logo-img\'>', 'title-flakeai')">
     </div>
 </div>
 
@@ -107,7 +107,7 @@
 <script>
     function showModal(title, description, titleClass) {
         document.querySelector('.modal-title').textContent = title;
-        document.querySelector('.description').textContent = description;
+        document.querySelector('.description').innerHTML = description; // Use innerHTML to allow image rendering
         document.querySelector('.modal-title').className = 'modal-title ' + titleClass; // Add gradient class
         document.getElementById('modal').style.display = 'block';
     }
