@@ -1,25 +1,154 @@
-<h1 align=center>t1a09-decision-if-caleb.html</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>t1a09-decision-if-caleb.html</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url('https://images.alphacoders.com/957/957405.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: 'Jura', sans-serif;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #ff4500;
+      text-shadow: 2px 2px 8px #000;
+    }
+    input[type=text], input[type=number] {
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #2b2b2b;
+      color: white;
+      font-size: 1rem;
+      text-align: center;
+    }
+    input[type=button] {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #ff4500, #ffdd00);
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    input[type=button]:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #ff4500, 0 0 15px #ffdd00;
+    }
+    #myDiv01 {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      color: #00ffdd;
+      text-shadow: 1px 1px 5px #000;
+    }
+  </style>
+</head>
+<body>
 
-Input:<input type=text id "myText1" value="Fred">
-Input:<input type=number id="myNum1" value="14">
-<div id="myDiv01">...</div>
+  <h1>t1a09-decision-if-caleb.html</h1>
 
-<input type=button value="Is Fred" onclick="{
-  let myIn = document.getElementById('Text1').value
-  document.getElementById('myDiv01').innerHTML = '<br>'
-  if (myIn1 == 'Fred'){
-    document.getElementbyId('myDiv01').innerHTML = 'Hi Caleb'
-  }
-}"><br>
+  <p>Input: <input type="text" id="myText1" value="Caleb"></p> 
+  <p>Input: <input type="number" id="myNum1" value="14"></p>
 
-<input type=button value="Is Fred else" onclick="{
-  let my In1 = document.getElementById('myText1').value
-  document.getElementById('myDiv01').innerHTML = '<br>'
-  if (myIn1 == 'Fred'){
-   document.getElementyId('myDiv01').innerHTML = 'Hi Caleb'
-  } else {
-  document.getElementById('myDiv01').innerHTML = 'Was expecting Caleb >:'
-  }
-  }"><br>
+  <div id="myDiv01">...</div>
 
-You make 8 buttons showing decisions and complex decision including not !, AND && OR ||
+  <input type="button" value="Is Fred?" onclick="checkIfFred()"><br>
+  <input type="button" value="Is Fred Else?" onclick="checkIfFredElse()"><br>
+
+  <input type="button" value="Not Caleb?" onclick="checkNotCaleb()"><br>
+  <input type="button" value="Check AND" onclick="checkAnd()"><br>
+  <input type="button" value="Check OR" onclick="checkOr()"><br>
+  <input type="button" value="Check AND NOT" onclick="checkAndNot()"><br>
+  <input type="button" value="Check OR NOT" onclick="checkOrNot()"><br>
+  <input type="button" value="Check Both Inputs" onclick="checkBothInputs()"><br>
+
+  <script>
+    function checkIfFred() {
+      let myIn = document.getElementById('myText1').value;
+      document.getElementById('myDiv01').innerHTML = '<br>';
+      if (myIn === 'Fred') {
+        document.getElementById('myDiv01').innerHTML = 'Hi Fred!';
+      }
+    }
+
+    function checkIfFredElse() {
+      let myIn1 = document.getElementById('myText1').value;
+      document.getElementById('myDiv01').innerHTML = '<br>';
+      if (myIn1 === 'Fred') {
+        document.getElementById('myDiv01').innerHTML = 'Hi Fred!';
+      } else {
+        document.getElementById('myDiv01').innerHTML = 'Was expecting Fred >:';
+      }
+    }
+
+    function checkNotCaleb() {
+      let myIn1 = document.getElementById('myText1').value;
+      document.getElementById('myDiv01').innerHTML = '<br>';
+      if (myIn1 !== 'Caleb') {
+        document.getElementById('myDiv01').innerHTML = 'Not Caleb? Who are you then?';
+      } else {
+        document.getElementById('myDiv01').innerHTML = 'Hi Caleb!';
+      }
+    }
+
+    function checkAnd() {
+      let myIn1 = document.getElementById('myText1').value;
+      let myNum = document.getElementById('myNum1').value;
+      document.getElementById('myDiv01').innerHTML = '<br>';
+      if (myIn1 === 'Caleb' && myNum == 14) {
+        document.getElementById('myDiv01').innerHTML = 'Both conditions are true!';
+      } else {
+        document.getElementById('myDiv01').innerHTML = 'One or both conditions are false.';
+      }
+    }
+
+    function checkOr() {
+      let myIn1 = document.getElementById('myText1').value;
+      let myNum = document.getElementById('myNum1').value;
+      document.getElementById('myDiv01').innerHTML = '<br>';
+      if (myIn1 === 'Caleb' || myNum == 14) {
+        document.getElementById('myDiv01').innerHTML = 'One or both conditions are true!';
+      } else {
+        document.getElementById('myDiv01').innerHTML = 'Both conditions are false.';
+      }
+    }
+
+    function checkAndNot() {
+      let myIn1 = document.getElementById('myText1').value;
+      let myNum = document.getElementById('myNum1').value;
+      document.getElementById('myDiv01').innerHTML = '<br>';
+      if (myIn1 === 'Caleb' && myNum != 14) {
+        document.getElementById('myDiv01').innerHTML = 'Caleb but not 14!';
+      } else {
+        document.getElementById('myDiv01').innerHTML = 'Condition doesn’t match.';
+      }
+    }
+
+    function checkOrNot() {
+      let myIn1 = document.getElementById('myText1').value;
+      let myNum = document.getElementById('myNum1').value;
+      document.getElementById('myDiv01').innerHTML = '<br>';
+      if (myIn1 !== 'Caleb' || myNum != 14) {
+        document.getElementById('myDiv01').innerHTML = 'One or both conditions are NOT met!';
+      } else {
+        document.getElementById('myDiv01').innerHTML = 'Both conditions are met!';
+      }
+    }
+
+    function checkBothInputs() {
+      let myIn1 = document.getElementById('myText1').value;
+      let myNum = document.getElementById('myNum1').value;
+      document.getElementById('myDiv01').innerHTML = '<br>';
+      document.getElementById('myDiv01').innerHTML = 'You entered: ' + myIn1 + ' and ' + myNum;
+    }
+  </script>
+
+</body>
+</html>
