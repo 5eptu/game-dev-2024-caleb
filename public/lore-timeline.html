@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Timeline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .timeline-event {
+            background-color: white;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .event-header {
+            font-size: 1.25em;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #0073e6;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .event-header:hover {
+            background-color: #005bb5;
+        }
+
+        .event-content {
+            display: none;
+            padding: 10px;
+            background-color: #e6f7ff;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        .sub-event {
+            margin-top: 10px;
+        }
+
+        .sub-event-header {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 8px;
+            background-color: #005bb5;
+            color: white;
+            border-radius: 6px;
+            margin-top: 5px;
+        }
+
+        .sub-event-content {
+            display: none;
+            padding: 8px;
+            background-color: #ccefff;
+            margin-top: 5px;
+            border-radius: 6px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="timeline">
+        <!-- Event 1: Germany Surrenders -->
+        <div class="timeline-event">
+            <div class="event-header" onclick="toggleEventContent(1)">
+                8 May 1945 - Germany Surrenders
+            </div>
+            <div id="event-content-1" class="event-content">
+                Germany officially surrenders, marking the end of World War II in Europe.
+                <div class="sub-event">
+                    <div class="sub-event-header" onclick="toggleSubEvent(1, 1)">The Nuremberg Trials (1945-1946)</div>
+                    <div id="sub-event-content-1-1" class="sub-event-content">
+                        The Nuremberg Trials held Nazi leaders accountable for war crimes.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 2: Japan Surrenders -->
+        <div class="timeline-event">
+            <div class="event-header" onclick="toggleEventContent(2)">
+                2 Sep 1945 - Japan Surrenders
+            </div>
+            <div id="event-content-2" class="event-content">
+                Japan surrenders after the atomic bombings of Hiroshima and Nagasaki, marking the end of World War II.
+                <div class="sub-event">
+                    <div class="sub-event-header" onclick="toggleSubEvent(2, 1)">Atomic Bombings of Hiroshima and Nagasaki (6 & 9 Aug 1945)</div>
+                    <div id="sub-event-content-2-1" class="sub-event-content">
+                        The United States dropped atomic bombs on Hiroshima and Nagasaki, causing mass destruction and leading to Japan's surrender.
+                    </div>
+                </div>
+                <div class="sub-event">
+                    <div class="sub-event-header" onclick="toggleSubEvent(2, 2)">Occupation of Japan (1945-1952)</div>
+                    <div id="sub-event-content-2-2" class="sub-event-content">
+                        The Allied occupation of Japan began, with reforms and demilitarization led by General Douglas MacArthur.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 3: The United Nations is founded -->
+        <div class="timeline-event">
+            <div class="event-header" onclick="toggleEventContent(3)">
+                24 Oct 1945 - The United Nations is founded
+            </div>
+            <div id="event-content-3" class="event-content">
+                The United Nations is established to promote international cooperation and prevent future conflicts.
+                <div class="sub-event">
+                    <div class="sub-event-header" onclick="toggleSubEvent(3, 1)">San Francisco Conference (25 Apr - 26 Jun 1945)</div>
+                    <div id="sub-event-content-3-1" class="sub-event-content">
+                        Representatives from 50 countries met to draft the UN Charter.
+                    </div>
+                </div>
+                <div class="sub-event">
+                    <div class="sub-event-header" onclick="toggleSubEvent(3, 2)">Universal Declaration of Human Rights (10 Dec 1948)</div>
+                    <div id="sub-event-content-3-2" class="sub-event-content">
+                        The UN adopts the Universal Declaration of Human Rights, establishing a global standard for human rights.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 4: Stalin’s Speech, Cold War Begins -->
+        <div class="timeline-event">
+            <div class="event-header" onclick="toggleEventContent(4)">
+                9 Feb 1946 - Stalin’s Speech, Cold War Begins
+            </div>
+            <div id="event-content-4" class="event-content">
+                Stalin's "Election Speech" indicated the Soviet Union's opposition to capitalism, marking the beginning of Cold War tensions.
+                <div class="sub-event">
+                    <div class="sub-event-header" onclick="toggleSubEvent(4, 1)">The Iron Curtain Speech (5 Mar 1946)</div>
+                    <div id="sub-event-content-4-1" class="sub-event-content">
+                        Winston Churchill famously warned of the Soviet "Iron Curtain" descending across Europe, solidifying Cold War divisions.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add More Events Here -->
+        
+    </div>
+
+    <script>
+        function toggleEventContent(eventId) {
+            const content = document.getElementById(`event-content-${eventId}`);
+            content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
+        }
+
+        function toggleSubEvent(eventId, subEventId) {
+            const content = document.getElementById(`sub-event-content-${eventId}-${subEventId}`);
+            content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
+        }
+    </script>
+</body>
+</html>
