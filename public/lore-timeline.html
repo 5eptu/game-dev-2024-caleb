@@ -3,167 +3,562 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historical Timeline</title>
+    <title>World Building Lore Timeline</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-        }
-
-        .timeline {
-            max-width: 1000px;
-            margin: 0 auto;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
             padding: 20px;
         }
-
-        .timeline-event {
-            background-color: white;
+        h1 {
+            color: #ff0000;
+            text-align: center;
+        }
+        .event {
+            border: 1px solid #ff0000;
+            border-radius: 5px;
             margin: 10px 0;
             padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #111;
         }
-
-        .event-header {
-            font-size: 1.25em;
-            font-weight: bold;
-            cursor: pointer;
-            background-color: #0073e6;
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
-
-        .event-header:hover {
-            background-color: #005bb5;
-        }
-
-        .event-content {
-            display: none;
-            padding: 10px;
-            background-color: #e6f7ff;
-            margin-top: 10px;
-            border-radius: 8px;
-        }
-
         .sub-event {
-            margin-top: 10px;
+            margin-left: 20px;
+            background-color: #222;
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            padding: 5px;
         }
-
-        .sub-event-header {
-            font-weight: bold;
+        .toggle {
             cursor: pointer;
-            padding: 8px;
-            background-color: #005bb5;
-            color: white;
-            border-radius: 6px;
-            margin-top: 5px;
+            color: #ff0000;
         }
-
-        .sub-event-content {
+        .details {
             display: none;
-            padding: 8px;
-            background-color: #ccefff;
             margin-top: 5px;
-            border-radius: 6px;
+            background-color: #333;
+            padding: 10px;
+            border: 1px solid #ff0000;
+            border-radius: 5px;
         }
-
+        .dropdown {
+            display: none;
+            margin-top: 5px;
+        }
     </style>
-</head>
-<body>
-    <div class="timeline">
-        <!-- Event 1: Germany Surrenders -->
-        <div class="timeline-event">
-            <div class="event-header" onclick="toggleEventContent(1)">
-                8 May 1945 - Germany Surrenders
-            </div>
-            <div id="event-content-1" class="event-content">
-                Germany officially surrenders, marking the end of World War II in Europe.
-                <div class="sub-event">
-                    <div class="sub-event-header" onclick="toggleSubEvent(1, 1)">The Nuremberg Trials (1945-1946)</div>
-                    <div id="sub-event-content-1-1" class="sub-event-content">
-                        The Nuremberg Trials held Nazi leaders accountable for war crimes.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Event 2: Japan Surrenders -->
-        <div class="timeline-event">
-            <div class="event-header" onclick="toggleEventContent(2)">
-                2 Sep 1945 - Japan Surrenders
-            </div>
-            <div id="event-content-2" class="event-content">
-                Japan surrenders after the atomic bombings of Hiroshima and Nagasaki, marking the end of World War II.
-                <div class="sub-event">
-                    <div class="sub-event-header" onclick="toggleSubEvent(2, 1)">Atomic Bombings of Hiroshima and Nagasaki (6 & 9 Aug 1945)</div>
-                    <div id="sub-event-content-2-1" class="sub-event-content">
-                        The United States dropped atomic bombs on Hiroshima and Nagasaki, causing mass destruction and leading to Japan's surrender.
-                    </div>
-                </div>
-                <div class="sub-event">
-                    <div class="sub-event-header" onclick="toggleSubEvent(2, 2)">Occupation of Japan (1945-1952)</div>
-                    <div id="sub-event-content-2-2" class="sub-event-content">
-                        The Allied occupation of Japan began, with reforms and demilitarization led by General Douglas MacArthur.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Event 3: The United Nations is founded -->
-        <div class="timeline-event">
-            <div class="event-header" onclick="toggleEventContent(3)">
-                24 Oct 1945 - The United Nations is founded
-            </div>
-            <div id="event-content-3" class="event-content">
-                The United Nations is established to promote international cooperation and prevent future conflicts.
-                <div class="sub-event">
-                    <div class="sub-event-header" onclick="toggleSubEvent(3, 1)">San Francisco Conference (25 Apr - 26 Jun 1945)</div>
-                    <div id="sub-event-content-3-1" class="sub-event-content">
-                        Representatives from 50 countries met to draft the UN Charter.
-                    </div>
-                </div>
-                <div class="sub-event">
-                    <div class="sub-event-header" onclick="toggleSubEvent(3, 2)">Universal Declaration of Human Rights (10 Dec 1948)</div>
-                    <div id="sub-event-content-3-2" class="sub-event-content">
-                        The UN adopts the Universal Declaration of Human Rights, establishing a global standard for human rights.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Event 4: Stalin’s Speech, Cold War Begins -->
-        <div class="timeline-event">
-            <div class="event-header" onclick="toggleEventContent(4)">
-                9 Feb 1946 - Stalin’s Speech, Cold War Begins
-            </div>
-            <div id="event-content-4" class="event-content">
-                Stalin's "Election Speech" indicated the Soviet Union's opposition to capitalism, marking the beginning of Cold War tensions.
-                <div class="sub-event">
-                    <div class="sub-event-header" onclick="toggleSubEvent(4, 1)">The Iron Curtain Speech (5 Mar 1946)</div>
-                    <div id="sub-event-content-4-1" class="sub-event-content">
-                        Winston Churchill famously warned of the Soviet "Iron Curtain" descending across Europe, solidifying Cold War divisions.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Add More Events Here -->
-        
-    </div>
-
     <script>
-        function toggleEventContent(eventId) {
-            const content = document.getElementById(`event-content-${eventId}`);
-            content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
+        function toggleDetails(event) {
+            const details = event.nextElementSibling;
+            details.style.display = details.style.display === "block" ? "none" : "block";
         }
 
-        function toggleSubEvent(eventId, subEventId) {
-            const content = document.getElementById(`sub-event-content-${eventId}-${subEventId}`);
-            content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
+        function toggleDropdown(dropdown) {
+            const content = dropdown.nextElementSibling;
+            content.style.display = content.style.display === "block" ? "none" : "block";
         }
     </script>
+</head>
+<body>
+
+<h1>World Building Lore Timeline</h1>
+
+<div class="event">
+    <strong>8 May 1945 - Germany Surrenders</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: The Fall of Berlin</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The Battle of Berlin led to the capture of the German capital by Allied forces, significantly contributing to the end of the war in Europe.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Hitler's Death</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Adolf Hitler commits suicide on April 30, 1945, leading to a power vacuum in the Nazi regime.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>2 Sep 1945 - Japan Surrenders</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Atomic Bombings</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The bombings of Hiroshima and Nagasaki on August 6 and 9, 1945, led to Japan's unconditional surrender.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: The Tokyo Bay Signing</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Japan formally surrendered aboard the USS Missouri, marking the end of World War II.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>24 Oct 1945 - The United Nations is founded</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: The UN Charter</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The United Nations Charter was signed by 50 countries in San Francisco, aiming to promote peace and cooperation.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Establishment of UN Agencies</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Various agencies like WHO, UNESCO, and UNICEF were established to address global issues.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>9 Feb 1946 - Stalin’s Speech, Cold War Begins</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Iron Curtain Speech</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Winston Churchill delivered the famous "Iron Curtain" speech, highlighting the division of Europe.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Formation of Soviet Bloc</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Eastern European countries fell under Soviet influence, establishing the Eastern Bloc.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>12 Mar 1947 - Truman Doctrine</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Greek Civil War</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The United States supported Greece in its civil war against communist forces as part of the Truman Doctrine.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Containment Policy</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The doctrine set the precedent for U.S. foreign policy aimed at containing the spread of communism.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>4 Apr 1949 - The North Atlantic Treaty Organization is ratified</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Collective Defense Agreement</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                NATO's formation was based on mutual defense, stating that an attack against one is an attack against all.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Member Countries</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Initial members included the U.S., Canada, and several Western European nations.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>1 Oct 1949 - Mao takes over China, turning it communist</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: The Long March</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Mao's Red Army's retreat and subsequent victory helped solidify communist ideology in China.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Establishment of the People's Republic</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The proclamation of the People's Republic of China marked the official establishment of communist rule.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>June 24 1950 - Korean War begins</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Invasion of South Korea</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                North Korean forces invaded South Korea, marking the beginning of the conflict.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: UN Intervention</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The United Nations intervened in support of South Korea, leading to a multinational force deployment.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 3: Chinese Involvement</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                China intervened in the war in late 1950, supporting North Korea and altering the war's dynamics.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>20 Nov 1955 - The Warsaw Pact is formed</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Response to NATO</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The pact was formed as a counterbalance to NATO, uniting Soviet-aligned countries in Eastern Europe.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Member Countries</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Initial members included the Soviet Union, Poland, East Germany, and other Eastern Bloc nations.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>13 May 1958 - US tests first nuclear missile</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Development of ICBMs</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The U.S. began developing intercontinental ballistic missiles (ICBMs) as part of its nuclear strategy.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Escalation of the Arms Race</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                This test marked a significant escalation in the nuclear arms race between the U.S. and the Soviet Union.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>1 Jan 1959 - Cuba becomes a communist state</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Cuban Revolution</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Fidel Castro's forces overthrew the Batista government, establishing a communist regime in Cuba.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: U.S. Response</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The U.S. government began to implement measures against the new Cuban government, including the embargo.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>2 Oct 1962 - Cuban Missile Crisis</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Discovery of Missile Sites</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                U.S. reconnaissance flights revealed the presence of Soviet missiles in Cuba, leading to a tense standoff.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Naval Blockade</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                President Kennedy implemented a naval blockade to prevent further Soviet shipments to Cuba.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 3: Resolution</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The crisis ended with a U.S.-Soviet agreement to remove missiles from Cuba and Turkey, avoiding nuclear conflict.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>20 Jul 1969 - Apollo 11 moon landing</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: First Human on the Moon</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Neil Armstrong became the first person to walk on the moon, stating, "That's one small step for man, one giant leap for mankind."
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Lunar Module Eagle</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The Lunar Module, named Eagle, successfully landed on the moon's surface and returned safely to Earth.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>15 Aug 1971 - Nixon ends gold standard</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: The End of Bretton Woods</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                President Nixon announced the suspension of the dollar's convertibility into gold, ending the Bretton Woods system.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Economic Implications</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                This move led to the rise of fiat currencies and significant changes in international economic relations.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>9 Nov 1989 - Fall of the Berlin Wall</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Peaceful Protests</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Mass protests in East Germany led to the eventual opening of the Berlin Wall, symbolizing the end of the Cold War.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Reunification of Germany</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The fall of the wall paved the way for the reunification of East and West Germany in 1990.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>26 Dec 1991 - Soviet Union collapses</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Dissolution of the USSR</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The official dissolution of the Soviet Union marked the end of the Cold War and the independence of former Soviet republics.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Formation of the CIS</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The Commonwealth of Independent States (CIS) was formed as a loose association of the former Soviet republics.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>11 Sep 2001 - 9/11 Attacks</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Attacks on the World Trade Center</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Coordinated terrorist attacks by al-Qaeda resulted in the collapse of the Twin Towers and significant loss of life.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: U.S. Response</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The U.S. launched the War on Terror, including military operations in Afghanistan against the Taliban regime.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>15 Jan 2009 - Barack Obama inaugurated</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: First African American President</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Barack Obama's election as the first African American president marked a significant milestone in U.S. history.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Key Policies</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                His administration focused on healthcare reform, economic recovery, and foreign policy shifts.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>3 Nov 2016 - Donald Trump elected President</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Political Outsider</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Trump's election as a political outsider disrupted traditional political norms and sparked widespread controversy.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Major Policy Changes</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                His presidency saw significant changes in immigration policy, trade agreements, and foreign relations.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>20 Jan 2021 - Joe Biden inaugurated</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Return to Normalcy</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Biden's presidency aimed to restore traditional political norms and unite a divided nation.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Key Legislative Initiatives</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                His administration focused on pandemic response, infrastructure, and climate change legislation.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>30 Nov 2021 - Global Climate Change Conference</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: COP26 Outcomes</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The conference produced commitments from nations to reduce carbon emissions and address global warming.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Climate Activism</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The event saw increased activism and engagement from youth and environmental groups worldwide.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>24 Sep 2022 - Global Pandemic Recovery Efforts</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: Economic Recovery Plans</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Nations worldwide initiated recovery plans to revitalize economies hit hard by the COVID-19 pandemic.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Vaccine Distribution</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Efforts to distribute vaccines globally were prioritized to combat new variants and protect populations.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="event">
+    <strong>1 Jan 2023 - The Era of Artificial Intelligence</strong>
+    <span class="toggle" onclick="toggleDetails(this)">[+]</span>
+    <div class="details">
+        <div class="sub-event">
+            <strong>Sub-event 1: AI Integration in Industries</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                Various industries began integrating AI technologies to enhance efficiency and productivity.
+            </div>
+        </div>
+        <div class="sub-event">
+            <strong>Sub-event 2: Ethical Considerations</strong>
+            <span class="toggle" onclick="toggleDropdown(this)">[+]</span>
+            <div class="dropdown">
+                The rise of AI sparked discussions on ethical implications, job displacement, and privacy concerns.
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
