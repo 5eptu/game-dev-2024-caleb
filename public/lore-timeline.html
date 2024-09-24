@@ -1,325 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Building Timeline</title>
+    <title>World Building Lore Timeline</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            font-family: 'Orbitron', sans-serif;
             background-color: #000;
             color: #fff;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        header {
-            background-color: #b30000;
-            color: #fff;
-            padding: 20px;
+
+        h1, h2, h3 {
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: background-color 0.5s;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
         }
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            border-left: 2px solid #fff;
         }
-        section {
-            margin: 50px 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s, opacity 0.3s;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        h2 {
-            color: #ff6666;
-            margin: 10px 0;
-        }
+
         .event {
-            margin: 15px 0;
+            margin: 20px 0;
+            padding: 10px 20px;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            background-color: rgba(255, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .event:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+        }
+
+        .event-title {
             cursor: pointer;
-            padding: 15px;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #222;
             border-radius: 5px;
-            background-color: #333;
             transition: background-color 0.3s;
         }
-        .event:hover {
-            background-color: #444;
+
+        .event-title:hover {
+            background-color: rgba(255, 0, 0, 0.4);
         }
-        .sub-event {
+
+        .sub-events {
             display: none;
             margin-top: 10px;
-            padding-left: 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-left: 3px solid #ff6666;
+            background-color: #111;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ff0000;
+        }
+
+        .sub-event {
+            margin: 5px 0;
+            background-color: rgba(255, 0, 0, 0.2);
+            padding: 8px;
             border-radius: 5px;
         }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #b30000;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+
+        .sub-event:hover {
+            background-color: rgba(255, 0, 0, 0.4);
+            cursor: pointer;
+        }
+
+        .scroll-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 1000;
+        }
+
+        .scroll-button:hover {
+            background-color: rgba(255, 0, 0, 0.8);
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>World Building Timeline</h1>
-    </header>
-    
-    <div id="timeline">
-        <section id="event-1" class="event">
-            <h2>8 May 1945 - Germany Surrenders</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Fall of Berlin</li>
-                    <li>Hitler's Death</li>
-                </ul>
+    <h1>World Building Lore Timeline</h1>
+    <div class="timeline">
+        <div class="event">
+            <div class="event-title">8 May 1945 - Germany Surrenders</div>
+            <div class="sub-events">
+                <div class="sub-event">Key Decision: Adolf Hitler's death led to a power vacuum.</div>
+                <div class="sub-event">Allied Advances: The Allies' successful campaign in Europe culminated in Germany's surrender.</div>
             </div>
-        </section>
-        <section id="event-2" class="event">
-            <h2>2 Sep 1945 - Japan Surrenders</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Bombing of Hiroshima and Nagasaki</li>
-                    <li>Formal surrender ceremony on USS Missouri</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">2 Sep 1945 - Japan Surrenders</div>
+            <div class="sub-events">
+                <div class="sub-event">Atomic Bombings: The bombings of Hiroshima and Nagasaki pressured Japan into surrender.</div>
+                <div class="sub-event">Military Overhaul: Japan restructured its military leadership following the war.</div>
             </div>
-        </section>
-        <section id="event-3" class="event">
-            <h2>24 Oct 1945 - The United Nations is founded</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Formation of the UN Charter</li>
-                    <li>First meeting of the General Assembly</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">24 Oct 1945 - The United Nations is founded</div>
+            <div class="sub-events">
+                <div class="sub-event">Global Cooperation: Established to prevent future global conflicts.</div>
+                <div class="sub-event">Charter Signing: The UN Charter was signed by 51 nations.</div>
             </div>
-        </section>
-        <section id="event-4" class="event">
-            <h2>9 Feb 1946 - Stalin’s Speech, Cold War Begins</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Stalin's "Iron Curtain" speech</li>
-                    <li>Formation of opposing ideologies</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">9 Feb 1946 - Stalin’s Speech, Cold War Begins</div>
+            <div class="sub-events">
+                <div class="sub-event">Ideological Divide: Stalin's rhetoric solidified the East-West divide.</div>
+                <div class="sub-event">Nuclear Tensions: The arms race escalated as both sides built nuclear arsenals.</div>
             </div>
-        </section>
-        <section id="event-5" class="event">
-            <h2>12 Mar 1947 - Truman Doctrine</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Policy of containment</li>
-                    <li>Support for Greece and Turkey</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">12 Mar 1947 - Truman Doctrine</div>
+            <div class="sub-events">
+                <div class="sub-event">Containment Policy: The U.S. pledges to support countries resisting communism.</div>
+                <div class="sub-event">Military Aid: Financial aid was provided to Greece and Turkey.</div>
             </div>
-        </section>
-        <section id="event-6" class="event">
-            <h2>4 Apr 1949 - The North Atlantic Treaty Organization is ratified</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Establishment of NATO</li>
-                    <li>Collective defense principle</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">4 Apr 1949 - The North Atlantic Treaty Organization is ratified</div>
+            <div class="sub-events">
+                <div class="sub-event">Mutual Defense: NATO members agree to mutual defense in case of attack.</div>
+                <div class="sub-event">Expansion: New members joined, increasing NATO's influence.</div>
             </div>
-        </section>
-        <section id="event-7" class="event">
-            <h2>1 Oct 1949 - Mao takes over China, turning it communist</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Chinese Civil War Ends</li>
-                    <li>Establishment of the People's Republic of China</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">1 Oct 1949 - Mao takes over China, turning it communist</div>
+            <div class="sub-events">
+                <div class="sub-event">Civil War: The Chinese Civil War culminated in the establishment of the People's Republic of China.</div>
+                <div class="sub-event">Social Changes: Land reforms and communist policies were instituted.</div>
             </div>
-        </section>
-        <section id="event-8" class="event">
-            <h2>June 24 1950 - Korean War begins</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>North Korea invades South Korea</li>
-                    <li>UN intervention</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">June 24 1950 - Korean War begins</div>
+            <div class="sub-events">
+                <div class="sub-event">Invasion: North Korea invaded South Korea, igniting the conflict.</div>
+                <div class="sub-event">Global Involvement: The U.N. intervened on behalf of South Korea.</div>
             </div>
-        </section>
-        <section id="event-9" class="event">
-            <h2>1 Aug 1952 - InkTech established</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Foundation of InkTech Corporation</li>
-                    <li>First major product launch</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">1 Aug 1952 - InkTech established</div>
+            <div class="sub-events">
+                <div class="sub-event">Technology Leader: InkTech rapidly developed military technologies.</div>
+                <div class="sub-event">Innovative Strategies: Pioneered advancements in computing and communication.</div>
             </div>
-        </section>
-        <section id="event-10" class="event">
-            <h2>5 Oct 1953 - The Korean War ends in a United Nations victory</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Armistice Agreement signed</li>
-                    <li>Division of Korea along the 38th parallel</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">5 Oct 1953 - The Korean War ends in a United Nations victory</div>
+            <div class="sub-events">
+                <div class="sub-event">Armistice: A ceasefire was declared, solidifying the division of Korea.</div>
+                <div class="sub-event">Political Tensions: The war left a lasting impact on U.S.-North Korean relations.</div>
             </div>
-        </section>
-        <section id="event-11" class="event">
-            <h2>5 Sep 1953 - SCP Foundation was established</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Initial containment procedures established</li>
-                    <li>First SCP documented</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">5 Sep 1953 - SCP Foundation established</div>
+            <div class="sub-events">
+                <div class="sub-event">Secret Operations: Established to contain and study anomalies.</div>
+                <div class="sub-event">Global Influence: The SCP Foundation grew in secrecy, influencing global events.</div>
             </div>
-        </section>
-        <section id="event-12" class="event">
-            <h2>14 May 1955 - The Treaty of Friendship, Cooperation and Mutual Assistance (Warsaw Pact) is formed</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Formation of a military alliance</li>
-                    <li>Response to NATO</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">14 May 1955 - The Treaty of Friendship, Cooperation and Mutual Assistance (Warsaw Pact) is formed</div>
+            <div class="sub-events">
+                <div class="sub-event">Counterbalance: Formed in response to NATO, solidifying Eastern bloc alliances.</div>
+                <div class="sub-event">Military Cooperation: Enhanced military collaboration among member states.</div>
             </div>
-        </section>
-        <section id="event-13" class="event">
-            <h2>20 Jul 1969 - Apollo 11 lands on the Moon</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>First human steps on the Moon</li>
-                    <li>Global impact on space exploration</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">20 Jul 1969 - Apollo 11 lands on the Moon</div>
+            <div class="sub-events">
+                <div class="sub-event">Historic Achievement: First humans set foot on the Moon, showcasing U.S. space superiority.</div>
+                <div class="sub-event">Space Race: Further escalated competition in the space race between superpowers.</div>
             </div>
-        </section>
-        <section id="event-14" class="event">
-            <h2>1970 to 1989 - The Cold War continues</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Detente and nuclear arms race</li>
-                    <li>Fall of the Berlin Wall</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">1970 to 1989 - The Cold War continues</div>
+            <div class="sub-events">
+                <div class="sub-event">Nuclear Proliferation: Both sides developed and tested more nuclear weapons.</div>
+                <div class="sub-event">Espionage: Increased intelligence operations and covert activities.</div>
             </div>
-        </section>
-        <section id="event-15" class="event">
-            <h2>15 Mar 1990 - The Soviet Union Forms into the Russian Empire</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Transition from Soviet to imperial rule</li>
-                    <li>Resurgence of nationalism</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">9 Nov 1989 - Fall of the Berlin Wall</div>
+            <div class="sub-events">
+                <div class="sub-event">Symbol of Unity: The wall's fall signified the end of the Cold War.</div>
+                <div class="sub-event">Reunification: Germany began the process of reunifying.</div>
             </div>
-        </section>
-        <section id="event-16" class="event">
-            <h2>18 Mar 1990 - Snowkid Sr. begins a movement in the United States called the ‘Frost’</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Grassroots movement formation</li>
-                    <li>Rise of environmental consciousness</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">26 Dec 1991 - Dissolution of the Soviet Union</div>
+            <div class="sub-events">
+                <div class="sub-event">End of an Era: The Soviet Union officially dissolved, marking a pivotal moment in history.</div>
+                <div class="sub-event">Independence Movements: Many former Soviet republics gained independence.</div>
             </div>
-        </section>
-        <section id="event-17" class="event">
-            <h2>5 Jun 1991 - InkTech merges with the SCP Foundation</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Increased funding for containment research</li>
-                    <li>Development of new technologies</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">11 Sep 2001 - Terrorist Attacks in the U.S.</div>
+            <div class="sub-events">
+                <div class="sub-event">Global Shock: The attacks led to widespread fear and heightened security worldwide.</div>
+                <div class="sub-event">War on Terror: The U.S. initiated military action in Afghanistan.</div>
             </div>
-        </section>
-        <section id="event-18" class="event">
-            <h2>25 Dec 1991 - The Soviet Union collapses</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>End of communist rule in Eastern Europe</li>
-                    <li>Rise of independent states</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">2007 - Emergence of the Global Financial Crisis</div>
+            <div class="sub-events">
+                <div class="sub-event">Economic Turmoil: A severe worldwide economic crisis began.</div>
+                <div class="sub-event">Reforms: Governments implemented financial reforms to stabilize economies.</div>
             </div>
-        </section>
-        <section id="event-19" class="event">
-            <h2>11 Sep 2001 - Terrorist attacks on the United States</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>World Trade Center attacks</li>
-                    <li>Global War on Terror begins</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">2010 - The Rise of Social Media</div>
+            <div class="sub-events">
+                <div class="sub-event">New Communication: Social media platforms changed how people interacted.</div>
+                <div class="sub-event">Global Movements: Social media played a key role in political movements worldwide.</div>
             </div>
-        </section>
-        <section id="event-20" class="event">
-            <h2>20 Jan 2009 - Barack Obama inaugurated as the first African American President of the USA</h2>
-            <div class="sub-event">
-                <strong>Key Events:</strong>
-                <ul>
-                    <li>Historic election</li>
-                    <li>Introduction of healthcare reforms</li>
-                </ul>
+        </div>
+        <div class="event">
+            <div class="event-title">2020 - Global COVID-19 Pandemic</div>
+            <div class="sub-events">
+                <div class="sub-event">Health Crisis: The pandemic caused unprecedented global health challenges.</div>
+                <div class="sub-event">Vaccine Development: Rapid advancements in vaccine technology were achieved.</div>
             </div>
-        </section>
+        </div>
+        <div class="event">
+            <div class="event-title">2024 - Current Events</div>
+            <div class="sub-events">
+                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
+                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
+            </div>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 World Building Timeline. All rights reserved.</p>
-    </footer>
+    <button class="scroll-button" onclick="scrollToTop()">Scroll to Top</button>
 
     <script>
-        // Function to reveal sections on scroll
-        const revealSections = () => {
-            const sections = document.querySelectorAll("section");
-            const windowHeight = window.innerHeight;
-
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-
-                if (sectionTop < windowHeight - 100) {
-                    section.classList.add("visible");
-                }
-            });
-        };
-
-        // Event listener for scrolling
-        window.addEventListener("scroll", revealSections);
-
-        // Toggle sub-events on click
-        const events = document.querySelectorAll('.event');
-
-        events.forEach(event => {
-            event.addEventListener('click', () => {
-                const subEvent = event.querySelector('.sub-event');
-                if (subEvent.style.display === "block") {
-                    subEvent.style.display = "none";
-                } else {
-                    subEvent.style.display = "block";
-                }
+        const eventTitles = document.querySelectorAll('.event-title');
+        eventTitles.forEach(title => {
+            title.addEventListener('click', () => {
+                const subEvents = title.nextElementSibling;
+                subEvents.style.display = subEvents.style.display === 'block' ? 'none' : 'block';
             });
         });
 
-        // Initial reveal on page load
-        revealSections();
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     </script>
 </body>
-</html> 
+
+</html>
