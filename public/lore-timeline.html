@@ -1219,8 +1219,7 @@
     <button class="scroll-button" onclick="scrollToTop()">Scroll to Top</button>
 
     <script>
-        const eventTitles = document.querySelectorAll('.event-title');
-        eventTitles.forEach(title => {
+        document.querySelectorAll('.event-title').forEach(title => {
             title.addEventListener('click', () => {
                 const subEvents = title.nextElementSibling;
                 subEvents.style.display = subEvents.style.display === 'block' ? 'none' : 'block';
