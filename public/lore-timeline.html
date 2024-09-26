@@ -6,67 +6,147 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>United Federation Timeline</title>
   <style>
-    /* General Body Styling */
+    /* General Body Styling with Background Image */
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #0e0e0e; /* Dark background for sci-fi feel */
+      background: url('https://i.imgur.com/riC7zbg.jpeg') no-repeat center center fixed;
+      background-size: cover; /* Make sure the image covers the entire background */
       color: #fff;
+    }
+
+    /* Add a dark overlay to make text easier to read */
+    body:before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); /* Dark overlay with slight transparency */
+      z-index: -1;
     }
 
     /* Timeline Container */
     .timeline-container {
-      width: 80%;
-      margin: 0 auto;
-      padding: 50px 0;
+      width: 85%;
+      margin: 50px auto;
+      padding: 0;
+      position: relative;
+    }
+
+    /* Timeline Vertical Line */
+    .timeline-line {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 4px;
+      background-color: red;
+      height: 100%;
     }
 
     /* Timeline Event */
     .event {
-      border-left: 3px solid red; /* Red line for United Federation theme */
+      width: 45%;
       margin: 50px 0;
-      padding-left: 20px;
+      padding: 20px;
+      background: rgba(22, 22, 22, 0.9); /* Slightly transparent dark background for events */
+      border-radius: 15px;
+      position: relative;
+      transition: transform 0.4s, box-shadow 0.4s;
     }
 
+    .event.left {
+      float: left;
+      clear: both;
+      margin-right: 55%;
+      transform: translateX(-50px);
+    }
+
+    .event.right {
+      float: right;
+      clear: both;
+      margin-left: 55%;
+      transform: translateX(50px);
+    }
+
+    /* Event Glow Effect on Hover */
+    .event:hover {
+      transform: translateX(0);
+      box-shadow: 0 0 20px 5px rgba(230, 57, 70, 0.8);
+    }
+
+    /* Connector Dot */
+    .event:before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: red;
+      border: 3px solid white;
+      z-index: 1;
+    }
+
+    .event.left:before {
+      right: -30px;
+    }
+
+    .event.right:before {
+      left: -30px;
+    }
+
+    /* Event Title */
     .event h2 {
-      color: white;
+      color: #e63946;
       font-size: 1.8rem;
       margin-bottom: 10px;
+      text-transform: uppercase;
     }
 
+    /* Event Subsections */
     .event-subsection {
       margin-bottom: 20px;
-      padding: 10px;
-      background-color: #1a1a1a; /* Dark grey for contrast */
-      border: 1px solid #333; /* Subtle border */
-      border-left: 5px solid red; /* Red accent for each subsection */
+      padding: 15px;
+      background-color: #222;
+      border-radius: 10px;
+      border-left: 5px solid red;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
     }
 
     .event-subsection h3 {
-      color: #e63946; /* Light red for subsection titles */
-      font-size: 1.4rem;
-      margin-bottom: 5px;
+      color: #ff6b6b; /* Light red glow for subsection titles */
+      font-size: 1.3rem;
     }
 
     .event-subsection p {
-      color: #bbb; /* Light grey for text */
+      color: #ccc;
       font-size: 1rem;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
-      .timeline-container {
-        width: 90%;
+      .event {
+        width: 80%;
+        margin: 30px auto;
+        float: none;
+        clear: both;
+        transform: none;
       }
-      .event h2 {
-        font-size: 1.6rem;
+
+      .event.left, .event.right {
+        margin-left: 0;
+        margin-right: 0;
       }
-      .event-subsection h3 {
-        font-size: 1.2rem;
+
+      .timeline-line {
+        left: 20px;
       }
-      .event-subsection p {
-        font-size: 0.9rem;
+
+      .event:before {
+        left: -45px;
       }
     }
   </style>
@@ -74,54 +154,57 @@
 <body>
   <div class="timeline-container">
     
-    <!-- Event 1 -->
-    <div class="event">
+    <!-- Vertical Red Line -->
+    <div class="timeline-line"></div>
+    
+    <!-- Event 1 (Left) -->
+    <div class="event left">
       <h2>Event Title 1</h2>
       
       <div class="event-subsection">
         <h3>Subsection 1</h3>
-        <p>This is the explanation for the first subsection of the event. You can add your world-building lore here, such as background information or specific details.</p>
+        <p>This is the first explanation of the event. This area highlights the details of the event in a structured, visually engaging way.</p>
       </div>
       
       <div class="event-subsection">
         <h3>Subsection 2</h3>
-        <p>This is the second subsection, where you can add additional context, a different perspective, or even consequences of the event. Keep the explanations consistent for each event.</p>
+        <p>This subsection can explain the impact of the event or provide additional background for your lore timeline.</p>
       </div>
     </div>
 
-    <!-- Event 2 -->
-    <div class="event">
+    <!-- Event 2 (Right) -->
+    <div class="event right">
       <h2>Event Title 2</h2>
       
       <div class="event-subsection">
         <h3>Subsection 1</h3>
-        <p>This is the explanation for the first subsection of the event. Add the details or significance of this event in your timeline here.</p>
+        <p>Here is another event section, and it comes with the first explanation of the second major event in your world-building lore.</p>
       </div>
       
       <div class="event-subsection">
         <h3>Subsection 2</h3>
-        <p>In this subsection, explain any aftermath or different perspective related to the event. This can be lore details, timeline impact, or outcomes.</p>
+        <p>This section provides further context for the second event. Use it to explain consequences or related events.</p>
       </div>
     </div>
 
-    <!-- Event 3 -->
-    <div class="event">
+    <!-- Event 3 (Left) -->
+    <div class="event left">
       <h2>Event Title 3</h2>
       
       <div class="event-subsection">
         <h3>Subsection 1</h3>
-        <p>Add the first explanation for this event here. Describe the beginning, cause, or key information for the event.</p>
+        <p>The third event and its explanation go here. Make this section stand out by adding engaging content about the event.</p>
       </div>
       
       <div class="event-subsection">
         <h3>Subsection 2</h3>
-        <p>This is where you can describe any related events, consequences, or additional details for this part of the timeline.</p>
+        <p>Additional details or consequences related to this event can be written here to flesh out your timeline lore.</p>
       </div>
     </div>
 
-    <!-- Copy-Paste this block for new events -->
+    <!-- Copy-Paste this block for more events -->
     <!--
-    <div class="event">
+    <div class="event left/right">
       <h2>Event Title</h2>
       
       <div class="event-subsection">
