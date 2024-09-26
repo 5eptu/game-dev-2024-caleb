@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Fun Zone</title>
+  <title>Memory Matching Game</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <style>
     * {
@@ -16,44 +16,43 @@
       background-color: #0b0b0b;
       color: #ffffff;
       overflow: hidden;
-    }
-    header {
-      position: fixed;
-      width: 100%;
-      background: rgba(20, 20, 20, 0.9);
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      padding: 1rem;
-      z-index: 1000;
-      border-bottom: 2px solid #ff69b4;
-    }
-    nav a {
-      color: #ff69b4;
-      text-decoration: none;
-      margin-left: 2rem;
-      font-size: 1.2rem;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #00ff99;
-    }
-    .hero {
-      height: 100vh;
-      display: flex;
       justify-content: center;
-      align-items: center;
-      background: url('https://i.imgur.com/HMCg7Gl.jpg') no-repeat center center/cover;
-      position: relative;
-      overflow: hidden;
+      height: 100vh;
     }
-    .hero h1 {
-      font-size: 4rem;
+    h1 {
+      margin-bottom: 20px;
       text-shadow: 2px 2px #ff69b4;
     }
-    .section {
-      padding: 5rem 2rem;
-      text-align: center;
+    .game-container {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .card {
+      width: 100px;
+      height: 100px;
+      background-color: #ff69b4;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: transparent;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .card.flipped {
+      color: #ffffff;
+      background-color: #00ff99;
+      transform: scale(1.1);
+    }
+    .card.matched {
+      background-color: #444;
+      cursor: default;
     }
     .button {
       background-color: #ff69b4;
@@ -63,118 +62,62 @@
       cursor: pointer;
       transition: 0.3s;
       border-radius: 50px;
-      margin-top: 2rem;
+      margin-bottom: 20px;
     }
     .button:hover {
       background-color: #00ff99;
       color: #fff;
-      box-shadow: 0 0 15px #00ff99, 0 0 30px #ff69b4;
     }
-    .random-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
+    #confetti {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 10;
     }
-    .random-item {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 2rem;
-      border-radius: 15px;
-      transition: transform 0.3s;
-      box-shadow: 0 0 15px #ff69b4;
-      position: relative;
-    }
-    .random-item:hover {
-      transform: scale(1.05);
-    }
-    .balloon {
+    .confetti-piece {
       position: absolute;
-      width: 50px;
-      height: 80px;
-      background: url('https://i.imgur.com/J3N0uZP.png') no-repeat center center/cover;
-      cursor: pointer;
-      transition: transform 0.3s;
+      width: 10px;
+      height: 10px;
+      background-color: #ff69b4;
+      opacity: 0.8;
+      animation: fall 2s forwards;
     }
-    footer {
-      padding: 2rem;
-      background-color: #0d0d0d;
-      text-align: center;
-      border-top: 2px solid #ff69b4;
-      color: #ff69b4;
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Random Fun Zone</h1>
-    <nav>
-      <a href="#random">Random Activities</a>
-      <a href="#games">Mini Games</a>
-      <a href="#surprises">Surprises</a>
-      <a href="#balloons">Balloons!</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h1>Welcome to Chaos!</h1>
-  </section>
-
-  <section id="random" class="section">
-    <h2>Random Activities</h2>
-    <div class="random-container" id="randomContainer"></div>
-  </section>
-
-  <section id="games" class="section">
-    <h2>Mini Games</h2>
-    <button class="button" onclick="startMemoryGame()">Memory Game</button>
-    <button class="button" onclick="startClickGame()">Click Challenge</button>
-  </section>
-
-  <section id="surprises" class="section">
-    <h2>Surprises</h2>
-    <button class="button" onclick="randomSurprise()">Get a Surprise!</button>
-  </section>
-
-  <section id="balloons" class="section">
-    <h2>Balloons to Pop!</h2>
-    <div id="balloonContainer" style="position: relative; height: 300px; overflow: hidden;"></div>
-  </section>
-
-  <footer>
-    <p>&copy; 2077 Random Fun Zone. All rights reserved.</p>
-  </footer>
+  <h1>Memory Matching Game</h1>
+  <button class="button" onclick="startGame()">Start Game</button>
+  <div class="game-container" id="gameContainer"></div>
+  <div id="confetti"></div>
 
   <script>
-    const randomActivities = ['Draw something', 'Sing a song', 'Make a funny face', 'Do a dance', 'Tell a joke', 'Balance something on your head'];
-    
-    // Create random activities
-    const randomContainer = document.getElementById('randomContainer');
-    for (let i = 0; i < 10; i++) {
-      const item = document.createElement('div');
-      item.className = 'random-item';
-      item.textContent = randomActivities[Math.floor(Math.random() * randomActivities.length)];
-      randomContainer.appendChild(item);
-    }
-
-    // Memory Game
+    const cardImages = ['🐱', '🐶', '🐸', '🐢', '🦄', '🦁', '🐷', '🐰'];
+    let gameCards = [];
     let firstCard, secondCard;
-    let hasFlippedCard = false;
     let lockBoard = false;
+    let matchedCount = 0;
 
-    function startMemoryGame() {
-      const cardImages = ['🐱', '🐶', '🐸', '🐢', '🦄', '🦁', '🐷', '🐰'];
-      let gameCards = [...cardImages, ...cardImages].sort(() => 0.5 - Math.random());
-      const gameContainer = document.createElement('div');
-      gameContainer.style.display = 'grid';
-      gameContainer.style.gridTemplateColumns = 'repeat(4, 100px)';
-      gameContainer.style.gap = '10px';
-      document.body.appendChild(gameContainer);
+    function startGame() {
+      matchedCount = 0;
+      gameCards = [...cardImages, ...cardImages].sort(() => 0.5 - Math.random());
+      const gameContainer = document.getElementById('gameContainer');
+      gameContainer.innerHTML = ''; // Clear previous cards
 
       gameCards.forEach((image) => {
         const card = document.createElement('div');
-        card.className = 'random-item';
-        card.style.fontSize = '2rem';
-        card.textContent = '?';
+        card.className = 'card';
         card.dataset.image = image;
         card.addEventListener('click', flipCard);
         gameContainer.appendChild(card);
@@ -182,13 +125,12 @@
     }
 
     function flipCard() {
-      if (lockBoard) return;
-      if (this === firstCard) return;
+      if (lockBoard || this === firstCard) return;
 
+      this.classList.add('flipped');
       this.textContent = this.dataset.image;
 
-      if (!hasFlippedCard) {
-        hasFlippedCard = true;
+      if (!firstCard) {
         firstCard = this;
         return;
       }
@@ -197,64 +139,49 @@
       lockBoard = true;
 
       if (firstCard.dataset.image === secondCard.dataset.image) {
+        firstCard.classList.add('matched');
+        secondCard.classList.add('matched');
+        matchedCount++;
+
+        if (matchedCount === cardImages.length) {
+          setTimeout(() => {
+            createConfetti();
+            alert('Congratulations! You matched all the cards!');
+          }, 500);
+        }
+
         resetBoard();
       } else {
         setTimeout(() => {
-          firstCard.textContent = '?';
-          secondCard.textContent = '?';
+          firstCard.textContent = '';
+          secondCard.textContent = '';
+          firstCard.classList.remove('flipped');
+          secondCard.classList.remove('flipped');
           resetBoard();
         }, 1500);
       }
     }
 
     function resetBoard() {
-      [hasFlippedCard, lockBoard] = [false, false];
-      [firstCard, secondCard] = [null, null];
+      [firstCard, secondCard, lockBoard] = [null, null, false];
     }
 
-    // Click Challenge
-    function startClickGame() {
-      let clicks = 0;
-      const clickContainer = document.createElement('div');
-      clickContainer.style.position = 'relative';
-      clickContainer.style.height = '300px';
-      clickContainer.style.backgroundColor = 'rgba(255,255,255,0.1)';
-      document.body.appendChild(clickContainer);
+    function createConfetti() {
+      const confettiContainer = document.getElementById('confetti');
+      for (let i = 0; i < 100; i++) {
+        const confettiPiece = document.createElement('div');
+        confettiPiece.className = 'confetti-piece';
+        confettiPiece.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confettiPiece.style.left = `${Math.random() * 100}vw`;
+        confettiPiece.style.animationDuration = `${Math.random() * 1 + 2}s`;
+        confettiPiece.style.animationDelay = `${Math.random() * 3}s`;
+        confettiContainer.appendChild(confettiPiece);
 
-      clickContainer.addEventListener('click', () => {
-        clicks++;
-        alert(`You have clicked ${clicks} times!`);
-      });
+        setTimeout(() => {
+          confettiPiece.remove();
+        }, 4000);
+      }
     }
-
-    // Random Surprise
-    function randomSurprise() {
-      const surprises = [
-        "🎉 Surprise! You're amazing!",
-        "✨ Keep up the great work!",
-        "🎈 Here's a virtual balloon for you!",
-        "🌟 You're a star!",
-        "🚀 Go explore more!",
-      ];
-      alert(surprises[Math.floor(Math.random() * surprises.length)]);
-    }
-
-    // Balloons to Pop
-    function createBalloon() {
-      const balloon = document.createElement('div');
-      balloon.className = 'balloon';
-      balloon.style.left = Math.random() * 100 + 'vw';
-      balloon.style.bottom = '-80px';
-      balloon.style.animationDuration = Math.random() * 3 + 3 + 's';
-      balloon.onclick = function() {
-        alert('POP!');
-        this.remove();
-      };
-      document.getElementById('balloonContainer').appendChild(balloon);
-      setTimeout(createBalloon, 1000);
-    }
-
-    createBalloon(); // Start creating balloons
   </script>
 </body>
 </html>
