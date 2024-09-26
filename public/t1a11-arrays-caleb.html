@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Example</title>
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+        }
+        h1 {
+            color: #ff0000;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ff0000;
+            background-color: #fff;
+            color: #000;
+            font-size: 16px;
+        }
+        input[type="button"] {
+            padding: 10px;
+            margin: 10px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="button"]:hover {
+            background-color: #fff;
+            color: #ff0000;
+            border: 1px solid #ff0000;
+        }
+        #myDiv01 {
+            margin-top: 20px;
+            border: 1px solid #ff0000;
+            padding: 20px;
+            color: #ff0000;
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
 
+<h1>Array Manipulation Example</h1>
+
+
+<label for="myFirstName">Input: </label>
+<input type="text" id="myFirstName" value="fred"><br>
+
+<input type="button" value="Set Array" onclick="setArray()">
+<input type="button" value="Show Array" onclick="showArray()"><br>
+
+
+<div id="myDiv01">...</div>
+
+
+<script>
+ 
+    let myMax = 6;
+    let myArray = new Array(myMax);
+
+    function setArray() {
+        myArray[0] = 'Fred';
+        myArray[1] = 'Mary';
+        myArray[2] = 'Peter';
+        document.getElementById('myDiv01').innerHTML = 'You set the array';
+    }
+
+    function showArray() {
+        document.getElementById('myDiv01').innerHTML = ''; // Clear previous output
+        for (let myLoop = 0; myLoop < 3; myLoop++) {
+            document.getElementById('myDiv01').innerHTML += 'myArray[' + myLoop + '] = ' + myArray[myLoop] + '<br>';
+        }
+    }
+</script>
+
+</body>
+</html>
