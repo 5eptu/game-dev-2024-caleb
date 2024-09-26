@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Dimension Explorer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Russo+One&display=swap" rel="stylesheet">
+  <title>Random Fun Zone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,9 +13,9 @@
     }
     body {
       font-family: 'Orbitron', sans-serif;
-      background-color: #121212;
+      background-color: #0b0b0b;
       color: #ffffff;
-      overflow-x: hidden;
+      overflow: hidden;
     }
     header {
       position: fixed;
@@ -50,7 +50,6 @@
     .hero h1 {
       font-size: 4rem;
       text-shadow: 2px 2px #ff69b4;
-      z-index: 1;
     }
     .section {
       padding: 5rem 2rem;
@@ -71,56 +70,30 @@
       color: #fff;
       box-shadow: 0 0 15px #00ff99, 0 0 30px #ff69b4;
     }
-    .grid {
+    .random-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
+      margin-top: 3rem;
     }
-    .card {
+    .random-item {
       background-color: rgba(255, 255, 255, 0.1);
       padding: 2rem;
       border-radius: 15px;
       transition: transform 0.3s;
       box-shadow: 0 0 15px #ff69b4;
+      position: relative;
     }
-    .card:hover {
+    .random-item:hover {
       transform: scale(1.05);
     }
-    .interactive {
-      margin-top: 3rem;
-      position: relative;
-    }
-    .rain {
+    .balloon {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      pointer-events: none;
-      animation: rain 1s infinite linear;
-    }
-    @keyframes rain {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(100%); }
-    }
-    .game-container {
-      position: relative;
-      height: 300px;
-      margin-top: 3rem;
-      overflow: hidden;
-    }
-    .game-container canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
-    .score {
-      position: relative;
-      z-index: 2;
-      font-size: 2rem;
-      color: #ff69b4;
-      margin-top: 10px;
+      width: 50px;
+      height: 80px;
+      background: url('https://i.imgur.com/J3N0uZP.png') no-repeat center center/cover;
+      cursor: pointer;
+      transition: transform 0.3s;
     }
     footer {
       padding: 2rem;
@@ -133,105 +106,155 @@
 </head>
 <body>
   <header>
-    <h1>Random Dimension Explorer</h1>
+    <h1>Random Fun Zone</h1>
     <nav>
-      <a href="#about">About</a>
-      <a href="#features">Features</a>
-      <a href="#games">Games</a>
-      <a href="#rain">Rain Simulation</a>
+      <a href="#random">Random Activities</a>
+      <a href="#games">Mini Games</a>
+      <a href="#surprises">Surprises</a>
+      <a href="#balloons">Balloons!</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>Welcome to the Unknown!</h1>
+    <h1>Welcome to Chaos!</h1>
   </section>
 
-  <section id="about" class="section">
-    <h2>About This Dimension</h2>
-    <p>Prepare to embark on a journey through the chaotic realms of random dimensions filled with surprises!</p>
-    <button class="button" onclick="randomMessage()">Surprise Me!</button>
-  </section>
-
-  <section id="features" class="section">
-    <h2>Unique Features</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Endless Fun</h3>
-        <p>Experience a variety of games and interactive elements that keep changing!</p>
-      </div>
-      <div class="card">
-        <h3>Random Surprises</h3>
-        <p>Every click could unveil a fun fact, joke, or quirky animation.</p>
-      </div>
-      <div class="card">
-        <h3>Rain Simulation</h3>
-        <p>Watch the beautiful rain animations while you explore!</p>
-      </div>
-    </div>
+  <section id="random" class="section">
+    <h2>Random Activities</h2>
+    <div class="random-container" id="randomContainer"></div>
   </section>
 
   <section id="games" class="section">
     <h2>Mini Games</h2>
-    <div class="game-container" id="gameContainer">
-      <canvas id="gameCanvas" width="400" height="400"></canvas>
-      <div class="score" id="score">Score: 0</div>
-    </div>
-    <button class="button" onclick="startGame()">Start Game</button>
+    <button class="button" onclick="startMemoryGame()">Memory Game</button>
+    <button class="button" onclick="startClickGame()">Click Challenge</button>
   </section>
 
-  <section id="rain" class="section interactive">
-    <h2>Rain Simulation</h2>
-    <div class="rain"></div>
-    <p>Watch the rain fall around you as you navigate this world!</p>
+  <section id="surprises" class="section">
+    <h2>Surprises</h2>
+    <button class="button" onclick="randomSurprise()">Get a Surprise!</button>
+  </section>
+
+  <section id="balloons" class="section">
+    <h2>Balloons to Pop!</h2>
+    <div id="balloonContainer" style="position: relative; height: 300px; overflow: hidden;"></div>
   </section>
 
   <footer>
-    <p>&copy; 2077 Random Dimension Explorer. All rights reserved.</p>
+    <p>&copy; 2077 Random Fun Zone. All rights reserved.</p>
   </footer>
 
   <script>
-    let score = 0;
-    let gameActive = false;
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-
-    function startGame() {
-      score = 0;
-      gameActive = true;
-      document.getElementById('score').innerText = 'Score: ' + score;
-      gameLoop();
+    const randomActivities = ['Draw something', 'Sing a song', 'Make a funny face', 'Do a dance', 'Tell a joke', 'Balance something on your head'];
+    
+    // Create random activities
+    const randomContainer = document.getElementById('randomContainer');
+    for (let i = 0; i < 10; i++) {
+      const item = document.createElement('div');
+      item.className = 'random-item';
+      item.textContent = randomActivities[Math.floor(Math.random() * randomActivities.length)];
+      randomContainer.appendChild(item);
     }
 
-    function gameLoop() {
-      if (gameActive) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#00ff99';
-        ctx.fillRect(Math.random() * 350, Math.random() * 350, 50, 50);
-        score++;
-        document.getElementById('score').innerText = 'Score: ' + score;
-        setTimeout(gameLoop, 1000);
+    // Memory Game
+    let firstCard, secondCard;
+    let hasFlippedCard = false;
+    let lockBoard = false;
+
+    function startMemoryGame() {
+      const cardImages = ['🐱', '🐶', '🐸', '🐢', '🦄', '🦁', '🐷', '🐰'];
+      let gameCards = [...cardImages, ...cardImages].sort(() => 0.5 - Math.random());
+      const gameContainer = document.createElement('div');
+      gameContainer.style.display = 'grid';
+      gameContainer.style.gridTemplateColumns = 'repeat(4, 100px)';
+      gameContainer.style.gap = '10px';
+      document.body.appendChild(gameContainer);
+
+      gameCards.forEach((image) => {
+        const card = document.createElement('div');
+        card.className = 'random-item';
+        card.style.fontSize = '2rem';
+        card.textContent = '?';
+        card.dataset.image = image;
+        card.addEventListener('click', flipCard);
+        gameContainer.appendChild(card);
+      });
+    }
+
+    function flipCard() {
+      if (lockBoard) return;
+      if (this === firstCard) return;
+
+      this.textContent = this.dataset.image;
+
+      if (!hasFlippedCard) {
+        hasFlippedCard = true;
+        firstCard = this;
+        return;
+      }
+
+      secondCard = this;
+      lockBoard = true;
+
+      if (firstCard.dataset.image === secondCard.dataset.image) {
+        resetBoard();
+      } else {
+        setTimeout(() => {
+          firstCard.textContent = '?';
+          secondCard.textContent = '?';
+          resetBoard();
+        }, 1500);
       }
     }
 
-    function randomMessage() {
-      const messages = [
-        "You're doing great!",
-        "Did you know? Cats have fewer toes on their back paws.",
-        "Keep going, explorer!",
-        "Random fact: Honey never spoils!",
-        "Why did the scarecrow win an award? Because he was outstanding in his field!"
+    function resetBoard() {
+      [hasFlippedCard, lockBoard] = [false, false];
+      [firstCard, secondCard] = [null, null];
+    }
+
+    // Click Challenge
+    function startClickGame() {
+      let clicks = 0;
+      const clickContainer = document.createElement('div');
+      clickContainer.style.position = 'relative';
+      clickContainer.style.height = '300px';
+      clickContainer.style.backgroundColor = 'rgba(255,255,255,0.1)';
+      document.body.appendChild(clickContainer);
+
+      clickContainer.addEventListener('click', () => {
+        clicks++;
+        alert(`You have clicked ${clicks} times!`);
+      });
+    }
+
+    // Random Surprise
+    function randomSurprise() {
+      const surprises = [
+        "🎉 Surprise! You're amazing!",
+        "✨ Keep up the great work!",
+        "🎈 Here's a virtual balloon for you!",
+        "🌟 You're a star!",
+        "🚀 Go explore more!",
       ];
-      alert(messages[Math.floor(Math.random() * messages.length)]);
+      alert(surprises[Math.floor(Math.random() * surprises.length)]);
     }
 
-    document.addEventListener('click', (event) => {
-      const element = document.elementFromPoint(event.clientX, event.clientY);
-      if (element.tagName === 'CANVAS') {
-        score++;
-        document.getElementById('score').innerText = 'Score: ' + score;
-      }
-    });
+    // Balloons to Pop
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.style.left = Math.random() * 100 + 'vw';
+      balloon.style.bottom = '-80px';
+      balloon.style.animationDuration = Math.random() * 3 + 3 + 's';
+      balloon.onclick = function() {
+        alert('POP!');
+        this.remove();
+      };
+      document.getElementById('balloonContainer').appendChild(balloon);
+      setTimeout(createBalloon, 1000);
+    }
+
+    createBalloon(); // Start creating balloons
   </script>
 </body>
 </html>
-
