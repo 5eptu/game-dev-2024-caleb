@@ -3,65 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>t1a11-arrays-caleb.html</title>
+    <title>Advanced Array Example</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <style>
+        /* Set up background gradient and overall styling */
         body {
             font-family: 'Orbitron', sans-serif;
-            background-color: #000;
+            background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
             color: #fff;
             text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
         }
+
         h1 {
-            color: #ff0000;
+            color: #ff0033;
+            text-transform: uppercase;
+            font-size: 3rem;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 20px rgba(255, 0, 51, 0.7);
+            animation: glow 2s infinite alternate;
         }
+
+        @keyframes glow {
+            from {
+                text-shadow: 2px 2px 20px rgba(255, 0, 51, 0.7);
+            }
+            to {
+                text-shadow: 4px 4px 30px rgba(255, 0, 51, 1);
+            }
+        }
+
+        /* Style input fields and buttons with complex hover effects */
         input[type="text"] {
-            padding: 10px;
+            padding: 15px;
             margin: 10px;
-            border: 1px solid #ff0000;
-            background-color: #fff;
-            color: #000;
-            font-size: 16px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ff0033;
+            font-size: 18px;
+            text-align: center;
+            outline: none;
+            width: 200px;
+            box-shadow: 0 0 20px rgba(255, 0, 51, 0.5);
+            transition: all 0.3s ease;
+            border-radius: 8px;
         }
+
+        input[type="text"]:focus {
+            box-shadow: 0 0 30px rgba(255, 0, 51, 0.8);
+        }
+
         input[type="button"] {
-            padding: 10px;
+            padding: 12px 20px;
             margin: 10px;
-            background-color: #ff0000;
+            background: #ff0033;
             color: #fff;
             border: none;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
+            letter-spacing: 2px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.6);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
+
         input[type="button"]:hover {
             background-color: #fff;
-            color: #ff0000;
-            border: 1px solid #ff0000;
+            color: #ff0033;
+            box-shadow: 0 0 30px rgba(255, 0, 51, 0.8);
         }
+
+        input[type="button"]::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        input[type="button"]:hover::before {
+            opacity: 1;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+        }
+
+        /* Create futuristic display area */
         #myDiv01 {
-            margin-top: 20px;
-            border: 1px solid #ff0000;
+            margin-top: 30px;
             padding: 20px;
-            color: #ff0000;
-            background-color: #111;
+            width: 60%;
+            border: 2px solid #ff0033;
+            border-radius: 12px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ff0033;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 5px rgba(255, 0, 51, 0.6);
+            box-shadow: 0 0 30px rgba(255, 0, 51, 0.7);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* Subtle scroll animation effect */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff0033;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #333;
         }
     </style>
 </head>
 <body>
 
-<h1>Array Manipulation Example</h1>
+<h1>Array Manipulator</h1>
 
-
+<!-- Input Field and Buttons -->
 <label for="myFirstName">Input: </label>
 <input type="text" id="myFirstName" value="fred"><br>
 
 <input type="button" value="Set Array" onclick="setArray()">
 <input type="button" value="Show Array" onclick="showArray()"><br>
 
+<!-- Div to display array output -->
+<div id="myDiv01">Array Output Will Appear Here...</div>
 
-<div id="myDiv01">...</div>
-
-
+<!-- JavaScript -->
 <script>
- 
+    // Set a few Global Variables
     let myMax = 6;
     let myArray = new Array(myMax);
 
@@ -69,7 +157,8 @@
         myArray[0] = 'Fred';
         myArray[1] = 'Mary';
         myArray[2] = 'Peter';
-        document.getElementById('myDiv01').innerHTML = 'You set the array';
+        document.getElementById('myDiv01').innerHTML = 'You have successfully set the array.<br><br>Array elements are now stored.';
+        addEffect();
     }
 
     function showArray() {
@@ -77,6 +166,15 @@
         for (let myLoop = 0; myLoop < 3; myLoop++) {
             document.getElementById('myDiv01').innerHTML += 'myArray[' + myLoop + '] = ' + myArray[myLoop] + '<br>';
         }
+    }
+
+    function addEffect() {
+        const div = document.getElementById('myDiv01');
+        div.style.transition = 'transform 0.3s ease-out';
+        div.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+            div.style.transform = 'scale(1)';
+        }, 300);
     }
 </script>
 
