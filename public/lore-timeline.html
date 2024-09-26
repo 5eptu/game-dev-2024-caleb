@@ -1,1235 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Building Lore Timeline</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Orbitron', sans-serif;
-            background-color: #000;
-            color: #fff;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>United Federation Timeline</title>
+  <style>
+    /* General Body Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0e0e0e; /* Dark background for sci-fi feel */
+      color: #fff;
+    }
 
-        h1, h2, h3 {
-            text-align: center;
-            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
-        }
+    /* Timeline Container */
+    .timeline-container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 50px 0;
+    }
 
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            border-left: 2px solid #fff;
-        }
+    /* Timeline Event */
+    .event {
+      border-left: 3px solid red; /* Red line for United Federation theme */
+      margin: 50px 0;
+      padding-left: 20px;
+    }
 
-        .event {
-            margin: 20px 0;
-            padding: 10px 20px;
-            border: 2px solid #ff0000;
-            border-radius: 10px;
-            background-color: rgba(255, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
+    .event h2 {
+      color: white;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
 
-        .event:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
-        }
+    .event-subsection {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #1a1a1a; /* Dark grey for contrast */
+      border: 1px solid #333; /* Subtle border */
+      border-left: 5px solid red; /* Red accent for each subsection */
+    }
 
-        .event-title {
-            cursor: pointer;
-            padding: 10px;
-            font-size: 20px;
-            font-weight: bold;
-            background-color: #222;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
+    .event-subsection h3 {
+      color: #e63946; /* Light red for subsection titles */
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+    }
 
-        .event-title:hover {
-            background-color: rgba(255, 0, 0, 0.4);
-        }
+    .event-subsection p {
+      color: #bbb; /* Light grey for text */
+      font-size: 1rem;
+    }
 
-        .sub-events {
-            display: none;
-            margin-top: 10px;
-            background-color: #111;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ff0000;
-        }
-
-        .sub-event {
-            margin: 5px 0;
-            background-color: rgba(255, 0, 0, 0.2);
-            padding: 8px;
-            border-radius: 5px;
-        }
-
-        .sub-event:hover {
-            background-color: rgba(255, 0, 0, 0.4);
-            cursor: pointer;
-        }
-
-        .scroll-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #ff0000;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            z-index: 1000;
-        }
-
-        .scroll-button:hover {
-            background-color: rgba(255, 0, 0, 0.8);
-        }
-    </style>
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .timeline-container {
+        width: 90%;
+      }
+      .event h2 {
+        font-size: 1.6rem;
+      }
+      .event-subsection h3 {
+        font-size: 1.2rem;
+      }
+      .event-subsection p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <h1>World Building Lore Timeline</h1>
-    <div class="timeline">
-        <div class="event">
-            <div class="event-title">8 May 1945 - Germany Surrenders</div>
-            <div class="sub-events">
-                <div class="sub-event">Key Decision: Adolf Hitler's death led to a power vacuum.</div>
-                <div class="sub-event">Allied Advances: The Allies' successful campaign in Europe culminated in Germany's surrender.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">2 Sep 1945 - Japan Surrenders</div>
-            <div class="sub-events">
-                <div class="sub-event">Atomic Bombings: The bombings of Hiroshima and Nagasaki pressured Japan into surrender.</div>
-                <div class="sub-event">Military Overhaul: Japan restructured its military leadership following the war.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">24 Oct 1945 - The United Nations is founded</div>
-            <div class="sub-events">
-                <div class="sub-event">Global Cooperation: Established to prevent future global conflicts.</div>
-                <div class="sub-event">Charter Signing: The UN Charter was signed by 51 nations.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">9 Feb 1946 - Stalin’s Speech, Cold War Begins</div>
-            <div class="sub-events">
-                <div class="sub-event">Ideological Divide: Stalin's rhetoric solidified the East-West divide.</div>
-                <div class="sub-event">Nuclear Tensions: The arms race escalated as both sides built nuclear arsenals.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">12 Mar 1947 - Truman Doctrine</div>
-            <div class="sub-events">
-                <div class="sub-event">Containment Policy: The U.S. pledges to support countries resisting communism.</div>
-                <div class="sub-event">Military Aid: Financial aid was provided to Greece and Turkey.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">4 Apr 1949 - The North Atlantic Treaty Organization is ratified</div>
-            <div class="sub-events">
-                <div class="sub-event">Mutual Defense: NATO members agree to mutual defense in case of attack.</div>
-                <div class="sub-event">Expansion: New members joined, increasing NATO's influence.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">1 Oct 1949 - Mao takes over China, turning it communist</div>
-            <div class="sub-events">
-                <div class="sub-event">Civil War: The Chinese Civil War culminated in the establishment of the People's Republic of China.</div>
-                <div class="sub-event">Social Changes: Land reforms and communist policies were instituted.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">June 24 1950 - Korean War begins</div>
-            <div class="sub-events">
-                <div class="sub-event">Invasion: North Korea invaded South Korea, igniting the conflict.</div>
-                <div class="sub-event">Global Involvement: The U.N. intervened on behalf of South Korea.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">1 Aug 1952 - InkTech established</div>
-            <div class="sub-events">
-                <div class="sub-event">Technology Leader: InkTech rapidly developed military technologies.</div>
-                <div class="sub-event">Innovative Strategies: Pioneered advancements in computing and communication.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">5 Oct 1953 - The Korean War ends in a United Nations victory</div>
-            <div class="sub-events">
-                <div class="sub-event">Armistice: A ceasefire was declared, solidifying the division of Korea.</div>
-                <div class="sub-event">Political Tensions: The war left a lasting impact on U.S.-North Korean relations.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">5 Sep 1953 - SCP Foundation established</div>
-            <div class="sub-events">
-                <div class="sub-event">Secret Operations: Established to contain and study anomalies.</div>
-                <div class="sub-event">Global Influence: The SCP Foundation grew in secrecy, influencing global events.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">14 May 1955 - The Treaty of Friendship, Cooperation and Mutual Assistance (Warsaw Pact) is formed</div>
-            <div class="sub-events">
-                <div class="sub-event">Counterbalance: Formed in response to NATO, solidifying Eastern bloc alliances.</div>
-                <div class="sub-event">Military Cooperation: Enhanced military collaboration among member states.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">20 Jul 1969 - Apollo 11 lands on the Moon</div>
-            <div class="sub-events">
-                <div class="sub-event">Historic Achievement: First humans set foot on the Moon, showcasing U.S. space superiority.</div>
-                <div class="sub-event">Space Race: Further escalated competition in the space race between superpowers.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">1970 to 1989 - The Cold War continues</div>
-            <div class="sub-events">
-                <div class="sub-event">Nuclear Proliferation: Both sides developed and tested more nuclear weapons.</div>
-                <div class="sub-event">Espionage: Increased intelligence operations and covert activities.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">9 Nov 1989 - Fall of the Berlin Wall</div>
-            <div class="sub-events">
-                <div class="sub-event">Symbol of Unity: The wall's fall signified the end of the Cold War.</div>
-                <div class="sub-event">Reunification: Germany began the process of reunifying.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">15 Mar 1990 - Dissolution of the Soviet Union</div>
-            <div class="sub-events">
-                <div class="sub-event">End of an Era: The Soviet Union officially dissolved, the Russian Empire was formed as a result.</div>
-                <div class="sub-event">Independence Movements: Many former Soviet republics gained independence.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">18 Mar 1990 - Snowkid Sr. begins a movement in the United States called the ‘Frost’</div>
-            <div class="sub-events">
-                <div class="sub-event">A severe worldwide economic crisis was in affect.</div>
-                <div class="sub-event">Snowkid Sr. gained support by promising the people change, gaining rapid opinion.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">3 Jan 1994 - NATO moves in to secure the former satellite states and move them towards capitalism and democracy.</div>
-            <div class="sub-events">
-                <div class="sub-event">This flushed out communism from former soviet rule.</div>
-                <div class="sub-event">The Red Scare event has dissolved.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">6 Jan 1994 - The Russian Empire invades Finland, the ‘Third’ Russo-Finnish War Begins 8 Jan 1994 - NATO and the United States support Finland.</div>
-            <div class="sub-events">
-                <div class="sub-event">The Russian Empire launches a large-scale military offensive into Finnish territory, marking the start of the 'Third' Russo-Finnish War.</div>
-                <div class="sub-event">NATO and the United States pledge military and logistical support to Finland, signaling a global response to the Russian aggression.</div>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-title">29 Sep 1995 - The ‘Frost’ Movement spread to Canada.</div>
-            <div class="sub-events">
-                <div class="sub-event">The Frost Movement spreads to Canada, resonating with the public's desire for reform.</div>
-                <div class="sub-event">As economic hardships intensify, Canadian citizens begin rallying behind the Frost Movement, with protests and rallies demanding significant governmental and economic changes.</div>
-            </div>
-        </div>
-        <div class="event-title">18 Aug 1996 - Peace terms are negotiated and the Treaty of Madison is signed, the war ends as the Russian Empire annexes part of the Nordico Republic.</div>
-            <div class="sub-events">
-                <div class="sub-event">The Treaty of Madison is formalized, bringing an end to the conflict. The Russian Empire gains partial control over the Nordico Republic, solidifying their annexation.</div>
-                <div class="sub-event">As the news of the treaty spreads, international reactions are mixed. While some nations condemn the annexation, others see it as a necessary step toward stability in the region.</div>
-            </div>
-        </div>
-        <div class="event-title">10 Feb 1999 - The United Nations is dissolved.</div>
-            <div class="sub-events">
-                <div class="sub-event">Amid growing geopolitical tensions and internal divisions, the United Nations officially announces its dissolution, marking the end of an era of global diplomacy.</div>
-                <div class="sub-event">Some nations immediately seek to form new alliances, while others fall into political disarray.</div>
-            </div>
-        </div>
-        <div class="event-title">11 Jun 1999 The North Atlantic Treaty Organization is dissolved.</div>
-            <div class="sub-events">
-                <div class="sub-event">Following the disbandment of the United Nations, NATO faces increasing internal discord and is officially dissolved, marking the end of the longstanding military alliance.</div>
-                <div class="sub-event">With NATO gone, former member states scramble to reassess their defense strategies, leading to a surge of new, hastily formed regional alliances and a period of military uncertainty.</div>
-            </div>
-        </div>
-        <div class="event-title">28 Aug 1999 - The United States economy crashes and anarchy follows and Canada’s economy falls.</div>
-            <div class="sub-events">
-                <div class="sub-event">The U.S. economy crashes, triggering widespread chaos. Markets plummet, unemployment skyrockets, and civil unrest begins to spread across major cities.</div>
-                <div class="sub-event">As a direct consequence of the U.S. collapse, Canada’s economy falters. The interconnectedness of their economies leads to a similar downturn, resulting in a wave of panic and instability throughout the region.</div>
-            </div>
-        </div>
-        <div class="event-title">18 Jul 2000 - The ‘Frost’ movement grows greatly and takes control of the eastern United States and eastern Canada.</div>
-            <div class="sub-events">
-                <div class="sub-event">The 'Frost' movement gains significant momentum, seizing control of key cities in the eastern United States. Their influence spreads rapidly, capitalizing on the economic collapse and civil unrest.</div>
-                <div class="sub-event">Following their U.S. success, the Frost movement extends its control into eastern Canada, solidifying its hold over the region and establishing a strong presence along the Atlantic coast.</div>
-            </div>
-        </div>
-        <div class="event-title">25 Dec 2000 - The Frost Shield is formed in the eastern United States and Canada, this new nation’s economy surpasses the United States.</div>
-            <div class="sub-events">
-                <div class="sub-event">On Christmas Day, the Frost movement officially forms a new nation known as "The Frost Shield" across the eastern United States and Canada.</div>
-                <div class="sub-event">Within days of its formation, the Frost Shield's economy surpasses the remaining United States, becoming a major economic force in North America amidst the ongoing global instability.</div>
-            </div>
-        </div>
-        <div class="event-title">4 Jul 2001 - The United States’ and Canada’s economy recover, the United States and Canada recognize The Frost Shield as an independent nation</div>
-            <div class="sub-events">
-                <div class="sub-event">On Independence Day, both the United States and Canada see their economies begin to recover from the collapse.</div>
-                <div class="sub-event">Just days after the economic recovery, the United States and Canada formally recognize the Frost Shield as an independent and sovereign nation, solidifying its status on the world stage.</div>
-            </div>
-        </div>
-        <div class="event-title">11 Sep 2001 - Al-Qaeda flies 4 planes into the World Trade Center, Pentagon, and the United States Capitol Building</div>
-            <div class="sub-events">
-                <div class="sub-event">Al-Qaeda orchestrates a coordinated attack on the United States by hijacking planes and flying them into the World Trade Center and the Pentagon, causing widespread devastation.</div>
-                <div class="sub-event">A fourth plane, also hijacked, is aimed at the United States Capitol Building but is thwarted by the passengers on board, crashing into a field in Pennsylvania instead.</div>
-            </div>
-        </div>
-        <div class="event-title">14 Sep 2001 - As the United States declare war on Al-Qaeda, they drive a car bomb into The Frost Shield Presidential Housing Building, killing Snowkid Sr.. His son, Snowkid, takes power and declares war on Al-Qaeda, the Good War begins.</div>
-            <div class="sub-events">
-                <div class="sub-event">A car bomb is detonated outside the Presidential Housing Building in The Frost Shield, resulting in the assassination of Snowkid Sr., the leader of the nation.</div>
-                <div class="sub-event">Following the assassination of his father, Snowkid assumes leadership of The Frost Shield and promptly declares war on Al-Qaeda, initiating the conflict known as the Good War.</div>
-            </div>
-        </div>
-        <div class="event-title">20 Dec 2002 - The Frost Shield paratroop into a Al-Qaeda compound and take Osama bin Mohammed bin Awad bin Laden, they are evaced via helicopter</div>
-            <div class="sub-events">
-                <div class="sub-event">The Frost Shield conducts a daring operation, deploying paratroopers into an Al-Qaeda stronghold to capture Osama bin Laden.</div>
-                <div class="sub-event">After successfully apprehending bin Laden, Frost Shield forces are evacuated from the compound via helicopter, marking a significant victory in the Good War.</div>
-            </div>
-        </div>
-        <div class="event-title">8 May 2003 - Al-Qaeda surrenders and dissolves, the Good War ends.</div>
-            <div class="sub-events">
-                <div class="sub-event">Following extensive military pressure and loss of key leadership, Al-Qaeda officially surrenders.</div>
-                <div class="sub-event">The surrender leads to the formal conclusion of the Good War, with the Frost Shield emerging as a prominent force in the region and setting the stage for a new era of stability.</div>
-            </div>
-        </div>
-        <div class="event-title">9 May 2003 - Lim3Z is given The Frost Shield Medal of Honor by Snowkid</div>
-            <div class="sub-events">
-                <div class="sub-event">In recognition of his bravery and contributions during the Good War, Lim3Z is awarded The Frost Shield Medal of Honor by President Snowkid.</div>
-                <div class="sub-event">The Frost Shield holds a nationwide celebration in honor of Lim3Z's achievements and the end of the Good War.</div>
-            </div>
-        </div>
-        <div class="event-title">28 Nov 2005 - Lim3Z becomes The Frost Shield’s Vice Chairman of the Joint Chiefs of Staff</div>
-            <div class="sub-events">
-                <div class="sub-event">Lim3Z is appointed as The Frost Shield’s Vice Chairman of the Joint Chiefs of Staff, where he plays a crucial role in shaping military strategy and operations.</div>
-                <div class="sub-event">Following Lim3Z's appointment, significant military reforms are initiated to modernize the armed forces, emphasizing technology and training to better prepare for future challenges.</div>
-            </div>
-        </div>
-        <div class="event-title">8 Jan 2008 - The Russian Empire attempts to invade Alaska, but The Frost Shield pushes back against them, The Frost Shield declares war and the Russo-Frost War begins.</div>
-            <div class="sub-events">
-                <div class="sub-event">The Russian Empire attempts to invade Alaska, aiming to reclaim territory lost during previous conflicts.</div>
-                <div class="sub-event">In response to the invasion, The Frost Shield declares war, marking the official start of the Russo-Frost War, mobilizing troops and resources to defend their territory.</div>
-            </div>
-        </div>
-        <div class="event-title">15 Aug 2008 - The Frost Shield lands in Russia and pushes in</div>
-            <div class="sub-events">
-                <div class="sub-event">The Frost Shield launches a surprise attack, successfully landing troops in Russian territory, marking a significant escalation in the Russo-Frost War.</div>
-                <div class="sub-event">As The Frost Shield forces push deeper into Russia, they aim to secure vital supply lines and weaken the Russian military's hold in the region.</div>
-            </div>
-        </div>
-        <div class="event-title">25 Dec 2008 - The Frost Shield is stopped by the Russian Winter but airstrikes continue</div>
-            <div class="sub-events">
-                <div class="sub-event">The Frost Shield's advance is significantly slowed as they face severe winter conditions in Russia, forcing troops to regroup and reassess their strategy.</div>
-                <div class="sub-event">Despite the ground forces being stalled, the Frost Shield maintains pressure through strategic airstrikes on key Russian positions, aiming to weaken their defenses and disrupt supply lines.</div>
-            </div>
-        </div>
-        <div class="event-title">1 Jan 2009 - The Frost Shield forces are pushed to the sea, the Communist Party of Italy wins the election and Italy becomes the Socialist-Communist Republic of Italy (SCRI)</div>
-            <div class="sub-events">
-                <div class="sub-event">The Frost Shield is forced to retreat to the coast as Russian forces launch a counteroffensive, effectively pushing the coalition back to their naval positions.</div>
-                <div class="sub-event">In a significant political shift, the Communist Party of Italy wins the general election, leading to the establishment of the Socialist-Communist Republic of Italy (SCRI).</div>
-            </div>
-        </div>
-        <div class="event-title">4 Jan 2009 - Israel declares war on Palestine, the Isreali-Palestinian War begins</div>
-            <div class="sub-events">
-                <div class="sub-event">Israel declares war on Palestine, citing security concerns and ongoing hostilities.</div>
-                <div class="sub-event">The declaration of war leads to a rapid escalation in violence, prompting international reactions and concerns over a wider conflict in the Middle East, as both sides prepare for a protracted struggle.</div>
-            </div>
-        </div>
-        <div class="event-title">5 Jan 2009 - The United States attempts to make peace between Israel and Palestine.</div>
-            <div class="sub-events">
-                <div class="sub-event">The United States initiates diplomatic talks aimed at brokering peace between Israel and Palestine, seeking to reduce tensions and prevent further escalation of the conflict.</div>
-                <div class="sub-event">As the U.S. intervenes, neighboring countries express varying levels of support for both sides, complicating the peace efforts and highlighting the regional implications of the ongoing war.</div>
-            </div>
-        </div>
-        <div class="event-title">26 Mar 2009 - The Frost Shield’s assault on the Russian Empire</div>
-            <div class="sub-events">
-                <div class="sub-event">The Frost Shield begins a series of coordinated airstrikes targeting key military installations within the Russian Empire, aiming to weaken their defenses and gain an upper hand in the ongoing Russo-Frost War.</div>
-                <div class="sub-event">Following the airstrikes, Frost Shield ground forces initiate a major offensive, moving deeper into Russian territory in an effort to secure strategic positions and disrupt enemy supply lines.</div>
-            </div>
-        </div>
-        <div class="event-title">7 Aug 2009 - The Frost Shield officially calls on The Russian Empire to surrender, they do not.</div>
-            <div class="sub-events">
-                <div class="sub-event">The Frost Shield issues an official ultimatum to the Russian Empire, demanding their immediate surrender and the withdrawal of troops from occupied territories, emphasizing the consequences of continued resistance.</div>
-                <div class="sub-event">The Russian Empire rejects the ultimatum, declaring that they will fight to the last man, reinforcing their commitment to the war and vowing to reclaim any lost territories.</div>
-            </div>
-        </div>
-        <div class="event-title">15 Dec 2009 - The Russian Winter stops The Frost Shield again.</div>
-            <div class="sub-events">
-                <div class="sub-event">The Russian Winter intensifies, bringing heavy snow and frigid temperatures that hinder The Frost Shield's mobility and operations on the ground, forcing them into a defensive posture.</div>
-                <div class="sub-event">In light of the severe winter conditions, The Frost Shield's military leaders convene to reassess their strategy, focusing on supply lines and planning for a potential spring offensive once the weather improves.</div>
-            </div>
-        </div>
-        <div class="event-title">19 Dec 2009 - Israel accepts the peace terms established by the United States</div>
-            <div class="sub-events">
-                <div class="sub-event">A ceasefire is officially established, leading to a temporary halt in hostilities between Israel and Palestine, creating a window for peace negotiations.</div>
-                <div class="sub-event">Following the acceptance of peace terms, several nations express their support for the agreement, paving the way for future diplomatic recognition of Palestine.</div>
-            </div>
-        </div>
-        <div class="event-title">2 Apr 2010 - The Frost Shield gives fake information and flies hundreds of fake planes over Russia and crashes them in the night with paratroopers in them.</div>
-            <div class="sub-events">
-                <div class="sub-event">The Frost Shield executes a covert operation, deploying hundreds of fake planes to create the illusion of a massive air assault on Russia, aiming to confuse and distract Russian military forces.</div>
-                <div class="sub-event">While the fake planes create chaos, actual paratroopers are deployed to infiltrate strategic locations in Russia under the cover of night, seeking to gather intelligence and disrupt enemy operations.</div>
-            </div>
-        </div>
-        <div class="event-title">3 Apr 2010 - The Russian Empire rushes to the crash sites and are ambushed by the airborne troops</div>
-            <div class="sub-events">
-                <div class="sub-event">As Russian forces scramble to respond to the crash sites, they fall into a well-coordinated trap set by the Frost Shield’s airborne troops, leading to heavy casualties among the surprised Russian soldiers.</div>
-                <div class="sub-event">The Frost Shield’s airborne troops leverage the element of surprise, seizing key positions and disrupting Russian supply lines.</div>
-            </div>
-        </div>
-        <div class="event-title">7 Apr 2010 - The Frost Shield lays out surrender terms for the Russian Empire.</div>
-            <div class="sub-events">
-                <div class="sub-event">The Frost Shield presents an ultimatum to the Russian Empire, outlining terms for an end to hostilities that include territorial concessions and political reforms.</div>
-                <div class="sub-event"> The Russian Empire deliberates on the Frost Shield’s terms, facing internal pressure and potential dissent as public opinion sways amidst the ongoing conflict.</div>
-            </div>
-        </div>
-        <div class="event-title">8 Apr 2010 - The Russian Empire accepts the surrender terms and the Treaty of Juneau is signed, The Frost Shield annexes eastern Russian territory and is paid trillions.</div>
-            <div class="sub-events">
-                <div class="sub-event">The Treaty of Juneau is officially signed, marking the end of the Russo-Frost War. The agreement outlines the annexation of eastern Russian territory by the Frost Shield.</div>
-                <div class="sub-event">The Russian Empire agrees to compensate the Frost Shield with trillions in reparations, significantly boosting the Frost Shield's economy.</div>
-            </div>
-        </div>
-        <div class="event-title">14 Mar 2012 - Snowkid and Lim3Z attend a special meeting with France, Great Britain, Spain, Portugal, Canada, United States, Poland, and Germany.</div>
-            <div class="sub-events">
-                <div class="sub-event">Snowkid and Lim3Z participate in a high-stakes diplomatic summit with leaders from France, Great Britain, Spain, Portugal, Canada, the United States, Poland, and Germany to discuss global security and trade relations.</div>
-                <div class="sub-event">During the meeting, several bilateral agreements are reached, strengthening ties between the Frost Shield and European nations.</div>
-            </div>
-        </div>
-        <div class="event-title">14 Mar 2014 - The Frost Shield, France, Great Britain, Spain, Portugal, Canada, United States, Poland, and Germany create the North Atlantic Trade Line.</div>
-            <div class="sub-events">
-                <div class="sub-event">The Frost Shield, along with France, Great Britain, Spain, Portugal, Canada, the United States, Poland, and Germany, officially establishes the North Atlantic Trade Line to enhance economic cooperation and streamline trade processes among member nations.</div>
-                <div class="sub-event">Member nations agree on a unified set of economic policies aimed at reducing tariffs and improving trade logistics, which significantly boosts economic growth across the region and strengthens political alliances.</div>
-            </div>
-        </div>
-        <div class="event-title">25 Apr 2014 - The economies of The Frost Shield, France, Great Britain, Spain, Portugal, Canada, United States, Poland, and Germany fall due to improper trade.</div>
-            <div class="sub-events">
-                <div class="sub-event">The Frost Shield and its partners, including France, Great Britain, Spain, Portugal, Canada, the United States, Poland, and Germany, experience a significant economic downturn attributed to improper trade practices and unsustainable economic policies.</div>
-                <div class="sub-event">In response to the crisis, an emergency economic summit is called, gathering leaders from all member nations to devise strategies for stabilizing their economies and restoring public trust in the trade agreement.</div>
-            </div>
-        </div>
-        <div class="event-title">30 Jul 2014 - Snowkid loses the election and secretly gives the order to assassinate the winner.</div>
-            <div class="sub-events">
-                <div class="sub-event">The Frost Shield experiences a wave of protests and riots as citizens demand justice and transparency regarding the circumstances surrounding the leader’s death. Tensions rise between Snowkid's supporters and opposition groups, threatening to destabilize the nation.</div>
-                <div class="sub-event">As investigations into the assassination begin, Snowkid strategically utilizes propaganda to frame the situation as a necessary action for national security. He mobilizes loyalists within the military and government to suppress dissent and strengthen his grip on power, presenting himself as the only figure capable of leading The Frost Shield through the ensuing chaos.</div>
-            </div>
-        </div>
-        <div class="event-title">2 Aug 2014 - The winner is assassinated, Snowkid stays in power.</div>
-            <div class="sub-events">
-                <div class="sub-event">The newly elected leader of The Frost Shield is assassinated under mysterious circumstances, leading to public unrest and speculation about the motives behind the sudden death.</div>
-                <div class="sub-event">With the assassination successfully executed, Snowkid consolidates his power once again, reinstating his leadership and reaffirming his authority over The Frost Shield amidst growing tension and distrust among the populace.</div>
-            </div>
-        </div>
-        <div class="event-title"> 3 Apr 2015 - An intelligence officer leaks the assasination order to the press.</div>
-            <div class="sub-events">
-                <div class="sub-event">The leak of the assassination order sends shockwaves through The Frost Shield and the international community. As news outlets publish the story, protests erupt across the nation, with citizens demanding accountability from Snowkid’s administration. Calls for an independent investigation grow louder, intensifying the already volatile political climate.</div>
-                <div class="sub-event">Snowkid's government enacts a series of emergency measures aimed at quelling opposition. Authorities conduct raids on suspected dissenters, and media outlets that report on the leak face censorship and threats. Snowkid’s regime employs a combination of propaganda and intimidation to maintain control, framing the unrest as a threat to national security.</div>
-            </div>
-        </div>
-        <div class="event-title">4 Apr 2015 - Anti-Snowkid protest and riots begin</div>
-            <div class="sub-events">
-                <div class="sub-event">What starts as peaceful demonstrations in major cities quickly escalates into widespread riots as crowds demand Snowkid's resignation. Protesters clash with law enforcement, who respond with tear gas and rubber bullets. The chaos spreads to smaller towns, with citizens taking to the streets to voice their discontent against the government's actions.</div>
-                <div class="sub-event">In the wake of the protests, various opposition groups begin to organize, uniting factions that have previously acted independently. These groups aim to present a coordinated front against Snowkid's regime, advocating for democratic reforms and accountability. They utilize social media to mobilize supporters, raising awareness of their cause both domestically and internationally.</div>
-            </div>
-        </div>
-        <div class="event-title">2 Sep 2015 - Snowkid is killed outside The Frost Shield Capitol by rioters.</div>
-            <div class="sub-events">
-                <div class="sub-event">As Snowkid leaves a public event at The Frost Shield Capitol, a large crowd of angry protesters gathers outside. Amidst the chaos, a faction of rioters breaks through security barriers, leading to a confrontation. Snowkid is fatally injured.</div>
-                <div class="sub-event">Following Snowkid's assassination, the nation is thrown into further chaos as news of his death spreads. Supporters mourn, while opponents celebrate. The government declares a state of emergency, imposing curfews and mobilizing military forces to maintain order. To temporarily restore order until a replacement was found, Lim3Z would take the spot.</div>
-            </div>
-        </div>
-        <div class="event-title">25 May 2016 - The Economy is revived and Lim3Z steps down from his position and Dong Chau takes his place.</div>
-            <div class="sub-events">
-                <div class="sub-event">Lim3Z spearheads initiatives aimed at reducing unemployment and inflation, leading to a gradual recovery. Key industries are revitalized, and international trade agreements are renegotiated, boosting investor confidence.</div>
-                <div class="sub-event">As the economy begins to show signs of recovery, Lim3Z announces his decision to step down as Vice Chairman of the Joint Chiefs of Staff. In a ceremonial event, he officially hands over power to Dong Chau, emphasizing the importance of new leadership to navigate the challenges ahead.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
-        <div class="event-title">2024 - Current Events</div>
-            <div class="sub-events">
-                <div class="sub-event">Technological Advancements: Innovations in AI and space exploration reshape society.</div>
-                <div class="sub-event">Geopolitical Tensions: Ongoing conflicts and diplomatic efforts shape the global landscape.</div>
-            </div>
-        </div>
+  <div class="timeline-container">
+    
+    <!-- Event 1 -->
+    <div class="event">
+      <h2>Event Title 1</h2>
+      
+      <div class="event-subsection">
+        <h3>Subsection 1</h3>
+        <p>This is the explanation for the first subsection of the event. You can add your world-building lore here, such as background information or specific details.</p>
+      </div>
+      
+      <div class="event-subsection">
+        <h3>Subsection 2</h3>
+        <p>This is the second subsection, where you can add additional context, a different perspective, or even consequences of the event. Keep the explanations consistent for each event.</p>
+      </div>
     </div>
 
-    <button class="scroll-button" onclick="scrollToTop()">Scroll to Top</button>
+    <!-- Event 2 -->
+    <div class="event">
+      <h2>Event Title 2</h2>
+      
+      <div class="event-subsection">
+        <h3>Subsection 1</h3>
+        <p>This is the explanation for the first subsection of the event. Add the details or significance of this event in your timeline here.</p>
+      </div>
+      
+      <div class="event-subsection">
+        <h3>Subsection 2</h3>
+        <p>In this subsection, explain any aftermath or different perspective related to the event. This can be lore details, timeline impact, or outcomes.</p>
+      </div>
+    </div>
 
-    <script>
-        document.querySelectorAll('.event-title').forEach(title => {
-            title.addEventListener('click', () => {
-                const subEvents = title.nextElementSibling;
-                subEvents.style.display = subEvents.style.display === 'block' ? 'none' : 'block';
-            });
-        });
+    <!-- Event 3 -->
+    <div class="event">
+      <h2>Event Title 3</h2>
+      
+      <div class="event-subsection">
+        <h3>Subsection 1</h3>
+        <p>Add the first explanation for this event here. Describe the beginning, cause, or key information for the event.</p>
+      </div>
+      
+      <div class="event-subsection">
+        <h3>Subsection 2</h3>
+        <p>This is where you can describe any related events, consequences, or additional details for this part of the timeline.</p>
+      </div>
+    </div>
 
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
+    <!-- Copy-Paste this block for new events -->
+    <!--
+    <div class="event">
+      <h2>Event Title</h2>
+      
+      <div class="event-subsection">
+        <h3>Subsection 1</h3>
+        <p>Description for subsection 1 of the event.</p>
+      </div>
+      
+      <div class="event-subsection">
+        <h3>Subsection 2</h3>
+        <p>Description for subsection 2 of the event.</p>
+      </div>
+    </div>
+    -->
+
+  </div>
 </body>
-
 </html>
