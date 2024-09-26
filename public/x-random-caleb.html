@@ -1,270 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Nexus</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #1a1a1a;
-            color: #00ffcc;
-            overflow-x: hidden;
-        }
-        header {
-            position: fixed;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            z-index: 1000;
-            border-bottom: 2px solid #00ffcc;
-        }
-        nav a {
-            color: #00ffcc;
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #ff0099;
-        }
-        .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: url('https://i.imgur.com/T4thXJv.jpg') no-repeat center center/cover;
-            position: relative;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-        }
-        .hero h1 {
-            font-size: 4rem;
-            color: #ff0099;
-            text-shadow: 0 0 10px #00ffcc, 0 0 20px #ff0099;
-            z-index: 1;
-        }
-        .section {
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-        .neon-button {
-            background-color: #00ffcc;
-            color: #1a1a1a;
-            padding: 1rem 2rem;
-            border: none;
-            cursor: pointer;
-            border-radius: 50px;
-            transition: 0.3s;
-            box-shadow: 0 0 15px #00ffcc;
-        }
-        .neon-button:hover {
-            background-color: #ff0099;
-            color: #ffffff;
-            box-shadow: 0 0 30px #ff0099, 0 0 60px #00ffcc;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .card {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            transition: transform 0.3s;
-            box-shadow: 0 0 15px #00ffcc;
-        }
-        .card:hover {
-            transform: scale(1.05);
-        }
-        footer {
-            padding: 2rem;
-            background-color: #0d0d0d;
-            text-align: center;
-            border-top: 2px solid #00ffcc;
-            color: #00ffcc;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: #1a1a1a;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px #ff0099;
-            color: #00ffcc;
-        }
-        .close {
-            cursor: pointer;
-            color: #ff0099;
-            float: right;
-            font-size: 1.5rem;
-        }
-        .close:hover {
-            color: #ffffff;
-        }
-        #particle-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.8;
-            pointer-events: none;
-            animation: particle-move 5s linear infinite;
-        }
-        @keyframes particle-move {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(200px, 200px);
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Dimension Explorer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Russo+One&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+    header {
+      position: fixed;
+      width: 100%;
+      background: rgba(20, 20, 20, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      z-index: 1000;
+      border-bottom: 2px solid #ff69b4;
+    }
+    nav a {
+      color: #ff69b4;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #00ff99;
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('https://i.imgur.com/HMCg7Gl.jpg') no-repeat center center/cover;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      text-shadow: 2px 2px #ff69b4;
+      z-index: 1;
+    }
+    .section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .button {
+      background-color: #ff69b4;
+      color: #121212;
+      padding: 1rem 2rem;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 50px;
+      margin-top: 2rem;
+    }
+    .button:hover {
+      background-color: #00ff99;
+      color: #fff;
+      box-shadow: 0 0 15px #00ff99, 0 0 30px #ff69b4;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      transition: transform 0.3s;
+      box-shadow: 0 0 15px #ff69b4;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .interactive {
+      margin-top: 3rem;
+      position: relative;
+    }
+    .rain {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+      animation: rain 1s infinite linear;
+    }
+    @keyframes rain {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(100%); }
+    }
+    .game-container {
+      position: relative;
+      height: 300px;
+      margin-top: 3rem;
+      overflow: hidden;
+    }
+    .game-container canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    .score {
+      position: relative;
+      z-index: 2;
+      font-size: 2rem;
+      color: #ff69b4;
+      margin-top: 10px;
+    }
+    footer {
+      padding: 2rem;
+      background-color: #0d0d0d;
+      text-align: center;
+      border-top: 2px solid #ff69b4;
+      color: #ff69b4;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Neon Nexus</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+  <header>
+    <h1>Random Dimension Explorer</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#games">Games</a>
+      <a href="#rain">Rain Simulation</a>
+    </nav>
+  </header>
 
-    <section class="hero">
-        <h1>Enter the Future</h1>
-        <div id="particle-container"></div>
-    </section>
+  <section class="hero">
+    <h1>Welcome to the Unknown!</h1>
+  </section>
 
-    <section id="about" class="section">
-        <h2>About This Experience</h2>
-        <p>Welcome to Neon Nexus, where technology, art, and chaos blend seamlessly. Explore various features and dive into the vibrant world of the future.</p>
-        <button class="neon-button" onclick="openModal()">Learn More</button>
-    </section>
+  <section id="about" class="section">
+    <h2>About This Dimension</h2>
+    <p>Prepare to embark on a journey through the chaotic realms of random dimensions filled with surprises!</p>
+    <button class="button" onclick="randomMessage()">Surprise Me!</button>
+  </section>
 
-    <section id="features" class="section">
-        <h2>Features of Neon Nexus</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Interactive Holograms</h3>
-                <p>Engage with lifelike holograms that respond to your presence.</p>
-            </div>
-            <div class="card">
-                <h3>Virtual Reality Zone</h3>
-                <p>Experience immersive VR environments and games.</p>
-            </div>
-            <div class="card">
-                <h3>AI Companions</h3>
-                <p>Meet your personalized AI assistant who can help you navigate the Nexus.</p>
-            </div>
-            <div class="card">
-                <h3>Data Stream Gallery</h3>
-                <p>Browse through a collection of digital art and interactive installations.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="gallery" class="section">
-        <h2>Gallery</h2>
-        <div class="grid">
-            <img src="https://i.imgur.com/yE3D2I4.jpg" alt="Cyberpunk Art" class="card" style="width:100%; height:auto;">
-            <img src="https://i.imgur.com/K4DlQiK.jpg" alt="Neon City" class="card" style="width:100%; height:auto;">
-            <img src="https://i.imgur.com/sMnb16g.jpg" alt="Futuristic Landscape" class="card" style="width:100%; height:auto;">
-            <img src="https://i.imgur.com/gvq5ZXH.jpg" alt="Cybernetic Interface" class="card" style="width:100%; height:auto;">
-        </div>
-    </section>
-
-    <section id="contact" class="section">
-        <h2>Contact Us</h2>
-        <p>Have questions? Reach out to us!</p>
-        <form id="contactForm">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit" class="neon-button">Send Message</button>
-        </form>
-    </section>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3>About Neon Nexus</h3>
-            <p>Neon Nexus is a futuristic platform designed to immerse users in a digital world where the lines between reality and technology blur. Explore the art, interact with AI, and discover the possibilities of tomorrow.</p>
-        </div>
+  <section id="features" class="section">
+    <h2>Unique Features</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Endless Fun</h3>
+        <p>Experience a variety of games and interactive elements that keep changing!</p>
+      </div>
+      <div class="card">
+        <h3>Random Surprises</h3>
+        <p>Every click could unveil a fun fact, joke, or quirky animation.</p>
+      </div>
+      <div class="card">
+        <h3>Rain Simulation</h3>
+        <p>Watch the beautiful rain animations while you explore!</p>
+      </div>
     </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2077 Neon Nexus Inc. All rights reserved.</p>
-    </footer>
+  <section id="games" class="section">
+    <h2>Mini Games</h2>
+    <div class="game-container" id="gameContainer">
+      <canvas id="gameCanvas" width="400" height="400"></canvas>
+      <div class="score" id="score">Score: 0</div>
+    </div>
+    <button class="button" onclick="startGame()">Start Game</button>
+  </section>
 
-    <script>
-        // Particle effects
-        const particleContainer = document.getElementById('particle-container');
-        const numParticles = 100;
+  <section id="rain" class="section interactive">
+    <h2>Rain Simulation</h2>
+    <div class="rain"></div>
+    <p>Watch the rain fall around you as you navigate this world!</p>
+  </section>
 
-        for (let i = 0; i < numParticles; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            const size = Math.random() * 10 + 5; // Random size between 5 and 15
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            particle.style.top = `${Math.random() * 100}vh`;
-            particle.style.left = `${Math.random() * 100}vw`;
-            particleContainer.appendChild(particle);
-        }
+  <footer>
+    <p>&copy; 2077 Random Dimension Explorer. All rights reserved.</p>
+  </footer>
 
-        // Modal functionality
-        function openModal() {
-            document.getElementById('modal').style.display = 'flex';
-        }
+  <script>
+    let score = 0;
+    let gameActive = false;
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
 
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
+    function startGame() {
+      score = 0;
+      gameActive = true;
+      document.getElementById('score').innerText = 'Score: ' + score;
+      gameLoop();
+    }
 
-        // Contact form submission
-        document.getElementById('contactForm').onsubmit = function(event) {
-            event.preventDefault();
-            alert('Your message has been sent!');
-            this.reset();
-        };
-    </script>
+    function gameLoop() {
+      if (gameActive) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#00ff99';
+        ctx.fillRect(Math.random() * 350, Math.random() * 350, 50, 50);
+        score++;
+        document.getElementById('score').innerText = 'Score: ' + score;
+        setTimeout(gameLoop, 1000);
+      }
+    }
+
+    function randomMessage() {
+      const messages = [
+        "You're doing great!",
+        "Did you know? Cats have fewer toes on their back paws.",
+        "Keep going, explorer!",
+        "Random fact: Honey never spoils!",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!"
+      ];
+      alert(messages[Math.floor(Math.random() * messages.length)]);
+    }
+
+    document.addEventListener('click', (event) => {
+      const element = document.elementFromPoint(event.clientX, event.clientY);
+      if (element.tagName === 'CANVAS') {
+        score++;
+        document.getElementById('score').innerText = 'Score: ' + score;
+      }
+    });
+  </script>
 </body>
 </html>
+
