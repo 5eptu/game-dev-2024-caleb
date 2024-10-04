@@ -6,16 +6,13 @@ async function myShowJSON(myIn) {
     const response = await fetch(myIn);
     const data = await response.json();
 
-    // Assuming the JSON structure for randomfox.ca is { "image": "url_to_fox_image" }
-    // and for dog.ceo is { "message": "url_to_dog_image", "status": "success" }
     let imgUrl;
     if (myIn.includes('randomfox')) {
-      imgUrl = data.image; // URL from randomfox.ca
+      imgUrl = data.image;
     } else if (myIn.includes('dog.ceo')) {
-      imgUrl = data.message; // URL from dog.ceo
+      imgUrl = data.message;
     }
 
-    // Update the div to display the image
     document.getElementById('myDiv1').innerHTML = `<img src="${imgUrl}" alt="Fox Image" style="max-width: 100%; height: auto;" />`;
   } catch (error) {
     document.getElementById('myDiv1').innerHTML = 'Error fetching image data.';
