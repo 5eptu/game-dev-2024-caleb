@@ -1,27 +1,40 @@
-<h1 align=center>t1a13-json-caleb.html</h1>
+<h1 align="center">t1a13-json-caleb.html</h1>
 
 <script>
-function myShowJSON9myIN){
-  document.getElementById('myDiv1').innerHTMl = `Sent: 4{myIn}`
+async function myShowJSON(myIn) {
+  try {
+    const response = await fetch(myIn);
+    const data = await response.json();
+    document.getElementById('myDiv1').innerHTML = `Sent: ${JSON.stringify(data, null, 2)}`;
+  } catch (error) {
+    document.getElementById('myDiv1').innerHTML = 'Error fetching JSON data.';
+  }
 }
-  
+
+function showAlert() {
+  const url = document.getElementById('myText1').value;
+  myShowJSON(url);
+}
 </script>
 
-Explanation of JSON compared to javascript objects formatted for this textarea.<br>
+Explanation of JSON compared to JavaScript objects formatted for this textarea.<br>
 
-<textarea cols=70 ROWS=5>
-
+<textarea cols="70" rows="5">
+JSON (JavaScript Object Notation) is a lightweight data-interchange format. 
+It is easy for humans to read and write. It's also easy for machines to parse and generate. 
+Unlike JavaScript objects, JSON keys must be strings enclosed in double quotes, 
+and it does not support functions or methods.
 </textarea><br><br>
 
-Enter a json returning URL: <input type=text id="myText1" value="https://randomfox.ca/floof/">
-<input type=button value="show JSON' onclick="{alert('hi')}"><br><br>
+Enter a JSON returning URL: <input type="text" id="myText1" value="https://randomfox.ca/floof/">
+<input type="button" value="Show JSON" onclick="showAlert()"><br><br>
 
-<select size=1 onchange="myShowJSON(this.value)">
-<option value="https://randomfox.ca/floof/">randomFox
-<option value="https://dog.ceo/api/breeds/image/random">god.ceo
+<select size="1" onchange="myShowJSON(this.value)">
+  <option value="https://randomfox.ca/floof/">randomFox</option>
+  <option value="https://dog.ceo/api/breeds/image/random">dog.ceo</option>
 </select><br><br>
 
-You make the JSON show up in the DIV<br><br>
+You make the JSON show up in the DIV:<br><br>
 
 <div id="myDiv1">...</div>
 
