@@ -157,6 +157,14 @@
             background-color: #FF3B3B;
             border-radius: 10px;
         }
+
+        /* LeXs_09 image styling */
+        #lexsImage {
+            display: none;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: 2px solid #B30000;
+        }
     </style>
 </head>
 <body>
@@ -183,6 +191,7 @@
                    0x1350: <span class="corrected">Revised: Input discarded. Faulty code rejected.</span> <br>
                    0x1400: System stable.</p>
             </div>
+            <img id="lexsImage" src="https://cdn.pixabay.com/photo/2014/04/03/10/26/banana-310449_1280.png" width="200">
             <div class="code-status" id="codeStatus">Status: Active Monitoring</div>
         </div>
 
@@ -208,36 +217,67 @@
 
     <script>
         // Function to simulate live code output in the Protocol 001 box
-        const codeOutput = document.getElementById('codeOutput');
-        const codeStatus = document.getElementById('codeStatus');
+        const codeOutput = document.getElementById("codeOutput");
+        const codeStatus = document.getElementById("codeStatus");
+        const lexsImage = document.getElementById("lexsImage");
+        let lexsTriggered = false; // To track if LeXs_09 message has appeared
 
-        function appendCode(newCode) {
-            const newP = document.createElement('p');
-            newP.innerHTML = newCode;
-            codeOutput.appendChild(newP);
-            codeOutput.scrollTop = codeOutput.scrollHeight;
-        }
+        const randomCodes = [
+            "0x1500: Running diagnostic checks...",
+            "0x1501: Diagnostic complete. All systems operational.",
+            "0x1510: Loop iteration stable.",
+            "0x1515: <span class='anomaly'>ERROR: Data corruption detected.</span>",
+            "0x1520: <span class='corrected'>Corrected: Variable X reassigned.</span>",
+            "0x1530: Input accepted: Executing protocol 019.",
+            "0x1535: Loop successful, moving to next phase.",
+            "0x1540: <span class='corrected'>Code block updated: Stability achieved.</span>",
+            "0x1545: <span class='anomaly'>Unstable variable detected.</span>",
+            "0x1550: <span class='anomaly'>Security breach in loop sequence.</span>",
+            "0x1555: <span class='anomaly'>Memory overflow. Operation aborted.</span>"
+        ];
 
+        // Random code generator
         function generateRandomCode() {
-            const randomCodes = [
-                "0x13F1: Running next sequence...",
-                "0x13F3: <span class='anomaly'>ERROR - Corrupted data stream.</span>",
-                "0x13F4: <span class='corrected'>Revised: Data stream isolated and re-routed.</span>",
-                "0x13F6: Protocol stable...",
-                "0x13F9: <span class='anomaly'>Critical fault detected. Code rejected.</span>",
-                "0x13FA: <span class='corrected'>Loop corrected: Faulty code bypassed.</span>",
-                "0x1400: System operational."
-            ];
-            return randomCodes[Math.floor(Math.random() * randomCodes.length)];
+            let chance = Math.random();
+            
+            // Lower chance for faulty codes
+            if (chance > 0.8) { 
+                let faultyCode = randomCodes.filter(code => code.includes('anomaly'));
+                return faultyCode[Math.floor(Math.random() * faultyCode.length)];
+            } else {
+                let acceptedCode = randomCodes.filter(code => !code.includes('anomaly'));
+                return acceptedCode[Math.floor(Math.random() * acceptedCode.length)];
+            }
         }
 
+        // Function to append code to the output
+        function appendCode(newCode) {
+            const paragraph = document.createElement('p');
+            paragraph.innerHTML = newCode;
+            codeOutput.appendChild(paragraph);
+
+            // Ensure the last message is always visible
+            codeOutput.scrollTop = codeOutput.scrollHeight;
+
+            // Trigger LeXs_09 message and image only once
+            if (!lexsTriggered && Math.random() > 0.99) {  // 1% chance per interval
+                const lexsMessage = document.createElement('p');
+                lexsMessage.innerHTML = "<span class='corrected'>Encrypted message received: User 'LeXs_09'</span>";
+                codeOutput.appendChild(lexsMessage);
+                lexsImage.style.display = "block"; // Show banana image
+                lexsTriggered = true; // Ensure this only happens once
+            }
+        }
+
+        // Simulate live code output every 3 seconds
         setInterval(() => {
             appendCode(generateRandomCode());
-        }, 3000); // Simulate new code every 3 seconds
+        }, 3000);
 
+        // Update system status every second
         setInterval(() => {
             codeStatus.innerHTML = "Status: Monitoring " + new Date().toLocaleTimeString();
-        }, 1000); // Update status every second
+        }, 1000);
     </script>
 </body>
 </html>
