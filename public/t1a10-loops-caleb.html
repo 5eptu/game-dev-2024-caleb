@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>t1a10-loops-caleb</title>
+    <title>T1A10 Loops - Caleb's Assignment</title>
     <style>
         /* Font imports */
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
@@ -82,37 +82,35 @@
             text-align: justify;
         }
 
-        .loop-message {
-            background-color: #282828;
-            padding: 15px;
-            border-left: 5px solid #B30000;
-            color: #B3B3B3;
-            font-style: italic;
-            margin-top: 40px;
-            font-size: 1.1em;
+        /* Live code output box */
+        .code-output {
+            background-color: #141414;
+            padding: 20px;
+            border: 3px solid #B30000;
+            border-radius: 10px;
+            font-family: monospace;
+            color: #0f0;
+            font-size: 0.9em;
+            max-height: 300px;
+            overflow-y: scroll;
+            position: relative;
+            margin-top: 20px;
         }
 
-        .loop-action {
+        .anomaly {
             color: #FF3B3B;
-            text-decoration: underline;
-            cursor: pointer;
+            text-decoration: line-through;
+        }
+
+        .corrected {
+            color: #0f0;
+        }
+
+        .code-status {
             font-size: 1.1em;
-            display: inline-block;
+            color: #FF3B3B;
             margin-top: 10px;
-            animation: pulse 1.5s infinite;
-        }
-
-        .loop-action:hover {
-            color: #B30000;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
+            font-weight: bold;
         }
 
         /* Dystopian corporate message loop */
@@ -159,26 +157,6 @@
             background-color: #FF3B3B;
             border-radius: 10px;
         }
-
-        /* Loop Element */
-        .loop-box.loop {
-            animation: loopAnimation 4s linear infinite;
-        }
-
-        @keyframes loopAnimation {
-            0% {
-                opacity: 1;
-                transform: rotate(0deg);
-            }
-            50% {
-                opacity: 0.7;
-                transform: rotate(180deg);
-            }
-            100% {
-                opacity: 1;
-                transform: rotate(360deg);
-            }
-        }
     </style>
 </head>
 <body>
@@ -188,10 +166,24 @@
     </header>
 
     <div class="content">
-        <div class="loop-box loop">
+        <div class="loop-box">
             <h2>Loop System Protocol 001</h2>
             <p>The Loop System is designed for maximum operational efficiency. Each cycle is validated through rigorous human trials, ensuring that no deviation occurs from the intended function. Any anomalies are flagged and swiftly corrected.</p>
-            <div class="loop-action">Begin the next cycle</div>
+            <div class="code-output" id="codeOutput">
+                <p>0x12FF: Initializing... <br> 
+                   0x12FF: Running diagnostics... <br> 
+                   0x124F: <span class="anomaly">ERROR - Protocol deviation detected.</span> <br>
+                   0x1250: <span class="corrected">Revised code block: Protocol 001 reset.</span> <br>
+                   0x1260: Loop cycle initialized. <br> 
+                   0x12FF: <span class="anomaly">ERROR - Faulty variable detected.</span> <br>
+                   0x1275: <span class="corrected">Correcting: Variable re-assigned.</span> <br>
+                   0x1290: Continuity achieved. <br> 
+                   0x1300: Loop cycle running... <br> 
+                   0x132F: <span class="anomaly">Error: Unrecognized input 'X231'.</span> <br>
+                   0x1350: <span class="corrected">Revised: Input discarded. Faulty code rejected.</span> <br>
+                   0x1400: System stable.</p>
+            </div>
+            <div class="code-status" id="codeStatus">Status: Active Monitoring</div>
         </div>
 
         <div class="loop-box">
@@ -213,5 +205,40 @@
         &copy; 2048 LOOP CORP - All rights reserved. <br>
         For inquiries, visit <a href="#">our contact page</a> and maintain your position in the loop.
     </footer>
+
+    <script>
+        // Function to simulate live code output in the Protocol 001 box
+        const codeOutput = document.getElementById('codeOutput');
+        const codeStatus = document.getElementById('codeStatus');
+
+        function appendCode(newCode) {
+            const newP = document.createElement('p');
+            newP.innerHTML = newCode;
+            codeOutput.appendChild(newP);
+            codeOutput.scrollTop = codeOutput.scrollHeight;
+        }
+
+        function generateRandomCode() {
+            const randomCodes = [
+                "0x13F1: Running next sequence...",
+                "0x13F3: <span class='anomaly'>ERROR - Corrupted data stream.</span>",
+                "0x13F4: <span class='corrected'>Revised: Data stream isolated and re-routed.</span>",
+                "0x13F6: Protocol stable...",
+                "0x13F9: <span class='anomaly'>Critical fault detected. Code rejected.</span>",
+                "0x13FA: <span class='corrected'>Loop corrected: Faulty code bypassed.</span>",
+                "0x1400: System operational."
+            ];
+            return randomCodes[Math.floor(Math.random() * randomCodes.length)];
+        }
+
+        setInterval(() => {
+            appendCode(generateRandomCode());
+        }, 3000); // Simulate new code every 3 seconds
+
+        setInterval(() => {
+            codeStatus.innerHTML = "Status: Monitoring " + new Date().toLocaleTimeString();
+        }, 1000); // Update status every second
+    </script>
 </body>
 </html>
+
