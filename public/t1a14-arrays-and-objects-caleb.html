@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects and Arrays</title>
+    <script>
+
+        const myObjectWithArray = {
+            name: 'Alice',
+            hobbies: ['reading', 'coding', 'hiking'],
+            age: 25
+        };
+
+        const myArrayWithObject = [
+            { name: 'Bob', age: 28 },
+            { name: 'Charlie', age: 32 }
+        ];
+
+        function showArrayWithObject() {
+            document.getElementById('output').innerText = JSON.stringify(myArrayWithObject, null, 2);
+        }
+
+        function showObjectWithArray() {
+            document.getElementById('output').innerText = JSON.stringify(myObjectWithArray, null, 2);
+        }
+    </script>
+</head>
+<body>
+    <h1 align="center">t1a14-objects-and-arrays-fred.html</h1>
+
+    <textarea rows="4" cols="70">
+        let myObject = {
+            name: 'Alice',
+            hobbies: ['reading', 'coding', 'hiking'], // Array inside object
+            age: 25
+        };
+
+        let myArray = [
+            { name: 'Bob', age: 28 }, // Object inside array
+            { name: 'Charlie', age: 32 }
+        ];
+    </textarea>
+
+    <br>
+
+    <button onclick="showArrayWithObject()">Array with Object in it</button>
+    <button onclick="showObjectWithArray()">Object with Array in it</button>
+
+    <br><br>
+
+    <div id="output" style="white-space: pre;"></div>
+</body>
+</html>
