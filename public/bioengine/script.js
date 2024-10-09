@@ -1,55 +1,62 @@
-// Define the organ DNA blueprint
-const organDNA = {
-    "heart": "ATGCGTAGCTA... (Heart DNA Sequence)",
-    "liver": "CGTAGCTAGAC... (Liver DNA Sequence)",
-    "lungs": "GTAGCTAGTCG... (Lungs DNA Sequence)",
-    "kidney": "TAGCTAGTACG... (Kidney DNA Sequence)",
-    "brain": "CGTATCGTACG... (Brain DNA Sequence)"
-};
+// Wait until the DOM is fully loaded before running script
+document.addEventListener('DOMContentLoaded', () => {
+    const organForm = document.getElementById('organForm');
+    const organSelect = document.getElementById('organ');
+    const dnaOutput = document.getElementById('dnaOutput');
+    const growthVisualization = document.getElementById('growthVisualization');
 
-// Function to simulate cell growth and output DNA code
-function growOrgan(event) {
-    event.preventDefault();  // Prevent form from reloading the page
+    // DNA code sequences for each organ
+    const organDNA = {
+        heart: 'ATGCCGTACTAGCGTACGTAGCCGTAGTAGCGTACTGATCGTA',
+        liver: 'ATGCGTACGTAGCTAGCGCGTACGTAGCCGTAGTAGCTAGCGT',
+        lungs: 'ATGCTAGCGTAGCTACGATCGTACGTAGCCGTAGTACTAGCGT',
+        kidney: 'ATGCGTAGCGTACTAGCGTACGCGTAGCTAGCTACGTACGTCG',
+        brain: 'ATGCGTACTAGTAGCGTACGTACGTAGCTAGCTACGATCGTAC'
+    };
 
-    // Get organ type from the form
-    const organType = document.getElementById("organ").value;
-    const dnaOutput = document.getElementById("dnaOutput");
-    const growthVisualization = document.getElementById("growthVisualization");
-    
-    // Clear previous output
-    dnaOutput.innerHTML = "";
-    growthVisualization.innerHTML = "";
+    // Handle form submission
+    organForm.addEventListener('submit', function (e) {
+        e.preventDefault();  // Prevent form from reloading the page
 
-    // Check if a valid organ is selected
-    if (organType in organDNA) {
-        const organDNASequence = organDNA[organType];
+        // Get the selected organ from the dropdown
+        const selectedOrgan = organSelect.value;
 
-        // Simulate DNA code generation and display it
-        const dnaTitle = document.createElement("h4");
-        dnaTitle.innerText = `Generated DNA Code for ${organType}:`;
-        const dnaPre = document.createElement("pre");
-        dnaPre.innerText = organDNASequence;
-        
-        dnaOutput.appendChild(dnaTitle);
-        dnaOutput.appendChild(dnaPre);
+        // Check if an organ was selected
+        if (selectedOrgan) {
+            // Generate the corresponding DNA code for the selected organ
+            const dnaSequence = organDNA[selectedOrgan];
 
-        // Simulate growth visualization
-        const growthParagraph = document.createElement("p");
-        growthParagraph.innerText = `The cells are growing into a ${organType}... Please wait.`;
-        growthVisualization.appendChild(growthParagraph);
+            // Display the DNA sequence in the DNA output section
+            dnaOutput.innerHTML = `
+                <h4>DNA Sequence for ${capitalizeFirstLetter(selectedOrgan)}:</h4>
+                <pre>${dnaSequence}</pre>
+            `;
 
-        // Simulate some delay for the growth process (for a realistic feel)
-        setTimeout(() => {
-            growthParagraph.innerText = `${organType.charAt(0).toUpperCase() + organType.slice(1)} growth complete!`;
-        }, 3000);  // 3-second delay to simulate growth
-    } else {
-        // Error handling: If no organ is selected
-        const errorParagraph = document.createElement("p");
-        errorParagraph.innerText = "Please select a valid organ to grow.";
-        dnaOutput.appendChild(errorParagraph);
+            // Display the growth visualization message
+            growthVisualization.innerHTML = `
+                <p>Simulating the growth of a ${capitalizeFirstLetter(selectedOrgan)}...</p>
+            `;
+
+            // Add a simple animation or additional feedback to enhance the experience
+            animateGrowthVisualization();
+        } else {
+            // If no organ is selected, show a message asking the user to select one
+            dnaOutput.innerHTML = `<p>Please select an organ to grow.</p>`;
+        }
+    });
+
+    // Function to capitalize the first letter of the organ name
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
-}
 
-// Attach event listener to the form submission
-const organForm = document.getElementById("organForm");
-organForm.addEventListener("submit", growOrgan);
+    // Animation for growth visualization (simple pulse effect)
+    function animateGrowthVisualization() {
+        growthVisualization.style.transition = 'transform 0.5s ease';
+        growthVisualization.style.transform = 'scale(1.1)';
+
+        setTimeout(() => {
+            growthVisualization.style.transform = 'scale(1)';
+        }, 500);
+    }
+});
