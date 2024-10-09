@@ -39,8 +39,15 @@ organForm.addEventListener("submit", (e) => {
     const sequenceLength = 250; // Generate longer DNA sequence
     dnaSequence = generateDNA(sequenceLength);
     updateDNAOutput();
-    simulateGrowth(organ); // Simulate growth based on organ
+    resetGrowth(); // Reset growth data when generating a new organ
 });
+
+// Function to reset growth data
+function resetGrowth() {
+    growthData.time = [];
+    growthData.growthRate = [];
+    updateChart(); // Clear the chart
+}
 
 // Function to insert a nucleotide
 insertButton.addEventListener("click", () => {
@@ -68,22 +75,27 @@ deleteButton.addEventListener("click", () => {
 simulateButton.addEventListener("click", () => {
     const scenario = scenarioSelect.value;
     let result = "";
+    let growthIncrement = 10; // Increment for normal growth
+    let currentGrowthRate = growthData.growthRate.length > 0 ? growthData.growthRate[growthData.growthRate.length - 1] : 0;
 
     switch (scenario) {
         case "normal":
             result = "Normal growth conditions applied.";
-            growthData.growthRate.push(100); // 100% growth rate for normal conditions
+            currentGrowthRate += growthIncrement;
             break;
         case "highTemperature":
             result = "High temperature conditions applied, which may increase growth rate.";
-            growthData.growthRate.push(150); // 150% growth rate for high temp
+            currentGrowthRate += growthIncrement + 10; // Boost growth rate
             break;
         case "lowNutrients":
             result = "Low nutrient conditions applied, which may decrease growth rate.";
-            growthData.growthRate.push(50); // 50% growth rate for low nutrients
+            currentGrowthRate = Math.max(currentGrowthRate - 20, 0); // Decrease growth rate
             break;
     }
+    
+    // Update growth data
     growthData.time.push(growthData.time.length + 1); // Increment time (days)
+    growthData.growthRate.push(Math.min(currentGrowthRate, 100)); // Cap growth at 100%
     updateChart();
     simulationResult.innerText = result;
 });
@@ -116,7 +128,7 @@ function updateChart() {
             scales: {
                 y: {
                     beginAtZero: true,
-                    max: 200, // Set maximum to 200% for visualization purposes
+                    max: 100, // Set maximum to 100% for growth rate
                     title: {
                         display: true,
                         text: 'Growth Rate (%)'
