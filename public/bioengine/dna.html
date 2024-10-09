@@ -3,64 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organ Growth Simulation</title>
     <link rel="stylesheet" href="design.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Organ Growth Simulation</title>
 </head>
 <body>
     <header>
         <h1>Organ Growth Simulation</h1>
-        <p>Simulate the growth of human organs using genetic programming.</p>
     </header>
-
     <main>
-        <section id="organSelection">
+        <section>
             <h2>Select an Organ</h2>
             <form id="organForm">
                 <select id="organ" required>
-                    <option value="" disabled selected>Select an organ</option>
+                    <option value="">--Select an Organ--</option>
                     <option value="heart">Heart</option>
                     <option value="liver">Liver</option>
                     <option value="lungs">Lungs</option>
                     <option value="kidney">Kidney</option>
                     <option value="brain">Brain</option>
                 </select>
-                <button type="submit">Grow Organ</button>
+                <button type="submit">Generate DNA Sequence</button>
             </form>
-            <h3>Generated DNA Sequence:</h3>
             <pre id="dnaOutput"></pre>
+            <h3>Current DNA Sequence:</h3>
+            <p id="currentDNA">No DNA sequence selected.</p>
         </section>
 
-        <section id="growthVisualizationSection">
-            <h2>Growth Visualization</h2>
-            <canvas id="growthChart" width="400" height="200"></canvas>
-        </section>
-
-        <section id="dnaModification">
+        <section>
             <h2>Modify DNA Sequence</h2>
-            <input type="text" id="newNucleotide" placeholder="A, T, C, G">
+            <input type="text" id="newNucleotide" placeholder="Enter nucleotide (A, T, C, G)">
             <button id="insertButton">Insert Nucleotide</button>
             <button id="deleteButton">Delete Last Nucleotide</button>
-            <h3>Current DNA Sequence:</h3>
-            <pre id="currentDNA"></pre>
         </section>
 
-        <section id="environmentalScenarios">
-            <h2>Environmental Changes</h2>
+        <section>
+            <h2>Simulate Environmental Change</h2>
             <select id="scenarioSelect">
                 <option value="normal">Normal Conditions</option>
                 <option value="highTemperature">High Temperature</option>
-                <option value="lowNutrients">Low Nutrient Availability</option>
+                <option value="lowNutrients">Low Nutrients</option>
             </select>
-            <button id="simulateButton">Simulate Growth</button>
-            <div id="simulationResult"></div>
+            <button id="simulateButton">Simulate</button>
+            <p id="simulationResult"></p>
+        </section>
+
+        <section>
+            <h2>Growth Chart</h2>
+            <canvas id="growthChart" width="400" height="200"></canvas>
         </section>
     </main>
-
     <footer>
-        <p>&copy; 2024 Organ Growth Simulation Project</p>
+        <p>&copy; 2024 Organ Growth Simulation. All rights reserved.</p>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
