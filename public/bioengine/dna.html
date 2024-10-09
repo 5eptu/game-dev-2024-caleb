@@ -3,38 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organ Growth Simulator</title>
     <link rel="stylesheet" href="design.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Organ Growth Simulation</title>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <h1>Organ Growth Simulator</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#incubator">Incubator</a></li>
-                <li><a href="#learn">Learn More</a></li>
-            </ul>
-        </nav>
+        <h1>Organ Growth Simulation</h1>
+        <p>Simulate the growth of human organs using genetic programming.</p>
     </header>
 
-    <!-- Home Section -->
-    <section id="home" class="section">
-        <div class="container">
-            <h2>Welcome to the Organ Growth Simulator</h2>
-            <p>Command cells to grow into specific organs and view the generated DNA code for each.</p>
-        </div>
-    </section>
-
-    <!-- Incubator Section -->
-    <section id="incubator" class="section">
-        <div class="container">
-            <h2>Incubator</h2>
+    <main>
+        <section id="organSelection">
+            <h2>Select an Organ</h2>
             <form id="organForm">
-                <label for="organ">Choose an organ to grow:</label>
                 <select id="organ" required>
-                    <option value="">-- Select Organ --</option>
+                    <option value="" disabled selected>Select an organ</option>
                     <option value="heart">Heart</option>
                     <option value="liver">Liver</option>
                     <option value="lungs">Lungs</option>
@@ -43,36 +27,40 @@
                 </select>
                 <button type="submit">Grow Organ</button>
             </form>
+            <h3>Generated DNA Sequence:</h3>
+            <pre id="dnaOutput"></pre>
+        </section>
 
-            <!-- DNA Output Section -->
-            <div id="dnaOutput"></div>
+        <section id="growthVisualizationSection">
+            <h2>Growth Visualization</h2>
+            <canvas id="growthChart" width="400" height="200"></canvas>
+        </section>
 
-            <!-- Growth Visualization -->
-            <div id="growthVisualization"></div>
-        </div>
-    </section>
+        <section id="dnaModification">
+            <h2>Modify DNA Sequence</h2>
+            <input type="text" id="newNucleotide" placeholder="A, T, C, G">
+            <button id="insertButton">Insert Nucleotide</button>
+            <button id="deleteButton">Delete Last Nucleotide</button>
+            <h3>Current DNA Sequence:</h3>
+            <pre id="currentDNA"></pre>
+        </section>
 
-    <!-- Learn More Section -->
-    <section id="learn" class="section">
-        <div class="container">
-            <h2>How Does It Work?</h2>
-            <p>This simulator demonstrates the biological process of organ growth from cells. Each organ is developed based on specific DNA sequences which are responsible for the formation of tissues and overall structure.</p>
-            <ol>
-                <li>Select an organ from the dropdown menu.</li>
-                <li>Click "Grow Organ" to simulate the growth process.</li>
-                <li>View the generated DNA code for the selected organ.</li>
-            </ol>
-        </div>
-    </section>
+        <section id="environmentalScenarios">
+            <h2>Environmental Changes</h2>
+            <select id="scenarioSelect">
+                <option value="normal">Normal Conditions</option>
+                <option value="highTemperature">High Temperature</option>
+                <option value="lowNutrients">Low Nutrient Availability</option>
+            </select>
+            <button id="simulateButton">Simulate Growth</button>
+            <div id="simulationResult"></div>
+        </section>
+    </main>
 
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <h3>Organ Growth Simulation</h3>
-        </div>
+        <p>&copy; 2024 Organ Growth Simulation Project</p>
     </footer>
 
-    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
