@@ -1,70 +1,79 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const dnaOutput = document.getElementById('dnaOutput');
+    const simulationResult = document.getElementById('simulationResult');
+    const scenarioSelect = document.getElementById('scenarioSelect');
+    const growthChart = document.getElementById('growthChart').getContext('2d');
+
+    let currentDNASequence = '';
+    let growthData = [0];
+
     const organDNA = {
-        heart: 'ATCGTACGGTAGCTAGTAGCTAGTCGTACGTACGTAGCTAGTCGATCGATCGTAGCTAGCTAGCTAGTCGTACGTACG',
-        liver: 'GCTAGCTAGCAGCTAGCATGGATCAGTAGCTAGCATCGTAGCTAGCTAGGCTAGCTAGCTAGCTAGCATCGTACGTAGCTAG',
-        lungs: 'ATCGATCGTACGATGCTAGCGTAGTCGATGCTAGCTAGCTAGCTAGTAGCTAGTCGTAGCTAGCTAGTACGTACGATCGTAGC',
-        kidney: 'CTAGCTAGCTGATCGTAGCATCGTAGCTAGTACGTCGTAGCTAGTACGAGCTAGTACGAGCTAGTACGATCGTAGCTAGTCG',
-        brain: 'GATCGATCGATCGTAGCTAGTCGTACGTACGTACGTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGTACG'
+        heart: generateRandomDNA(250),
+        liver: generateRandomDNA(250),
+        kidney: generateRandomDNA(250),
     };
 
-    const dnaOutput = document.getElementById('dnaOutput');
-    const currentDNA = document.getElementById('currentDNA');
-    const scenarioSelect = document.getElementById('scenarioSelect');
-    const simulationResult = document.getElementById('simulationResult');
-    const growthChartCtx = document.getElementById('growthChart').getContext('2d');
-    let currentDNASequence = ''; // To store modified DNA sequence
-    let growthData = [0, 10, 30, 50, 80, 100]; // Default growth data
+    function generateRandomDNA(length) {
+        const nucleotides = 'ATCG';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            result += nucleotides.charAt(Math.floor(Math.random() * nucleotides.length));
+        }
+        return result;
+    }
 
-    // Function to type out the DNA sequence gradually
     function typeOutDNASequence(sequence) {
+        const typingSpeed = 50; // Speed of typing effect in milliseconds
         let index = 0;
-        const typingSpeed = 50; // Typing speed in milliseconds
+        dnaOutput.innerHTML = ''; // Clear previous output
 
-        const typingInterval = setInterval(() => {
+        const type = () => {
             if (index < sequence.length) {
-                dnaOutput.innerHTML += sequence[index];
-                index++;
+                dnaOutput.innerHTML += sequence.charAt(index++);
+                setTimeout(type, typingSpeed);
             } else {
-                clearInterval(typingInterval);
+                updateDNADisplay(); // Update the display after typing
             }
-        }, typingSpeed);
+        };
+
+        type();
     }
 
-    // Update the displayed current DNA sequence
     function updateDNADisplay() {
-        currentDNA.innerHTML = currentDNASequence || 'No DNA sequence selected.';
+        const sequenceLength = currentDNASequence.length;
+        dnaOutput.innerHTML = currentDNASequence;
     }
 
-    // Function to update the growth chart
     function updateGrowthChart() {
-        growthChartCtx.clearRect(0, 0, growthChartCtx.canvas.width, growthChartCtx.canvas.height);
-        const labels = Array.from({ length: growthData.length }, (_, i) => i * 2); // Simulating days
-        const growthChart = new Chart(growthChartCtx, {
+        if (typeof window.growthChartInstance !== 'undefined') {
+            window.growthChartInstance.destroy(); // Destroy previous instance to redraw
+        }
+
+        window.growthChartInstance = new Chart(growthChart, {
             type: 'line',
             data: {
-                labels: labels,
+                labels: Array.from({ length: growthData.length }, (_, i) => i + 1),
                 datasets: [{
                     label: 'Organ Growth Over Time',
                     data: growthData,
-                    borderColor: '#007bff',
-                    fill: false,
-                    tension: 0.1
+                    borderColor: 'rgba(0, 77, 0, 1)',
+                    backgroundColor: 'rgba(0, 77, 0, 0.2)',
+                    fill: true,
                 }]
             },
             options: {
-                responsive: true,
                 scales: {
                     y: {
                         beginAtZero: true,
                         title: {
                             display: true,
-                            text: 'Growth Percentage (%)'
+                            text: 'Growth Measurement',
                         }
                     },
                     x: {
                         title: {
                             display: true,
-                            text: 'Time (Days)'
+                            text: 'Time (arbitrary units)',
                         }
                     }
                 }
@@ -77,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault(); // Prevent form submission
         const organ = document.getElementById('organ').value;
         currentDNASequence = organDNA[organ];
-        dnaOutput.innerHTML = ''; // Clear previous output
         typeOutDNASequence(currentDNASequence); // Type out new sequence
         updateDNADisplay();
         updateGrowthChart(); // Update chart when new organ is selected
@@ -93,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateGrowthChart(); // Update growth chart
             document.getElementById('newNucleotide').value = ''; // Clear input field
         } else {
-            alert('Please enter a valid nucleotide (A, T, C, G).');
+            alert('Please enter a valid nucleotide (A, T, C, or G).');
         }
     });
 
@@ -132,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         simulationResult.innerHTML = resultText; // Display simulation result
         updateGrowthChart(); // Update chart based on the scenario
     });
-    
+
     // Initial chart setup
     updateGrowthChart();
 });
