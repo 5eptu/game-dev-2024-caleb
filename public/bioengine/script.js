@@ -1,62 +1,121 @@
-// Wait until the DOM is fully loaded before running script
 document.addEventListener('DOMContentLoaded', () => {
-    const organForm = document.getElementById('organForm');
-    const organSelect = document.getElementById('organ');
-    const dnaOutput = document.getElementById('dnaOutput');
-    const growthVisualization = document.getElementById('growthVisualization');
-
-    // DNA code sequences for each organ
     const organDNA = {
-        heart: 'ATGCCGTACTAGCGTACGTAGCCGTAGTAGCGTACTGATCGTA',
-        liver: 'ATGCGTACGTAGCTAGCGCGTACGTAGCCGTAGTAGCTAGCGT',
-        lungs: 'ATGCTAGCGTAGCTACGATCGTACGTAGCCGTAGTACTAGCGT',
-        kidney: 'ATGCGTAGCGTACTAGCGTACGCGTAGCTAGCTACGTACGTCG',
-        brain: 'ATGCGTACTAGTAGCGTACGTACGTAGCTAGCTACGATCGTAC'
+        heart: 'ATCGTAGGCCATAGGCTAGC',
+        liver: 'GCTAGCTAGCAGCTAGCATG',
+        lungs: 'ATCGATCGTACGATGCTAGC',
+        kidney: 'CTAGCTAGCTGATCGTAGC',
+        brain: 'GATCGATCGATCGTAGCTA'
     };
 
-    // Handle form submission
-    organForm.addEventListener('submit', function (e) {
-        e.preventDefault();  // Prevent form from reloading the page
+    const dnaOutput = document.getElementById('dnaOutput');
+    const currentDNA = document.getElementById('currentDNA');
+    const scenarioSelect = document.getElementById('scenarioSelect');
+    const simulationResult = document.getElementById('simulationResult');
+    const growthChartCtx = document.getElementById('growthChart').getContext('2d');
+    let currentDNASequence = ''; // To store modified DNA sequence
 
-        // Get the selected organ from the dropdown
-        const selectedOrgan = organSelect.value;
+    // Function to type out the DNA sequence gradually
+    function typeOutDNASequence(sequence) {
+        let index = 0;
+        const typingSpeed = 100; // Typing speed in milliseconds
 
-        // Check if an organ was selected
-        if (selectedOrgan) {
-            // Generate the corresponding DNA code for the selected organ
-            const dnaSequence = organDNA[selectedOrgan];
+        const typingInterval = setInterval(() => {
+            if (index < sequence.length) {
+                dnaOutput.innerHTML += sequence[index];
+                index++;
+            } else {
+                clearInterval(typingInterval);
+            }
+        }, typingSpeed);
+    }
 
-            // Display the DNA sequence in the DNA output section
-            dnaOutput.innerHTML = `
-                <h4>DNA Sequence for ${capitalizeFirstLetter(selectedOrgan)}:</h4>
-                <pre>${dnaSequence}</pre>
-            `;
+    // Update the displayed current DNA sequence
+    function updateDNADisplay() {
+        currentDNA.innerHTML = currentDNASequence || 'No DNA sequence selected.';
+    }
 
-            // Display the growth visualization message
-            growthVisualization.innerHTML = `
-                <p>Simulating the growth of a ${capitalizeFirstLetter(selectedOrgan)}...</p>
-            `;
+    // Function to update the growth chart
+    function updateGrowthChart(labels, data) {
+        const growthChart = new Chart(growthChartCtx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Organ Growth Over Time',
+                    data: data,
+                    borderColor: '#007bff',
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Growth Percentage (%)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time (Days)'
+                        }
+                    }
+                }
+            }
+        });
+    }
 
-            // Add a simple animation or additional feedback to enhance the experience
-            animateGrowthVisualization();
+    // Organ selection and growth simulation
+    document.getElementById('organForm').addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent the form from submitting
+        const selectedOrgan = document.getElementById('organ').value;
+        currentDNASequence = organDNA[selectedOrgan];
+        dnaOutput.innerHTML = ''; // Clear previous output
+        typeOutDNASequence(currentDNASequence); // Type out the DNA sequence
+        updateGrowthChart([0, 1, 2, 3, 4, 5], [0, 10, 30, 50, 80, 100]); // Update growth chart
+    });
+
+    // Insert nucleotide functionality
+    document.getElementById('insertButton').addEventListener('click', () => {
+        const newNucleotide = document.getElementById('newNucleotide').value.toUpperCase();
+        if (['A', 'T', 'C', 'G'].includes(newNucleotide) && newNucleotide.length === 1) {
+            currentDNASequence += newNucleotide;
+            updateDNADisplay();
         } else {
-            // If no organ is selected, show a message asking the user to select one
-            dnaOutput.innerHTML = `<p>Please select an organ to grow.</p>`;
+            alert('Please enter a valid nucleotide (A, T, C, or G).');
         }
     });
 
-    // Function to capitalize the first letter of the organ name
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+    // Delete nucleotide functionality
+    document.getElementById('deleteButton').addEventListener('click', () => {
+        currentDNASequence = currentDNASequence.slice(0, -1); // Remove the last character
+        updateDNADisplay();
+    });
 
-    // Animation for growth visualization (simple pulse effect)
-    function animateGrowthVisualization() {
-        growthVisualization.style.transition = 'transform 0.5s ease';
-        growthVisualization.style.transform = 'scale(1.1)';
+    // Environmental change simulation
+    document.getElementById('simulateButton').addEventListener('click', () => {
+        const scenario = scenarioSelect.value;
+        let message = '';
 
-        setTimeout(() => {
-            growthVisualization.style.transform = 'scale(1)';
-        }, 500);
-    }
+        switch (scenario) {
+            case 'highTemperature':
+                message = 'The organ is growing rapidly but may face heat stress!';
+                break;
+            case 'lowNutrients':
+                message = 'The organ is struggling due to nutrient deficiency.';
+                break;
+            default:
+                message = 'The organ is growing normally.';
+                break;
+        }
+
+        simulationResult.innerText = message;
+    });
+
+    // Initial display update
+    updateDNADisplay();
 });
