@@ -1,51 +1,80 @@
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #f5f8fa; /* Light gray background */
+    color: #333; /* Dark text color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header {
-    background-color: #004d00;
+    background-color: #007bff; /* Blue header */
     color: white;
-    padding: 10px 0;
+    width: 100%;
+    padding: 20px 0;
     text-align: center;
 }
 
+/* Main Section */
 main {
-    max-width: 600px; /* Limit the width */
-    margin: 20px auto;
+    max-width: 800px; /* Restrict the width for better visibility */
     padding: 20px;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Section Styles */
 section {
-    margin-bottom: 20px;
+    margin: 20px 0;
+    padding: 15px;
+    background: white; /* White card background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+/* Headings */
+h1, h2 {
+    margin: 0 0 15px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+select, button, input {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd; /* Light gray border */
+    font-size: 16px; /* Slightly larger font */
+}
+
+/* DNA Output Styles */
 .dna-output {
-    white-space: pre-wrap; /* Preserve whitespace for DNA sequence */
-    font-family: monospace; /* Use monospace font for DNA output */
-    background-color: #e7f3fe;
+    font-family: monospace; /* Monospace font for DNA */
+    white-space: pre-wrap; /* Preserve formatting and wrap */
+    background-color: #eef2f5; /* Light background for visibility */
     padding: 10px;
-    border: 1px solid #b3d7ff;
+    border: 1px solid #ccc; /* Gray border */
     border-radius: 5px;
-    overflow-wrap: break-word; /* Allow wrapping of long sequences */
 }
 
-button {
-    margin-top: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #004d00;
-    color: white;
-    cursor: pointer;
+/* Chart Styles */
+canvas {
+    border: 1px solid #ccc; /* Light border for the chart */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 20px;
 }
 
-button:hover {
-    background-color: #005700;
+/* Responsive Styles */
+@media (max-width: 600px) {
+    main {
+        padding: 10px; /* Reduce padding on small screens */
+    }
+    section {
+        padding: 10px; /* Reduce section padding */
+    }
 }
