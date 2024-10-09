@@ -3,112 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cell Growth Incubator Simulator</title>
+    <title>Organ Growth Simulator</title>
     <link rel="stylesheet" href="design.css">
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header -->
     <header>
-        <div class="container">
-            <h1>Cell Growth Incubator Simulator</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#incubator">Incubator</a></li>
-                    <li><a href="#learn">Learn</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>Organ Growth Simulator</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#incubator">Incubator</a></li>
+                <li><a href="#learn">Learn More</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Home Section -->
-        <section id="home" class="section">
-            <div class="container">
-                <h2>Grow Organs with DNA Programming</h2>
-                <p>Welcome to the Cell Growth Incubator Simulator! This tool allows you to command cells to grow into specific organs by inputting organ types. Watch the simulator spit out the DNA or protein sequences necessary to program these cells for organ growth.</p>
-            </div>
-        </section>
-
-        <!-- Incubator Section -->
-        <section id="incubator" class="section">
-            <div class="container">
-                <h2>Incubator Command Center</h2>
-                <p>Select an organ to grow in the incubator, and the DNA code necessary for its development will be generated.</p>
-
-                <!-- Input Form for Incubator Command -->
-                <form id="incubatorForm">
-                    <label for="organSelect">Select Organ to Grow:</label>
-                    <select id="organSelect" name="organSelect">
-                        <option value="heart">Heart</option>
-                        <option value="liver">Liver</option>
-                        <option value="lungs">Lungs</option>
-                        <option value="kidney">Kidney</option>
-                        <option value="brain">Brain</option>
-                        <option value="skin">Skin</option>
-                    </select>
-
-                    <label for="growthSpeed">Growth Speed (Optional):</label>
-                    <select id="growthSpeed" name="growthSpeed">
-                        <option value="normal">Normal</option>
-                        <option value="accelerated">Accelerated</option>
-                    </select>
-
-                    <button type="submit">Grow Organ</button>
-                </form>
-
-                <!-- Output for DNA/Protein Sequence -->
-                <div id="growthOutput">
-                    <h3>Organ Growth Sequence</h3>
-                    <div id="dnaOutput">
-                        <h4>DNA/Protein Code:</h4>
-                        <pre id="dnaSequence">-</pre>
-                    </div>
-                    <div id="growthVisualization">
-                        <h4>Growth Visualization:</h4>
-                        <p id="organVisualization">The organ growth process will appear here.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Learn Section -->
-        <section id="learn" class="section">
-            <div class="container">
-                <h2>How Does It Work?</h2>
-                <p>The human body is composed of cells that are programmed to grow into specific organs. By manipulating DNA sequences, we can control how cells differentiate into various tissues and organs. This incubator uses synthetic biology principles to simulate the process.</p>
-                <ol>
-                    <li><strong>DNA Commands:</strong> Each organ has a specific DNA sequence that triggers cell differentiation.</li>
-                    <li><strong>Growth Speed:</strong> You can adjust the growth speed to simulate natural or accelerated development.</li>
-                    <li><strong>Visualize the Growth:</strong> Watch the process of cell division and organ formation.</li>
-                </ol>
-            </div>
-        </section>
-    </main>
-
-    <!-- Contact Section -->
-    <footer id="contact">
+    <!-- Home Section -->
+    <section id="home" class="section">
         <div class="container">
-            <h3>Contact Us</h3>
-            <form id="contactForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+            <h2>Welcome to the Organ Growth Simulator</h2>
+            <p>Command cells to grow into specific organs and view the generated DNA code for each.</p>
+        </div>
+    </section>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-
-                <button type="submit">Send Message</button>
+    <!-- Incubator Section -->
+    <section id="incubator" class="section">
+        <div class="container">
+            <h2>Incubator</h2>
+            <form id="organForm">
+                <label for="organ">Choose an organ to grow:</label>
+                <select id="organ" required>
+                    <option value="">-- Select Organ --</option>
+                    <option value="heart">Heart</option>
+                    <option value="liver">Liver</option>
+                    <option value="lungs">Lungs</option>
+                    <option value="kidney">Kidney</option>
+                    <option value="brain">Brain</option>
+                </select>
+                <button type="submit">Grow Organ</button>
             </form>
+
+            <!-- DNA Output Section -->
+            <div id="dnaOutput"></div>
+
+            <!-- Growth Visualization -->
+            <div id="growthVisualization"></div>
+        </div>
+    </section>
+
+    <!-- Learn More Section -->
+    <section id="learn" class="section">
+        <div class="container">
+            <h2>How Does It Work?</h2>
+            <p>This simulator demonstrates the biological process of organ growth from cells. Each organ is developed based on specific DNA sequences which are responsible for the formation of tissues and overall structure.</p>
+            <ol>
+                <li>Select an organ from the dropdown menu.</li>
+                <li>Click "Grow Organ" to simulate the growth process.</li>
+                <li>View the generated DNA code for the selected organ.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>Organ Growth Simulation</h3>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
