@@ -3,59 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organ Growth Simulation</title>
+    <title>Organ Growth Simulator</title>
     <link rel="stylesheet" href="design.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
-        <h1>Organ Growth Simulation</h1>
+        <h1>Organ Growth Simulator</h1>
     </header>
     <main>
         <section>
             <h2>Select an Organ</h2>
             <form id="organForm">
-                <select id="organ" required>
-                    <option value="">--Select an Organ--</option>
+                <select id="organ">
                     <option value="heart">Heart</option>
                     <option value="liver">Liver</option>
-                    <option value="lungs">Lungs</option>
                     <option value="kidney">Kidney</option>
-                    <option value="brain">Brain</option>
                 </select>
                 <button type="submit">Generate DNA Sequence</button>
             </form>
-            <pre id="dnaOutput"></pre>
-            <h3>Current DNA Sequence:</h3>
-            <p id="currentDNA">No DNA sequence selected.</p>
         </section>
-
         <section>
-            <h2>Modify DNA Sequence</h2>
-            <input type="text" id="newNucleotide" placeholder="Enter nucleotide (A, T, C, G)">
+            <h2>Generated DNA Sequence</h2>
+            <div id="dnaOutput" class="dna-output"></div>
             <button id="insertButton">Insert Nucleotide</button>
+            <input type="text" id="newNucleotide" placeholder="Enter A, T, C, or G" maxlength="1">
             <button id="deleteButton">Delete Last Nucleotide</button>
         </section>
-
         <section>
-            <h2>Simulate Environmental Change</h2>
+            <h2>Simulate Environmental Changes</h2>
             <select id="scenarioSelect">
-                <option value="normal">Normal Conditions</option>
+                <option value="normal">Normal Growth</option>
                 <option value="highTemperature">High Temperature</option>
                 <option value="lowNutrients">Low Nutrients</option>
             </select>
             <button id="simulateButton">Simulate</button>
-            <p id="simulationResult"></p>
+            <div id="simulationResult"></div>
         </section>
-
         <section>
-            <h2>Growth Chart</h2>
-            <canvas id="growthChart" width="400" height="200"></canvas>
+            <canvas id="growthChart" width="600" height="400"></canvas>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Organ Growth Simulation. All rights reserved.</p>
-    </footer>
     <script src="script.js"></script>
 </body>
 </html>
