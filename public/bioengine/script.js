@@ -75,27 +75,28 @@ deleteButton.addEventListener("click", () => {
 simulateButton.addEventListener("click", () => {
     const scenario = scenarioSelect.value;
     let result = "";
-    let growthIncrement = 10; // Increment for normal growth
     let currentGrowthRate = growthData.growthRate.length > 0 ? growthData.growthRate[growthData.growthRate.length - 1] : 0;
 
+    // Determine growth increment based on the scenario
+    let growthIncrement = 10; // Increment for normal growth
     switch (scenario) {
         case "normal":
             result = "Normal growth conditions applied.";
-            currentGrowthRate += growthIncrement;
+            currentGrowthRate = Math.min(currentGrowthRate + growthIncrement, 100); // Increase by 10%
             break;
         case "highTemperature":
-            result = "High temperature conditions applied, which may increase growth rate.";
-            currentGrowthRate += growthIncrement + 10; // Boost growth rate
+            result = "High temperature conditions applied. Growth may decrease.";
+            currentGrowthRate = Math.max(currentGrowthRate - 20, 0); // Decrease by 20%
             break;
         case "lowNutrients":
-            result = "Low nutrient conditions applied, which may decrease growth rate.";
-            currentGrowthRate = Math.max(currentGrowthRate - 20, 0); // Decrease growth rate
+            result = "Low nutrient conditions applied. Growth may decrease.";
+            currentGrowthRate = Math.max(currentGrowthRate - 15, 0); // Decrease by 15%
             break;
     }
     
     // Update growth data
     growthData.time.push(growthData.time.length + 1); // Increment time (days)
-    growthData.growthRate.push(Math.min(currentGrowthRate, 100)); // Cap growth at 100%
+    growthData.growthRate.push(currentGrowthRate); // Update growth rate
     updateChart();
     simulationResult.innerText = result;
 });
