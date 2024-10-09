@@ -46,8 +46,12 @@ organForm.addEventListener("submit", (e) => {
 insertButton.addEventListener("click", () => {
     const newNucleotide = newNucleotideInput.value.toUpperCase();
     if (["A", "T", "C", "G"].includes(newNucleotide)) {
-        dnaSequence += newNucleotide;
-        updateDNAOutput();
+        if (dnaSequence.length < 300) { // Limit length of the sequence
+            dnaSequence += newNucleotide;
+            updateDNAOutput();
+        } else {
+            alert("DNA sequence has reached its maximum length.");
+        }
         newNucleotideInput.value = ""; // Clear input field
     } else {
         alert("Please enter a valid nucleotide (A, T, C, or G).");
@@ -68,18 +72,18 @@ simulateButton.addEventListener("click", () => {
     switch (scenario) {
         case "normal":
             result = "Normal growth conditions applied.";
-            growthData.growthRate.push(1.0);
+            growthData.growthRate.push(100); // 100% growth rate for normal conditions
             break;
         case "highTemperature":
             result = "High temperature conditions applied, which may increase growth rate.";
-            growthData.growthRate.push(1.5); // Higher growth rate
+            growthData.growthRate.push(150); // 150% growth rate for high temp
             break;
         case "lowNutrients":
             result = "Low nutrient conditions applied, which may decrease growth rate.";
-            growthData.growthRate.push(0.5); // Lower growth rate
+            growthData.growthRate.push(50); // 50% growth rate for low nutrients
             break;
     }
-    growthData.time.push(growthData.time.length + 1); // Increment time
+    growthData.time.push(growthData.time.length + 1); // Increment time (days)
     updateChart();
     simulationResult.innerText = result;
 });
@@ -88,9 +92,9 @@ simulateButton.addEventListener("click", () => {
 function updateChart() {
     const ctx = growthChart.getContext("2d");
     const chartData = {
-        labels: growthData.time,
+        labels: growthData.time.map(day => `${day} day${day > 1 ? 's' : ''}`), // Label as days
         datasets: [{
-            label: 'Growth Rate',
+            label: 'Growth Rate (%)',
             data: growthData.growthRate,
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgba(75, 192, 192, 1)',
@@ -112,15 +116,16 @@ function updateChart() {
             scales: {
                 y: {
                     beginAtZero: true,
+                    max: 200, // Set maximum to 200% for visualization purposes
                     title: {
                         display: true,
-                        text: 'Growth Rate'
+                        text: 'Growth Rate (%)'
                     }
                 },
                 x: {
                     title: {
                         display: true,
-                        text: 'Time'
+                        text: 'Days'
                     }
                 }
             },
