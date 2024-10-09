@@ -1,213 +1,107 @@
-/* General reset and global styles */
-* {
+/* General styles for the body */
+body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-body {
-    background-color: #f2f7fc;
+    background-color: #f0f8ff; /* Light background for a sterile look */
     color: #333;
-    line-height: 1.6;
 }
 
-/* Header Styles */
+/* Header styles */
 header {
-    background-color: #0d6efd;
+    background-color: #007bff; /* Blue for a clinical feel */
     color: white;
-    padding: 15px 0;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-header h1 {
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-header nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
-
-header nav ul li {
-    margin: 0 15px;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-}
-
-header nav ul li a:hover {
-    color: #f0e68c;
-}
-
-/* Container for sections */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
+/* Main section styles */
+main {
+    max-width: 800px;
+    margin: 20px auto;
     padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Section styles */
-.section {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.section h2 {
-    font-size: 2rem;
-    color: #0d6efd;
+section {
     margin-bottom: 20px;
-}
-
-.section p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-}
-
-.section ol {
-    text-align: left;
-    margin-top: 20px;
-}
-
-.section ol li {
-    font-size: 1rem;
-    padding: 5px;
-}
-
-/* Incubator form */
-form {
-    margin-top: 30px;
-}
-
-label {
-    font-size: 1.3rem;
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-select, button {
-    padding: 10px 15px;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 20px;
-    transition: background-color 0.3s ease;
-}
-
-select:focus, button:focus {
-    outline: none;
-    border-color: #0d6efd;
-}
-
-button {
-    background-color: #0d6efd;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0b5ed7;
-}
-
-/* DNA Output styles */
-#dnaOutput {
-    background-color: #e9f7ff;
-    border: 2px dashed #0d6efd;
-    padding: 20px;
-    margin-top: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#dnaOutput h4 {
-    font-size: 1.6rem;
-    color: #0d6efd;
-    margin-bottom: 10px;
-}
-
-#dnaOutput pre {
-    background-color: #f8f9fa;
     padding: 15px;
+    border: 1px solid #007bff; /* Blue border for section distinction */
     border-radius: 5px;
-    color: #333;
-    font-family: "Courier New", monospace;
-    font-size: 1rem;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+    background-color: #e9f3ff; /* Light blue background for sections */
 }
 
-/* Growth Visualization */
-#growthVisualization {
-    margin-top: 30px;
-    padding: 20px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* Heading styles */
+h1, h2, h3 {
+    margin: 10px 0;
 }
 
-#growthVisualization p {
-    font-size: 1.2rem;
-    color: #0d6efd;
-    font-weight: bold;
+/* Input and button styles */
+input[type="text"],
+select {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
-/* Learn More Section */
-#learn p {
-    text-align: justify;
+input[type="text"]:focus,
+select:focus {
+    border-color: #0056b3; /* Darker blue on focus */
 }
 
-/* Button hover animation */
+/* Button styles */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
 button:hover {
-    background-color: #025ce3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
-/* Smooth section scrolling */
-html {
-    scroll-behavior: smooth;
+/* Preformatted text styles */
+pre {
+    background-color: #f8f9fa; /* Light gray for better readability */
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    overflow: auto; /* Scrollable if content overflows */
 }
 
 /* Footer styles */
 footer {
-    background-color: #0d6efd;
-    color: white;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
+    padding: 10px 0;
+    background-color: #007bff;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
-footer h3 {
-    font-size: 1.3rem;
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
+/* Responsive design */
+@media (max-width: 600px) {
+    input[type="text"],
+    select,
+    button {
+        width: 100%; /* Full width on small screens */
     }
 
-    .section h2 {
-        font-size: 1.6rem;
-    }
-
-    select, button {
-        font-size: 1rem;
+    main {
+        padding: 10px; /* Reduce padding on smaller screens */
     }
 }
