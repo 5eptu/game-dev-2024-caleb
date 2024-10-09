@@ -1,0 +1,275 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f9fc; /* Sterile, clean background color */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styling */
+header {
+    background-color: #e0f7fa; /* Light blue sterile feel */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #00695c; /* Hospital greenish tone */
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #00796b;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    background-color: #b2dfdb;
+    color: #004d40;
+}
+
+/* Section Styling */
+.section {
+    padding: 50px 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    max-width: 1200px;
+}
+
+/* Home Section */
+#home {
+    text-align: center;
+}
+
+#home h2 {
+    font-size: 2rem;
+    color: #004d40;
+    margin-bottom: 20px;
+}
+
+#home p {
+    font-size: 1.2rem;
+    color: #616161;
+}
+
+/* Incubator Section */
+#incubator h2 {
+    color: #004d40;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    background-color: #e0f2f1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #004d40;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #004d40;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form button {
+    width: 100%;
+    background-color: #004d40;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+form button:hover {
+    background-color: #00796b;
+}
+
+/* Growth Output Styling */
+#growthOutput {
+    background-color: #f1f8e9;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#dnaOutput h4 {
+    color: #004d40;
+}
+
+pre {
+    background-color: #e0f2f1;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #004d40;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+#growthVisualization p {
+    font-size: 1rem;
+    color: #616161;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Learn Section */
+#learn h2 {
+    text-align: center;
+    color: #004d40;
+    margin-bottom: 20px;
+}
+
+#learn p {
+    font-size: 1.1rem;
+    color: #616161;
+}
+
+#learn ol {
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+#learn ol li {
+    margin-bottom: 15px;
+    color: #00796b;
+}
+
+/* Footer Section */
+footer {
+    background-color: #e0f7fa;
+    padding: 40px;
+    text-align: center;
+}
+
+footer h3 {
+    color: #004d40;
+    margin-bottom: 20px;
+}
+
+footer form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #b2ebf2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer form label {
+    color: #004d40;
+    font-weight: bold;
+}
+
+footer form input[type="text"],
+footer form input[type="email"],
+footer form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #004d40;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+footer form button {
+    width: 100%;
+    background-color: #004d40;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+footer form button:hover {
+    background-color: #00796b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form, footer form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    #learn ol {
+        margin-left: 20px;
+    }
+}
+
+/* Animation */
+form button {
+    transition: transform 0.3s ease-in-out;
+}
+
+form button:hover {
+    transform: scale(1.05);
+}
+
+#growthVisualization p {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        color: #616161;
+    }
+    50% {
+        color: #004d40;
+    }
+    100% {
+        color: #616161;
+    }
+}
