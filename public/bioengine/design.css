@@ -56,6 +56,8 @@ select, button, input {
 .dna-output {
     font-family: monospace; /* Monospace font for DNA */
     white-space: pre-wrap; /* Preserve formatting and wrap */
+    max-height: 150px; /* Limit height */
+    overflow-y: auto; /* Scroll if content exceeds max height */
     background-color: #eef2f5; /* Light background for visibility */
     padding: 10px;
     border: 1px solid #ccc; /* Gray border */
