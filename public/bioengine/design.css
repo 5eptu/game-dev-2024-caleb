@@ -18,7 +18,7 @@ header {
 
 /* Main section styles */
 main {
-    max-width: 800px;
+    max-width: 600px; /* Reduced width for better visibility */
     margin: 20px auto;
     padding: 20px;
     background-color: white;
