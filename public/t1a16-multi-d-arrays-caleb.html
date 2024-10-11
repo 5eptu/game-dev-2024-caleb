@@ -1,0 +1,49 @@
+<h1 align="center">t1a16-multi-d-array-caleb.html</h1>
+
+<script>
+// Set a few Global Variables
+let myMax = 3;
+let myArrayManual = new Array(myMax);
+let myArrayAuto = new Array(myMax);
+
+// Initialize myArrayAuto as a 2D array
+for (let i = 0; i < myMax; i++) {
+  myArrayAuto[i] = new Array(myMax);
+}
+</script>
+
+Input: <input type="text" id="myFirstName" value="fred"><br>
+
+<input type="button" value="Set Manual Array" onclick="{
+myArrayManual = [[3, 4, 2], [1, 2, 3], [5, 6, 7]];
+document.getElementById('myDiv01').innerHTML = 'You set the array';
+}"><br>
+
+<input type="button" value="Show Manual Array" onclick="{
+document.getElementById('myDiv01').innerHTML = '';
+for (let myLoop0 = 0; myLoop0 < myMax; myLoop0++) {
+  for (let myLoop1 = 0; myLoop1 < myMax; myLoop1++) {
+    document.getElementById('myDiv01').innerHTML += 'myArrayManual[' + myLoop0 + '][' + myLoop1 + '] = ' + myArrayManual[myLoop0][myLoop1] + '<br>';
+  }
+}
+}"><br>
+
+<input type="button" value="Set Auto Array" onclick="{
+for (let i = 0; i < myMax; i++) {
+  for (let j = 0; j < myMax; j++) {
+    myArrayAuto[i][j] = Math.floor(Math.random() * 100);
+  }
+}
+document.getElementById('myDiv01').innerHTML = 'Auto array set!';
+}"><br>
+
+<input type="button" value="Show Auto Array" onclick="{
+document.getElementById('myDiv01').innerHTML = '';
+for (let i = 0; i < myMax; i++) {
+  for (let j = 0; j < myMax; j++) {
+    document.getElementById('myDiv01').innerHTML += 'myArrayAuto[' + i + '][' + j + '] = ' + myArrayAuto[i][j] + '<br>';
+  }
+}
+}"><br>
+
+<div id="myDiv01">...</div>
