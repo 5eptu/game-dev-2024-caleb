@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chain of Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+        }
+        .company, .platoon, .squad {
+            background-color: #ffffff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3, h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 5px 0;
+        }
+        .squad-members {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Company 1 -->
+        <div class="company">
+            <h2>Company A</h2>
+
+            <!-- Platoon 1 -->
+            <div class="platoon">
+                <h3>Platoon 1</h3>
+
+                <!-- Squad 1 -->
+                <div class="squad">
+                    <h4>Squad 1</h4>
+                    <ul class="squad-members">
+                        <li>Sergeant: John Doe</li>
+                        <li>Corporal: Jane Smith</li>
+                        <li>Squad Member: Alice Johnson</li>
+                        <li>Squad Member: Bob Brown</li>
+                    </ul>
+                </div>
+
+                <!-- Squad 2 -->
+                <div class="squad">
+                    <h4>Squad 2</h4>
+                    <ul class="squad-members">
+                        <li>Sergeant: Tom Harris</li>
+                        <li>Corporal: Sarah Lee</li>
+                        <li>Squad Member: Chris Evans</li>
+                        <li>Squad Member: Diana White</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Platoon 2 -->
+            <div class="platoon">
+                <h3>Platoon 2</h3>
+
+                <!-- Squad 1 -->
+                <div class="squad">
+                    <h4>Squad 1</h4>
+                    <ul class="squad-members">
+                        <li>Sergeant: Kevin Green</li>
+                        <li>Corporal: Lucy Blue</li>
+                        <li>Squad Member: Robert Davis</li>
+                        <li>Squad Member: Emily Adams</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company 2 -->
+        <div class="company">
+            <h2>Company B</h2>
+
+            <!-- Platoon 1 -->
+            <div class="platoon">
+                <h3>Platoon 1</h3>
+
+                <!-- Squad 1 -->
+                <div class="squad">
+                    <h4>Squad 1</h4>
+                    <ul class="squad-members">
+                        <li>Sergeant: Mike Walker</li>
+                        <li>Corporal: Angela Fox</li>
+                        <li>Squad Member: Peter Black</li>
+                        <li>Squad Member: Laura Scott</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
