@@ -11,11 +11,13 @@
             color: #fff;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
         .container {
-            width: 90%;
-            margin: 40px auto;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
         }
 
         .title {
@@ -23,21 +25,60 @@
             font-size: 36px;
             color: #f00;
             margin-bottom: 40px;
+            text-transform: uppercase;
         }
 
-        /* T-chart Structure */
-        .t-chart {
+        /* High Commanders Section */
+        .high-command {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 60px;
+            padding: 10px 0;
+            background-color: #111;
+            border-bottom: 2px solid #f00;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+
+        .high-command .commander {
+            padding: 10px;
+            width: 7%;
+            background-color: #222;
+            color: #fff;
+            border: 1px solid #f00;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .high-command .commander:hover {
+            background-color: #f00;
+            color: #000;
+            transform: scale(1.05);
+            transition: all 0.3s;
+        }
+
+        .commander-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Horizontal scroll section for T-chart */
+        .scroll-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 50px;
+        }
+
+        .t-chart {
+            display: inline-flex;
+            justify-content: space-between;
         }
 
         .t-chart .level {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: space-around;
-            margin-bottom: 50px;
-            width: 100%;
+            margin: 0 20px;
+            width: 20%;
         }
 
         .t-chart .level .section {
@@ -46,17 +87,19 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            width: 20%;
             border: 2px solid #f00;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
             background-color: #111;
+            margin-bottom: 40px;
+            transition: all 0.3s ease-in-out;
         }
 
         .t-chart .section-title {
-            font-size: 24px;
+            font-size: 20px;
             color: #f00;
             margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
         .t-chart .level .section ul {
@@ -70,6 +113,13 @@
             font-size: 14px;
         }
 
+        .t-chart .level .section:hover {
+            background-color: #222;
+            transform: scale(1.05);
+            border-color: #ff6666;
+            box-shadow: 0 0 15px rgba(255, 102, 102, 0.7);
+        }
+
         /* Connecting lines */
         .connector {
             position: relative;
@@ -79,16 +129,38 @@
             margin: 10px 0;
         }
 
+        /* Scrollbars */
+        ::-webkit-scrollbar {
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #f00;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #333;
+        }
+
         /* Responsive adjustments */
-        @media (max-width: 768px) {
+        @media (max-width: 1200px) {
             .t-chart .level {
-                flex-direction: column;
-                align-items: center;
+                width: 25%;
             }
 
-            .t-chart .level .section {
-                width: 60%;
-                margin-bottom: 20px;
+            .high-command .commander {
+                width: 10%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .t-chart .level {
+                width: 40%;
+            }
+
+            .high-command .commander {
+                width: 15%;
             }
         }
 
@@ -98,60 +170,166 @@
     <div class="container">
         <div class="title">Chain of Command</div>
 
-        <!-- T-Chart Structure -->
-        <div class="t-chart">
-            <!-- Company Level -->
-            <div class="level">
-                <div class="section">
-                    <div class="section-title">Company A</div>
-                    <ul>
-                        <li><strong>Captain:</strong> John Doe</li>
-                        <li><strong>Lieutenant:</strong> Jane Smith</li>
-                        <li><strong>Sergeant Major:</strong> Alice Johnson</li>
-                    </ul>
-                </div>
+        <!-- High Commanders Section -->
+        <div class="high-command">
+            <div class="commander">
+                <div class="commander-title">Commander 1</div>
+                <div>Rank: General</div>
             </div>
-            <div class="connector"></div>
-
-            <!-- Platoon Level -->
-            <div class="level">
-                <div class="section">
-                    <div class="section-title">Platoon 1</div>
-                    <ul>
-                        <li><strong>Sergeant First Class:</strong> Bob Brown</li>
-                        <li><strong>Staff Sergeant:</strong> Sarah Lee</li>
-                    </ul>
-                </div>
-                <div class="section">
-                    <div class="section-title">Platoon 2</div>
-                    <ul>
-                        <li><strong>Sergeant First Class:</strong> Kevin Green</li>
-                        <li><strong>Staff Sergeant:</strong> Tom Harris</li>
-                    </ul>
-                </div>
+            <div class="commander">
+                <div class="commander-title">Commander 2</div>
+                <div>Rank: General</div>
             </div>
-            <div class="connector"></div>
+            <div class="commander">
+                <div class="commander-title">Commander 3</div>
+                <div>Rank: General</div>
+            </div>
+            <div class="commander">
+                <div class="commander-title">Commander 4</div>
+                <div>Rank: General</div>
+            </div>
+            <div class="commander">
+                <div class="commander-title">Commander 5</div>
+                <div>Rank: General</div>
+            </div>
+            <div class="commander">
+                <div class="commander-title">Commander 5</div>
+                <div>Rank: General</div>
+            </div>
+            <div class="commander">
+                <div class="commander-title">Commander 5</div>
+                <div>Rank: General</div>
+            </div>
+            <div class="commander">
+                <div class="commander-title">Commander 5</div>
+                <div>Rank: General</div>
+            </div>
+            <div class="commander">
+                <div class="commander-title">Commander 5</div>
+                <div>Rank: General</div>
+            </div>
+            <div class="commander">
+                <div class="commander-title">Commander 5</div>
+                <div>Rank: General</div>
+            </div>
+            <div class="commander">
+                <div class="commander-title">Commander 5</div>
+                <div>Rank: General</div>
+            </div>
+            <div class="commander">
+                <div class="commander-title">Commander 5</div>
+                <div>Rank: General</div>
+            </div>
+            
+                        
+            <!-- Add as needed up to 13 Commanders -->
+        </div>
 
-            <!-- Squad Level -->
-            <div class="level">
-                <div class="section">
-                    <div class="section-title">Squad 1</div>
-                    <ul>
-                        <li><strong>Sergeant:</strong> Robert Davis</li>
-                        <li><strong>Corporal:</strong> Chris Evans</li>
-                        <li>Squad Member: Diana White</li>
-                        <li>Squad Member: Peter Black</li>
-                    </ul>
+        <!-- Horizontal scrolling chart -->
+        <div class="scroll-container">
+            <div class="t-chart">
+
+                <!-- Company 1 -->
+                <div class="level">
+                    <div class="section">
+                        <div class="section-title">Company A</div>
+                        <ul>
+                            <li>Captain: John Doe</li>
+                            <li>Lieutenant: Jane Smith</li>
+                            <li>Sergeant Major: Alice Johnson</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Platoon 1</div>
+                        <ul>
+                            <li>Sergeant: Bob Brown</li>
+                            <li>Corporal: Sarah Lee</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Squad 1</div>
+                        <ul>
+                            <li>Sergeant: Chris Evans</li>
+                            <li>Corporal: Diana White</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="section">
-                    <div class="section-title">Squad 2</div>
-                    <ul>
-                        <li><strong>Sergeant:</strong> Emily Adams</li>
-                        <li><strong>Corporal:</strong> Laura Scott</li>
-                        <li>Squad Member: Angela Fox</li>
-                        <li>Squad Member: Mike Walker</li>
-                    </ul>
+
+                <!-- Company 2 -->
+                <div class="level">
+                    <div class="section">
+                        <div class="section-title">Company B</div>
+                        <ul>
+                            <li>Captain: Kevin Green</li>
+                            <li>Lieutenant: Lucy Blue</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Platoon 1</div>
+                        <ul>
+                            <li>Sergeant: Robert Davis</li>
+                            <li>Corporal: Emily Adams</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Squad 1</div>
+                        <ul>
+                            <li>Sergeant: Peter Black</li>
+                            <li>Corporal: Laura Scott</li>
+                        </ul>
+                    </div>
                 </div>
+
+                <!-- Company 3 -->
+                <div class="level">
+                    <div class="section">
+                        <div class="section-title">Company C</div>
+                        <ul>
+                            <li>Captain: Mike Walker</li>
+                            <li>Lieutenant: Angela Fox</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Platoon 1</div>
+                        <ul>
+                            <li>Sergeant: Sarah White</li>
+                            <li>Corporal: Chris Grey</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Squad 1</div>
+                        <ul>
+                            <li>Sergeant: Greg Smith</li>
+                            <li>Corporal: Diana Brown</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Company 4 -->
+                <div class="level">
+                    <div class="section">
+                        <div class="section-title">Company D</div>
+                        <ul>
+                            <li>Captain: George Hill</li>
+                            <li>Lieutenant: Paul Dean</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Platoon 1</div>
+                        <ul>
+                            <li>Sergeant: Rachel Black</li>
+                            <li>Corporal: David White</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Squad 1</div>
+                        <ul>
+                            <li>Sergeant: Louis Brown</li>
+                            <li>Corporal: Anna Fox</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
