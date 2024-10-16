@@ -3,547 +3,488 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UGF Organizational Chart</title>
+    <title>Chain of Command</title>
     <style>
         body {
-            background-color: #1a1a1a;
-            color: #ffffff;
             font-family: Arial, sans-serif;
-            overflow-x: auto; /* Enable horizontal scrolling */
+            background-color: #121212;
+            color: #ffffff;
             margin: 0;
+            padding: 20px;
         }
-
         h1 {
             text-align: center;
-            margin: 20px;
-            color: #ff0000;
+            color: #ff0000; /* Red */
         }
-
-        .chart-container {
+        .container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 20px 0;
         }
-
-        .high-command {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .high-commander {
-            background-color: #ff0000;
-            border-radius: 5px;
-            padding: 10px;
-            text-align: center;
-            flex: 1;
-            margin: 0 10px;
-        }
-
-        .division {
-            background-color: #555555;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 20px 0;
-            width: 80%;
-        }
-
-        .company {
-            background-color: #333333;
+        .high-command, .division, .company, .platoon, .squad {
+            border: 2px solid #ffffff;
             border-radius: 5px;
             padding: 10px;
             margin: 10px;
-            flex: 0 0 300px;
-            overflow: hidden;
+            background-color: #1e1e1e; /* Darker gray for sections */
+            flex: 0 0 auto; /* Prevent flex items from shrinking */
+            width: 300px; /* Fixed width for easy reading */
         }
-
         .section-title {
-            background-color: #ff0000;
-            border-radius: 3px;
-            padding: 5px;
-            margin-bottom: 10px;
             font-weight: bold;
             text-align: center;
+            color: #ff0000; /* Red */
+            margin-bottom: 10px;
         }
-
-        .platoon {
-            background-color: #444444;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
-        }
-
-        .squad {
-            background-color: #222222;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
-        }
-
         ul {
             list-style-type: none;
             padding: 0;
         }
-
-        footer {
-            text-align: center;
-            margin: 20px;
-            font-size: 14px;
-            color: #cccccc;
+        li {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
+    <h1>Chain of Command</h1>
+    <div class="container">
+        <!-- High Command Section -->
+        <div class="high-command">
+            <div class="section-title">High Command</div>
+            <ul>
+                <li>High Commander 1: General John Smith</li>
+                <li>High Commander 2: Major General Jane Doe</li>
+                <li>High Commander 3: Colonel Mark Brown</li>
+                <li>High Commander 4: Colonel Emily Davis</li>
+                <li>High Commander 5: Colonel Sarah Wilson</li>
+                <li>High Commander 6: Colonel David Johnson</li>
+                <li>High Commander 7: Colonel Chris Lee</li>
+                <li>High Commander 8: Colonel Anna Harris</li>
+                <li>High Commander 9: Colonel Robert Clark</li>
+                <li>High Commander 10: Colonel Patricia Lewis</li>
+                <li>High Commander 11: Colonel Karen Walker</li>
+                <li>High Commander 12: Colonel Thomas Hall</li>
+                <li>High Commander 13: Colonel Jessica Allen</li>
+            </ul>
+        </div>
 
-<h1>UGF Organizational Chart</h1>
-<div class="chart-container">
-
-    <!-- High Command -->
-    <div class="high-command">
-        <div class="high-commander">High Commander 1</div>
-        <div class="high-commander">High Commander 2</div>
-        <div class="high-commander">High Commander 3</div>
-        <div class="high-commander">High Commander 4</div>
-        <div class="high-commander">High Commander 5</div>
-        <div class="high-commander">High Commander 6</div>
-        <div class="high-commander">High Commander 7</div>
-        <div class="high-commander">High Commander 8</div>
-        <div class="high-commander">High Commander 9</div>
-        <div class="high-commander">High Commander 10</div>
-        <div class="high-commander">High Commander 11</div>
-        <div class="high-commander">High Commander 12</div>
-        <div class="high-commander">High Commander 13</div>
-    </div>
-
-    <!-- Division -->
-    <div class="division">
-        <div class="section-title">1st Division</div>
-        <ul>
-            <li>General: John Doe</li>
-            <li>Major General: Jane Smith</li>
-            <li>Colonel: Mike Johnson</li>
-            <li>Colonel: Sarah Williams</li>
-        </ul>
+        <!-- Division Section -->
+        <div class="division">
+            <div class="section-title">1st Division</div>
+            <ul>
+                <li>General: Robert Adams</li>
+                <li>Major General: Lisa Miller</li>
+                <li>Colonel 1: Richard King</li>
+                <li>Colonel 2: Jessica Martinez</li>
+            </ul>
+        </div>
 
         <!-- Companies -->
-        <div class="companies">
-            <!-- Company 1 -->
-            <div class="company">
-                <div class="section-title">Company A</div>
+        <!-- Company 1 -->
+        <div class="company">
+            <div class="section-title">Company A</div>
+            <ul>
+                <li>Captain: James Taylor</li>
+                <li>Lieutenant: Jessica White</li>
+                <li>Sergeant Major: William Anderson</li>
+            </ul>
+
+            <!-- Platoons -->
+            <div class="platoon">
+                <div class="section-title">Platoon 1</div>
                 <ul>
-                    <li>Captain: Richard Brown</li>
-                    <li>Lieutenant: Lisa White</li>
-                    <li>Sergeant Major: Kevin Lee</li>
+                    <li>Sergeant: Michael Thomas</li>
+                    <li>Corporal: Laura Jackson</li>
                 </ul>
 
-                <!-- Platoons -->
-                <div class="platoon">
-                    <div class="section-title">Platoon 1</div>
+                <!-- Squads -->
+                <div class="squad">
+                    <div class="section-title">Squad 1</div>
                     <ul>
-                        <li>Sergeant: Brian Anderson</li>
-                        <li>Corporal: Michelle Taylor</li>
+                        <li>Squad Member: Noah Harris</li>
+                        <li>Squad Member: Emma Young</li>
                     </ul>
-
-                    <!-- Squads -->
-                    <div class="squad">
-                        <div class="section-title">Squad 1</div>
-                        <ul>
-                            <li>Squad Member: Adam Miller</li>
-                            <li>Squad Member: Jessica Hall</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 2</div>
-                        <ul>
-                            <li>Squad Member: Chris Moore</li>
-                            <li>Squad Member: Amanda Thompson</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 3</div>
-                        <ul>
-                            <li>Squad Member: Eric Garcia</li>
-                            <li>Squad Member: Laura Martinez</li>
-                        </ul>
-                    </div>
                 </div>
-
-                <div class="platoon">
-                    <div class="section-title">Platoon 2</div>
+                <div class="squad">
+                    <div class="section-title">Squad 2</div>
                     <ul>
-                        <li>Sergeant: Tom Scott</li>
-                        <li>Corporal: Emily Adams</li>
+                        <li>Squad Member: Ethan Lewis</li>
+                        <li>Squad Member: Mia Allen</li>
                     </ul>
-
-                    <div class="squad">
-                        <div class="section-title">Squad 1</div>
-                        <ul>
-                            <li>Squad Member: Olivia Lewis</li>
-                            <li>Squad Member: Daniel Harris</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 2</div>
-                        <ul>
-                            <li>Squad Member: Sophia Walker</li>
-                            <li>Squad Member: Matthew Hall</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 3</div>
-                        <ul>
-                            <li>Squad Member: Benjamin Allen</li>
-                            <li>Squad Member: Mia Young</li>
-                        </ul>
-                    </div>
                 </div>
-
-                <div class="platoon">
-                    <div class="section-title">Platoon 3</div>
+                <div class="squad">
+                    <div class="section-title">Squad 3</div>
                     <ul>
-                        <li>Sergeant: James Robinson</li>
-                        <li>Corporal: Ava King</li>
+                        <li>Squad Member: Jacob Scott</li>
+                        <li>Squad Member: Sophia Robinson</li>
                     </ul>
-
-                    <div class="squad">
-                        <div class="section-title">Squad 1</div>
-                        <ul>
-                            <li>Squad Member: Jacob Wright</li>
-                            <li>Squad Member: Zoe Scott</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 2</div>
-                        <ul>
-                            <li>Squad Member: Noah Hill</li>
-                            <li>Squad Member: Lily Adams</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 3</div>
-                        <ul>
-                            <li>Squad Member: Samuel Green</li>
-                            <li>Squad Member: Chloe Nelson</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
 
-            <!-- Company 2 -->
-            <div class="company">
-                <div class="section-title">Company B</div>
+            <div class="platoon">
+                <div class="section-title">Platoon 2</div>
                 <ul>
-                    <li>Captain: George Perez</li>
-                    <li>Lieutenant: Karen Clark</li>
-                    <li>Sergeant Major: Steven Lewis</li>
+                    <li>Sergeant: Daniel Wright</li>
+                    <li>Corporal: Isabella Martinez</li>
                 </ul>
 
-                <!-- Platoons -->
-                <div class="platoon">
-                    <div class="section-title">Platoon 1</div>
+                <div class="squad">
+                    <div class="section-title">Squad 1</div>
                     <ul>
-                        <li>Sergeant: Henry Young</li>
-                        <li>Corporal: Emma Wright</li>
+                        <li>Squad Member: Lucas Hall</li>
+                        <li>Squad Member: Lily Green</li>
                     </ul>
-
-                    <!-- Squads -->
-                    <div class="squad">
-                        <div class="section-title">Squad 1</div>
-                        <ul>
-                            <li>Squad Member: Lucas Hill</li>
-                            <li>Squad Member: Grace Robinson</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 2</div>
-                        <ul>
-                            <li>Squad Member: Mason Lee</li>
-                            <li>Squad Member: Ava Harris</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 3</div>
-                        <ul>
-                            <li>Squad Member: Elijah Martin</li>
-                            <li>Squad Member: Scarlett Thompson</li>
-                        </ul>
-                    </div>
                 </div>
-
-                <div class="platoon">
-                    <div class="section-title">Platoon 2</div>
+                <div class="squad">
+                    <div class="section-title">Squad 2</div>
                     <ul>
-                        <li>Sergeant: Carter King</li>
-                        <li>Corporal: Mia Collins</li>
+                        <li>Squad Member: Benjamin Adams</li>
+                        <li>Squad Member: Charlotte King</li>
                     </ul>
-
-                    <div class="squad">
-                        <div class="section-title">Squad 1</div>
-                        <ul>
-                            <li>Squad Member: Aiden Hall</li>
-                            <li>Squad Member: Charlotte Turner</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 2</div>
-                        <ul>
-                            <li>Squad Member: Anthony Walker</li>
-                            <li>Squad Member: Sofia Garcia</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 3</div>
-                        <ul>
-                            <li>Squad Member: Joshua Allen</li>
-                            <li>Squad Member: Aria Young</li>
-                        </ul>
-                    </div>
                 </div>
-
-                <div class="platoon">
-                    <div class="section-title">Platoon 3</div>
+                <div class="squad">
+                    <div class="section-title">Squad 3</div>
                     <ul>
-                        <li>Sergeant: Isaiah Harris</li>
-                        <li>Corporal: Layla Nelson</li>
+                        <li>Squad Member: Henry Nelson</li>
+                        <li>Squad Member: Grace Wright</li>
                     </ul>
-
-                    <div class="squad">
-                        <div class="section-title">Squad 1</div>
-                        <ul>
-                            <li>Squad Member: Daniel Lopez</li>
-                            <li>Squad Member: Hannah Baker</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 2</div>
-                        <ul>
-                            <li>Squad Member: Charles Wright</li>
-                            <li>Squad Member: Natalie Perez</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 3</div>
-                        <ul>
-                            <li>Squad Member: Samuel Young</li>
-                            <li>Squad Member: Victoria Thompson</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
 
-            <!-- Company 3 -->
-            <div class="company">
-                <div class="section-title">Company C</div>
+            <div class="platoon">
+                <div class="section-title">Platoon 3</div>
                 <ul>
-                    <li>Captain: Jacob Hill</li>
-                    <li>Lieutenant: Samantha Scott</li>
-                    <li>Sergeant Major: Liam Allen</li>
+                    <li>Sergeant: Matthew Carter</li>
+                    <li>Corporal: Amelia Lewis</li>
                 </ul>
 
-                <!-- Platoons -->
-                <div class="platoon">
-                    <div class="section-title">Platoon 1</div>
+                <div class="squad">
+                    <div class="section-title">Squad 1</div>
                     <ul>
-                        <li>Sergeant: Lucas Turner</li>
-                        <li>Corporal: Chloe Young</li>
+                        <li>Squad Member: Aiden Lee</li>
+                        <li>Squad Member: Hannah Thomas</li>
                     </ul>
-
-                    <!-- Squads -->
-                    <div class="squad">
-                        <div class="section-title">Squad 1</div>
-                        <ul>
-                            <li>Squad Member: Oliver Thompson</li>
-                            <li>Squad Member: Amelia Lee</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 2</div>
-                        <ul>
-                            <li>Squad Member: Elijah White</li>
-                            <li>Squad Member: Ella Harris</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 3</div>
-                        <ul>
-                            <li>Squad Member: Benjamin Robinson</li>
-                            <li>Squad Member: Grace Wright</li>
-                        </ul>
-                    </div>
                 </div>
-
-                <div class="platoon">
-                    <div class="section-title">Platoon 2</div>
+                <div class="squad">
+                    <div class="section-title">Squad 2</div>
                     <ul>
-                        <li>Sergeant: James Martinez</li>
-                        <li>Corporal: Sophia Lee</li>
+                        <li>Squad Member: Jackson White</li>
+                        <li>Squad Member: Mia Jackson</li>
                     </ul>
-
-                    <div class="squad">
-                        <div class="section-title">Squad 1</div>
-                        <ul>
-                            <li>Squad Member: Daniel Allen</li>
-                            <li>Squad Member: Mia Clark</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 2</div>
-                        <ul>
-                            <li>Squad Member: Ethan Young</li>
-                            <li>Squad Member: Emma Harris</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 3</div>
-                        <ul>
-                            <li>Squad Member: Lucas Martinez</li>
-                            <li>Squad Member: Ava Scott</li>
-                        </ul>
-                    </div>
                 </div>
-
-                <div class="platoon">
-                    <div class="section-title">Platoon 3</div>
+                <div class="squad">
+                    <div class="section-title">Squad 3</div>
                     <ul>
-                        <li>Sergeant: Michael Green</li>
-                        <li>Corporal: Zoe Thompson</li>
+                        <li>Squad Member: David Martin</li>
+                        <li>Squad Member: Ava Robinson</li>
                     </ul>
+                </div>
+            </div>
+        </div>
 
-                    <div class="squad">
-                        <div class="section-title">Squad 1</div>
-                        <ul>
-                            <li>Squad Member: Jackson White</li>
-                            <li>Squad Member: Lily Martin</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 2</div>
-                        <ul>
-                            <li>Squad Member: Ryan Harris</li>
-                            <li>Squad Member: Chloe Young</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 3</div>
-                        <ul>
-                            <li>Squad Member: Mason Taylor</li>
-                            <li>Squad Member: Grace Johnson</li>
-                        </ul>
-                    </div>
+        <!-- Company 2 -->
+        <div class="company">
+            <div class="section-title">Company B</div>
+            <ul>
+                <li>Captain: Christopher Martinez</li>
+                <li>Lieutenant: Abigail Lee</li>
+                <li>Sergeant Major: Joshua Taylor</li>
+            </ul>
+
+            <!-- Platoons -->
+            <div class="platoon">
+                <div class="section-title">Platoon 1</div>
+                <ul>
+                    <li>Sergeant: Elijah Wright</li>
+                    <li>Corporal: Grace Young</li>
+                </ul>
+
+                <div class="squad">
+                    <div class="section-title">Squad 1</div>
+                    <ul>
+                        <li>Squad Member: Caleb Hall</li>
+                        <li>Squad Member: Lily Scott</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 2</div>
+                    <ul>
+                        <li>Squad Member: Lucas Adams</li>
+                        <li>Squad Member: Zoe Baker</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 3</div>
+                    <ul>
+                        <li>Squad Member: Ryan Nelson</li>
+                        <li>Squad Member: Emma Perez</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Company 4 -->
-            <div class="company">
-                <div class="section-title">Company D</div>
+            <div class="platoon">
+                <div class="section-title">Platoon 2</div>
                 <ul>
-                    <li>Captain: David Baker</li>
-                    <li>Lieutenant: Emily Wilson</li>
-                    <li>Sergeant Major: Christopher Hall</li>
+                    <li>Sergeant: Samuel King</li>
+                    <li>Corporal: Charlotte Turner</li>
                 </ul>
 
-                <!-- Platoons -->
-                <div class="platoon">
-                    <div class="section-title">Platoon 1</div>
+                <div class="squad">
+                    <div class="section-title">Squad 1</div>
                     <ul>
-                        <li>Sergeant: William Adams</li>
-                        <li>Corporal: Sophia Baker</li>
+                        <li>Squad Member: Daniel Collins</li>
+                        <li>Squad Member: Emily Young</li>
                     </ul>
-
-                    <!-- Squads -->
-                    <div class="squad">
-                        <div class="section-title">Squad 1</div>
-                        <ul>
-                            <li>Squad Member: Anthony Clark</li>
-                            <li>Squad Member: Ella Robinson</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 2</div>
-                        <ul>
-                            <li>Squad Member: Daniel Young</li>
-                            <li>Squad Member: Lily Lewis</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 3</div>
-                        <ul>
-                            <li>Squad Member: Jacob King</li>
-                            <li>Squad Member: Scarlett White</li>
-                        </ul>
-                    </div>
                 </div>
-
-                <div class="platoon">
-                    <div class="section-title">Platoon 2</div>
+                <div class="squad">
+                    <div class="section-title">Squad 2</div>
                     <ul>
-                        <li>Sergeant: Andrew Scott</li>
-                        <li>Corporal: Mia Martinez</li>
+                        <li>Squad Member: Ethan Anderson</li>
+                        <li>Squad Member: Mia Garcia</li>
                     </ul>
-
-                    <div class="squad">
-                        <div class="section-title">Squad 1</div>
-                        <ul>
-                            <li>Squad Member: Samuel Brown</li>
-                            <li>Squad Member: Ava Taylor</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 2</div>
-                        <ul>
-                            <li>Squad Member: Ryan Wilson</li>
-                            <li>Squad Member: Emily Hill</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 3</div>
-                        <ul>
-                            <li>Squad Member: Jackson Martinez</li>
-                            <li>Squad Member: Mia Thompson</li>
-                        </ul>
-                    </div>
                 </div>
-
-                <div class="platoon">
-                    <div class="section-title">Platoon 3</div>
+                <div class="squad">
+                    <div class="section-title">Squad 3</div>
                     <ul>
-                        <li>Sergeant: Jacob Anderson</li>
-                        <li>Corporal: Ava Lewis</li>
+                        <li>Squad Member: Benjamin Martinez</li>
+                        <li>Squad Member: Ava Lopez</li>
                     </ul>
+                </div>
+            </div>
 
-                    <div class="squad">
-                        <div class="section-title">Squad 1</div>
-                        <ul>
-                            <li>Squad Member: Noah Green</li>
-                            <li>Squad Member: Grace Johnson</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 2</div>
-                        <ul>
-                            <li>Squad Member: Daniel Lee</li>
-                            <li>Squad Member: Chloe White</li>
-                        </ul>
-                    </div>
-                    <div class="squad">
-                        <div class="section-title">Squad 3</div>
-                        <ul>
-                            <li>Squad Member: Michael Clark</li>
-                            <li>Squad Member: Natalie Baker</li>
-                        </ul>
-                    </div>
+            <div class="platoon">
+                <div class="section-title">Platoon 3</div>
+                <ul>
+                    <li>Sergeant: David Smith</li>
+                    <li>Corporal: Sophia Martinez</li>
+                </ul>
+
+                <div class="squad">
+                    <div class="section-title">Squad 1</div>
+                    <ul>
+                        <li>Squad Member: Henry Brown</li>
+                        <li>Squad Member: Emily Taylor</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 2</div>
+                    <ul>
+                        <li>Squad Member: Christopher Johnson</li>
+                        <li>Squad Member: Mia Robinson</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 3</div>
+                    <ul>
+                        <li>Squad Member: William Wilson</li>
+                        <li>Squad Member: Olivia Moore</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company 3 -->
+        <div class="company">
+            <div class="section-title">Company C</div>
+            <ul>
+                <li>Captain: Andrew Garcia</li>
+                <li>Lieutenant: Hannah Robinson</li>
+                <li>Sergeant Major: Matthew Rodriguez</li>
+            </ul>
+
+            <!-- Platoons -->
+            <div class="platoon">
+                <div class="section-title">Platoon 1</div>
+                <ul>
+                    <li>Sergeant: Alexander Lee</li>
+                    <li>Corporal: Grace Davis</li>
+                </ul>
+
+                <div class="squad">
+                    <div class="section-title">Squad 1</div>
+                    <ul>
+                        <li>Squad Member: Benjamin Thompson</li>
+                        <li>Squad Member: Emily White</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 2</div>
+                    <ul>
+                        <li>Squad Member: Jackson Clark</li>
+                        <li>Squad Member: Sophia Lee</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 3</div>
+                    <ul>
+                        <li>Squad Member: Samuel Adams</li>
+                        <li>Squad Member: Amelia Hall</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="platoon">
+                <div class="section-title">Platoon 2</div>
+                <ul>
+                    <li>Sergeant: Matthew Smith</li>
+                    <li>Corporal: Olivia Miller</li>
+                </ul>
+
+                <div class="squad">
+                    <div class="section-title">Squad 1</div>
+                    <ul>
+                        <li>Squad Member: Ethan Young</li>
+                        <li>Squad Member: Mia Harris</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 2</div>
+                    <ul>
+                        <li>Squad Member: William White</li>
+                        <li>Squad Member: Zoe Johnson</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 3</div>
+                    <ul>
+                        <li>Squad Member: Jacob Martinez</li>
+                        <li>Squad Member: Ava Williams</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="platoon">
+                <div class="section-title">Platoon 3</div>
+                <ul>
+                    <li>Sergeant: Daniel Garcia</li>
+                    <li>Corporal: Charlotte Lee</li>
+                </ul>
+
+                <div class="squad">
+                    <div class="section-title">Squad 1</div>
+                    <ul>
+                        <li>Squad Member: Michael Robinson</li>
+                        <li>Squad Member: Natalie Harris</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 2</div>
+                    <ul>
+                        <li>Squad Member: James Martin</li>
+                        <li>Squad Member: Mia Garcia</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 3</div>
+                    <ul>
+                        <li>Squad Member: David Lee</li>
+                        <li>Squad Member: Emily Clark</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company 4 -->
+        <div class="company">
+            <div class="section-title">Company D</div>
+            <ul>
+                <li>Captain: Joshua Johnson</li>
+                <li>Lieutenant: Sophia Clark</li>
+                <li>Sergeant Major: Ryan Hall</li>
+            </ul>
+
+            <!-- Platoons -->
+            <div class="platoon">
+                <div class="section-title">Platoon 1</div>
+                <ul>
+                    <li>Sergeant: Jacob Martinez</li>
+                    <li>Corporal: Lily Wilson</li>
+                </ul>
+
+                <div class="squad">
+                    <div class="section-title">Squad 1</div>
+                    <ul>
+                        <li>Squad Member: William Thompson</li>
+                        <li>Squad Member: Ava Davis</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 2</div>
+                    <ul>
+                        <li>Squad Member: Daniel Brown</li>
+                        <li>Squad Member: Mia Garcia</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 3</div>
+                    <ul>
+                        <li>Squad Member: Lucas Wilson</li>
+                        <li>Squad Member: Chloe Johnson</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="platoon">
+                <div class="section-title">Platoon 2</div>
+                <ul>
+                    <li>Sergeant: James Smith</li>
+                    <li>Corporal: Emily Anderson</li>
+                </ul>
+
+                <div class="squad">
+                    <div class="section-title">Squad 1</div>
+                    <ul>
+                        <li>Squad Member: Matthew Harris</li>
+                        <li>Squad Member: Zoe Lewis</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 2</div>
+                    <ul>
+                        <li>Squad Member: Alexander Lee</li>
+                        <li>Squad Member: Emma Wilson</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 3</div>
+                    <ul>
+                        <li>Squad Member: Christopher Hall</li>
+                        <li>Squad Member: Ava Young</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="platoon">
+                <div class="section-title">Platoon 3</div>
+                <ul>
+                    <li>Sergeant: Samuel Adams</li>
+                    <li>Corporal: Charlotte Jackson</li>
+                </ul>
+
+                <div class="squad">
+                    <div class="section-title">Squad 1</div>
+                    <ul>
+                        <li>Squad Member: Daniel Martinez</li>
+                        <li>Squad Member: Natalie Brown</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 2</div>
+                    <ul>
+                        <li>Squad Member: Ryan Miller</li>
+                        <li>Squad Member: Grace Davis</li>
+                    </ul>
+                </div>
+                <div class="squad">
+                    <div class="section-title">Squad 3</div>
+                    <ul>
+                        <li>Squad Member: Benjamin Smith</li>
+                        <li>Squad Member: Lily Robinson</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        // This script is for horizontal scrolling functionality
-        const container = document.querySelector('.container');
-        container.style.overflowX = 'auto';
-        container.style.whiteSpace = 'nowrap';
-        container.style.display = 'flex';
-    </script>
 </body>
 </html>
