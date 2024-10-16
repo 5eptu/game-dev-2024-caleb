@@ -106,8 +106,8 @@
             font-size: 18px;
             padding: 10px;
             text-align: center;
-            box-shadow: inset 0 0 10px rgba(255, 153, 204, 0.8);
-            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+            box-shadow: none; /* Removed glowing effect */
+            transition: background-color 0.3s ease;
             box-sizing: border-box; /* Fix for fitting inside box */
         }
 
@@ -127,22 +127,11 @@
             font-size: 18px;
             padding: 10px;
             text-align: center;
-            box-shadow: inset 0 0 10px rgba(255, 153, 204, 0.8);
-            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+            box-shadow: none; /* Removed glowing effect */
+            transition: background-color 0.3s ease;
             box-sizing: border-box; /* Fix for fitting inside box */
             overflow-y: auto; /* Scroll for the output box */
             white-space: pre-wrap; /* Wrap text */
-        }
-
-        /* Glowing effect on input/output boxes */
-        .input-box input,
-        .output-box {
-            animation: inputGlow 1s ease-in-out infinite alternate;
-        }
-
-        @keyframes inputGlow {
-            from { box-shadow: inset 0 0 15px rgba(255, 153, 204, 0.8); }
-            to { box-shadow: inset 0 0 30px rgba(255, 153, 204, 1); }
         }
     </style>
 </head>
@@ -156,26 +145,22 @@
     </div>
 
     <script>
-        // Function to handle keydown event
         function handleKeyDown(event) {
             if (event.key === 'Enter') {
-                displayOutput();
-                event.preventDefault(); // Prevent form submission if inside a form
-            }
-        }
+                const inputField = document.getElementById('inputField');
+                const outputBox = document.getElementById('outputBox');
+                const inputText = inputField.value.trim();
 
-        // Function to display the output based on the input
-        function displayOutput() {
-            const inputField = document.getElementById('inputField');
-            const outputBox = document.getElementById('outputBox');
-            const inputText = inputField.value.trim();
+                if (inputText !== '') {
+                    const newLine = document.createElement('div');
+                    newLine.textContent = `Your name is: ${inputText}`;
+                    outputBox.appendChild(newLine);
+                    inputField.value = ''; // Clear input field after pressing Enter
+                    outputBox.scrollTop = outputBox.scrollHeight; // Scroll to the bottom of the output box
+                }
 
-            if (inputText !== '') {
-                const newLine = document.createElement('div');
-                newLine.textContent = `Your name is: ${inputText}`;
-                outputBox.appendChild(newLine);
-                inputField.value = ''; // Clear input field after pressing Enter
-                outputBox.scrollTop = outputBox.scrollHeight; // Scroll to the bottom of the output box
+                // Prevent form submission if inside a form
+                event.preventDefault();
             }
         }
     </script>
