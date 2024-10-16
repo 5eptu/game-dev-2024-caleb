@@ -156,22 +156,26 @@
     </div>
 
     <script>
+        // Function to handle keydown event
         function handleKeyDown(event) {
             if (event.key === 'Enter') {
-                const inputField = document.getElementById('inputField');
-                const outputBox = document.getElementById('outputBox');
-                const inputText = inputField.value.trim();
+                displayOutput();
+                event.preventDefault(); // Prevent form submission if inside a form
+            }
+        }
 
-                if (inputText !== '') {
-                    const newLine = document.createElement('div');
-                    newLine.textContent = `Your name is: ${inputText}`;
-                    outputBox.appendChild(newLine);
-                    inputField.value = ''; // Clear input field after pressing Enter
-                    outputBox.scrollTop = outputBox.scrollHeight; // Scroll to the bottom of the output box
-                }
+        // Function to display the output based on the input
+        function displayOutput() {
+            const inputField = document.getElementById('inputField');
+            const outputBox = document.getElementById('outputBox');
+            const inputText = inputField.value.trim();
 
-                // Prevent form submission if inside a form
-                event.preventDefault();
+            if (inputText !== '') {
+                const newLine = document.createElement('div');
+                newLine.textContent = `Your name is: ${inputText}`;
+                outputBox.appendChild(newLine);
+                inputField.value = ''; // Clear input field after pressing Enter
+                outputBox.scrollTop = outputBox.scrollHeight; // Scroll to the bottom of the output box
             }
         }
     </script>
