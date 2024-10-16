@@ -3,46 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chain of Command</title>
+    <title>Sci-Fi Chain of Command</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: #000;
+            color: #fff;
         }
+
         .container {
             width: 90%;
-            margin: 20px auto;
+            margin: 40px auto;
         }
-        .company, .platoon, .squad {
-            background-color: #ffffff;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        .title {
+            text-align: center;
+            font-size: 36px;
+            color: #f00;
+            border-bottom: 2px solid #f00;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
         }
-        h2, h3, h4 {
-            margin: 0 0 10px 0;
-            color: #333;
+
+        .company {
+            margin-bottom: 30px;
+            background-color: #111;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
         }
+
+        .company h2 {
+            color: #f00;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f00;
+            padding-bottom: 10px;
+        }
+
+        .platoon {
+            margin-bottom: 20px;
+        }
+
+        .platoon h3 {
+            color: #ff3333;
+            text-transform: uppercase;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .squad {
+            padding-left: 20px;
+            border-left: 2px solid #f00;
+            margin-bottom: 10px;
+        }
+
+        .squad h4 {
+            color: #ff6666;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
+
         ul li {
             margin: 5px 0;
+            color: #eee;
+            font-size: 14px;
         }
-        .squad-members {
-            margin-left: 20px;
+
+        /* Sci-fi elements */
+        .highlight {
+            color: #ff3333;
+        }
+
+        .border-effect {
+            border: 1px solid #fff;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="title">Chain of Command</div>
+
         <!-- Company 1 -->
-        <div class="company">
-            <h2>Company A</h2>
+        <div class="company border-effect">
+            <h2>Company A <span class="highlight">(Red Division)</span></h2>
 
             <!-- Platoon 1 -->
             <div class="platoon">
@@ -52,8 +106,8 @@
                 <div class="squad">
                     <h4>Squad 1</h4>
                     <ul class="squad-members">
-                        <li>Sergeant: John Doe</li>
-                        <li>Corporal: Jane Smith</li>
+                        <li><strong>Sergeant:</strong> John Doe</li>
+                        <li><strong>Corporal:</strong> Jane Smith</li>
                         <li>Squad Member: Alice Johnson</li>
                         <li>Squad Member: Bob Brown</li>
                     </ul>
@@ -63,8 +117,8 @@
                 <div class="squad">
                     <h4>Squad 2</h4>
                     <ul class="squad-members">
-                        <li>Sergeant: Tom Harris</li>
-                        <li>Corporal: Sarah Lee</li>
+                        <li><strong>Sergeant:</strong> Tom Harris</li>
+                        <li><strong>Corporal:</strong> Sarah Lee</li>
                         <li>Squad Member: Chris Evans</li>
                         <li>Squad Member: Diana White</li>
                     </ul>
@@ -79,8 +133,8 @@
                 <div class="squad">
                     <h4>Squad 1</h4>
                     <ul class="squad-members">
-                        <li>Sergeant: Kevin Green</li>
-                        <li>Corporal: Lucy Blue</li>
+                        <li><strong>Sergeant:</strong> Kevin Green</li>
+                        <li><strong>Corporal:</strong> Lucy Blue</li>
                         <li>Squad Member: Robert Davis</li>
                         <li>Squad Member: Emily Adams</li>
                     </ul>
@@ -89,8 +143,8 @@
         </div>
 
         <!-- Company 2 -->
-        <div class="company">
-            <h2>Company B</h2>
+        <div class="company border-effect">
+            <h2>Company B <span class="highlight">(White Division)</span></h2>
 
             <!-- Platoon 1 -->
             <div class="platoon">
@@ -100,8 +154,8 @@
                 <div class="squad">
                     <h4>Squad 1</h4>
                     <ul class="squad-members">
-                        <li>Sergeant: Mike Walker</li>
-                        <li>Corporal: Angela Fox</li>
+                        <li><strong>Sergeant:</strong> Mike Walker</li>
+                        <li><strong>Corporal:</strong> Angela Fox</li>
                         <li>Squad Member: Peter Black</li>
                         <li>Squad Member: Laura Scott</li>
                     </ul>
