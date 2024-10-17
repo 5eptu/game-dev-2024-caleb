@@ -15,31 +15,27 @@
     </style>
 </head>
 <body>
-    <h1 align="center">tla17-move-fred</h1>
+    <h1 align="center">tla17-move-caleb</h1>
 
-    <!-- Buttons for manual and automatic movement -->
+
     <input type="button" id="myButton02" value="Image Right" onclick="moveRight()"><br><br>
     <input type="button" value="Auto Move Right" onclick="startAutoMove()"><br><br>
 
-    <!-- Image to move -->
-    <img id="myImage01" src="myImage01.jpg" alt="Image">
+    <img id="myImage01" src="https://www.shutterstock.com/image-photo/red-passenger-train-wagon-on-260nw-1734198443.jpg" alt="Image">
 
     <script>
-        // Global variable to store the interval
         let myClock02;
 
-        // Function to move the image to the right
         function moveRight() {
             let image = document.getElementById('myImage01');
             image.style.left = parseInt(image.style.left) + 10 + 'px';
         }
 
-        // Function to start automatic movement
         function startAutoMove() {
-            document.getElementById('myImage01').style.left = '0px'; // Reset position to 0
-            clearInterval(myClock02); // Clear any previous interval
+            document.getElementById('myImage01').style.left = '0px';
+            clearInterval(myClock02);
             myClock02 = setInterval(function () {
-                document.getElementById('myButton02').click(); // Simulate button click every 30ms
+                document.getElementById('myButton02').click();
             }, 30);
         }
     </script>
