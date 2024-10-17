@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Move Right</title>
+    <style>
+        #myImage01 {
+            position: relative;
+            width: 100px;
+            height: 80px;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">tla17-move-fred</h1>
+
+    <!-- Buttons for manual and automatic movement -->
+    <input type="button" id="myButton02" value="Image Right" onclick="moveRight()"><br><br>
+    <input type="button" value="Auto Move Right" onclick="startAutoMove()"><br><br>
+
+    <!-- Image to move -->
+    <img id="myImage01" src="myImage01.jpg" alt="Image">
+
+    <script>
+        // Global variable to store the interval
+        let myClock02;
+
+        // Function to move the image to the right
+        function moveRight() {
+            let image = document.getElementById('myImage01');
+            image.style.left = parseInt(image.style.left) + 10 + 'px';
+        }
+
+        // Function to start automatic movement
+        function startAutoMove() {
+            document.getElementById('myImage01').style.left = '0px'; // Reset position to 0
+            clearInterval(myClock02); // Clear any previous interval
+            myClock02 = setInterval(function () {
+                document.getElementById('myButton02').click(); // Simulate button click every 30ms
+            }, 30);
+        }
+    </script>
+</body>
+</html>
