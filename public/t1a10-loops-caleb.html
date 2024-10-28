@@ -3,282 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T1A10 Loops - Caleb's Assignment</title>
+    <title>t1a10-loops-caleb.html</title>
     <style>
-        /* Font imports */
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-        /* General styling */
         body {
-            font-family: 'Orbitron', sans-serif;
-            background-color: #121212;
-            color: #D3D3D3;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        header {
-            background-color: #1F1F1F;
-            border-bottom: 4px solid #B30000;
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #f5f5f5;
             text-align: center;
-            padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        h1 {
-            font-size: 3em;
-            color: #FF3B3B;
-            margin: 0;
-            letter-spacing: 2px;
-        }
-
-        .tagline {
-            font-size: 1.3em;
-            color: #B30000;
-            font-weight: 300;
-            margin-top: 5px;
-            letter-spacing: 1.5px;
-        }
-
-        .content {
-            padding: 100px 50px 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .loop-box {
-            background-color: #1E1E1E;
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 8px solid #FF3B3B;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.4s, box-shadow 0.4s;
-        }
-
-        .loop-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+            padding: 50px;
         }
 
         h2 {
-            color: #FF3B3B;
-            font-size: 2em;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #B30000;
-            padding-bottom: 10px;
-        }
-
-        p {
-            line-height: 1.8em;
-            color: #D9D9D9;
-            font-size: 1.2em;
-            text-align: justify;
-        }
-
-        /* Live code output box */
-        .code-output {
-            background-color: #141414;
-            padding: 20px;
-            border: 3px solid #B30000;
-            border-radius: 10px;
-            font-family: monospace;
-            color: #0f0;
-            font-size: 0.9em;
-            max-height: 300px;
-            overflow-y: scroll;
-            position: relative;
-            margin-top: 20px;
-        }
-
-        .anomaly {
-            color: #FF3B3B;
-            text-decoration: line-through;
-        }
-
-        .corrected {
-            color: #0f0;
-        }
-
-        .code-status {
-            font-size: 1.1em;
-            color: #FF3B3B;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        /* Dystopian corporate message loop */
-        .dystopian-message {
-            background-color: #292929;
-            padding: 20px;
-            margin-top: 50px;
-            border-left: 8px solid #B30000;
-            color: #D1D1D1;
-            font-size: 1.3em;
-            line-height: 1.8em;
-        }
-
-        .dystopian-message span {
-            font-weight: bold;
-            color: #FF3B3B;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #0F0F0F;
-            color: #C3C3C3;
-            padding: 30px 20px;
-            text-align: center;
-            margin-top: 50px;
-            font-size: 0.9em;
+            color: #e63946;
+            margin-bottom: 20px;
         }
 
         a {
-            color: #FF3B3B;
+            color: #e63946;
             text-decoration: none;
+            font-weight: bold;
         }
 
-        a:hover {
-            text-decoration: underline;
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 80px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #333;
+            color: #f5f5f5;
+            margin-bottom: 20px;
         }
 
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 10px;
+        input[type="button"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #e63946;
+            color: #f5f5f5;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background-color: #FF3B3B;
-            border-radius: 10px;
+        input[type="button"]:hover {
+            background-color: #d62828;
         }
 
-        /* LeXs_09 image styling */
-        #lexsImage {
-            display: none;
+        #myDiv01 {
             margin-top: 20px;
-            border-radius: 10px;
-            border: 2px solid #B30000;
+            font-size: 18px;
+            line-height: 1.6;
+            font-weight: bold;
+        }
+
+        .loop-output {
+            animation: fadeIn 0.5s ease-in-out;
+            background-color: #333;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            color: #f5f5f5;
+            border: 1px solid #e63946;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>LOOP CORP</h1>
-        <div class="tagline">Infinite Protocols. Zero Error. Compliance Ensured.</div>
-    </header>
 
-    <div class="content">
-        <div class="loop-box">
-            <h2>Loop System Protocol 001</h2>
-            <p>The Loop System is designed for maximum operational efficiency. Each cycle is validated through rigorous human trials, ensuring that no deviation occurs from the intended function. Any anomalies are flagged and swiftly corrected.</p>
-            <div class="code-output" id="codeOutput">
-                <p>0x12FF: Initializing... <br> 
-                   0x12FF: Running diagnostics... <br> 
-                   0x124F: <span class="anomaly">ERROR - Protocol deviation detected.</span> <br>
-                   0x1250: <span class="corrected">Revised code block: Protocol 001 reset.</span> <br>
-                   0x1260: Loop cycle initialized. <br> 
-                   0x12FF: <span class="anomaly">ERROR - Faulty variable detected.</span> <br>
-                   0x1275: <span class="corrected">Correcting: Variable re-assigned.</span> <br>
-                   0x1290: Continuity achieved. <br> 
-                   0x1300: Loop cycle running... <br> 
-                   0x132F: <span class="anomaly">Error: Unrecognized input 'X231'.</span> <br>
-                   0x1350: <span class="corrected">Revised: Input discarded. Faulty code rejected.</span> <br>
-                   0x1400: System stable.</p>
-            </div>
-            <img id="lexsImage" src="https://cdn.pixabay.com/photo/2014/04/03/10/26/banana-310449_1280.png" width="200">
-            <div class="code-status" id="codeStatus">Status: Active Monitoring</div>
-        </div>
+    <h2>t1a10-loops-caleb</h2>
+    <a href="#">t1a10-loops-caleb.html</a><br>
 
-        <div class="loop-box">
-            <h2>Failure is Not an Option</h2>
-            <p>Any breach in the loop leads to immediate systemic analysis. The individual responsible for the breach is processed, reviewed, and if necessary, eliminated. Our protocols are absolute.</p>
-        </div>
-
-        <div class="loop-box">
-            <h2>Compliance is Safety</h2>
-            <p>For your safety, please ensure adherence to all loops. Any deviation introduces unnecessary risk, and non-compliance is met with corrective actions tailored to ensure you stay within operational parameters.</p>
-        </div>
-
-        <div class="dystopian-message">
-            <span>WARNING:</span> Non-compliance detected in previous cycles may result in loss of privileges. Continue within the loop to avoid adverse outcomes. At LOOP CORP, failure is logged, monitored, and evaluated for corrective action. Remember: <strong>compliance ensures survival.</strong>
-        </div>
-    </div>
-
-    <footer>
-        &copy; 2048 LOOP CORP - All rights reserved. <br>
-        For inquiries, visit <a href="#">our contact page</a> and maintain your position in the loop.
-    </footer>
+    <h4>Example input/output code</h4>
+    <h4>Example working code</h4>
+    Max loops: <input id="myNum01" type="number" value="4"><br>
+    <input type="button" value="Basic For Loop with Style" onclick="runLoop()">
+    
+    <div id="myDiv01">...</div>
 
     <script>
-        // Function to simulate live code output in the Protocol 001 box
-        const codeOutput = document.getElementById("codeOutput");
-        const codeStatus = document.getElementById("codeStatus");
-        const lexsImage = document.getElementById("lexsImage");
-        let lexsTriggered = false; // To track if LeXs_09 message has appeared
+    function runLoop() {
+        let myTemp = "";
+        let myMax = parseInt(document.getElementById('myNum01').value);
 
-        const randomCodes = [
-            "0x1500: Running diagnostic checks...",
-            "0x1501: Diagnostic complete. All systems operational.",
-            "0x1510: Loop iteration stable.",
-            "0x1515: <span class='anomaly'>ERROR: Data corruption detected.</span>",
-            "0x1520: <span class='corrected'>Corrected: Variable X reassigned.</span>",
-            "0x1530: Input accepted: Executing protocol 019.",
-            "0x1535: Loop successful, moving to next phase.",
-            "0x1540: <span class='corrected'>Code block updated: Stability achieved.</span>",
-            "0x1545: <span class='anomaly'>Unstable variable detected.</span>",
-            "0x1550: <span class='anomaly'>Security breach in loop sequence.</span>",
-            "0x1555: <span class='anomaly'>Memory overflow. Operation aborted.</span>"
-        ];
-
-        // Random code generator
-        function generateRandomCode() {
-            let chance = Math.random();
-            
-            // Lower chance for faulty codes
-            if (chance > 0.8) { 
-                let faultyCode = randomCodes.filter(code => code.includes('anomaly'));
-                return faultyCode[Math.floor(Math.random() * faultyCode.length)];
-            } else {
-                let acceptedCode = randomCodes.filter(code => !code.includes('anomaly'));
-                return acceptedCode[Math.floor(Math.random() * acceptedCode.length)];
-            }
+        for (let myLoop = 0; myLoop < myMax; myLoop++) {
+            myTemp += '<div class="loop-output">Cool! Loop number: ' + myLoop + '</div>';
         }
 
-        // Function to append code to the output
-        function appendCode(newCode) {
-            const paragraph = document.createElement('p');
-            paragraph.innerHTML = newCode;
-            codeOutput.appendChild(paragraph);
-
-            // Ensure the last message is always visible
-            codeOutput.scrollTop = codeOutput.scrollHeight;
-
-            // Trigger LeXs_09 message and image only once
-            if (!lexsTriggered && Math.random() > 0.99) {  // 1% chance per interval
-                const lexsMessage = document.createElement('p');
-                lexsMessage.innerHTML = "<span class='corrected'>Encrypted message received: User 'LeXs_09'</span>";
-                codeOutput.appendChild(lexsMessage);
-                lexsImage.style.display = "block"; // Show banana image
-                lexsTriggered = true; // Ensure this only happens once
-            }
-        }
-
-        // Simulate live code output every 3 seconds
-        setInterval(() => {
-            appendCode(generateRandomCode());
-        }, 3000);
-
-        // Update system status every second
-        setInterval(() => {
-            codeStatus.innerHTML = "Status: Monitoring " + new Date().toLocaleTimeString();
-        }, 1000);
+        document.getElementById('myDiv01').innerHTML = myTemp;
+    }
     </script>
+
 </body>
 </html>
-
