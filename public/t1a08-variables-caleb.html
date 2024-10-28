@@ -120,11 +120,9 @@
                 document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myTotal;
             }">
 
-            <input type="button" value="Add2 and fix" onclick="{
-                let myX = parseFloat(document.getElementById('myIn01').value);
-                let myY = parseFloat(document.getElementById('myIn02').value);
-                let myTotal = myX + myY;
-                document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myTotal;
+            <input type="button" value="Concatenate" onclick="{
+                const myStrTotal = document.getElementById('myIn01').value + document.getElementById('myIn02').value;
+                document.getElementById('myDiv01').innerHTML = 'Your answer is ' + myStrTotal;
             }">
         </div>
 
