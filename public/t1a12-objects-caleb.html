@@ -3,124 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>t1a12-objects-caleb</title>
+  <title>Enhanced Objects Example</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      background-color: #f0f8ff;
       color: #333;
       text-align: center;
       padding: 20px;
     }
 
     h2 {
-      color: #555;
-      font-size: 24px;
-      margin-bottom: 20px;
+      color: #444;
+      font-size: 22px;
+      margin-bottom: 10px;
     }
 
     pre {
-      background-color: #eee;
+      background-color: #e0f7fa;
       padding: 10px;
       border-radius: 5px;
       width: 90%;
-      margin: 20px auto;
+      margin: 15px auto;
       text-align: left;
       font-size: 14px;
     }
 
-    input[type="button"] {
-      background-color: #3498db;
+    button {
+      background-color: #00796b;
       color: #fff;
       border: none;
-      padding: 8px 16px;
+      padding: 10px 20px;
       margin: 5px;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 14px;
     }
 
     #output {
-      background-color: #f1f1f1;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
       padding: 15px;
       margin-top: 15px;
       border-radius: 5px;
+      width: 80%;
+      margin: 15px auto;
       display: none;
+      font-family: 'Courier New', monospace;
+      text-align: left;
     }
   </style>
 </head>
 <body>
 
-  <h2>t1a12-objects-caleb</h2>
+  <h2>Enhanced Object Details</h2>
 
   <pre>
-    let myPerson = {
-      firstName: "John",
-      lastName: "Doe",
-      age: 50,
-      eyeColor: "blue",
-      hobbies: ["reading", "cycling", "hiking"],
+    const myPerson = {
+      firstName: "Alice",
+      lastName: "Johnson",
+      age: 32,
+      eyeColor: "green",
+      occupation: "Software Engineer",
+      hobbies: ["painting", "cycling", "gaming"],
       address: {
-        street: "123 Elm St",
-        city: "Dallas",
-        state: "TX"
+        street: "456 Oak St",
+        city: "San Francisco",
+        state: "CA",
+        postalCode: "94102"
+      },
+      contact: {
+        email: "alice.j@example.com",
+        phone: "555-0199"
       }
     };
   </pre>
 
-  <input type="button" value="Show Person Info" onclick="showInfo('person')">
-  <input type="button" value="Hide Person Info" onclick="hideInfo()">
+  <button onclick="showInfo('person')">Show Person Info</button>
+  <button onclick="hideInfo()">Hide Info</button>
 
   <pre>
-    let myCar = {
-      brand: "Tesla",
-      model: "Model S",
-      year: 2023,
-      color: "Red",
-      owner: "John Doe"
+    const myCar = {
+      brand: "Ford",
+      model: "Mustang",
+      year: 2021,
+      color: "Blue",
+      engine: {
+        type: "V8",
+        horsepower: 450,
+        fuelType: "Gasoline"
+      },
+      owner: "Alice Johnson",
+      insurance: {
+        provider: "Progressive",
+        policyNumber: "12345678"
+      }
     };
   </pre>
 
-  <input type="button" value="Show Car Info" onclick="showInfo('car')">
-  <input type="button" value="Hide Car Info" onclick="hideInfo()">
+  <button onclick="showInfo('car')">Show Car Info</button>
+  <button onclick="hideInfo()">Hide Info</button>
 
   <div id="output"></div>
 
   <script>
+    const objects = {
+      person: {
+        firstName: "Alice",
+        lastName: "Johnson",
+        age: 32,
+        eyeColor: "green",
+        occupation: "Software Engineer",
+        hobbies: ["painting", "cycling", "gaming"],
+        address: {
+          street: "456 Oak St",
+          city: "San Francisco",
+          state: "CA",
+          postalCode: "94102"
+        },
+        contact: {
+          email: "alice.j@example.com",
+          phone: "555-0199"
+        }
+      },
+      car: {
+        brand: "Ford",
+        model: "Mustang",
+        year: 2021,
+        color: "Blue",
+        engine: {
+          type: "V8",
+          horsepower: 450,
+          fuelType: "Gasoline"
+        },
+        owner: "Alice Johnson",
+        insurance: {
+          provider: "Progressive",
+          policyNumber: "12345678"
+        }
+      }
+    };
+
     function showInfo(type) {
-      let output = "";
-      if (type === 'person') {
-        const myPerson = {
-          firstName: "John",
-          lastName: "Doe",
-          age: 50,
-          eyeColor: "blue",
-          hobbies: ["reading", "cycling", "hiking"],
-          address: { street: "123 Elm St", city: "Dallas", state: "TX" }
-        };
-        output = `
-          <strong>Person Info:</strong><br>
-          Name: ${myPerson.firstName} ${myPerson.lastName}<br>
-          Age: ${myPerson.age}<br>
-          Eye Color: ${myPerson.eyeColor}<br>
-          Hobbies: ${myPerson.hobbies.join(', ')}<br>
-          Address: ${myPerson.address.street}, ${myPerson.address.city}, ${myPerson.address.state}
-        `;
-      } else if (type === 'car') {
-        const myCar = {
-          brand: "Tesla",
-          model: "Model S",
-          year: 2023,
-          color: "Red",
-          owner: "John Doe"
-        };
-        output = `
-          <strong>Car Info:</strong><br>
-          Brand: ${myCar.brand}<br>
-          Model: ${myCar.model}<br>
-          Year: ${myCar.year}<br>
-          Color: ${myCar.color}<br>
-          Owner: ${myCar.owner}
-        `;
+      let output = "<strong>Details:</strong><br>";
+      const obj = objects[type];
+      for (const key in obj) {
+        if (typeof obj[key] === 'object') {
+          output += `<strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong><br>`;
+          for (const innerKey in obj[key]) {
+            output += `- ${innerKey}: ${obj[key][innerKey]}<br>`;
+          }
+        } else {
+          output += `<strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${obj[key]}<br>`;
+        }
       }
       document.getElementById("output").innerHTML = output;
       document.getElementById("output").style.display = 'block';
