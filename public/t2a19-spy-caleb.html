@@ -77,12 +77,9 @@
     function scrambleText(text) {
         let lettersOnly = text.replace(/[^a-zA-Z]/g, '').split('');
         let scrambled = [];
-        let positions = [];
 
         // Save original positions and scramble letters
-        lettersOnly.forEach((char, index) => {
-            positions.push(index);
-        });
+        let positions = lettersOnly.map((_, index) => index);
 
         // Shuffle letters and positions
         for (let i = lettersOnly.length - 1; i > 0; i--) {
@@ -91,28 +88,25 @@
             [positions[i], positions[j]] = [positions[j], positions[i]];
         }
 
-        // Add random numbers and encoded positions
+        // Add random numbers and encode original positions
         for (let i = 0; i < lettersOnly.length; i++) {
-            scrambled.push(lettersOnly[i]);
-            scrambled.push(Math.floor(Math.random() * 10)); // Random number
-            scrambled.push(`-${positions[i]}-`); // Encode original position
+            scrambled.push(`${lettersOnly[i]}${Math.floor(Math.random() * 10)}[${positions[i]}]`);
         }
 
         return scrambled.join('');
     }
 
     function unscrambleText(encryptedText) {
-        // Extract letters and positions with regex
-        let letterPositionPairs = encryptedText.match(/[a-zA-Z]-\d+-/g);
+        // Match letter + number + [position]
+        let letterPositionPairs = encryptedText.match(/[a-zA-Z]\d+\[\d+\]/g);
         if (!letterPositionPairs) return 'Error: Encrypted text is in incorrect format.';
 
         let letters = [];
-        let positions = [];
 
-        // Separate letters and their positions
+        // Extract letters and their positions
         letterPositionPairs.forEach(pair => {
-            let letter = pair[0];
-            let position = parseInt(pair.match(/-(\d+)-/)[1]);
+            let letter = pair[0];  // First character is the letter
+            let position = parseInt(pair.match(/\[(\d+)\]/)[1]);  // Position inside []
             letters.push({letter, position});
         });
 
