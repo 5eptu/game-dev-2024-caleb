@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Encryptor</title>
+    <title>t2a19-spy-caleb.html</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,7 +50,7 @@
 </head>
 <body>
 
-<h1>Text Encryptor</h1>
+<h1>t2a19-spy-caleb.html</h1>
 
 <div class="textarea-container">
     <textarea id="myArea01" placeholder="Enter text to encrypt...">Hello, how are you?</textarea><br>
@@ -61,18 +61,41 @@
 
 <script>
     function encryptText() {
-        let text = document.getElementById('myArea01').value.toLowerCase();
-        let encryptedText = text.split('').map(char => {
-            if (char === 'e') return 'f';
-            if (char === 'h') return 'i';
-            return char;
-        }).join('');
+        let text = document.getElementById('myArea01').value;
+        let scrambledText = scrambleText(text);
         
-        document.getElementById('myArea02').value = encryptedText;
+        document.getElementById('myArea02').value = scrambledText;
     }
 
     function decryptText() {
-        alert('Sorry, decryption functionality is not available yet!');
+        let encryptedText = document.getElementById('myArea02').value;
+        let decryptedText = unscrambleText(encryptedText);
+
+        document.getElementById('myArea02').value = decryptedText;
+    }
+
+    function scrambleText(text) {
+        // Remove spaces and scramble the characters
+        let lettersOnly = text.replace(/[^a-zA-Z]/g, '').split('').sort(() => Math.random() - 0.5);
+        let scrambled = [];
+
+        // Add random numbers and scrambled letters to the output
+        for (let char of lettersOnly) {
+            scrambled.push(char);
+            scrambled.push(Math.floor(Math.random() * 10)); // Random number between 0-9
+        }
+
+        return scrambled.join('');
+    }
+
+    function unscrambleText(encryptedText) {
+        // Remove all non-letter characters
+        let lettersOnly = encryptedText.replace(/[^a-zA-Z]/g, '');
+
+        // Reassemble the letters back into the original order
+        let originalText = lettersOnly.split('').join('');
+
+        return originalText;
     }
 </script>
 
