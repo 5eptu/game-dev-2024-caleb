@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Encryptor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .textarea-container {
+            margin: 10px 0;
+            text-align: center;
+        }
+        textarea {
+            width: 70%;
+            height: 100px;
+            font-size: 1em;
+            padding: 10px;
+            resize: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Text Encryptor</h1>
+
+<div class="textarea-container">
+    <textarea id="myArea01" placeholder="Enter text to encrypt...">Hello, how are you?</textarea><br>
+    <button onclick="encryptText()">Encrypt</button>
+    <button onclick="decryptText()">Decrypt</button><br><br>
+    <textarea id="myArea02" placeholder="Encrypted text will appear here..."></textarea><br>
+</div>
+
+<script>
+    function encryptText() {
+        let text = document.getElementById('myArea01').value.toLowerCase();
+        let encryptedText = text.split('').map(char => {
+            if (char === 'e') return 'f';
+            if (char === 'h') return 'i';
+            return char;
+        }).join('');
+        
+        document.getElementById('myArea02').value = encryptedText;
+    }
+
+    function decryptText() {
+        alert('Sorry, decryption functionality is not available yet!');
+    }
+</script>
+
+</body>
+</html>
