@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caleb's Index Page</title>
+    <title>Malenia, Blade of Miquella - Index Page</title>
     <style>
-        /* Import Google Font */
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+        /* Import Google Font for elegant styling */
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;700&display=swap');
 
         /* General Reset */
         * {
@@ -15,125 +15,148 @@
             box-sizing: border-box;
         }
 
-        /* Background and Main Container Styling */
+        /* Body Styling with Background Image */
         body {
-            font-family: 'Cinzel', serif;
-            color: #D4AF37; /* Golden text color */
-            background: url('https://preview.redd.it/nyq3qx4gtz471.png?auto=webp&s=c00ee75a9d7fcd956e639f916e1de020aaa2c23d') no-repeat center center fixed;
+            font-family: 'Crimson Pro', serif;
+            background: url('malenia_background.jpg') no-repeat center center fixed;
             background-size: cover;
+            color: #d4a5a5;
             overflow: hidden;
         }
 
-        /* Main Title */
+        /* Overlay for better readability */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            z-index: 0;
+        }
+
+        /* Page Content Styling */
+        h1, .scrollable-container {
+            position: relative;
+            z-index: 1; /* Ensure content appears above the overlay */
+        }
+
+        /* Title Styling */
         h1 {
-            font-size: 3.5rem;
             text-align: center;
-            margin-top: 20px;
-            color: #FFD700;
-            text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8), 0px 0px 20px rgba(255, 215, 0, 0.6);
-            animation: glow 3s ease-in-out infinite;
+            font-size: 3.2rem;
+            color: #dca0a0;
+            margin-top: 30px;
+            text-shadow: 0 0 10px rgba(219, 96, 96, 0.8), 0 0 20px rgba(219, 96, 96, 0.5);
+            animation: pulseTitle 3s ease-in-out infinite;
+        }
+
+        /* Keyframe Animations */
+        @keyframes pulseTitle {
+            0%, 100% { text-shadow: 0 0 10px rgba(219, 96, 96, 0.8), 0 0 20px rgba(219, 96, 96, 0.5); }
+            50% { text-shadow: 0 0 15px rgba(255, 140, 140, 1), 0 0 30px rgba(255, 140, 140, 0.7); }
         }
 
         /* Scrollable Container */
         .scrollable-container {
             width: 100%;
-            max-width: 650px;
-            margin: 0 auto;
-            margin-top: 40px;
+            max-width: 700px;
+            margin: 40px auto;
             padding: 20px;
             overflow-y: auto;
             height: 60vh;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 12px;
-            scrollbar-width: thin; /* For Firefox */
-            scrollbar-color: rgba(255, 215, 0, 0.5) transparent; /* For Firefox */
+            background: rgba(36, 15, 17, 0.85); /* Dark overlay on container */
+            border: 1px solid rgba(255, 140, 140, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 80, 80, 0.3);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 140, 140, 0.7) transparent;
         }
 
-        /* Custom Scrollbar for WebKit Browsers */
+        /* Scrollbar for WebKit Browsers */
         .scrollable-container::-webkit-scrollbar {
             width: 10px;
         }
-        
         .scrollable-container::-webkit-scrollbar-thumb {
-            background-color: rgba(255, 215, 0, 0.7);
+            background-color: rgba(255, 140, 140, 0.7);
             border-radius: 10px;
-            border: 2px solid rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(36, 15, 17, 0.8);
         }
 
-        /* Button Links */
+        /* Link Button Styling */
         .scrollable-container a {
             display: block;
             font-size: 1.2rem;
-            padding: 12px 16px; /* Reduced padding */
-            max-width: 90%; /* Constrain button width */
-            margin: 10px auto; /* Centered with auto margins */
+            padding: 12px;
+            max-width: 85%;
+            margin: 15px auto;
             text-decoration: none;
-            color: #FFD700;
+            color: #f3b3b3;
             text-align: center;
-            border: 1px solid rgba(255, 215, 0, 0.6);
-            border-radius: 8px;
-            background: rgba(50, 50, 50, 0.7);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(145deg, #5a1c2a, #87192a);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 120, 120, 0.5);
+            box-shadow: 0 0 10px rgba(255, 80, 80, 0.3);
+            transition: all 0.3s ease;
             position: relative;
-            overflow: visible; /* Ensures shadow doesn't cut off */
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Subtle box-shadow */
+            overflow: visible;
+            font-weight: bold;
         }
 
         /* Hover Effects */
         .scrollable-container a:hover {
-            transform: scale(1.07);
-            box-shadow: 0px 0px 25px rgba(255, 215, 0, 0.7);
+            color: #ffdfdf;
+            transform: scale(1.05);
+            background: linear-gradient(145deg, #87192a, #5a1c2a);
+            box-shadow: 0 0 20px rgba(255, 120, 120, 0.5);
         }
 
-        /* Magic Glowing Text Animation */
-        @keyframes glow {
-            0% {
-                text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8), 0px 0px 20px rgba(255, 215, 0, 0.6);
-            }
-            50% {
-                text-shadow: 0px 0px 20px rgba(255, 215, 0, 1), 0px 0px 30px rgba(255, 215, 0, 0.8);
-            }
-            100% {
-                text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8), 0px 0px 20px rgba(255, 215, 0, 0.6);
-            }
-        }
-
-        /* Magic Button Pulse */
+        /* Button Glowing Effect */
         .scrollable-container a::before {
             content: '';
             position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            background: linear-gradient(45deg, rgba(255, 215, 0, 0.4), rgba(255, 215, 0, 0.2));
-            border-radius: 8px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: radial-gradient(circle, rgba(255, 80, 80, 0.4), transparent 70%);
+            border-radius: 10px;
             z-index: -1;
+            transition: opacity 0.4s ease;
+            opacity: 0;
         }
 
         .scrollable-container a:hover::before {
             opacity: 1;
-            animation: pulse 1.5s infinite alternate;
+            animation: glow 2s infinite alternate;
         }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.6;
-            }
-            100% {
-                transform: scale(1.05);
-                opacity: 1;
-            }
+        /* Glow Animation */
+        @keyframes glow {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* Smooth Fade-In for Links */
+        .scrollable-container a {
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        /* Keyframe Animation for Fade-In */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <h1>Caleb's Index Page</h1>
+    <!-- Page Title -->
+    <h1>Malenia, Blade of Miquella</h1>
+
+    <!-- Scrollable Container with Links -->
     <div class="scrollable-container">
         <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a01-basic-caleb.html">t1a01-basic-caleb.html</a>
         <a href="https://5eptu.github.io/game-dev-2024-caleb/public/t1a02-proper-caleb.html">t1a02-proper-caleb.html</a>
