@@ -75,52 +75,51 @@
     }
 
     function scrambleText(text) {
-        // Remove spaces and split into characters
         let lettersOnly = text.replace(/[^a-zA-Z]/g, '').split('');
         let scrambled = [];
         let positions = [];
 
-        // Scramble letters, save original positions, and intersperse with random numbers
+        // Save original positions and scramble letters
         lettersOnly.forEach((char, index) => {
-            positions.push(index); // Save original position
+            positions.push(index);
         });
 
-        // Shuffle letters and positions together in parallel
+        // Shuffle letters and positions
         for (let i = lettersOnly.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
             [lettersOnly[i], lettersOnly[j]] = [lettersOnly[j], lettersOnly[i]];
             [positions[i], positions[j]] = [positions[j], positions[i]];
         }
 
-        // Intermix letters with random numbers and encode positions
+        // Add random numbers and encoded positions
         for (let i = 0; i < lettersOnly.length; i++) {
             scrambled.push(lettersOnly[i]);
-            scrambled.push(Math.floor(Math.random() * 10)); // Insert random number
-            scrambled.push(`-${positions[i]}-`); // Store position as part of the encrypted text
+            scrambled.push(Math.floor(Math.random() * 10)); // Random number
+            scrambled.push(`-${positions[i]}-`); // Encode original position
         }
 
         return scrambled.join('');
     }
 
     function unscrambleText(encryptedText) {
-        // Match letter-position pairs and filter out the numbers
+        // Extract letters and positions with regex
         let letterPositionPairs = encryptedText.match(/[a-zA-Z]-\d+-/g);
-        if (!letterPositionPairs) return '';
+        if (!letterPositionPairs) return 'Error: Encrypted text is in incorrect format.';
 
-        // Separate letters and positions
         let letters = [];
         let positions = [];
 
+        // Separate letters and their positions
         letterPositionPairs.forEach(pair => {
             let letter = pair[0];
             let position = parseInt(pair.match(/-(\d+)-/)[1]);
             letters.push({letter, position});
         });
 
-        // Sort letters by original positions
+        // Sort letters by their original positions
         letters.sort((a, b) => a.position - b.position);
 
-        // Reassemble original text
+        // Reassemble original message
         return letters.map(obj => obj.letter).join('');
     }
 </script>
