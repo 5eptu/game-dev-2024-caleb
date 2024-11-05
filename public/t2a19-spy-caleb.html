@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>t2a19-spy-caleb.html</title>
+    <title>Anagram Text Encryptor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,7 +50,7 @@
 </head>
 <body>
 
-<h1>t2a19-spy-caleb.html</h1>
+<h1>Anagram Text Encryptor</h1>
 
 <div class="textarea-container">
     <textarea id="myArea01" placeholder="Enter text to encrypt...">Hello, how are you?</textarea><br>
@@ -62,9 +62,9 @@
 <script>
     function encryptText() {
         let text = document.getElementById('myArea01').value;
-        let scrambledText = scrambleText(text);
-        
-        document.getElementById('myArea02').value = scrambledText;
+        let encryptedText = scrambleText(text);
+
+        document.getElementById('myArea02').value = encryptedText;
     }
 
     function decryptText() {
@@ -75,27 +75,53 @@
     }
 
     function scrambleText(text) {
-        // Remove spaces and scramble the characters
-        let lettersOnly = text.replace(/[^a-zA-Z]/g, '').split('').sort(() => Math.random() - 0.5);
+        // Remove spaces and split into characters
+        let lettersOnly = text.replace(/[^a-zA-Z]/g, '').split('');
         let scrambled = [];
+        let positions = [];
 
-        // Add random numbers and scrambled letters to the output
-        for (let char of lettersOnly) {
-            scrambled.push(char);
-            scrambled.push(Math.floor(Math.random() * 10)); // Random number between 0-9
+        // Scramble letters, save original positions, and intersperse with random numbers
+        lettersOnly.forEach((char, index) => {
+            positions.push(index); // Save original position
+        });
+
+        // Shuffle letters and positions together in parallel
+        for (let i = lettersOnly.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [lettersOnly[i], lettersOnly[j]] = [lettersOnly[j], lettersOnly[i]];
+            [positions[i], positions[j]] = [positions[j], positions[i]];
+        }
+
+        // Intermix letters with random numbers and encode positions
+        for (let i = 0; i < lettersOnly.length; i++) {
+            scrambled.push(lettersOnly[i]);
+            scrambled.push(Math.floor(Math.random() * 10)); // Insert random number
+            scrambled.push(`-${positions[i]}-`); // Store position as part of the encrypted text
         }
 
         return scrambled.join('');
     }
 
     function unscrambleText(encryptedText) {
-        // Remove all non-letter characters
-        let lettersOnly = encryptedText.replace(/[^a-zA-Z]/g, '');
+        // Match letter-position pairs and filter out the numbers
+        let letterPositionPairs = encryptedText.match(/[a-zA-Z]-\d+-/g);
+        if (!letterPositionPairs) return '';
 
-        // Reassemble the letters back into the original order
-        let originalText = lettersOnly.split('').join('');
+        // Separate letters and positions
+        let letters = [];
+        let positions = [];
 
-        return originalText;
+        letterPositionPairs.forEach(pair => {
+            let letter = pair[0];
+            let position = parseInt(pair.match(/-(\d+)-/)[1]);
+            letters.push({letter, position});
+        });
+
+        // Sort letters by original positions
+        letters.sort((a, b) => a.position - b.position);
+
+        // Reassemble original text
+        return letters.map(obj => obj.letter).join('');
     }
 </script>
 
