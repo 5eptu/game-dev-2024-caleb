@@ -1,38 +1,79 @@
-<h2 align="center">t1a18-extend-class-by-caleb.html</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t1a18-extend-class-by-caleb.html</title>
+    <style>
+        /* Optional styling to enhance appearance */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #myDiv01 {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        input[type="button"] {
+            margin: 10px;
+            padding: 10px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
 
-<script>
-class myAnimal {
-    constructor(passName, passAge) {
-        this.myName = passName;
-        this.myAge = passAge;
-    }
+<h2>Class Extension Example</h2>
 
-    myShow() {
-        document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '<br>';
-    }
-}
+<!-- Button to create and show an instance of myAnimal -->
+<input type="button" value="Set and Show Animal Instance" onClick="showAnimalExample()"><br>
 
-// End class myAnimal
-
-class myCat extends myAnimal {
-    myShow() {
-        document.getElementById('myDiv01').innerHTML = this.myName + ' is a great cat<br>';
-    }
-}
-
-// End extended class myCat
-</script>
-
-<input type="button" value="Example Class Set and Show Class Animal" onClick="
-    myDog = new myAnimal('Snickers', 5);
-    myDog.myShow();
-"><br>
-
+<!-- Placeholder for additional use -->
 <input type="text" id="myText01" value="may be useful later"><br>
 
-<input type="button" value="Example Extend Class Animal as Cat" onClick="
-    myPet = new myCat('Fluffy', 14);
-    myPet.myShow();
-"><br>
+<!-- Button to create and show an instance of myCat (extended class) -->
+<input type="button" value="Set and Show Cat Instance" onClick="showCatExample()"><br>
 
+<!-- Div to display the result -->
 <div id="myDiv01">...</div>
+
+<script>
+// Define the base class "Animal"
+class Animal {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to display the animal's information
+    show() {
+        document.getElementById('myDiv01').innerHTML = `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+    }
+}
+
+// End class Animal
+
+// Define the extended class "Cat" which inherits from "Animal"
+class Cat extends Animal {
+    // Override the show method to provide a cat-specific message
+    show() {
+        document.getElementById('myDiv01').innerHTML = `${this.name} is a fantastic cat, and is ${this.age} years old.`;
+    }
+}
+
+// Function to create and display an instance of Animal
+function showAnimalExample() {
+    const myDog = new Animal('Snickers', 5);
+    myDog.show();
+}
+
+// Function to create and display an instance of Cat
+function showCatExample() {
+    const myPet = new Cat('Fluffy', 14);
+    myPet.show();
+}
+</script>
+
+</body>
+</html>
