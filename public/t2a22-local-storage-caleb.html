@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t2a22-local-storage-caleb.html</title>
+    <script>
+        // When the page loads, retrieve stored text and display it
+        window.onload = function() {
+            var storedText = localStorage.getItem('myStoredText');
+            if (storedText !== null) {
+                document.getElementById('myText1').value = storedText;
+            }
+        }
+
+        // When the page unloads, save the text to localStorage
+        window.onunload = function() {
+            localStorage.setItem('myStoredText', document.getElementById('myText1').value);
+        }
+
+        // Store text into localStorage and alert the user
+        function storeText() {
+            var text = document.getElementById('myText1').value;
+            localStorage.setItem('myStoredText', text);
+            alert(text + ' has been stored');
+        }
+
+        // Retrieve the text from localStorage
+        function retrieveText() {
+            var storedText = localStorage.getItem('myStoredText');
+            if (storedText !== null) {
+                document.getElementById('myText1').value = storedText;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>t2a22-local-storage-caleb.html</h2>
+
+    <label for="myText1">Text example:</label>
+    <input id="myText1" type="text" size="70" value="" placeholder="Write here to store"><br>
+
+    <input type="button" value="Store Text" onclick="storeText()">
+    <input type="button" value="Retrieve Text" onclick="retrieveText()">
+
+</body>
+</html>
