@@ -3,85 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Background and Image</title>
+    <title>t2a20-move-background-caleb.html</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
             margin: 0;
-            overflow: hidden;
-            background-repeat: repeat;
-            background-size: 80%;
-            background-image: url("myBackground01.jpg");
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        #controls {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 100;
-            background: rgba(0, 0, 0, 0.5);
+        header {
+            background-color: #cc4444;
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .brick-banner {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+        .brick {
+            background-color: #b03030;
+            border: 3px solid #8b0000;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 200px;
+        }
+        .brick:hover {
+            transform: rotate(-3deg);
+            background-color: #d04040;
+            cursor: pointer;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        footer {
+            background-color: #cc4444;
+            color: white;
+            text-align: center;
             padding: 10px;
-            border-radius: 8px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
         }
-
-        #controls input {
-            margin: 5px;
+        img {
+            max-width: 100%;
+            height: auto;
         }
-
-        #myImage01 {
-            position: absolute;
-            width: 100px;
-            height: 80px;
-            top: 200px;
-            left: 200px;
-            transition: left 0.1s, top 0.1s; /* Smooth transitions */
+        .brick-img {
+            margin: 20px auto;
+            width: 300px;
+            border-radius: 15px;
         }
     </style>
 </head>
-<body id="myBody">
-
-<div id="controls">
-    <input type="button" value="Move Background Left" onclick="moveBackground(-5, 0)">
-    <input type="button" value="Move Background Right" onclick="moveBackground(5, 0)">
-    <input type="button" value="Move Background Up" onclick="moveBackground(0, -5)">
-    <input type="button" value="Move Background Down" onclick="moveBackground(0, 5)">
-    <input type="button" value="Auto Move Background" onclick="toggleAutoMove()">
-    <br>
-    <input type="button" value="Move Image Left" onclick="moveImage('left', -10)">
-    <input type="button" value="Move Image Right" onclick="moveImage('left', 10)">
-    <input type="button" value="Move Image Up" onclick="moveImage('top', -10)">
-    <input type="button" value="Move Image Down" onclick="moveImage('top', 10)">
-</div>
-
-<img id="myImage01" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."/>
-
-<script>
-    let myGlobalX = 0, myGlobalY = 0; // Background offsets
-    let myClock; // For auto movement
-
-    // Function to move the background
-    function moveBackground(deltaX, deltaY) {
-        myGlobalX += deltaX;
-        myGlobalY += deltaY;
-        document.getElementById('myBody').style.backgroundPosition = `${myGlobalX}px ${myGlobalY}px`;
-    }
-
-    // Toggle auto-moving background
-    function toggleAutoMove() {
-        if (myClock) {
-            clearInterval(myClock);
-            myClock = null;
-        } else {
-            myClock = setInterval(() => moveBackground(-5, 0), 100);
-        }
-    }
-
-    // Function to move the image
-    function moveImage(direction, value) {
-        const image = document.getElementById('myImage01');
-        const currentPos = parseInt(image.style[direction]) || 0;
-        image.style[direction] = currentPos + value + 'px';
-    }
-</script>
-
+<body>
+    <header>
+        Welcome to the Brick
+    </header>
+    <img class="brick-img" src="data:image/jpeg;base64,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" alt="A beautiful brick">
+    <div class="brick-banner">
+        <div class="brick">Bricks are life</div>
+        <div class="brick">Click me for no bricks at all</div>
+        <div class="brick">BRICK HARDER</div>
+    </div>
+    <footer>
+        © 2024 Brick United | Powered by Brick Energy™
+    </footer>
 </body>
 </html>
