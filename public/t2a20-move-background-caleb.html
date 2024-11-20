@@ -3,121 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Child-Friendly Website</title>
+    <title>Interactive Background and Image</title>
     <style>
-        /* General Styling */
         body {
-            background-color: #ffe4e1; /* Light pastel pink */
-            font-family: 'Comic Sans MS', 'Arial', sans-serif; /* Playful font */
-            color: #333; /* Easy-to-read text */
             margin: 0;
-            padding: 0;
+            overflow: hidden;
+            background-repeat: repeat;
+            background-size: 80%;
+            background-image: url("myBackground01.jpg");
         }
 
-        /* Add a colorful header */
-        header {
-            background-color: #ffcc00; /* Bright yellow */
-            padding: 20px;
-            text-align: center;
-            border-bottom: 5px solid #ff6347; /* Tomato red */
-            font-size: 2.5em;
-            color: #fff;
-            text-shadow: 2px 2px 4px #888;
-        }
-
-        /* Style buttons */
-        button, input[type="button"] {
-            background-color: #ff69b4; /* Hot pink */
-            color: white;
-            border: 2px solid #ff1493; /* Deep pink */
-            padding: 10px 20px;
-            font-size: 1em;
-            font-weight: bold;
-            border-radius: 15px;
-            cursor: pointer;
-            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        button:hover, input[type="button"]:hover {
-            background-color: #ff1493;
-            box-shadow: 0px 0px 12px rgba(255, 20, 147, 0.8);
-        }
-
-        /* Style the footer */
-        footer {
-            background-color: #00bfff; /* Deep sky blue */
-            text-align: center;
-            padding: 10px;
+        #controls {
             position: fixed;
-            bottom: 0;
-            width: 100%;
-            font-size: 1.2em;
-            color: white;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 8px;
         }
 
-        /* Style images */
-        img {
-            border: 5px solid #ffa500; /* Orange */
-            border-radius: 15px;
-            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+        #controls input {
+            margin: 5px;
         }
 
-        /* Style links */
-        a {
-            color: #ff4500; /* Orange-red */
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        a:hover {
-            color: #ff6347; /* Tomato red */
-            text-decoration: underline;
-        }
-
-        /* Add rounded containers */
-        div.container {
-            background-color: #87cefa; /* Light sky blue */
-            border: 3px solid #4682b4; /* Steel blue */
-            border-radius: 20px;
-            padding: 20px;
-            margin: 20px;
-            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Style headings */
-        h1, h2, h3 {
-            color: #ff4500; /* Orange-red */
-            text-shadow: 2px 2px 4px #aaa;
-        }
-
-        /* Style lists */
-        ul, ol {
-            padding: 20px;
-            background-color: #ffdab9; /* Peach puff */
-            border-radius: 15px;
-            border: 2px solid #ffb6c1; /* Light pink */
-            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+        #myImage01 {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            top: 200px;
+            left: 200px;
+            transition: left 0.1s, top 0.1s; /* Smooth transitions */
         }
     </style>
 </head>
-<body>
-    <header>
-        Welcome to the Fun Zone!
-    </header>
-    <div class="container">
-        <h1>Hello, Kids!</h1>
-        <p>Welcome to our colorful and exciting website. Here you can play, learn, and explore!</p>
-        <img src="https://thumbs.dreamstime.com/b/toy-train-16199096.jpg" alt="Placeholder Image">
-        <ul>
-            <li>Fun Games</li>
-            <li>Exciting Activities</li>
-            <li>Colorful Stories</li>
-        </ul>
-        <button>Click Me!</button>
-    </div>
-    <footer>
-        © 2024 Fun Zone. All Rights Reserved.
-    </footer>
+<body id="myBody">
+
+<div id="controls">
+    <input type="button" value="Move Background Left" onclick="moveBackground(-5, 0)">
+    <input type="button" value="Move Background Right" onclick="moveBackground(5, 0)">
+    <input type="button" value="Move Background Up" onclick="moveBackground(0, -5)">
+    <input type="button" value="Move Background Down" onclick="moveBackground(0, 5)">
+    <input type="button" value="Auto Move Background" onclick="toggleAutoMove()">
+    <br>
+    <input type="button" value="Move Image Left" onclick="moveImage('left', -10)">
+    <input type="button" value="Move Image Right" onclick="moveImage('left', 10)">
+    <input type="button" value="Move Image Up" onclick="moveImage('top', -10)">
+    <input type="button" value="Move Image Down" onclick="moveImage('top', 10)">
+</div>
+
+<img id="myImage01" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."/>
+
+<script>
+    let myGlobalX = 0, myGlobalY = 0; // Background offsets
+    let myClock; // For auto movement
+
+    // Function to move the background
+    function moveBackground(deltaX, deltaY) {
+        myGlobalX += deltaX;
+        myGlobalY += deltaY;
+        document.getElementById('myBody').style.backgroundPosition = `${myGlobalX}px ${myGlobalY}px`;
+    }
+
+    // Toggle auto-moving background
+    function toggleAutoMove() {
+        if (myClock) {
+            clearInterval(myClock);
+            myClock = null;
+        } else {
+            myClock = setInterval(() => moveBackground(-5, 0), 100);
+        }
+    }
+
+    // Function to move the image
+    function moveImage(direction, value) {
+        const image = document.getElementById('myImage01');
+        const currentPos = parseInt(image.style[direction]) || 0;
+        image.style[direction] = currentPos + value + 'px';
+    }
+</script>
+
 </body>
 </html>
