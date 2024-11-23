@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Backrooms Game</title>
     <style>
+        /* General Body Styles */
         body {
-            background-color: #f0e1a1; /* Light yellow background for Backrooms vibe */
+            background-color: #f3f0d7; /* Pale yellow, like the Backrooms walls */
             font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
@@ -14,91 +15,179 @@
             height: 100vh;
             margin: 0;
             color: #333;
-            flex-direction: column;
             overflow: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); /* Subtle texture for the Backrooms feel */
+            background-size: cover;
+            animation: flicker 3s infinite alternate;
         }
 
+        /* Flicker effect to give the unsettling "buzzing light" feel */
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.9; }
+            100% { opacity: 1; }
+        }
+
+        /* Container for the menu */
         .container {
             text-align: center;
-            max-width: 300px;
-            width: 100%;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.6); /* Dark semi-transparent background */
+            border-radius: 15px;
+            width: 350px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
         }
 
+        /* Title Style */
         h1 {
-            color: #333;
-            font-size: 48px;
-            margin-bottom: 50px;
-            letter-spacing: 3px;
+            color: #ffdf00; /* Bright yellow, giving off an unsettling vibe */
+            font-size: 56px;
+            margin-bottom: 40px;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6); /* Subtle glow effect */
         }
 
+        /* Button Styling */
         button {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            background-color: #ffdf00; /* Yellow, a strange hue */
-            color: #222;
-            font-size: 18px;
-            border: 2px solid #333;
+            width: 80%;
+            padding: 18px;
+            margin: 12px 0;
+            font-size: 20px;
+            color: #fff;
+            background-color: #333; /* Dark background for buttons */
+            border: 2px solid #ffdf00;
             border-radius: 5px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* Button shadow for depth */
         }
 
         button:hover {
-            background-color: #333;
-            color: #fff;
+            background-color: #ffdf00; /* Change color on hover */
+            color: #333;
+            box-shadow: 0 0 20px rgba(255, 223, 0, 0.8); /* Hover glow effect */
         }
 
         button:focus {
             outline: none;
-            box-shadow: 0 0 10px #ffdf00;
+            box-shadow: 0 0 15px rgba(255, 223, 0, 1);
         }
 
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
+        /* More options link below buttons */
         .more-options {
-            font-size: 14px;
+            font-size: 16px;
+            color: #fff;
             text-decoration: underline;
             cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .more-options:hover {
+            color: #ffdf00; /* Glow effect on hover */
+        }
+
+        /* Modal for settings */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .modal-content {
+            background-color: #222;
+            color: #ffdf00;
+            padding: 40px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .modal button {
+            background-color: #ffdf00;
+            color: #333;
+            border: none;
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Fade-in effect for the modal */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Backrooms</h1>
-        <div class="button-container">
-            <button onclick="startGame()">Start</button>
-            <button onclick="settings()">Settings</button>
-            <button onclick="quitGame()">Quit</button>
-            <div class="more-options" onclick="moreOptions()">More...</div>
+        <button onclick="startGame()">Start</button>
+        <button onclick="settings()">Settings</button>
+        <button onclick="quitGame()">Quit</button>
+        <div class="more-options" onclick="moreOptions()">More...</div>
+    </div>
+
+    <!-- Modal for Settings -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <h2>Settings</h2>
+            <p>Adjust game preferences</p>
+            <button onclick="closeSettings()">Close</button>
         </div>
     </div>
 
     <script>
+        // Start the game
         function startGame() {
             alert('Starting the game...');
-            // Add your game logic here
+            // Add your game starting logic here
         }
 
+        // Open settings modal
         function settings() {
-            alert('Opening settings...');
-            // Add your settings page or modal here
+            document.getElementById("settingsModal").style.display = "flex";
         }
 
+        // Close settings modal
+        function closeSettings() {
+            document.getElementById("settingsModal").style.display = "none";
+        }
+
+        // Confirm quit
         function quitGame() {
             let confirmQuit = confirm('Are you sure you want to quit?');
             if (confirmQuit) {
-                window.close(); // This will only work in certain environments like browsers that allow window closing
+                window.close(); // Close window for browser-based games, or exit logic for native games
             }
         }
 
+        // Display more options
         function moreOptions() {
-            alert('Here are more options...');
-            // Add additional options such as credits, help, etc.
+            alert('Displaying more options...');
+            // Here you could add more detailed options, such as help, credits, etc.
+        }
+
+        // Click outside the modal to close it
+        window.onclick = function(event) {
+            var modal = document.getElementById('settingsModal');
+            if (event.target == modal) {
+                closeSettings();
+            }
         }
     </script>
 </body>
