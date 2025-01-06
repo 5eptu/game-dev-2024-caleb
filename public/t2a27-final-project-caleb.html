@@ -12,7 +12,7 @@
             padding: 0;
             font-family: 'Roboto', sans-serif;
             height: 100vh;
-            background: url('https://i.pinimg.com/originals/12/b2/3a/12b23a7752e8a7a4464c1ff5e596237f.gif') no-repeat center center fixed;
+            background: url('https://wallpapers.com/images/hd/1920-x-1080-gaming-cyberpunk-city-a2ho6vmdryz2x419.jpg') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             justify-content: center;
@@ -75,14 +75,35 @@
             height: 100%;
             overflow: hidden;
         }
+
+        .teacher-note {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9em;
+            color: #d9d9d9;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .teacher-note span {
+            color: #00ffcc;
+        }
     </style>
+    <script>
+        function showWelcomeMessage() {
+            const message = "Welcome to the Call of the Federation! Prepare to embark on a thrilling journey.";
+            alert(message);
+        }
+
+        window.onload = showWelcomeMessage;
+    </script>
 </head>
 <body>
     <div class="menu-container">
         <h1>Call of the Federation</h1>
-        <p>Embark on an epic journey in a cyberpunk universe.</p>
+        <p>An online interactive non-linear story game. Levels are divided into 'Chapters'.</p>
         <button onclick="location.href='https://twinery.org/2/story.html#/stories/a4cf8877-228e-4e1d-8f48-7a9fd6d6e149/play'">Start</button>
         <button onclick="history.back()">Exit</button>
+        </div>
     </div>
 </body>
 </html>
