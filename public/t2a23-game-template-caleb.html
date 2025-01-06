@@ -45,14 +45,10 @@
         function myCheckHit() {
             if (myHitOther('myImg01', 'myImg02')) {
                 alert('You lose 2');
-                // Optionally reset the position of the element
-                // document.getElementById('myImg01').style.left = '20px';
                 location.href = 'https://www.google.ca'; // Redirect to Google
             }
             if (myHitOther('myImg01', 'myImg03')) {
                 alert('You lose 3');
-                // document.getElementById('myImg01').style.left = '20px';
-                // Additional actions for more conditions can go here
             }
         }
 
@@ -67,23 +63,52 @@
             }, 10);
         }
 
-        // Function to move the image right on button click
-        function moveImageRight() {
+        // Function to move the image with WASD keys
+        function moveImage(key) {
             let img1 = document.getElementById('myImg01');
-            img1.style.left = parseInt(img1.style.left) + 10 + 'px';
+            let currentLeft = parseInt(img1.style.left);
+            let currentTop = parseInt(img1.style.top);
+
+            if (key === 'w') {
+                img1.style.top = currentTop - 10 + 'px'; // Move up
+            } else if (key === 's') {
+                img1.style.top = currentTop + 10 + 'px'; // Move down
+            } else if (key === 'a') {
+                img1.style.left = currentLeft - 10 + 'px'; // Move left
+            } else if (key === 'd') {
+                img1.style.left = currentLeft + 10 + 'px'; // Move right
+            }
+
             myCheckHit(); // Check for collisions after moving
+        }
+
+        // Event listener for key presses
+        document.addEventListener('keydown', function(event) {
+            let key = event.key.toLowerCase(); // Get the key pressed
+            if (['w', 'a', 's', 'd'].includes(key)) {
+                moveImage(key);
+            }
+        });
+
+        // Initialize image positions
+        window.onload = function() {
+            document.getElementById('myImg01').style.top = '0px';
+            document.getElementById('myImg01').style.left = '50px';
+            document.getElementById('myImg02').style.top = '0px';
+            document.getElementById('myImg02').style.left = '250px';
+            document.getElementById('myImg03').style.top = '0px';
+            document.getElementById('myImg03').style.left = '500px';
         }
     </script>
 </head>
 <body id="myBody" background="myBackground01.jpg">
     <h1 align="center">t2a23 Game Template by Fred</h1>
 
-    <img id="myImg01" style="top: 0px; left: 50px;" src="myImage01.jpg">
-    <img id="myImg02" style="top: 0px; left: 250px;" src="myImage02.jpg">
-    <img id="myImg03" style="top: 0px; left: 500px;" src="myImage02.jpg">
+    <img id="myImg01" src="myImage01.jpg">
+    <img id="myImg02" src="myImage02.jpg">
+    <img id="myImg03" src="myImage02.jpg">
 
-    <!-- Buttons to control background and image movement -->
+    <!-- Button to control background movement -->
     <input type="button" value="Auto Background Left" onclick="moveBackground()">
-    <input type="button" value="Image Right Fast Button" onTouchStart="this.click(); event.preventDefault();" onclick="moveImageRight()">
 </body>
 </html>
