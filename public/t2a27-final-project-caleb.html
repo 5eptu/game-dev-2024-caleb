@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call of the Federation - Main Menu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            background: url('https://wallpapers.com/images/hd/1920-x-1080-gaming-cyberpunk-city-a2ho6vmdryz2x419.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+        }
+
+        .menu-container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px 60px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.8);
+        }
+
+        .menu-container h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .menu-container button {
+            background: #00ffcc;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-container button:hover {
+            background: #008080;
+            color: #fff;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+
+        .menu-container button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <h1>Call of the Federation</h1>
+        <button onclick="location.href='https://twinery.org/2/story.html#/stories/a4cf8877-228e-4e1d-8f48-7a9fd6d6e149/play'">Start</button>
+        <button onclick="history.back()">Exit</button>
+    </div>
+</body>
+</html>
 
