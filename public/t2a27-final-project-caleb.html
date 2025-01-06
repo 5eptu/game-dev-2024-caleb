@@ -12,7 +12,7 @@
             padding: 0;
             font-family: 'Roboto', sans-serif;
             height: 100vh;
-            background: url('https://wallpapers.com/images/hd/1920-x-1080-gaming-cyberpunk-city-a2ho6vmdryz2x419.jpg') no-repeat center center fixed;
+            background: url('https://i.pinimg.com/originals/12/b2/3a/12b23a7752e8a7a4464c1ff5e596237f.gif') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             justify-content: center;
@@ -23,17 +23,17 @@
 
         .menu-container {
             text-align: center;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 40px 60px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 255, 204, 0.8);
-            max-width: 500px;
-            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.8);
+            max-width: 600px;
+            width: 90%;
         }
 
         .menu-container h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3em;
+            font-size: 3.5em;
             margin-bottom: 20px;
             letter-spacing: 2px;
         }
@@ -41,8 +41,14 @@
         .menu-container p {
             font-family: 'Roboto', sans-serif;
             font-size: 1.2em;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: #d9d9d9;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
         .menu-container button {
@@ -50,11 +56,10 @@
             background: linear-gradient(90deg, #00ffcc, #007b7b);
             color: #000;
             border: none;
-            padding: 15px 30px;
-            margin: 10px;
+            padding: 15px 40px;
             font-size: 1.2em;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -62,7 +67,7 @@
         .menu-container button:hover {
             background: linear-gradient(90deg, #007b7b, #00ffcc);
             color: #fff;
-            box-shadow: 0 0 10px #00ffcc;
+            box-shadow: 0 0 15px #00ffcc;
         }
 
         .menu-container button:active {
@@ -78,9 +83,9 @@
 
         .teacher-note {
             font-family: 'Roboto', sans-serif;
-            font-size: 0.9em;
+            font-size: 1em;
             color: #d9d9d9;
-            margin-top: 20px;
+            margin-top: 30px;
             text-align: center;
         }
 
@@ -100,9 +105,10 @@
 <body>
     <div class="menu-container">
         <h1>Call of the Federation</h1>
-        <p>An online interactive non-linear story game. Levels are divided into 'Chapters'.</p>
-        <button onclick="location.href='https://twinery.org/2/story.html#/stories/a4cf8877-228e-4e1d-8f48-7a9fd6d6e149/play'">Start</button>
-        <button onclick="history.back()">Exit</button>
+        <p>Online interactive story. Levels are divided into 'Chapters'</p>
+        <div class="button-container">
+            <button onclick="location.href='https://twinery.org/2/story.html#/stories/a4cf8877-228e-4e1d-8f48-7a9fd6d6e149/play'">Start</button>
+            <button onclick="history.back()">Exit</button>
         </div>
     </div>
 </body>
