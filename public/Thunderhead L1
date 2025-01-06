@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thunderhead Mini-Game</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: black;
+            color: red;
+            overflow: hidden;
+        }
+
+        #logo-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #logo-container img {
+            width: 200px;
+        }
+
+        #logo-container h1 {
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+
+        #game-container {
+            position: relative;
+            width: 100vw;
+            height: 80vh;
+            overflow: hidden;
+            margin: 20px auto;
+            border: 2px solid red;
+        }
+
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255, 0, 0, 0.1), transparent 80%);
+            animation: flicker 1.5s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+
+        .key, .lock {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+        }
+
+        .key {
+            background: url('https://i.imgur.com/vkGi6vL.png') no-repeat center center;
+        }
+
+        .lock {
+            background: url('https://i.imgur.com/0UBiYny.png') no-repeat center center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #play-button {
+            display: none;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background: red;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #play-button:hover {
+            background: darkred;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="logo-container">
+        <img src="https://i.imgur.com/WojpppC.png" alt="Thunderhead Logo">
+        <h1>Thunderhead v1.7</h1>
+    </div>
+
+    <div id="game-container">
+        <div class="background"></div>
+        <div id="key" class="key" style="top: 10%; left: 10%;"></div>
+        <div id="lock" class="lock"></div>
+        <button id="play-button" onclick="window.location.href='https://twinery.org/2/story.html#/stories/a4cf8877-228e-4e1d-8f48-7a9fd6d6e149/play'">Play Character</button>
+    </div>
+
+    <script>
+        const key = document.getElementById('key');
+        const lock = document.getElementById('lock');
+        const playButton = document.getElementById('play-button');
+        const gameContainer = document.getElementById('game-container');
+
+        const moveSpeed = 10;
+        let keyPos = { x: 10, y: 10 };
+
+        // Handle key movement
+        window.addEventListener('keydown', (event) => {
+            switch (event.key) {
+                case 'w':
+                    if (keyPos.y > 0) keyPos.y -= moveSpeed;
+                    break;
+                case 's':
+                    if (keyPos.y < gameContainer.clientHeight - 50) keyPos.y += moveSpeed;
+                    break;
+                case 'a':
+                    if (keyPos.x > 0) keyPos.x -= moveSpeed;
+                    break;
+                case 'd':
+                    if (keyPos.x < gameContainer.clientWidth - 50) keyPos.x += moveSpeed;
+                    break;
+            }
+            key.style.top = keyPos.y + 'px';
+            key.style.left = keyPos.x + 'px';
+
+            checkCollision();
+        });
+
+        // Check for collision between key and lock
+        function checkCollision() {
+            const keyRect = key.getBoundingClientRect();
+            const lockRect = lock.getBoundingClientRect();
+
+            if (
+                keyRect.left < lockRect.right &&
+                keyRect.right > lockRect.left &&
+                keyRect.top < lockRect.bottom &&
+                keyRect.bottom > lockRect.top
+            ) {
+                playButton.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
