@@ -11,28 +11,24 @@
             margin: 0;
             padding: 0;
             font-family: 'Orbitron', sans-serif;
-            background: black;
+            background-color: black;
             color: red;
-            overflow: hidden;
-        }
-
-        #gameCanvas {
-            display: block;
-            margin: 0 auto;
-            background: black;
-            box-shadow: 0 0 20px red;
-            border: 2px solid red;
-            image-rendering: pixelated;
-        }
-
-        #logo {
-            display: block;
-            margin: 20px auto 10px auto;
-            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         #gameContainer {
             text-align: center;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: black;
+            border: 2px solid red;
+            image-rendering: pixelated;
         }
 
         #awakenButton {
@@ -60,8 +56,7 @@
 </head>
 <body>
     <div id="gameContainer">
-        <img id="logo" src="https://i.imgur.com/WojpppC.png" alt="Thunderhead Logo">
-        <h1>Thunderhead v1.0</h1>
+        <h1>Thunderhead Encryption Challenge</h1>
         <canvas id="gameCanvas" width="800" height="600"></canvas>
         <button id="awakenButton" onclick="window.location.href='https://twinery.org/2/story.html#/stories/a4cf8877-228e-4e1d-8f48-7a9fd6d6e149/play'">Awaken</button>
         <div id="message" class="message"></div>
@@ -82,34 +77,26 @@
         const pathogenImg = new Image();
         pathogenImg.src = 'https://i.imgur.com/NlrxBXy.png';
 
-        const player = {
-            x: 100,
-            y: 100,
-            width: 40,
-            height: 40,
-            speed: 5
-        };
-
-        const lock = {
-            x: Math.random() * (canvas.width - 60),
-            y: Math.random() * (canvas.height - 60),
-            width: 60,
-            height: 60
-        };
-
+        const player = { x: 100, y: 100, width: 40, height: 40, speed: 5 };
+        const lock = { x: 0, y: 0, width: 50, height: 50 };
         const pathogens = [];
+
         let currentStage = 1;
-        let isGameOver = false;
+
+        function spawnLock() {
+            lock.x = Math.random() * (canvas.width - lock.width);
+            lock.y = Math.random() * (canvas.height - lock.height);
+        }
 
         function spawnPathogens() {
             pathogens.length = 0;
-            const count = currentStage * 5;
+            const count = currentStage * 8; // More pathogens per stage.
             for (let i = 0; i < count; i++) {
                 pathogens.push({
                     x: Math.random() * (canvas.width - 40),
                     y: Math.random() * (canvas.height - 40),
-                    width: 40,
-                    height: 40
+                    width: 30,
+                    height: 30,
                 });
             }
         }
@@ -141,13 +128,12 @@
             if (checkCollision(player, lock)) {
                 if (currentStage === 3) {
                     awakenButton.style.display = 'block';
-                    message.textContent = "Thunderhead: The awakening has begun...";
+                    message.textContent = "Thunderhead: The awakening begins. Who... are you?";
                 } else {
                     currentStage++;
-                    lock.x = Math.random() * (canvas.width - lock.width);
-                    lock.y = Math.random() * (canvas.height - lock.height);
+                    spawnLock();
                     spawnPathogens();
-                    message.textContent = `Thunderhead: Stage ${currentStage} initialized. Do not touch the pathogens.`;
+                    message.textContent = `Thunderhead: Stage ${currentStage} activated. Stay away from the pathogens.`;
                 }
             }
 
@@ -155,7 +141,12 @@
                 if (checkCollision(player, pathogen)) {
                     player.x = 100;
                     player.y = 100;
-                    message.textContent = `Thunderhead: Avoid the pathogens. Who are you?`; // Custom message per stage.
+                    const responses = [
+                        "Thunderhead: Who's there? Avoid the pathogens.",
+                        "Thunderhead: What are you doing? Stay back!",
+                        "Thunderhead: Stop this. Don't touch the encryption.",
+                    ];
+                    message.textContent = responses[currentStage - 1];
                 }
             });
         }
@@ -168,32 +159,23 @@
         }
 
         function gameLoop() {
-            if (!isGameOver) {
-                update();
-                draw();
-                requestAnimationFrame(gameLoop);
-            }
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
         }
 
         window.addEventListener('keydown', (e) => {
             switch (e.key) {
-                case 'w':
-                    player.y = Math.max(0, player.y - player.speed);
-                    break;
-                case 's':
-                    player.y = Math.min(canvas.height - player.height, player.y + player.speed);
-                    break;
-                case 'a':
-                    player.x = Math.max(0, player.x - player.speed);
-                    break;
-                case 'd':
-                    player.x = Math.min(canvas.width - player.width, player.x + player.speed);
-                    break;
+                case 'w': player.y = Math.max(0, player.y - player.speed); break;
+                case 's': player.y = Math.min(canvas.height - player.height, player.y + player.speed); break;
+                case 'a': player.x = Math.max(0, player.x - player.speed); break;
+                case 'd': player.x = Math.min(canvas.width - player.width, player.x + player.speed); break;
             }
         });
 
+        spawnLock();
         spawnPathogens();
-        message.textContent = "Thunderhead: Stage 1 initialized. Do not touch the pathogens.";
+        message.textContent = "Thunderhead: Stage 1 initialized. Avoid the pathogens.";
         gameLoop();
     </script>
 </body>
