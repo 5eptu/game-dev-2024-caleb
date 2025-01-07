@@ -10,184 +10,191 @@
         body {
             margin: 0;
             padding: 0;
-            background: black;
             font-family: 'Orbitron', sans-serif;
+            background: black;
             color: red;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        }
+
+        #gameCanvas {
+            display: block;
+            margin: 0 auto;
+            background: black;
+            box-shadow: 0 0 20px red;
+            border: 2px solid red;
+            image-rendering: pixelated;
         }
 
         #logo {
-            margin-top: 20px;
+            display: block;
+            margin: 20px auto 10px auto;
+            width: 200px;
         }
 
-        h1 {
-            font-size: 2rem;
+        #gameContainer {
             text-align: center;
         }
 
-        #game-area {
-            position: relative;
-            width: 80vw;
-            height: 60vh;
-            border: 3px solid red;
-            margin-top: 20px;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .key, .lock, .pathogen {
-            position: absolute;
-        }
-
-        .key {
-            width: 40px;
-            height: 40px;
-            background: url('https://cdn.iconscout.com/icon/free/png-256/free-encryption-key-icon-download-in-svg-png-gif-file-formats--bitcoin-logo-pack-business-icons-571820.png') no-repeat center center;
-            background-size: contain;
-        }
-
-        .lock {
-            width: 50px;
-            height: 50px;
-            background: url('https://cdn-icons-png.flaticon.com/512/4842/4842888.png') no-repeat center center;
-            background-size: contain;
-        }
-
-        .pathogen {
-            width: 40px;
-            height: 40px;
-            background: url('https://www.pngall.com/wp-content/uploads/13/Red-X-PNG-Photos.png') no-repeat center center;
-            background-size: contain;
-        }
-
-        #play-button {
+        #awakenButton {
             display: none;
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
+            margin: 20px;
             padding: 10px 20px;
+            font-size: 20px;
             background: red;
-            color: white;
-            font-size: 1.2rem;
+            color: black;
             border: none;
-            cursor: pointer;
             border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
-        #play-button:hover {
+        #awakenButton:hover {
             background: darkred;
+        }
+
+        .message {
+            margin-top: 10px;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <img id="logo" src="https://i.imgur.com/WojpppC.png" alt="Thunderhead Logo" width="200">
-    <h1>Thunderhead v1.7</h1>
-
-    <div id="game-area">
-        <div id="key" class="key"></div>
-        <div id="lock" class="lock"></div>
+    <div id="gameContainer">
+        <img id="logo" src="https://i.imgur.com/WojpppC.png" alt="Thunderhead Logo">
+        <h1>Thunderhead v1.0</h1>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <button id="awakenButton" onclick="window.location.href='https://twinery.org/2/story.html#/stories/a4cf8877-228e-4e1d-8f48-7a9fd6d6e149/play'">Awaken</button>
+        <div id="message" class="message"></div>
     </div>
 
-    <button id="play-button" onclick="window.location.href='https://twinery.org/2/story.html#/stories/a4cf8877-228e-4e1d-8f48-7a9fd6d6e149/play'">Play Character</button>
-
     <script>
-        const gameArea = document.getElementById('game-area');
-        const key = document.getElementById('key');
-        const lock = document.getElementById('lock');
-        const playButton = document.getElementById('play-button');
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const awakenButton = document.getElementById('awakenButton');
+        const message = document.getElementById('message');
+
+        const playerImg = new Image();
+        playerImg.src = 'https://cdn.iconscout.com/icon/free/png-256/free-encryption-key-icon-download-in-svg-png-gif-file-formats--bitcoin-logo-pack-business-icons-571820.png';
+
+        const lockImg = new Image();
+        lockImg.src = 'https://i.imgur.com/QAtnL1C.png';
+
+        const pathogenImg = new Image();
+        pathogenImg.src = 'https://i.imgur.com/NlrxBXy.png';
+
+        const player = {
+            x: 100,
+            y: 100,
+            width: 40,
+            height: 40,
+            speed: 5
+        };
+
+        const lock = {
+            x: Math.random() * (canvas.width - 60),
+            y: Math.random() * (canvas.height - 60),
+            width: 60,
+            height: 60
+        };
 
         const pathogens = [];
-        let stage = 1;
-        const pathogenCount = [0, 3, 5]; // Number of pathogens per stage
+        let currentStage = 1;
+        let isGameOver = false;
 
-        let keyPosition = { x: 50, y: 50 };
-        const keySpeed = 5;
-
-        const lockPosition = { x: Math.random() * 700 + 50, y: Math.random() * 400 + 50 };
-
-        function placePathogens(count) {
-            pathogens.forEach(p => p.remove());
+        function spawnPathogens() {
             pathogens.length = 0;
-
+            const count = currentStage * 5;
             for (let i = 0; i < count; i++) {
-                const pathogen = document.createElement('div');
-                pathogen.classList.add('pathogen');
-                pathogen.style.left = Math.random() * (gameArea.offsetWidth - 50) + 'px';
-                pathogen.style.top = Math.random() * (gameArea.offsetHeight - 50) + 'px';
-                gameArea.appendChild(pathogen);
-                pathogens.push(pathogen);
+                pathogens.push({
+                    x: Math.random() * (canvas.width - 40),
+                    y: Math.random() * (canvas.height - 40),
+                    width: 40,
+                    height: 40
+                });
             }
         }
 
-        function updatePositions() {
-            key.style.left = keyPosition.x + 'px';
-            key.style.top = keyPosition.y + 'px';
-
-            lock.style.left = lockPosition.x + 'px';
-            lock.style.top = lockPosition.y + 'px';
+        function drawPlayer() {
+            ctx.drawImage(playerImg, player.x, player.y, player.width, player.height);
         }
 
-        function checkCollisions() {
-            const keyRect = key.getBoundingClientRect();
-            const lockRect = lock.getBoundingClientRect();
+        function drawLock() {
+            ctx.drawImage(lockImg, lock.x, lock.y, lock.width, lock.height);
+        }
 
-            if (
-                keyRect.left < lockRect.right &&
-                keyRect.right > lockRect.left &&
-                keyRect.top < lockRect.bottom &&
-                keyRect.bottom > lockRect.top
-            ) {
-                if (stage === 3) {
-                    playButton.style.display = 'block';
+        function drawPathogens() {
+            pathogens.forEach(pathogen => {
+                ctx.drawImage(pathogenImg, pathogen.x, pathogen.y, pathogen.width, pathogen.height);
+            });
+        }
+
+        function checkCollision(a, b) {
+            return (
+                a.x < b.x + b.width &&
+                a.x + a.width > b.x &&
+                a.y < b.y + b.height &&
+                a.y + a.height > b.y
+            );
+        }
+
+        function update() {
+            if (checkCollision(player, lock)) {
+                if (currentStage === 3) {
+                    awakenButton.style.display = 'block';
+                    message.textContent = "Thunderhead: The awakening has begun...";
                 } else {
-                    stage++;
-                    alert(`Stage ${stage}: Avoid the pathogens and reach the lock!`);
-                    lockPosition.x = Math.random() * 700 + 50;
-                    lockPosition.y = Math.random() * 400 + 50;
-                    placePathogens(pathogenCount[stage - 1]);
+                    currentStage++;
+                    lock.x = Math.random() * (canvas.width - lock.width);
+                    lock.y = Math.random() * (canvas.height - lock.height);
+                    spawnPathogens();
+                    message.textContent = `Thunderhead: Stage ${currentStage} initialized. Do not touch the pathogens.`;
                 }
             }
 
-            pathogens.forEach(p => {
-                const pathogenRect = p.getBoundingClientRect();
-                if (
-                    keyRect.left < pathogenRect.right &&
-                    keyRect.right > pathogenRect.left &&
-                    keyRect.top < pathogenRect.bottom &&
-                    keyRect.bottom > pathogenRect.top
-                ) {
-                    keyPosition.x = 50;
-                    keyPosition.y = 50;
-                    alert('Avoid the pathogens! Try again.');
+            pathogens.forEach(pathogen => {
+                if (checkCollision(player, pathogen)) {
+                    player.x = 100;
+                    player.y = 100;
+                    message.textContent = `Thunderhead: Avoid the pathogens. Who are you?`; // Custom message per stage.
                 }
             });
         }
 
-        document.addEventListener('keydown', (e) => {
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPlayer();
+            drawLock();
+            drawPathogens();
+        }
+
+        function gameLoop() {
+            if (!isGameOver) {
+                update();
+                draw();
+                requestAnimationFrame(gameLoop);
+            }
+        }
+
+        window.addEventListener('keydown', (e) => {
             switch (e.key) {
                 case 'w':
-                    keyPosition.y = Math.max(0, keyPosition.y - keySpeed);
-                    break;
-                case 'a':
-                    keyPosition.x = Math.max(0, keyPosition.x - keySpeed);
+                    player.y = Math.max(0, player.y - player.speed);
                     break;
                 case 's':
-                    keyPosition.y = Math.min(gameArea.offsetHeight - 40, keyPosition.y + keySpeed);
+                    player.y = Math.min(canvas.height - player.height, player.y + player.speed);
+                    break;
+                case 'a':
+                    player.x = Math.max(0, player.x - player.speed);
                     break;
                 case 'd':
-                    keyPosition.x = Math.min(gameArea.offsetWidth - 40, keyPosition.x + keySpeed);
+                    player.x = Math.min(canvas.width - player.width, player.x + player.speed);
                     break;
             }
-            updatePositions();
-            checkCollisions();
         });
 
-        // Initialize game
-        updatePositions();
-        placePathogens(pathogenCount[0]);
+        spawnPathogens();
+        message.textContent = "Thunderhead: Stage 1 initialized. Do not touch the pathogens.";
+        gameLoop();
     </script>
 </body>
 </html>
