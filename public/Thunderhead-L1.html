@@ -3,139 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thunderhead Mini-Game</title>
+    <title>Thunderhead - Mini Game</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Orbitron', sans-serif;
             background: black;
+            font-family: 'Orbitron', sans-serif;
             color: red;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        #logo-container {
-            text-align: center;
+        #logo {
             margin-top: 20px;
         }
 
-        #logo-container img {
-            width: 200px;
-        }
-
-        #logo-container h1 {
+        h1 {
             font-size: 2rem;
-            margin: 10px 0;
+            text-align: center;
         }
 
-        #game-container {
+        #game-area {
             position: relative;
-            width: 100vw;
-            height: 80vh;
+            width: 80vw;
+            height: 60vh;
+            border: 3px solid red;
+            margin-top: 20px;
             overflow: hidden;
-            margin: 20px auto;
-            border: 2px solid red;
+            background: rgba(0, 0, 0, 0.8);
         }
 
-        .background {
+        .key, .lock, .pathogen {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, rgba(255, 0, 0, 0.1), transparent 80%);
-            animation: flicker 1.5s infinite;
-        }
-
-        @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.9; }
-        }
-
-        .key, .lock {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-size: cover;
         }
 
         .key {
-            background: url('https://i.imgur.com/vkGi6vL.png') no-repeat center center;
+            width: 40px;
+            height: 40px;
+            background: url('https://cdn.iconscout.com/icon/free/png-256/free-encryption-key-icon-download-in-svg-png-gif-file-formats--bitcoin-logo-pack-business-icons-571820.png') no-repeat center center;
+            background-size: contain;
         }
 
         .lock {
-            background: url('https://i.imgur.com/0UBiYny.png') no-repeat center center;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: url('https://cdn-icons-png.flaticon.com/512/4842/4842888.png') no-repeat center center;
+            background-size: contain;
+        }
+
+        .pathogen {
+            width: 40px;
+            height: 40px;
+            background: url('https://www.pngall.com/wp-content/uploads/13/Red-X-PNG-Photos.png') no-repeat center center;
+            background-size: contain;
         }
 
         #play-button {
             display: none;
-            position: absolute;
+            position: fixed;
             bottom: 20px;
             left: 20px;
             padding: 10px 20px;
-            font-size: 1.2rem;
             background: red;
-            color: black;
+            color: white;
+            font-size: 1.2rem;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+            border-radius: 5px;
         }
 
         #play-button:hover {
             background: darkred;
         }
-
     </style>
 </head>
 <body>
-    <div id="logo-container">
-        <img src="https://i.imgur.com/WojpppC.png" alt="Thunderhead Logo">
-        <h1>Thunderhead v1.7</h1>
+    <img id="logo" src="https://i.imgur.com/WojpppC.png" alt="Thunderhead Logo" width="200">
+    <h1>Thunderhead v1.7</h1>
+
+    <div id="game-area">
+        <div id="key" class="key"></div>
+        <div id="lock" class="lock"></div>
     </div>
 
-    <div id="game-container">
-        <div class="background"></div>
-        <div id="key" class="key" style="top: 10%; left: 10%;"></div>
-        <div id="lock" class="lock"></div>
-        <button id="play-button" onclick="window.location.href='https://twinery.org/2/story.html#/stories/a4cf8877-228e-4e1d-8f48-7a9fd6d6e149/play'">Play Character</button>
-    </div>
+    <button id="play-button" onclick="window.location.href='https://twinery.org/2/story.html#/stories/a4cf8877-228e-4e1d-8f48-7a9fd6d6e149/play'">Play Character</button>
 
     <script>
+        const gameArea = document.getElementById('game-area');
         const key = document.getElementById('key');
         const lock = document.getElementById('lock');
         const playButton = document.getElementById('play-button');
-        const gameContainer = document.getElementById('game-container');
 
-        const moveSpeed = 10;
-        let keyPos = { x: 10, y: 10 };
+        const pathogens = [];
+        let stage = 1;
+        const pathogenCount = [0, 3, 5]; // Number of pathogens per stage
 
-        // Handle key movement
-        window.addEventListener('keydown', (event) => {
-            switch (event.key) {
-                case 'w':
-                    if (keyPos.y > 0) keyPos.y -= moveSpeed;
-                    break;
-                case 's':
-                    if (keyPos.y < gameContainer.clientHeight - 50) keyPos.y += moveSpeed;
-                    break;
-                case 'a':
-                    if (keyPos.x > 0) keyPos.x -= moveSpeed;
-                    break;
-                case 'd':
-                    if (keyPos.x < gameContainer.clientWidth - 50) keyPos.x += moveSpeed;
-                    break;
+        let keyPosition = { x: 50, y: 50 };
+        const keySpeed = 5;
+
+        const lockPosition = { x: Math.random() * 700 + 50, y: Math.random() * 400 + 50 };
+
+        function placePathogens(count) {
+            pathogens.forEach(p => p.remove());
+            pathogens.length = 0;
+
+            for (let i = 0; i < count; i++) {
+                const pathogen = document.createElement('div');
+                pathogen.classList.add('pathogen');
+                pathogen.style.left = Math.random() * (gameArea.offsetWidth - 50) + 'px';
+                pathogen.style.top = Math.random() * (gameArea.offsetHeight - 50) + 'px';
+                gameArea.appendChild(pathogen);
+                pathogens.push(pathogen);
             }
-            key.style.top = keyPos.y + 'px';
-            key.style.left = keyPos.x + 'px';
+        }
 
-            checkCollision();
-        });
+        function updatePositions() {
+            key.style.left = keyPosition.x + 'px';
+            key.style.top = keyPosition.y + 'px';
 
-        // Check for collision between key and lock
-        function checkCollision() {
+            lock.style.left = lockPosition.x + 'px';
+            lock.style.top = lockPosition.y + 'px';
+        }
+
+        function checkCollisions() {
             const keyRect = key.getBoundingClientRect();
             const lockRect = lock.getBoundingClientRect();
 
@@ -145,9 +140,54 @@
                 keyRect.top < lockRect.bottom &&
                 keyRect.bottom > lockRect.top
             ) {
-                playButton.style.display = 'block';
+                if (stage === 3) {
+                    playButton.style.display = 'block';
+                } else {
+                    stage++;
+                    alert(`Stage ${stage}: Avoid the pathogens and reach the lock!`);
+                    lockPosition.x = Math.random() * 700 + 50;
+                    lockPosition.y = Math.random() * 400 + 50;
+                    placePathogens(pathogenCount[stage - 1]);
+                }
             }
-        } 
+
+            pathogens.forEach(p => {
+                const pathogenRect = p.getBoundingClientRect();
+                if (
+                    keyRect.left < pathogenRect.right &&
+                    keyRect.right > pathogenRect.left &&
+                    keyRect.top < pathogenRect.bottom &&
+                    keyRect.bottom > pathogenRect.top
+                ) {
+                    keyPosition.x = 50;
+                    keyPosition.y = 50;
+                    alert('Avoid the pathogens! Try again.');
+                }
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            switch (e.key) {
+                case 'w':
+                    keyPosition.y = Math.max(0, keyPosition.y - keySpeed);
+                    break;
+                case 'a':
+                    keyPosition.x = Math.max(0, keyPosition.x - keySpeed);
+                    break;
+                case 's':
+                    keyPosition.y = Math.min(gameArea.offsetHeight - 40, keyPosition.y + keySpeed);
+                    break;
+                case 'd':
+                    keyPosition.x = Math.min(gameArea.offsetWidth - 40, keyPosition.x + keySpeed);
+                    break;
+            }
+            updatePositions();
+            checkCollisions();
+        });
+
+        // Initialize game
+        updatePositions();
+        placePathogens(pathogenCount[0]);
     </script>
 </body>
 </html>
